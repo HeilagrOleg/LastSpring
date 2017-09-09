@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.last_spring.gameprealpha">
+
+    <application
+        android:allowBackup="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="Долина Фортуны"
+        android:largeHeap="true"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Prologue_start"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".PrologueDownFirstScene"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".PrologueDownSecondSceneNoBackPack"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".PrologueDownSecondSceneBackPack"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".PrologueUpFirstScene"
+            android:screenOrientation="portrait" />
+
+        <meta-data
+            android:name="net.hockeyapp.android.appIdentifier"
+            android:value="${HOCKEYAPP_APP_ID}" />
+
+        <activity
+            android:name=".HuntingLodge"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".HuntingLodgeInside"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".PrologueDownBackpackCutScene"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".PrologueBackpackAfterCutScene"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".PrologueInventory"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".HuntingLodgeCutScene"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".PrologueCave"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".PrologueOldCamp"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".HuntingLodgeHunter"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".HuntingLodgeExit"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AbandonedCar"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".CaveLabyrinth"
+            android:screenOrientation="portrait" />
+        <activity android:name=".PrologueBreakage" />
+
+        <service
+            android:name="com.last_spring.gameprealpha.OstWood"
+            android:enabled="true"
+            android:exported="true" />
+        <service
+            android:name="com.last_spring.gameprealpha.OstDisturbance"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity android:name=".PrologueCavePool" />
+        <activity android:name=".PrologueTitle" />
+
+        <service
+            android:name="com.last_spring.gameprealpha.OstCave"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity
+            android:name=".PrologueBonfire"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".PrologueCaveAfterLabyrinth"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".PrologueRain"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".PrologueBeforeBreakage"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".PrologueBadEnding"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".PrologueGoodEnding"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".PrologueOldStory"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".PrologueOldStoryAttack"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".HuntingLodgeBox"
+            android:screenOrientation="landscape" />
+        <activity android:name=".PrologueBackpackHunter"></activity>
+    </application>
+
+</manifest>

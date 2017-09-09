@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/prologue_down_second_scene_backpack_background">
+
+    <Button
+        android:id="@+id/prologueCutBackpackNextButtonID"
+        android:layout_width="154dp"
+        android:layout_height="48dp"
+        android:onClick="onBackpackCamp"
+        android:text="@string/prologue_backpack_camp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.969" />
+
+    <TextView
+        android:id="@+id/prologueCutBackpackID"
+        android:layout_width="339dp"
+        android:layout_height="236dp"
+        android:text="@string/prologue_game_victory_down_text"
+        android:textAlignment="center"
+        android:textColor="#303030"
+        android:textSize="15sp"
+        android:lineSpacingMultiplier="0.8"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+
+    <RadioGroup
+        android:id="@+id/prologueDownBackpackAdditionalPartRadioGroupID"
+        android:layout_width="360dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.856">
+
+        <RadioButton
+            android:id="@+id/additionalBackpackOintmentButtonID"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:button="@drawable/radio_button_selector"
+            android:onClick="onAdditionalOintmentBackPack"
+            android:text="@string/prologue_backpack_additional_part_ointment"
+            android:textColor="#303030"
+            android:textSize="16sp"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="355dp" />
+
+        <RadioButton
+            android:id="@+id/additionalBackpackOintmentLuckButtonID"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:button="@drawable/radio_button_selector"
+            android:onClick="onAdditionalOintmentLuckBackPack"
+            android:text="@string/prologue_backpack_additional_part_ointment_luck"
+            android:textColor="#303030"
+            android:textSize="16sp"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="387dp" />
+
+        <RadioButton
+            android:id="@+id/additionalBackpackNoOintmentButtonID"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:button="@drawable/radio_button_selector"
+            android:onClick="onAdditionalNoOintmentBackPack"
+            android:text="@string/prologue_backpack_additional_part_ointment_no_luck"
+            android:textColor="#303030"
+            android:textSize="16sp"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="419dp" />
+
+        <RadioButton
+            android:id="@+id/additionalBackpackBackButtonID"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:button="@drawable/radio_button_selector"
+            android:onClick="onAdditionalPartBack"
+            android:text="@string/prologue_backpack_additional_part_back"
+            android:textColor="#303030"
+            android:textSize="16sp"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="419dp" />
+    </RadioGroup>
+
+    <RadioGroup
+        android:id="@+id/prologueDownBackpackBasementPartRadioGroupID"
+        android:layout_width="360dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.856">
+
+        <RadioButton
+            android:id="@+id/basementBackpackRaincoatButtonID"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:button="@drawable/radio_button_selector"
+            android:onClick="onBasementBackpackRaincoat"
+            android:text="@string/prologue_backpack_basement_part_raincoat"
+            android:textColor="#303030"
+            android:textSize="16sp"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="355dp" />
+
+        <RadioButton
+            android:id="@+id/basementBackpackRaincoatLuckButtonID"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:button="@drawable/radio_button_selector"
+            android:onClick="onBasementBackpackRaincoatLuckButton"
+            android:text="@string/prologue_backpack_basement_part_raincoat_luck"
+            android:textColor="#303030"
+            android:textSize="16sp"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="387dp" />
+
+        <RadioButton
+            android:id="@+id/basementBackpackNoRaincoatButtonID"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:button="@drawable/radio_button_selector"
+            android:onClick="onBasementBackpackNoRaincoat"
+            android:text="@string/prologue_backpack_basement_part_raincoat_no_luck"
+            android:textColor="#303030"
+            android:textSize="16sp"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="419dp" />
+
+        <RadioButton
+            android:id="@+id/basementBackpackBackButtonID"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:button="@drawable/radio_button_selector"
+            android:onClick="onBasementPartBack"
+            android:text="@string/prologue_backpack_basement_part_back"
+            android:textColor="#303030"
+            android:textSize="16sp"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="419dp" />
+    </RadioGroup>
+
+    <RadioGroup
+        android:id="@+id/prologueDownBackpackMiddlePartRadioGroupID"
+        android:layout_width="360dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.855">
+
+        <RadioButton
+            android:id="@+id/middleBackPackSleepingBugButtonID"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:button="@drawable/radio_button_selector"
+            android:onClick="onMiddleBackPackSleepingBug"
+            android:text="@string/prologue_backpack_middle_part_sleeping_bug"
+            android:textColor="#303030"
+            android:textSize="16sp"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="355dp" />
+
+        <RadioButton
+            android:id="@+id/middleBackPackSleepingBugLuckButtonID"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:button="@drawable/radio_button_selector"
+            android:onClick="onMiddleBackPackSleepingBugLuck"
+            android:text="@string/prologue_backpack_middle_part_sleeping_bug_luck"
+            android:textColor="#303030"
+            android:textSize="16sp"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="387dp" />
+
+        <RadioButton
+            android:id="@+id/middleBackPackNoSleepingBugButtonID"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:button="@drawable/radio_button_selector"
+            android:onClick="onMiddleBackPackNoSleepingBug"
+            android:text="@string/prologue_backpack_middle_part_sleeping_bug_no_luck"
+            android:textColor="#303030"
+            android:textSize="16sp"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="419dp" />
+
+        <RadioButton
+            android:id="@+id/middleBackPackBackButtonID"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:button="@drawable/radio_button_selector"
+            android:onClick="onMiddlePartBack"
+            android:text="@string/prologue_backpack_middle_part_back"
+            android:textColor="#303030"
+            android:textSize="16sp"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="419dp" />
+    </RadioGroup>
+
+    <RadioGroup
+        android:id="@+id/prologueDownBackpackTopPartRadioGroupID"
+        android:layout_width="360dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.855">
+
+        <RadioButton
+            android:id="@+id/topBackpackKnifeButtonID"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:button="@drawable/radio_button_selector"
+            android:onClick="onTopBackpackKnife"
+            android:text="@string/prologue_backpack_top_part_knife"
+            android:textColor="#303030"
+            android:textSize="16sp"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="355dp" />
+
+        <RadioButton
+            android:id="@+id/topBackpackKnifeLuckButtonID"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:button="@drawable/radio_button_selector"
+            android:onClick="onTopBackpackKnifeLuck"
+            android:text="@string/prologue_backpack_top_part_knife_luck"
+            android:textColor="#303030"
+            android:textSize="16sp"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="387dp" />
+
+        <RadioButton
+            android:id="@+id/topBackpackNoKnifeButtonID"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:button="@drawable/radio_button_selector"
+            android:onClick="onTopBackpackNoKnife"
+            android:text="@string/prologue_backpack_top_part_knife_no_luck"
+            android:textColor="#303030"
+            android:textSize="16sp"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="419dp" />
+
+        <RadioButton
+            android:id="@+id/topBackpackBackButtonID"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:button="@drawable/radio_button_selector"
+            android:onClick="onTopPartBack"
+            android:text="@string/prologue_backpack_top_part_back"
+            android:textColor="#303030"
+            android:textSize="16sp"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="419dp" />
+    </RadioGroup>
+
+    <RadioGroup
+        android:id="@+id/prologueDownBackPackMainRadioGroupID"
+        android:layout_width="360dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.778">
+
+        <RadioButton
+            android:id="@+id/buttonBackpackOpenTopPartID"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:button="@drawable/radio_button_selector"
+            android:onClick="onOpenTopPart"
+            android:text="@string/prologue_backpack_open_top_part"
+            android:textColor="#303030"
+            android:textSize="16sp"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="355dp" />
+
+        <RadioButton
+            android:id="@+id/buttonBackpackOpenMiddlePartID"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:button="@drawable/radio_button_selector"
+            android:onClick="onOpenMiddlePart"
+            android:text="@string/prologue_backpack_open_middle_part"
+            android:textColor="#303030"
+            android:textSize="16sp"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="387dp" />
+
+        <RadioButton
+            android:id="@+id/buttonBackpackBasementPartID"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:button="@drawable/radio_button_selector"
+            android:onClick="onBasementPart"
+            android:text="@string/prologue_backpack_open_basement_part"
+            android:textColor="#303030"
+            android:textSize="16sp"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="419dp" />
+
+        <RadioButton
+            android:id="@+id/buttonBackpackAdditionalPartID"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:button="@drawable/radio_button_selector"
+            android:onClick="onAdditionalPart"
+            android:text="@string/prologue_backpack_open_additional_part"
+            android:textColor="#303030"
+            android:textSize="16sp"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="419dp" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/fortuneCounterID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="fortune"
+        android:textColor="#303030"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintHorizontal_bias="0.761"
+        app:layout_constraintVertical_bias="0.454" />
+
+</android.support.constraint.ConstraintLayout>
