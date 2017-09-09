@@ -798,7 +798,7 @@
         Выйти из пещеры
     </string>
     <string name="prologue_cave_after_text_start">
-        То, что случилосб, когда прошли лабиринт.
+        То, что случилось, когда прошли лабиринт.
     </string>
     /// Дождь. Альтернатива пещеры.
     <string name="prologue_rain_button_exit">
@@ -911,16 +911,9 @@
     </string>
 
 
-
     <string name="prologue_backpack_hunter_button_start">
         Рассмотреть незнакомца
     </string>
-
-
-
-
-
-
 
 
     // Старая история I. Пролог.
