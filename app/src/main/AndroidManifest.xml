@@ -118,10 +118,8 @@
         <activity
             android:name=".PrologueOldStoryAttack"
             android:screenOrientation="portrait" />
-        <activity
-            android:name=".HuntingLodgeBox"
-            android:screenOrientation="landscape" />
-        <activity android:name=".PrologueBackpackHunter"></activity>
+        <activity android:name=".PrologueBackpackHunter" />
+        <activity android:name=".HuntingLodgeAfter"></activity>
     </application>
 
 </manifest>
