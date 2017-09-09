@@ -41,7 +41,7 @@ public class PrologueBonfire extends GameActivity {
         SharedPreferences.Editor editor = save.edit();
         editor.putFloat(APP_SAVE_LEVEL, level);
         editor.apply();
-        getNextScene(new Intent(this, OstWood.class));
+        startService(new Intent(this, OstWood.class));
         isOstWood = true;
 
         radioGroupPrologueBonfire = (RadioGroup) findViewById(R.id.radioGroupPrologueBonfireID);
