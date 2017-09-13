@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.example.last_spring.gameprealpha.res.GameActivity;
@@ -15,14 +16,33 @@ import com.last_spring.gameprealpha.OstWood;
 
 public class HuntingLodge extends GameActivity {
 
+
+    private RadioGroup radioGroupHuntingLodgeStart;
+    private RadioGroup radioGroupHuntingLodgeBeforeStart;
+
     private RadioButton radioButtonWindowHuntingStart;
     private RadioButton radioButtonDoorHuntingStart;
     private RadioButton radioButtonOpenDoorHuntingStart;
+
+    private RadioButton radioButtonShedHuntingBeforeStart;
+    private RadioButton radioButtonToiletHuntingBeforeStart;
+    private RadioButton radioButtonNextHuntingBeforeStart;
 
     private boolean isWindow;
     private boolean isSaveWindow;
     private boolean isDoor;
     private boolean isOpenDoor;
+    private boolean isShed;
+    private boolean isShedFirst;
+    private boolean isShedSecond;
+    private boolean isShedThird;
+    private boolean isShedFour;
+    private boolean isShedFive;
+    private boolean isShedMain;
+    private boolean isNext;
+    private boolean isToilet;
+    private boolean isToiletFirst;
+    private boolean isToiletMain;
 
     protected float level;
     private static final String APP_SAVE = "Save";
@@ -46,11 +66,18 @@ public class HuntingLodge extends GameActivity {
         startService(new Intent(this, OstWood.class));
         isOstWood = true;
 
+
         huntingLodgeStartText = (TextView) findViewById(R.id.huntingLodgeStartTextID);
+
+        radioGroupHuntingLodgeStart = (RadioGroup) findViewById(R.id.radioGroupHuntingLodgeStartID);
+        radioGroupHuntingLodgeBeforeStart = (RadioGroup) findViewById(R.id.radioGroupHuntingLodgeBeforeStartID);
 
         radioButtonWindowHuntingStart = (RadioButton) findViewById(R.id.radioButtonWindowHuntingStartID);
         radioButtonDoorHuntingStart = (RadioButton) findViewById(R.id.radioButtonDoorHuntingStartID);
         radioButtonOpenDoorHuntingStart = (RadioButton) findViewById(R.id.radioButtonOpenDoorHuntingStartID);
+        radioButtonShedHuntingBeforeStart = (RadioButton) findViewById(R.id.radioButtonShedHuntingBeforeStartID);
+        radioButtonToiletHuntingBeforeStart = (RadioButton) findViewById(R.id.radioButtonToiletHuntingBeforeStartID);
+        radioButtonNextHuntingBeforeStart = (RadioButton) findViewById(R.id.radioButtonNextHuntingBeforeStartID);
     }
 
     public void onDoorHuntingStart(View view) {
@@ -67,7 +94,7 @@ public class HuntingLodge extends GameActivity {
     }
 
     public void onWindowHuntingStart(View view) {
-        if(isWindow){
+        if (isWindow) {
             huntingLodgeStartText.setText(R.string.hunting_Lodge_start_text_next_window);
             radioButtonWindowHuntingStart.setVisibility(View.GONE);
             isSaveWindow = true;
@@ -81,7 +108,7 @@ public class HuntingLodge extends GameActivity {
     }
 
     public void onOpenDoorHuntingStartID(View view) {
-        if(isOpenDoor) {
+        if (isOpenDoor) {
             SharedPreferences.Editor editor = save.edit();
             editor.putBoolean(APP_SAVE_PROLOGUE_HUNTING_WINDOW, isSaveWindow);
             editor.apply();
@@ -96,5 +123,129 @@ public class HuntingLodge extends GameActivity {
         isDoor = false;
         isOpenDoor = true;
         isWindow = false;
+    }
+
+    public void onShedHuntingBeforeStart(View view) {
+        if (isShed) {
+            if (isShedFive) {
+                huntingLodgeStartText.setText(R.string.hunting_Lodge_start_before_text_again);
+                if (isToiletMain) {
+                    radioButtonToiletHuntingBeforeStart.setVisibility(View.GONE);
+                } else {
+                    radioButtonToiletHuntingBeforeStart.setVisibility(View.VISIBLE);
+                    radioButtonToiletHuntingBeforeStart.setText(R.string.hunting_Lodge_start_button_shed);
+                }
+                radioButtonShedHuntingBeforeStart.setVisibility(View.GONE);
+                radioButtonNextHuntingBeforeStart.setText(R.string.hunting_Lodge_start_button_next);
+                radioButtonToiletHuntingBeforeStart.setText(R.string.hunting_Lodge_start_button_toilet);
+                isShedMain = true;
+                isShedFive = false;
+                isShedFirst = false;
+            } else if (isShedFour) {
+                huntingLodgeStartText.setText(R.string.hunting_Lodge_start_before_text_shed_four);
+                radioButtonShedHuntingBeforeStart.setText(R.string.hunting_Lodge_start_button_shed_inside_back);
+                isShedFive = true;
+            } else if (isShedThird) {
+                huntingLodgeStartText.setText(R.string.hunting_Lodge_start_before_text_shed_third);
+                radioButtonShedHuntingBeforeStart.setText(R.string.hunting_Lodge_start_button_shed_inside);
+                isShedFour = true;
+            } else if (isShedSecond) {
+                huntingLodgeStartText.setText(R.string.hunting_Lodge_start_before_text_shed_second);
+                radioButtonShedHuntingBeforeStart.setText(R.string.hunting_Lodge_start_button_shed_enter);
+                radioButtonToiletHuntingBeforeStart.setVisibility(View.GONE);
+                isShedThird = true;
+            } else if (isShedFirst) {
+                isShedSecond = true;
+                radioButtonShedHuntingBeforeStart.setText(R.string.hunting_Lodge_start_button_shed_stone_open);
+                huntingLodgeStartText.setText(R.string.hunting_Lodge_start_before_text_shed_stone);
+            } else {
+                huntingLodgeStartText.setText(R.string.hunting_Lodge_start_before_text_shed_first);
+                radioButtonNextHuntingBeforeStart.setVisibility(View.VISIBLE);
+                radioButtonNextHuntingBeforeStart.setText(R.string.hunting_Lodge_start_button_shed_back);
+                radioButtonToiletHuntingBeforeStart.setText(R.string.hunting_Lodge_start_button_shed_hand);
+                radioButtonToiletHuntingBeforeStart.setVisibility(View.VISIBLE);
+                radioButtonShedHuntingBeforeStart.setText(R.string.hunting_Lodge_start_button_shed_stone);
+                radioButtonShedHuntingBeforeStart.setVisibility(View.VISIBLE);
+                isShedFirst = true;
+            }
+            radioButtonShedHuntingBeforeStart.setBackgroundColor(Color.parseColor("#60ffffff"));
+            isShed = false;
+        } else {
+            radioButtonShedHuntingBeforeStart.setBackgroundColor(Color.parseColor("#607e9e7f"));
+            radioButtonToiletHuntingBeforeStart.setBackgroundColor(Color.parseColor("#60ffffff"));
+            radioButtonNextHuntingBeforeStart.setBackgroundColor(Color.parseColor("#60ffffff"));
+            isShed = true;
+            isToilet = false;
+            isNext = false;
+        }
+    }
+
+    public void onToiletHuntingBeforeStart(View view) {
+        if (isToilet) {
+            if (isShedFirst) {
+                huntingLodgeStartText.setText(R.string.hunting_Lodge_start_before_text_shed_hand);
+                radioButtonToiletHuntingBeforeStart.setVisibility(View.GONE);
+            } else if (isToiletFirst) {
+                huntingLodgeStartText.setText(R.string.hunting_Lodge_start_before_text_again);
+                isToiletMain = true;
+                if (isShedMain) {
+                    radioButtonShedHuntingBeforeStart.setVisibility(View.GONE);
+                } else {
+                    radioButtonShedHuntingBeforeStart.setVisibility(View.VISIBLE);
+                    radioButtonShedHuntingBeforeStart.setText(R.string.hunting_Lodge_start_button_shed);
+                }
+                radioButtonNextHuntingBeforeStart.setText(R.string.hunting_Lodge_start_button_next);
+                radioButtonNextHuntingBeforeStart.setVisibility(View.VISIBLE);
+                radioButtonToiletHuntingBeforeStart.setVisibility(View.GONE);
+                isToiletFirst = false;
+            } else {
+                huntingLodgeStartText.setText(R.string.hunting_Lodge_start_before_text_toilet);
+                isToiletFirst = true;
+                radioButtonShedHuntingBeforeStart.setVisibility(View.GONE);
+                radioButtonNextHuntingBeforeStart.setVisibility(View.GONE);
+                radioButtonToiletHuntingBeforeStart.setText(R.string.hunting_Lodge_start_button_toilet_back);
+            }
+            radioButtonToiletHuntingBeforeStart.setBackgroundColor(Color.parseColor("#60ffffff"));
+            isToilet = false;
+        } else {
+            radioButtonShedHuntingBeforeStart.setBackgroundColor(Color.parseColor("#60ffffff"));
+            radioButtonToiletHuntingBeforeStart.setBackgroundColor(Color.parseColor("#607e9e7f"));
+            radioButtonNextHuntingBeforeStart.setBackgroundColor(Color.parseColor("#60ffffff"));
+            isShed = false;
+            isToilet = true;
+            isNext = false;
+        }
+    }
+
+    public void onNextHuntingBeforeStart(View view) {
+        if (isNext) {
+            if (isShedFirst) {
+                huntingLodgeStartText.setText(R.string.hunting_Lodge_start_before_text_again);
+                if (isToiletMain) {
+                    radioButtonToiletHuntingBeforeStart.setVisibility(View.GONE);
+                } else {
+                    radioButtonToiletHuntingBeforeStart.setVisibility(View.VISIBLE);
+                    radioButtonToiletHuntingBeforeStart.setText(R.string.hunting_Lodge_start_button_shed);
+                }
+                radioButtonShedHuntingBeforeStart.setVisibility(View.GONE);
+                radioButtonNextHuntingBeforeStart.setText(R.string.hunting_Lodge_start_button_next);
+                radioButtonToiletHuntingBeforeStart.setText(R.string.hunting_Lodge_start_button_toilet);
+                isShedMain = true;
+                isShedFirst = false;
+            } else {
+                huntingLodgeStartText.setText(R.string.hunting_Lodge_start_text);
+                radioGroupHuntingLodgeBeforeStart.setVisibility(View.GONE);
+                radioGroupHuntingLodgeStart.setVisibility(View.VISIBLE);
+            }
+            isNext = false;
+            radioButtonNextHuntingBeforeStart.setBackgroundColor(Color.parseColor("#60ffffff"));
+        } else {
+            radioButtonShedHuntingBeforeStart.setBackgroundColor(Color.parseColor("#60ffffff"));
+            radioButtonToiletHuntingBeforeStart.setBackgroundColor(Color.parseColor("#60ffffff"));
+            radioButtonNextHuntingBeforeStart.setBackgroundColor(Color.parseColor("#607e9e7f"));
+            isShed = false;
+            isToilet = false;
+            isNext = true;
+        }
     }
 }

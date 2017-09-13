@@ -7,10 +7,92 @@
     android:background="@drawable/prologue_hunting__lodge_background">
 
     <RadioGroup
+        android:id="@+id/radioGroupHuntingLodgeBeforeStartID"
+        android:layout_width="348dp"
+        android:layout_height="140dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.695">
+
+        <RadioButton
+            android:id="@+id/radioButtonShedHuntingBeforeStartID"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="#60ffffff"
+            android:button="@drawable/radio_button_selector"
+            android:onClick="onShedHuntingBeforeStart"
+            android:text="@string/hunting_Lodge_start_button_shed"
+            android:textColor="#303030"
+            android:textSize="16sp"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="387dp" />
+
+        <RadioButton
+            android:id="@+id/radioButtonToiletHuntingBeforeStartID"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="#60ffffff"
+            android:button="@drawable/radio_button_selector"
+            android:onClick="onToiletHuntingBeforeStart"
+            android:text="@string/hunting_Lodge_start_button_toilet"
+            android:textColor="#303030"
+            android:textSize="16sp"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="355dp" />
+
+        <RadioButton
+            android:id="@+id/radioButtonNextHuntingBeforeStartID"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#60ffffff"
+            android:button="@drawable/radio_button_selector"
+            android:onClick="onNextHuntingBeforeStart"
+            android:text="@string/hunting_Lodge_start_button_next"
+            android:textColor="#303030"
+            android:textSize="16sp"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="419dp" />
+    </RadioGroup>
+
+    <ScrollView
+        android:layout_width="358dp"
+        android:layout_height="321dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.301"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.047">
+
+        <TextView
+            android:id="@+id/huntingLodgeStartTextID"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lineSpacingExtra="0sp"
+            android:lineSpacingMultiplier="0.8"
+            android:text="@string/hunting_Lodge_start_before_text"
+            android:textColor="#303030"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.515"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.055" />
+    </ScrollView>
+
+    <RadioGroup
         android:id="@+id/radioGroupHuntingLodgeStartID"
         android:layout_width="348dp"
         android:layout_height="140dp"
         android:orientation="vertical"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -59,20 +141,5 @@
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="419dp" />
     </RadioGroup>
-
-    <TextView
-        android:id="@+id/huntingLodgeStartTextID"
-        android:layout_width="348dp"
-        android:layout_height="360dp"
-        android:lineSpacingMultiplier="0.8"
-        android:text="@string/hunting_Lodge_start_text"
-        android:textColor="#303030"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.003" />
 
 </android.support.constraint.ConstraintLayout>
