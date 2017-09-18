@@ -43,15 +43,17 @@ public class PrologueCaveAfterLabyrinth extends GameActivity {
     }
 
     public void onPrologueCaveAfterFirst(View view) {
-    }
-
-    public void onPrologueCaveAfterSecon(View view) {
-    }
-
-    public void onPrologueCaveAfterThirdID(View view) {
         getNextScene(new Intent(this, PrologueBeforeBreakage.class));
         overridePendingTransition(R.anim.first_activity_animation, R.anim.second_activity_animation);
         finish();
+    }
+
+    public void onPrologueCaveAfterSecon(View view) {
+        textPrologueCaveAfter.setText(R.string.prologue_after_labyrinth_text_relax);
+        buttonPrologueCaveAfterSecond.setVisibility(View.GONE);
+    }
+
+    public void onPrologueCaveAfterThirdID(View view) {
     }
 
 
