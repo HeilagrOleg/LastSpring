@@ -83,11 +83,6 @@ public class PrologueBackpackAfterCutScene extends GameActivity {
         } else {
             raincoat = getString(R.string.text_prologue_backpack_after_cut_start_no_raincoat);
         }
-
-
-        if (save.getBoolean(APP_SAVE_SLEEPING_BAG_PROLOGUE, false)) {
-            textPrologueBackpackAfterCut.setText(R.string.text_prologue_backpack_after_cut_start_sleeping_bug);
-        }
     }
 
     public void onPrologueBackpackAfterCutSleep(View view) {
