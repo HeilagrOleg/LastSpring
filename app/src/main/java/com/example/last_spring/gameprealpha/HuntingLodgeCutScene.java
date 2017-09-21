@@ -180,7 +180,6 @@ public class HuntingLodgeCutScene extends GameActivity {
                     new CountDownTimer(1000, 1000) {
                         public void onTick(long millisUntilFinished) {
                         }
-
                         public void onFinish() {
                             textHuntingLodgeHunterStart.startAnimation(inAnimation);
                             textHuntingLodgeHunterStart.setText(R.string.hunting_Lodge_cut_scene_text_start_7);

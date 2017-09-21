@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.Color;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -18,6 +19,7 @@ public class PrologueBackpackHunter extends GameActivity {
 
     private static final String APP_SAVE_PROLOGUE_BACKPACK_HUNTER_FIGHT = "Backpack hunter fight";
 
+private ConstraintLayout  constraintLayoutDialogBackpack;
 
     private String nameParagraph;
     private String[] strings;
@@ -29,11 +31,13 @@ public class PrologueBackpackHunter extends GameActivity {
     private TextView textPrologueBackpackHunterStart;
     private TextView textPrologueBackpackHunterStartMain;
 
+    private Resources res;
+
     private boolean isFirstLine;
     private boolean isSecondLine;
     private boolean isThirdLine;
-
     private boolean isStart;
+    private boolean isImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +60,10 @@ public class PrologueBackpackHunter extends GameActivity {
         textPrologueBackpackHunterStart = (TextView) findViewById(R.id.textPrologueBackpackHunterStartID);
         textPrologueBackpackHunterStartMain = (TextView) findViewById(R.id.textPrologueBackpackHunterStartMainID);
 
+        constraintLayoutDialogBackpack = (ConstraintLayout) findViewById(R.id.constraintLayoutDialogBackpackID);
+
+        res = getResources();
+
         nameParagraph = "dialog_backpack";
 
         strings = getResources().getStringArray(R.array.dialog_backpack);
@@ -64,7 +72,7 @@ public class PrologueBackpackHunter extends GameActivity {
 
         thirdLine.setText(R.string.prologue_backpack_hunter_button_start);
 
-        if(save.getBoolean(APP_SAVE_KNIFE,false)) {
+        if (save.getBoolean(APP_SAVE_KNIFE, false)) {
             textPrologueBackpackHunterStart.setText(R.string.prologue_backpack_hunter_text_start_knife);
         }
 
@@ -90,6 +98,15 @@ public class PrologueBackpackHunter extends GameActivity {
             } else {
                 thirdLine.setVisibility(View.GONE);
             }
+
+            if (isImage) {
+                isImage = false;
+                constraintLayoutDialogBackpack.setBackground(res.getDrawable(R.drawable.prologue_backpack_adam_background));
+            } else {
+                isImage = true;
+                constraintLayoutDialogBackpack.setBackground(res.getDrawable(R.drawable.prologue_backpack_hunter_background));
+            }
+
             isFirstLine = false;
         } else {
             firstLine.setBackgroundColor(Color.parseColor("#607e9e7f"));
@@ -121,6 +138,15 @@ public class PrologueBackpackHunter extends GameActivity {
             } else {
                 thirdLine.setVisibility(View.GONE);
             }
+
+            if (isImage) {
+                isImage = false;
+                constraintLayoutDialogBackpack.setBackground(res.getDrawable(R.drawable.prologue_backpack_adam_background));
+            } else {
+                isImage = true;
+                constraintLayoutDialogBackpack.setBackground(res.getDrawable(R.drawable.prologue_backpack_hunter_background));
+            }
+
             isSecondLine = false;
         } else {
             firstLine.setBackgroundColor(Color.parseColor("#60ffffff"));
@@ -141,6 +167,8 @@ public class PrologueBackpackHunter extends GameActivity {
             firstLine.setVisibility(View.VISIBLE);
             secondLine.setVisibility(View.VISIBLE);
             textPrologueBackpackHunterStartMain.setText(R.string.prologue_backpack_hunter_text_start_next);
+            isImage = true;
+            constraintLayoutDialogBackpack.setBackground(res.getDrawable(R.drawable.prologue_backpack_hunter_background));
         } else {
             firstLine.setBackgroundColor(Color.parseColor("#60ffffff"));
             secondLine.setBackgroundColor(Color.parseColor("#60ffffff"));
@@ -155,7 +183,7 @@ public class PrologueBackpackHunter extends GameActivity {
         Resources res = getResources();
 
         if (choice == 1) {
-            if (nameParagraph.equals("dialog_backpack_1_1_1_1_1")|| nameParagraph.equals("dialog_backpack_1_1_1_1_2_1")
+            if (nameParagraph.equals("dialog_backpack_1_1_1_1_1") || nameParagraph.equals("dialog_backpack_1_1_1_1_2_1")
                     || nameParagraph.equals("dialog_backpack_1_1_2_1_1_1") || nameParagraph.equals("dialog_backpack_1_1_2_1_1_1_2")
                     || nameParagraph.equals("dialog_backpack_1_1_2_1_1_2_2_2_2_1") || nameParagraph.equals("dialog_backpack_1_1_2_1_1_2_2_1")
                     || nameParagraph.equals("dialog_backpack_1_1_2_2_2_2_2") || nameParagraph.equals("dialog_backpack_1_1_2_2_2_1")
@@ -163,58 +191,57 @@ public class PrologueBackpackHunter extends GameActivity {
                     || nameParagraph.equals("dialog_backpack_1_2_1_2_2_1_1_1") || nameParagraph.equals("dialog_backpack_1_2_1_2_2_1_2")
                     || nameParagraph.equals("dialog_backpack_1_2_1_2_2_2_1") || nameParagraph.equals("dialog_backpack_1_2_2_2_2_2")
                     || nameParagraph.equals("dialog_backpack_2_2_2_2_2_2_2") || nameParagraph.equals("dialog_backpack_2_2_2_2_2_1")
-                    || nameParagraph.equals("dialog_backpack_2_2_2_2_1_1")|| nameParagraph.equals("dialog_backpack_2_2_2_1_2")
-                    || nameParagraph.equals("dialog_backpack_2_2_2_1_1_2")|| nameParagraph.equals("dialog_backpack_2_2_2_1_1")
-                    || nameParagraph.equals("dialog_backpack_2_2_1_2_1")|| nameParagraph.equals("dialog_backpack_2_2_1_1")
+                    || nameParagraph.equals("dialog_backpack_2_2_2_2_1_1") || nameParagraph.equals("dialog_backpack_2_2_2_1_2")
+                    || nameParagraph.equals("dialog_backpack_2_2_2_1_1_2") || nameParagraph.equals("dialog_backpack_2_2_2_1_1")
+                    || nameParagraph.equals("dialog_backpack_2_2_1_2_1") || nameParagraph.equals("dialog_backpack_2_2_1_1")
                     || nameParagraph.equals("dialog_backpack_2_1_1_1_2_1") || nameParagraph.equals("dialog_backpack_2_1_1_1_1_2_1")) {
                 getNextScene(new Intent(this, PrologueBackpackAfterCutScene.class));
                 finish();
                 overridePendingTransition(R.anim.first_activity_animation, R.anim.second_activity_animation);
-            } else if ((nameParagraph.equals("dialog_backpack_1_2_2_2_2_1"))|| nameParagraph.equals("dialog_backpack_1_2_2_2_1")
-                    || nameParagraph.equals("dialog_backpack_1_2_1_2_2_1_1_2")|| nameParagraph.equals("dialog_backpack_1_2_1_2_1_2")
+            } else if ((nameParagraph.equals("dialog_backpack_1_2_2_2_2_1")) || nameParagraph.equals("dialog_backpack_1_2_2_2_1")
+                    || nameParagraph.equals("dialog_backpack_1_2_1_2_2_1_1_2") || nameParagraph.equals("dialog_backpack_1_2_1_2_1_2")
                     || nameParagraph.equals("dialog_backpack_1_2_1_1_2_1") || nameParagraph.equals("dialog_backpack_1_1_2_2_2_2")
-                    || nameParagraph.equals("dialog_backpack_1_1_2_1_1_2_2_2")  || nameParagraph.equals("dialog_backpack_2_2_2_2_2_2_1")
+                    || nameParagraph.equals("dialog_backpack_1_1_2_1_1_2_2_2") || nameParagraph.equals("dialog_backpack_2_2_2_2_2_2_1")
                     || nameParagraph.equals("dialog_backpack_2_1_1_1_1_1")) {
                 SharedPreferences.Editor editor = save.edit();
-                editor.putBoolean(APP_SAVE_PROLOGUE_BACKPACK_HUNTER_FIGHT,true);
+                editor.putBoolean(APP_SAVE_PROLOGUE_BACKPACK_HUNTER_FIGHT, true);
                 editor.apply();
                 getNextScene(new Intent(this, PrologueBackpackAfterCutScene.class));
                 finish();
                 overridePendingTransition(R.anim.first_activity_animation, R.anim.second_activity_animation);
-            }  else {
+            } else {
                 nameParagraph += "_1";
                 strings = res.getStringArray(res.getIdentifier(nameParagraph, "array", "com.last_spring.gameprealpha"));
             }
         }
         if (choice == 2) {
-            if (nameParagraph.equals("dialog_backpack_2_2_1_2")|| nameParagraph.equals("dialog_backpack_2_2_2_1_1_2")
-                    || nameParagraph.equals("dialog_backpack_1_1_1_1_2") || nameParagraph.equals("dialog_backpack_1_1_2_1_1_1_2")
-                    || nameParagraph.equals("dialog_backpack_1_1_2_1_1_2_2_2_2_1") || nameParagraph.equals("dialog_backpack_1_1_2_1_1_2_2_1")
-                    || nameParagraph.equals("dialog_backpack_1_1_2_2_2_2_2") || nameParagraph.equals("dialog_backpack_1_1_2_2_2_1")
+            if (nameParagraph.equals("dialog_backpack_2_2_1_2") || nameParagraph.equals("dialog_backpack_2_2_2_1_1_2")
+                    || nameParagraph.equals("dialog_backpack_1_1_1_1_2")
+                    || nameParagraph.equals("dialog_backpack_1_1_2_1_1_2_2_1")
                     || nameParagraph.equals("dialog_backpack_1_2_1_1_2_2") || nameParagraph.equals("dialog_backpack_1_2_1_2_1_1")
                     || nameParagraph.equals("dialog_backpack_1_2_1_2_2_1_1_1") || nameParagraph.equals("dialog_backpack_1_2_1_2_2_1_2")
-                    || nameParagraph.equals("dialog_backpack_1_2_1_2_2_2_1") || nameParagraph.equals("dialog_backpack_1_2_2_2_2_2")
+                    || nameParagraph.equals("dialog_backpack_1_2_1_2_2_2_1")
                     || nameParagraph.equals("dialog_backpack_2_2_2_2_2_2_2") || nameParagraph.equals("dialog_backpack_2_2_2_2_2_1")
-                    || nameParagraph.equals("dialog_backpack_2_2_2_2_1_1")|| nameParagraph.equals("dialog_backpack_2_2_2_1_2")
-                    || nameParagraph.equals("dialog_backpack_2_2_2_1_1_2")|| nameParagraph.equals("dialog_backpack_2_2_2_1_1")
-                    || nameParagraph.equals("dialog_backpack_2_2_1_2_1")|| nameParagraph.equals("dialog_backpack_2_2_1_1")
+
+                    || nameParagraph.equals("dialog_backpack_2_2_2_1_1_2") || nameParagraph.equals("dialog_backpack_2_2_2_1_1")
+                    || nameParagraph.equals("dialog_backpack_2_2_1_1")
                     || nameParagraph.equals("dialog_backpack_2_1_1_1_2_1") || nameParagraph.equals("dialog_backpack_2_1_1_1_1_2_1")) {
                 getNextScene(new Intent(this, PrologueBackpackAfterCutScene.class));
                 finish();
                 overridePendingTransition(R.anim.first_activity_animation, R.anim.second_activity_animation);
-            } else if ((nameParagraph.equals("dialog_backpack_2_2_1_2_1"))|| nameParagraph.equals("dialog_backpack_2_2_2_1_2")
-                    || nameParagraph.equals("dialog_backpack_2_2_2_2_1_1")|| nameParagraph.equals("dialog_backpack_1_1_1_1_2_1")
+            } else if ((nameParagraph.equals("dialog_backpack_2_2_1_2_1")) || nameParagraph.equals("dialog_backpack_2_2_2_1_2")
+                    || nameParagraph.equals("dialog_backpack_2_2_2_2_1_1") || nameParagraph.equals("dialog_backpack_1_1_1_1_2_1")
                     || nameParagraph.equals("dialog_backpack_1_1_2_1_1_1_2") || nameParagraph.equals("dialog_backpack_1_1_2_1_1_2_1")
-                    || nameParagraph.equals("dialog_backpack_1_1_2_1_1_2_2_2_2")  || nameParagraph.equals("dialog_backpack_1_1_2_1_1_2_2_2_2_1")
-                    || nameParagraph.equals("dialog_backpack_1_1_2_2_2_2_2")|| nameParagraph.equals("dialog_backpack_1_1_2_2_2_1")
+                    || nameParagraph.equals("dialog_backpack_1_1_2_1_1_2_2_2_2") || nameParagraph.equals("dialog_backpack_1_1_2_1_1_2_2_2_2_1")
+                    || nameParagraph.equals("dialog_backpack_1_1_2_2_2_2_2") || nameParagraph.equals("dialog_backpack_1_1_2_2_2_1")
                     || nameParagraph.equals("dialog_backpack_1_2_2_2_2_2")) {
                 SharedPreferences.Editor editor = save.edit();
-                editor.putBoolean(APP_SAVE_PROLOGUE_BACKPACK_HUNTER_FIGHT,true);
+                editor.putBoolean(APP_SAVE_PROLOGUE_BACKPACK_HUNTER_FIGHT, true);
                 editor.apply();
                 getNextScene(new Intent(this, PrologueBackpackAfterCutScene.class));
                 finish();
                 overridePendingTransition(R.anim.first_activity_animation, R.anim.second_activity_animation);
-            }  else {
+            } else {
                 nameParagraph += "_2";
                 strings = res.getStringArray(res.getIdentifier(nameParagraph, "array", "com.last_spring.gameprealpha"));
             }

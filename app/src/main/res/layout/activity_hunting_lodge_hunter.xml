@@ -2,10 +2,10 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ConstraintLayoutDialogHuntingLodgeID"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/hockeyapp_background_header"
-    tools:context="com.example.last_spring.gameprealpha.HuntingLodgeHunter">
+    android:background="@drawable/prologue_huntinh_lodge_inside_shadow_background">
 
     <RadioGroup
         android:id="@+id/radioGroupPrologueHunterDialogD"

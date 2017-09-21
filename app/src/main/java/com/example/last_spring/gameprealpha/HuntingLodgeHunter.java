@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
 import android.view.View;
 import android.widget.RadioButton;
 import android.widget.TextView;
@@ -27,13 +28,18 @@ public class HuntingLodgeHunter extends GameActivity {
     private RadioButton secondLine;
     private RadioButton thirdLine;
 
+    private ConstraintLayout constraintLayoutDialogHuntingLodge;
+
     private TextView textPrologueHunterStart;
+
+    private  Resources res;
 
     private boolean isFirstLine;
     private boolean isSecondLine;
     private boolean isThirdLine;
     private boolean isFirstStart;
     private boolean isKnifeBedside;
+    private boolean isImage;
 
     private float level;
 
@@ -55,8 +61,9 @@ public class HuntingLodgeHunter extends GameActivity {
         isOstDisturbance = true;
 
         isKnifeBedside = save.getBoolean(APP_SAVE_PROLOGUE_HUNTING_KNIFE, false);
+        constraintLayoutDialogHuntingLodge = (ConstraintLayout) findViewById(R.id.ConstraintLayoutDialogHuntingLodgeID);
 
-        Resources res = getResources();
+        res = getResources();
 
         firstLine = (RadioButton) findViewById(R.id.buttonPrologueHunterFirstLineID);
         secondLine = (RadioButton) findViewById(R.id.buttonPrologueHunterSecondLineID);
@@ -86,6 +93,8 @@ public class HuntingLodgeHunter extends GameActivity {
             thirdLine.setVisibility(View.VISIBLE);
             getParagraph(strings);
             isFirstStart = false;
+            isImage = true;
+            constraintLayoutDialogHuntingLodge.setBackground(res.getDrawable(R.drawable.prologue_huntinh_lodge_inside_second_hunter_background));
         } else if (isFirstLine) {
                 strings = getStrings(1);
                 getParagraph(strings);
@@ -100,6 +109,14 @@ public class HuntingLodgeHunter extends GameActivity {
                 } else {
                     thirdLine.setVisibility(View.GONE);
                 }
+            if (isImage) {
+                isImage = false;
+                constraintLayoutDialogHuntingLodge.setBackground(res.getDrawable(R.drawable.prologue_huntinh_lodge_inside_second_adam_background));
+            } else {
+                isImage = true;
+                constraintLayoutDialogHuntingLodge.setBackground(res.getDrawable(R.drawable.prologue_huntinh_lodge_inside_second_hunter_background));
+            }
+
                 isFirstLine = false;
             } else {
                 firstLine.setBackgroundColor(Color.parseColor("#607e9e7f"));
@@ -127,6 +144,14 @@ public class HuntingLodgeHunter extends GameActivity {
             } else {
                 thirdLine.setVisibility(View.GONE);
             }
+            if (isImage) {
+                isImage = false;
+                constraintLayoutDialogHuntingLodge.setBackground(res.getDrawable(R.drawable.prologue_huntinh_lodge_inside_second_adam_background));
+            } else {
+                isImage = true;
+                constraintLayoutDialogHuntingLodge.setBackground(res.getDrawable(R.drawable.prologue_huntinh_lodge_inside_second_hunter_background));
+            }
+
             isSecondLine = false;
         } else {
             firstLine.setBackgroundColor(Color.parseColor("#60ffffff"));
@@ -152,6 +177,13 @@ public class HuntingLodgeHunter extends GameActivity {
                 thirdLine.setVisibility(View.VISIBLE);
             } else {
                 thirdLine.setVisibility(View.GONE);
+            }
+            if (isImage) {
+                isImage = false;
+                constraintLayoutDialogHuntingLodge.setBackground(res.getDrawable(R.drawable.prologue_huntinh_lodge_inside_second_adam_background));
+            } else {
+                isImage = true;
+                constraintLayoutDialogHuntingLodge.setBackground(res.getDrawable(R.drawable.prologue_huntinh_lodge_inside_second_hunter_background));
             }
             isThirdLine = false;
         } else {

@@ -55,6 +55,8 @@ public class PrologueBreakage extends GameActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_prologue_breakage);
 
+        finishOst();
+
         level = 4.0f;
         SharedPreferences.Editor editor = save.edit();
         editor.putFloat(APP_SAVE_LEVEL, level);

@@ -263,5 +263,6 @@ public class GameActivity extends AppCompatActivity {
     public void getNextScene(Intent intent) {
         isExitScene = true;
         startActivity(intent);
+        overridePendingTransition(R.anim.first_activity_animation, R.anim.second_activity_animation);
     }
 }

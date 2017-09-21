@@ -379,7 +379,7 @@ public class PrologueDownBackpackCutScene extends GameActivity {
         }
         ost.stop();
         startService(new Intent(this, OstWood.class));
-        Intent intent = new Intent(this, PrologueBackpackAfterCutScene.class);
+        Intent intent = new Intent(this, PrologueBackpackHunter.class);
         getNextScene(intent);
         finish();
         overridePendingTransition(R.anim.first_activity_animation, R.anim.second_activity_animation);

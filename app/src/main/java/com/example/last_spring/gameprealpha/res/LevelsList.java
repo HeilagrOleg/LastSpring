@@ -3,12 +3,14 @@ package com.example.last_spring.gameprealpha.res;
 import com.example.last_spring.gameprealpha.AbandonedCar;
 import com.example.last_spring.gameprealpha.CaveLabyrinth;
 import com.example.last_spring.gameprealpha.HuntingLodge;
+import com.example.last_spring.gameprealpha.HuntingLodgeAfter;
 import com.example.last_spring.gameprealpha.HuntingLodgeCutScene;
 import com.example.last_spring.gameprealpha.HuntingLodgeExit;
 import com.example.last_spring.gameprealpha.HuntingLodgeHunter;
 import com.example.last_spring.gameprealpha.HuntingLodgeInside;
 import com.example.last_spring.gameprealpha.PrologueBackpackAfterCutScene;
 import com.example.last_spring.gameprealpha.PrologueBackpackHunter;
+import com.example.last_spring.gameprealpha.PrologueBadEnding;
 import com.example.last_spring.gameprealpha.PrologueBeforeBreakage;
 import com.example.last_spring.gameprealpha.PrologueBonfire;
 import com.example.last_spring.gameprealpha.PrologueBreakage;
@@ -18,6 +20,7 @@ import com.example.last_spring.gameprealpha.PrologueDownBackpackCutScene;
 import com.example.last_spring.gameprealpha.PrologueDownFirstScene;
 import com.example.last_spring.gameprealpha.PrologueDownSecondSceneBackPack;
 import com.example.last_spring.gameprealpha.PrologueDownSecondSceneNoBackPack;
+import com.example.last_spring.gameprealpha.PrologueGoodEnding;
 import com.example.last_spring.gameprealpha.PrologueOldStory;
 import com.example.last_spring.gameprealpha.PrologueOldStoryAttack;
 import com.example.last_spring.gameprealpha.PrologueRain;
@@ -51,6 +54,9 @@ public class LevelsList {
         }
         if (level == 1.15f) {
             return HuntingLodgeExit.class;
+        }
+        if (level == 1.16f) {
+            return HuntingLodgeAfter.class;
         }
         if (level == 2.1f) {
             return PrologueDownFirstScene.class;
@@ -90,6 +96,14 @@ public class LevelsList {
         }
         if (level == 4.0f) {
             return PrologueBreakage.class;
+        }
+
+        if (level == 5.0f) {
+            return PrologueGoodEnding.class;
+        }
+
+        if (level == 5.1f) {
+            return PrologueBadEnding.class;
         }
         return null;
     }

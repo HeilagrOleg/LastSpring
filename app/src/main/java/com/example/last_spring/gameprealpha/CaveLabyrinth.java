@@ -38,6 +38,11 @@ public class CaveLabyrinth extends GameActivity {
     private boolean isFail;
     private boolean isFinish;
 
+    private String colorBackground;
+    private String colorWay;
+    private String colorAir;
+    private String colorActive;
+
     private TextView textViewCaveLabyrinth;
 
     private ArrayList<Labyrinth> routeList;
@@ -156,6 +161,11 @@ public class CaveLabyrinth extends GameActivity {
         step = 0;
         textCounterStep.setText("Количество шагов: " + step);
 
+        colorBackground = "#5e574a";
+        colorActive = "#7d5041";
+        colorAir = "#6b6490";
+        colorWay = "#516a5a";
+
         x = 4;
         y = 1;
 
@@ -171,11 +181,10 @@ public class CaveLabyrinth extends GameActivity {
         height = 200;
 
         map = Bitmap.createBitmap(300, height, Bitmap.Config.ARGB_8888);
-        map.eraseColor(Color.BLACK);
 
         for (int k = 0; k < 8; k++) {
             for (int i = 0; i < 10; i++) {
-                map.setPixel(xPixel, height - yPixel, Color.BLUE);
+                map.setPixel(xPixel, height - yPixel, Color.parseColor("#888b89"));
                 xPixel++;
             }
             xPixel = xMain;
@@ -194,23 +203,23 @@ public class CaveLabyrinth extends GameActivity {
             for (int k = 0; k < 10; k++) {
                 for (int i = 0; i < 10; i++) {
                     if (getNextRoute(name).isNorth() && k == 9) {
-                        map.setPixel(xPixel, height - yPixel, Color.GREEN);
+                        map.setPixel(xPixel, height - yPixel, Color.parseColor(colorWay));
                     } else if (getNextRoute(name).isSouth() && k == 0) {
-                        map.setPixel(xPixel, height - yPixel, Color.GREEN);
+                        map.setPixel(xPixel, height - yPixel, Color.parseColor(colorWay));
                     } else {
                         if (getNextRoute(name).isAir()) {
-                            map.setPixel(xPixel, height - yPixel, Color.YELLOW);
+                            map.setPixel(xPixel, height - yPixel, Color.parseColor(colorAir));
                         } else {
-                            map.setPixel(xPixel, height - yPixel, Color.WHITE);
+                            map.setPixel(xPixel, height - yPixel, Color.parseColor(colorBackground));
                         }
                     }
 
                     if (getNextRoute(name).isWest() && i == 0) {
-                        map.setPixel(xPixel, height - yPixel, Color.GREEN);
+                        map.setPixel(xPixel, height - yPixel, Color.parseColor(colorWay));
                     }
 
                     if (getNextRoute(name).isEast() && i == 9) {
-                        map.setPixel(xPixel, height - yPixel, Color.GREEN);
+                        map.setPixel(xPixel, height - yPixel, Color.parseColor(colorWay));
                     }
                     xPixel++;
                 }
@@ -244,7 +253,7 @@ public class CaveLabyrinth extends GameActivity {
             textCounterStep.setText("Количество шагов: " + step);
             for (int k = 0; k < 8; k++) {
                 for (int i = 0; i < 8; i++) {
-                    map.setPixel(xPixel + 1, height - yPixel, Color.WHITE);
+                    map.setPixel(xPixel + 1, height - yPixel, Color.parseColor(colorBackground));
                     xPixel++;
                 }
                 xPixel = xMain;
@@ -255,23 +264,23 @@ public class CaveLabyrinth extends GameActivity {
             for (int k = 0; k < 10; k++) {
                 for (int i = 0; i < 10; i++) {
                     if (getNextRoute(name).isNorth() && k == 9) {
-                        map.setPixel(xPixel, height - yPixel, Color.GREEN);
+                        map.setPixel(xPixel, height - yPixel, Color.parseColor(colorWay));
                     } else if (getNextRoute(name).isSouth() && k == 0) {
-                        map.setPixel(xPixel, height - yPixel, Color.GREEN);
+                        map.setPixel(xPixel, height - yPixel, Color.parseColor(colorWay));
                     } else {
                         if (getNextRoute(name).isAir()) {
                             map.setPixel(xPixel, height - yPixel, Color.parseColor("#ff7800"));
                         } else {
-                            map.setPixel(xPixel, height - yPixel, Color.RED);
+                            map.setPixel(xPixel, height - yPixel, Color.parseColor(colorActive));
                         }
                     }
 
                     if (getNextRoute(name).isWest() && i == 0) {
-                        map.setPixel(xPixel, height - yPixel, Color.GREEN);
+                        map.setPixel(xPixel, height - yPixel, Color.parseColor(colorWay));
                     }
 
                     if (getNextRoute(name).isEast() && i == 9) {
-                        map.setPixel(xPixel, height - yPixel, Color.GREEN);
+                        map.setPixel(xPixel, height - yPixel, Color.parseColor(colorWay));
                     }
                     xPixel++;
                 }
@@ -303,23 +312,24 @@ public class CaveLabyrinth extends GameActivity {
             for (int k = 0; k < 10; k++) {
                 for (int i = 0; i < 10; i++) {
                     if (getNextRoute(name).isNorth() && k == 9) {
-                        map.setPixel(xPixel, height - yPixel, Color.GREEN);
+                        map.setPixel(xPixel, height - yPixel, Color.parseColor(colorWay));
                     } else if (getNextRoute(name).isSouth() && k == 0) {
-                        map.setPixel(xPixel, height - yPixel, Color.GREEN);
+                        map.setPixel(xPixel, height - yPixel, Color.parseColor(colorWay));
                     } else {
                         if (getNextRoute(name).isAir()) {
-                            map.setPixel(xPixel, height - yPixel, Color.YELLOW);
+                            map.setPixel(xPixel, height - yPixel, Color.parseColor(colorAir));
                         } else {
-                            map.setPixel(xPixel, height - yPixel, Color.WHITE);
+                            map.setPixel(xPixel, height - yPixel, Color.parseColor(colorBackground));
+                            map.setPixel(xPixel, height - yPixel, Color.parseColor(colorBackground));
                         }
                     }
 
                     if (getNextRoute(name).isWest() && i == 0) {
-                        map.setPixel(xPixel, height - yPixel, Color.GREEN);
+                        map.setPixel(xPixel, height - yPixel, Color.parseColor(colorWay));
                     }
 
                     if (getNextRoute(name).isEast() && i == 9) {
-                        map.setPixel(xPixel, height - yPixel, Color.GREEN);
+                        map.setPixel(xPixel, height - yPixel, Color.parseColor(colorWay));
                     }
                     xPixel++;
                 }
@@ -327,6 +337,12 @@ public class CaveLabyrinth extends GameActivity {
                 yPixel++;
             }
             yPixel = yMain;
+            x--;
+            name = "x" + x + "y" + y;
+            getRoute(getNextRoute(name));
+            if (getNextRoute(name).isAir()) {
+                step = 0;
+            }
             step++;
             if (step == 9) {
                 toast = Toast.makeText(this, R.string.cave_labyrinth_toast_air, Toast.LENGTH_LONG);
@@ -344,18 +360,13 @@ public class CaveLabyrinth extends GameActivity {
                 imageCaveLabyrinth.setVisibility(View.INVISIBLE);
                 isFail = true;
             }
-            x--;
-            name = "x" + x + "y" + y;
-            getRoute(getNextRoute(name));
-            if (getNextRoute(name).isAir()) {
-                step = 0;
-            }
+
             textCounterStep.setText("Количество шагов: " + step);
             for (int k = 0; k < 8; k++) {
                 yPixel = yMain;
                 xPixel--;
                 for (int i = 0; i < 8; i++) {
-                    map.setPixel(xPixel, height - 1 - yPixel, Color.WHITE);
+                    map.setPixel(xPixel, height - 1 - yPixel, Color.parseColor(colorBackground));
                     yPixel++;
                 }
             }
@@ -367,22 +378,22 @@ public class CaveLabyrinth extends GameActivity {
                 xPixel--;
                 for (int i = 0; i < 10; i++) {
                     if (getNextRoute(name).isEast() && k == 0) {
-                        map.setPixel(xPixel, height - yPixel, Color.GREEN);
+                        map.setPixel(xPixel, height - yPixel, Color.parseColor(colorWay));
                     } else if (getNextRoute(name).isWest() && k == 9) {
-                        map.setPixel(xPixel, height - yPixel, Color.GREEN);
+                        map.setPixel(xPixel, height - yPixel, Color.parseColor(colorWay));
                     } else {
                         if (getNextRoute(name).isAir()) {
                             map.setPixel(xPixel, height - yPixel, Color.parseColor("#ff7800"));
                         } else {
-                            map.setPixel(xPixel, height - yPixel, Color.RED);
+                            map.setPixel(xPixel, height - yPixel, Color.parseColor(colorActive));
                         }
                     }
 
                     if (getNextRoute(name).isSouth() && i == 0) {
-                        map.setPixel(xPixel, height - yPixel, Color.GREEN);
+                        map.setPixel(xPixel, height - yPixel, Color.parseColor(colorWay));
                     }
                     if (getNextRoute(name).isNorth() && i == 9) {
-                        map.setPixel(xPixel, height - yPixel, Color.GREEN);
+                        map.setPixel(xPixel, height - yPixel, Color.parseColor(colorWay));
                     }
                     yPixel++;
                 }
@@ -413,23 +424,23 @@ public class CaveLabyrinth extends GameActivity {
             for (int k = 0; k < 10; k++) {
                 for (int i = 0; i < 10; i++) {
                     if (getNextRoute(name).isNorth() && k == 9) {
-                        map.setPixel(xPixel, height - yPixel, Color.GREEN);
+                        map.setPixel(xPixel, height - yPixel, Color.parseColor(colorWay));
                     } else if (getNextRoute(name).isSouth() && k == 0) {
-                        map.setPixel(xPixel, height - yPixel, Color.GREEN);
+                        map.setPixel(xPixel, height - yPixel, Color.parseColor(colorWay));
                     } else {
                         if (getNextRoute(name).isAir()) {
-                            map.setPixel(xPixel, height - yPixel, Color.YELLOW);
+                            map.setPixel(xPixel, height - yPixel, Color.parseColor(colorAir));
                         } else {
-                            map.setPixel(xPixel, height - yPixel, Color.WHITE);
+                            map.setPixel(xPixel, height - yPixel, Color.parseColor(colorBackground));
                         }
                     }
 
                     if (getNextRoute(name).isWest() && i == 0) {
-                        map.setPixel(xPixel, height - yPixel, Color.GREEN);
+                        map.setPixel(xPixel, height - yPixel, Color.parseColor(colorWay));
                     }
 
                     if (getNextRoute(name).isEast() && i == 9) {
-                        map.setPixel(xPixel, height - yPixel, Color.GREEN);
+                        map.setPixel(xPixel, height - yPixel, Color.parseColor(colorWay));
                     }
                     xPixel++;
                 }
@@ -437,6 +448,12 @@ public class CaveLabyrinth extends GameActivity {
                 yPixel++;
             }
             yPixel = yMain;
+            y--;
+            name = "x" + x + "y" + y;
+            getRoute(getNextRoute(name));
+            if (getNextRoute(name).isAir()) {
+                step = 0;
+            }
             step++;
             if (step == 9) {
                 toast = Toast.makeText(this, R.string.cave_labyrinth_toast_air, Toast.LENGTH_LONG);
@@ -462,37 +479,32 @@ public class CaveLabyrinth extends GameActivity {
                 xPixel = xMain;
                 yPixel--;
                 for (int i = 0; i < 8; i++) {
-                    map.setPixel(xPixel + 1, height - yPixel, Color.WHITE);
+                    map.setPixel(xPixel + 1, height - yPixel, Color.parseColor(colorBackground));
                     xPixel++;
                 }
             }
             yMain = yPixel;
-            y--;
-            name = "x" + x + "y" + y;
-            getRoute(getNextRoute(name));
-            if (getNextRoute(name).isAir()) {
-                step = 0;
-            }
+
             for (int k = 0; k < 10; k++) {
                 xPixel = xMain;
                 yPixel--;
                 for (int i = 0; i < 10; i++) {
                     if (getNextRoute(name).isNorth() && k == 0) {
-                        map.setPixel(xPixel, height - yPixel, Color.GREEN);
+                        map.setPixel(xPixel, height - yPixel, Color.parseColor(colorWay));
                     } else if (getNextRoute(name).isSouth() && k == 9) {
-                        map.setPixel(xPixel, height - yPixel, Color.GREEN);
+                        map.setPixel(xPixel, height - yPixel, Color.parseColor(colorWay));
                     } else {
                         if (getNextRoute(name).isAir()) {
                             map.setPixel(xPixel, height - yPixel, Color.parseColor("#ff7800"));
                         } else {
-                            map.setPixel(xPixel, height - yPixel, Color.RED);
+                            map.setPixel(xPixel, height - yPixel, Color.parseColor(colorActive));
                         }
                     }
                     if (getNextRoute(name).isWest() && i == 0) {
-                        map.setPixel(xPixel, height - yPixel, Color.GREEN);
+                        map.setPixel(xPixel, height - yPixel, Color.parseColor(colorWay));
                     }
                     if (getNextRoute(name).isEast() && i == 9) {
-                        map.setPixel(xPixel, height - yPixel, Color.GREEN);
+                        map.setPixel(xPixel, height - yPixel, Color.parseColor(colorWay));
                     }
                     xPixel++;
                 }
@@ -524,29 +536,35 @@ public class CaveLabyrinth extends GameActivity {
                 xPixel = xMain;
                 for (int i = 0; i < 10; i++) {
                     if (getNextRoute(name).isNorth() && k == 9) {
-                        map.setPixel(xPixel, height - yPixel, Color.GREEN);
+                        map.setPixel(xPixel, height - yPixel, Color.parseColor(colorWay));
                     } else if (getNextRoute(name).isSouth() && k == 0) {
-                        map.setPixel(xPixel, height - yPixel, Color.GREEN);
+                        map.setPixel(xPixel, height - yPixel, Color.parseColor(colorWay));
                     } else {
                         if (getNextRoute(name).isAir()) {
-                            map.setPixel(xPixel, height - yPixel, Color.YELLOW);
+                            map.setPixel(xPixel, height - yPixel, Color.parseColor(colorAir));
                         } else {
-                            map.setPixel(xPixel, height - yPixel, Color.WHITE);
+                            map.setPixel(xPixel, height - yPixel, Color.parseColor(colorBackground));
                         }
                     }
 
                     if (getNextRoute(name).isWest() && i == 0) {
-                        map.setPixel(xPixel, height - yPixel, Color.GREEN);
+                        map.setPixel(xPixel, height - yPixel, Color.parseColor(colorWay));
                     }
 
                     if (getNextRoute(name).isEast() && i == 9) {
-                        map.setPixel(xPixel, height - yPixel, Color.GREEN);
+                        map.setPixel(xPixel, height - yPixel, Color.parseColor(colorWay));
                     }
                     xPixel++;
                 }
                 yPixel++;
             }
             yPixel = yMain;
+            x++;
+            name = "x" + x + "y" + y;
+            getRoute(getNextRoute(name));
+            if (getNextRoute(name).isAir()) {
+                step = 0;
+            }
             step++;
             if (step == 9) {
                 toast = Toast.makeText(this, R.string.cave_labyrinth_toast_air, Toast.LENGTH_LONG);
@@ -567,7 +585,7 @@ public class CaveLabyrinth extends GameActivity {
             textCounterStep.setText("Количество шагов: " + step);
             for (int k = 0; k < 8; k++) {
                 for (int i = 0; i < 8; i++) {
-                    map.setPixel(xPixel, height - 1 - yPixel, Color.WHITE);
+                    map.setPixel(xPixel, height - 1 - yPixel, Color.parseColor(colorBackground));
                     yPixel++;
                 }
                 yPixel = yMain;
@@ -575,32 +593,27 @@ public class CaveLabyrinth extends GameActivity {
             }
             xMain = xPixel;
             yPixel = yMain;
-            x++;
-            name = "x" + x + "y" + y;
-            getRoute(getNextRoute(name));
-            if (getNextRoute(name).isAir()) {
-                step = 0;
-            }
+
             for (int k = 0; k < 10; k++) {
                 for (int i = 0; i < 10; i++) {
                     if (getNextRoute(name).isWest() && k == 0) {
-                        map.setPixel(xPixel, height - yPixel, Color.GREEN);
+                        map.setPixel(xPixel, height - yPixel, Color.parseColor(colorWay));
                     } else if (getNextRoute(name).isEast() && k == 9) {
-                        map.setPixel(xPixel, height - yPixel, Color.GREEN);
+                        map.setPixel(xPixel, height - yPixel, Color.parseColor(colorWay));
                     } else {
                         if (getNextRoute(name).isAir()) {
                             map.setPixel(xPixel, height - yPixel, Color.parseColor("#ff7800"));
                         } else {
-                            map.setPixel(xPixel, height - yPixel, Color.RED);
+                            map.setPixel(xPixel, height - yPixel, Color.parseColor(colorActive));
                         }
                     }
 
                     if (getNextRoute(name).isSouth() && i == 0) {
-                        map.setPixel(xPixel, height - yPixel, Color.GREEN);
+                        map.setPixel(xPixel, height - yPixel, Color.parseColor(colorWay));
                     }
 
                     if (getNextRoute(name).isNorth() && i == 9) {
-                        map.setPixel(xPixel, height - yPixel, Color.GREEN);
+                        map.setPixel(xPixel, height - yPixel, Color.parseColor(colorWay));
                     }
 
                     yPixel++;

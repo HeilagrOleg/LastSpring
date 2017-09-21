@@ -108,9 +108,8 @@ public class HuntingLodgeExit extends GameActivity {
                 }
                 editor.putInt(APP_SAVE_WOUND, wound);
                 editor.apply();
-                getNextScene(new Intent(this, PrologueBeforeBreakage.class));
+                getNextScene(new Intent(this, HuntingLodgeAfter.class));
                 textPrologueHunterExit.setVisibility(View.GONE);
-                overridePendingTransition(R.anim.first_activity_animation, R.anim.second_activity_animation);
                 finish();
             } else if (isNextHunger || isNextWound) {
                 if (isNextWound) {

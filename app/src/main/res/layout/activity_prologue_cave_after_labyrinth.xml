@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/prologue_cave_inside_background"
-    tools:context=".PrologueCaveAfterLabyrinth">
+    android:background="@drawable/prologue_cave_after">
 
     <ScrollView
         android:layout_width="377dp"
@@ -76,7 +75,7 @@
             android:layout_marginBottom="10dp"
             android:background="#60ffffff"
             android:button="@drawable/radio_button_selector"
-            android:onClick="onPrologueCaveAfterSecon"
+            android:onClick="onPrologueCaveAfterSecond"
             android:text="@string/prologue_after_labyrinth_button_relax"
             android:textColor="#303030"
             android:textSize="16sp"

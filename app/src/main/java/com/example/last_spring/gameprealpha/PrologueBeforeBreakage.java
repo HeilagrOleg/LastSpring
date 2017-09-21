@@ -56,8 +56,13 @@ public class PrologueBeforeBreakage extends GameActivity {
         isSecond = false;
         isThird = false;
 
+        if (save.getBoolean(APP_SAVE_WAY_CAVE, false)) {
+            finishOst();
+        }
         startService(new Intent(this, OstWood.class));
         isOstWood = true;
+
+        isBreakageFood = false;
 
         buttonBeforeBreakageFirst = (RadioButton) findViewById(R.id.buttonBeforeBreakageFirstID);
         buttonBeforeBreakageSecond = (RadioButton) findViewById(R.id.buttonBeforeBreakageSecondID);

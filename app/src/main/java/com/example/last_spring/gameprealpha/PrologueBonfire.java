@@ -62,7 +62,6 @@ public class PrologueBonfire extends GameActivity {
                 SharedPreferences.Editor editor = save.edit();
                 editor.putInt(APP_SAVE_FOOD,foodCounterMain);
                 editor.apply();
-                overridePendingTransition(R.anim.first_activity_animation, R.anim.second_activity_animation);
                 finish();
             } else if (isDown) {
                 textPrologueBonfireMain.setText(R.string.prologue_bonfire_text_bench);
