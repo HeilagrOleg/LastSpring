@@ -24,7 +24,7 @@ import com.example.last_spring.gameprealpha.PrologueGoodEnding;
 import com.example.last_spring.gameprealpha.PrologueOldStory;
 import com.example.last_spring.gameprealpha.PrologueOldStoryAttack;
 import com.example.last_spring.gameprealpha.PrologueRain;
-import com.example.last_spring.gameprealpha.Prologue_start;
+import com.example.last_spring.gameprealpha.PrologueStart;
 
 public class LevelsList {
     public static Class getLevel(float level) {
@@ -35,7 +35,7 @@ public class LevelsList {
             return PrologueOldStoryAttack.class;
         }
         if (level == 1) {
-            return Prologue_start.class;
+            return PrologueStart.class;
         }
         if (level == 1.10f) {
             return AbandonedCar.class;

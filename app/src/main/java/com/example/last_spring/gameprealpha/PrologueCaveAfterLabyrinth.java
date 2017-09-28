@@ -6,19 +6,28 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.example.last_spring.gameprealpha.res.GameActivity;
 import com.last_spring.gameprealpha.OstCave;
 import com.last_spring.gameprealpha.OstWood;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class PrologueCaveAfterLabyrinth extends GameActivity {
 
     public static final String APP_SAVE_WAY_CAVE = "Way cave";
 
+    private RadioGroup radioGroupPrologueCaveStart;
+
     private RadioButton buttonPrologueCaveAfterFirst;
     private RadioButton buttonPrologueCaveAfterSecond;
     private RadioButton buttonPrologueCaveAfterThird;
+
+    private ScrollView scrollPrologueCaveAfter;
 
     private TextView textPrologueCaveAfter;
 
@@ -38,11 +47,19 @@ public class PrologueCaveAfterLabyrinth extends GameActivity {
         startService(new Intent(this, OstCave.class));
         isOstCave = true;
 
+        radioGroupPrologueCaveStart = (RadioGroup) findViewById(R.id.radioGroupPrologueCaveStartID);
+
         buttonPrologueCaveAfterFirst = (RadioButton) findViewById(R.id.buttonPrologueCaveAfterFirstID);
+        buttonPrologueCaveAfterFirst.setTextSize(sizeFonts);
         buttonPrologueCaveAfterSecond = (RadioButton) findViewById(R.id.buttonPrologueCaveAfterSecondID);
+        buttonPrologueCaveAfterSecond.setTextSize(sizeFonts);
         buttonPrologueCaveAfterThird = (RadioButton) findViewById(R.id.buttonPrologueCaveAfterThirdID);
+        buttonPrologueCaveAfterThird.setTextSize(sizeFonts);
 
         textPrologueCaveAfter = (TextView) findViewById(R.id.textPrologueCaveAfterID);
+        textPrologueCaveAfter.setTextSize(sizeFonts);
+
+        scrollPrologueCaveAfter = (ScrollView) findViewById(R.id.scrollPrologueCaveAfterID);
 
         if (fortune < 80) {
             fortune += 20;
@@ -52,6 +69,8 @@ public class PrologueCaveAfterLabyrinth extends GameActivity {
         if (wound > 0) {
             wound--;
         }
+
+        startAnimation(new ArrayList<View>(Arrays.asList(radioGroupPrologueCaveStart, scrollPrologueCaveAfter)));
 
     }
 

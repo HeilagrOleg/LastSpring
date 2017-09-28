@@ -4,8 +4,10 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.example.last_spring.gameprealpha.res.GameActivity;
@@ -41,6 +43,11 @@ public class PrologueOldStoryAttack extends GameActivity {
     private RadioButton buttonPrologueOldStoryAttackMainFirst;
     private RadioButton buttonPrologueOldStoryAttackMainSecond;
     private RadioButton buttonPrologueOldStoryAttackMainThird;
+
+    private FrameLayout framePrologueOldStoryAttackStart;
+    private FrameLayout frameRadioGroupPrologueOldStoryAttackStart;
+
+    private ScrollView scrollPrologueOldStoryAttackStart;
 
     private ArrayList<Integer> random;
 
@@ -82,27 +89,43 @@ public class PrologueOldStoryAttack extends GameActivity {
 
         getSave(0.2f);
 
+        framePrologueOldStoryAttackStart = (FrameLayout) findViewById(R.id.framePrologueOldStoryAttackStartID);
+        frameRadioGroupPrologueOldStoryAttackStart = (FrameLayout) findViewById(R.id.frameRadioGroupPrologueOldStoryAttackStartID);
+
+        scrollPrologueOldStoryAttackStart = (ScrollView) findViewById(R.id.scrollPrologueOldStoryAttackStartID);
+
         textPrologueOldStoryAttackStart = (TextView) findViewById(R.id.textPrologueOldStoryAttackStartID);
+        textPrologueOldStoryAttackStart.setTextSize(sizeFonts);
         textPrologueOldStoryAttackAction = (TextView) findViewById(R.id.textPrologueOldStoryAttackActionID);
+        textPrologueOldStoryAttackAction.setTextSize(sizeFonts);
         textPrologueOldStoryAttackStatus = (TextView) findViewById(R.id.textPrologueOldStoryAttackStatusID);
+        textPrologueOldStoryAttackStatus.setTextSize(sizeFonts);
 
         radioGroupPrologueOldStoryAttackNorth = (RadioGroup) findViewById(R.id.radioGroupPrologueOldStoryAttackNorthID);
 
         buttonPrologueOldStoryAttackNorthFirst = (RadioButton) findViewById(R.id.buttonPrologueOldStoryAttackNorthFirstID);
+        buttonPrologueOldStoryAttackNorthFirst.setTextSize(sizeFonts);
         buttonPrologueOldStoryAttackNorthSecond = (RadioButton) findViewById(R.id.buttonPrologueOldStoryAttackNorthSecondID);
+        buttonPrologueOldStoryAttackNorthSecond.setTextSize(sizeFonts);
         buttonPrologueOldStoryAttackNorthThird = (RadioButton) findViewById(R.id.buttonPrologueOldStoryAttackNorthThirdID);
-
+        buttonPrologueOldStoryAttackNorthThird.setTextSize(sizeFonts);
         radioGroupPrologueOldStoryAttackWest = (RadioGroup) findViewById(R.id.radioGroupPrologueOldStoryAttackWestID);
 
         buttonPrologueOldStoryAttackWestFirst = (RadioButton) findViewById(R.id.buttonPrologueOldStoryAttackWestFirstID);
+        buttonPrologueOldStoryAttackWestFirst.setTextSize(sizeFonts);
         buttonPrologueOldStoryAttackWestSecond = (RadioButton) findViewById(R.id.buttonPrologueOldStoryAttackWestSecondID);
+        buttonPrologueOldStoryAttackWestSecond.setTextSize(sizeFonts);
         buttonPrologueOldStoryAttackWestThird = (RadioButton) findViewById(R.id.buttonPrologueOldStoryAttackWestThirdID);
+        buttonPrologueOldStoryAttackWestThird.setTextSize(sizeFonts);
 
         radioGroupPrologueOldStoryAttackMain = (RadioGroup) findViewById(R.id.radioGroupPrologueOldStoryAttackMainID);
 
         buttonPrologueOldStoryAttackMainFirst = (RadioButton) findViewById(R.id.buttonPrologueOldStoryAttackMainFirstID);
+        buttonPrologueOldStoryAttackMainFirst.setTextSize(sizeFonts);
         buttonPrologueOldStoryAttackMainSecond = (RadioButton) findViewById(R.id.buttonPrologueOldStoryAttackMainSecondID);
+        buttonPrologueOldStoryAttackMainSecond.setTextSize(sizeFonts);
         buttonPrologueOldStoryAttackMainThird = (RadioButton) findViewById(R.id.buttonPrologueOldStoryAttackMainThirdID);
+        buttonPrologueOldStoryAttackMainThird.setTextSize(sizeFonts);
 
         textPrologueOldStoryAttackAction.setVisibility(View.GONE);
         textPrologueOldStoryAttackStatus.setVisibility(View.GONE);
@@ -130,6 +153,8 @@ public class PrologueOldStoryAttack extends GameActivity {
         } else {
             radioGroupPrologueOldStoryAttackWest.setVisibility(View.GONE);
         }
+
+        startAnimation(new ArrayList<View>(Arrays.asList(framePrologueOldStoryAttackStart, frameRadioGroupPrologueOldStoryAttackStart, scrollPrologueOldStoryAttackStart)));
     }
 
     public void onPrologueOldStoryAttackNorthFirst(View view) {

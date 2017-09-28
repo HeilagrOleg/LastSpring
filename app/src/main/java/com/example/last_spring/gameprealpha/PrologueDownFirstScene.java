@@ -3,14 +3,18 @@ package com.example.last_spring.gameprealpha;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.CountDownTimer;
 import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
+import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
@@ -20,6 +24,8 @@ import android.widget.TextView;
 import com.example.last_spring.gameprealpha.res.GameActivity;
 import com.last_spring.gameprealpha.OstWood;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 
 public class PrologueDownFirstScene extends GameActivity {
@@ -74,6 +80,12 @@ public class PrologueDownFirstScene extends GameActivity {
     protected int textCheckThird;
     private SharedPreferences settings;
 
+    private Animation trueAnimation;
+    private Animation falseAnimation;
+    private FrameLayout framePrologueFirst;
+    private ConstraintLayout layoutBackgroundDownFirst;
+    private Resources res;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -89,13 +101,17 @@ public class PrologueDownFirstScene extends GameActivity {
 
         ost = MediaPlayer.create(this, R.raw.ost_action_prologue);
 
+        framePrologueFirst = (FrameLayout) findViewById(R.id.framePrologueFirstID);
+
         buttonRotate = AnimationUtils.loadAnimation(this, R.anim.button_animation_rotate);
 
         progressBarPrologueDown = (ProgressBar) findViewById(R.id.progressBarPrologueDownID);
         progressBarPrologueDown.setMax(50000);
 
-        textPrologueDownStart = (TextView) findViewById(R.id.textPrologDownID);
+        textPrologueDownStart = (TextView) findViewById(R.id.textPrologueDownID);
+        textPrologueDownStart.setTextSize(sizeFonts);
         textPrologueDownStart.setText(R.string.prologue_down_start);
+        textPrologueDownStart.setMovementMethod(new ScrollingMovementMethod());
 
         isTimer = false;
         isFirstStart = true;
@@ -108,10 +124,14 @@ public class PrologueDownFirstScene extends GameActivity {
         timerTime = 15000;
 
         prologueDownStartExitRadioButton = (RadioButton) findViewById(R.id.prologueDownStartExitButtonID);
+        prologueDownStartExitRadioButton.setTextSize(sizeFonts);
         prologueDownStartGameRadioButton = (RadioButton) findViewById(R.id.prologueDownStartGameButtonID);
+        prologueDownStartGameRadioButton.setTextSize(sizeFonts);
         radioGroupPrologueDown = (RadioGroup) findViewById(R.id.radioGroupPrologueDownID);
         prologueDownStartLuckRadioButton = (RadioButton) findViewById(R.id.prologueDownStartLuckButtonID);
+        prologueDownStartLuckRadioButton.setTextSize(sizeFonts);
         prologueDownStartNoLuckRadioButton = (RadioButton) findViewById(R.id.prologueDownStartNoLuckButtonID);
+        prologueDownStartNoLuckRadioButton.setTextSize(sizeFonts);
         secondRadioGroupPrologueDown = (RadioGroup) findViewById(R.id.secondRadioGroupPrologueDownID);
         prologueDownStartLuckRadioButton.setText(R.string.prologue_game_over_down_luck);
         prologueDownStartLuckRadioButton.setVisibility(View.GONE);
@@ -119,7 +139,10 @@ public class PrologueDownFirstScene extends GameActivity {
         prologueDownStartNoLuckRadioButton.setText(R.string.prologue_game_over_down_no_luck);
         secondRadioGroupPrologueDown.setVisibility(View.GONE);
 
+        layoutBackgroundDownFirst = (ConstraintLayout) findViewById(R.id.layoutBackgroundDownFirstID);
+
         prologueDownStartGameButton = (Button) findViewById(R.id.buttonProlDownStartID);
+        prologueDownStartGameButton.setTextSize(sizeFonts);
         prologueDownStartGameButton.setClickable(false);
         prologueDownStartGameButton.setVisibility(View.GONE);
         firstButton = (ImageButton) findViewById(R.id.firstButtonPlolDownID);
@@ -181,12 +204,23 @@ public class PrologueDownFirstScene extends GameActivity {
         countPrologueDown = (TextView) findViewById(R.id.counterPrologDownID);
         countPrologueDown.setVisibility(View.GONE);
 
+        trueAnimation = AnimationUtils.loadAnimation(this, R.anim.button_prologue_first_scene_animation_true);
+        falseAnimation = AnimationUtils.loadAnimation(this, R.anim.button_prologue_first_scene_animation);
+
+        res = getResources();
+
+        startAnimation(new ArrayList<View>(Arrays.asList(textPrologueDownStart, framePrologueFirst)));
+
 
     }
 
     public void onStartDownPrologue(View view) {
         prologueDownStartGameButton.setVisibility(View.GONE);
         textPrologueDownStart.setVisibility(View.GONE);
+        progressBarPrologueDown.setVisibility(View.VISIBLE);
+
+        layoutBackgroundDownFirst.setBackground(res.getDrawable(R.drawable.background_prologue_down_first_scene_game));
+
         if (!isFirstStart) {
             firstButton.clearAnimation();
             secondButton.clearAnimation();
@@ -207,12 +241,12 @@ public class PrologueDownFirstScene extends GameActivity {
         }
 
 
-            ost.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                @Override
-                public void onCompletion(MediaPlayer mp) {
-                    mp.start();
-                }
-            });
+        ost.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                mp.start();
+            }
+        });
 
         miniGame = view;
         firstButton.setVisibility(View.GONE);
@@ -297,7 +331,9 @@ public class PrologueDownFirstScene extends GameActivity {
                     } else {
                         timer.cancel();
                         isLevel = true;
+                        layoutBackgroundDownFirst.setBackground(res.getDrawable(R.drawable.background_prologue_down_first_scene));
                         progressBarPrologueDown.setProgress(25000);
+                        progressBarPrologueDown.setVisibility(View.GONE);
                         countPrologueDown.setVisibility(View.VISIBLE);
                         countPrologueDown.setText(R.string.prologue_game_over_down_level_up);
                         textPrologueDownStart.setText(R.string.prologue_game_over_down_level_up_text);
@@ -310,48 +346,56 @@ public class PrologueDownFirstScene extends GameActivity {
                         isFirstStart = true;
                     }
                 } else {
-                    firstButton.startAnimation(buttonRotate);
-                    if (isTimer) {
-                        timer.cancel();
-                    }
-                    timer = new CountDownTimer(timerTime + timerUp, 1000) {
-                        @Override
+                    firstButton.startAnimation(trueAnimation);
+                    new CountDownTimer(300, 300) {
                         public void onTick(long millisUntilFinished) {
-                            if (timerUp > 2000) {
-                                timerUp -= 100;
-                            }
-                            timerTime = millisUntilFinished;
-                            countPrologueDown.setText(String.valueOf(millisUntilFinished / 1000));
-                            progressBarPrologueDown.setProgress((int) millisUntilFinished);
-
                         }
-
-                        @Override
                         public void onFinish() {
-                            ost.stop();
-                            firstButton.clearAnimation();
-                            secondButton.clearAnimation();
-                            thirdButton.clearAnimation();
-                            countPrologueDown.setVisibility(View.VISIBLE);
-                            countPrologueDown.setText(R.string.prologue_game_over_down);
-                            textPrologueDownStart.setText(R.string.prologue_game_over_down_text);
-                            textPrologueDownStart.setVisibility(View.VISIBLE);
-                            firstButton.setVisibility(View.GONE);
-                            secondButton.setVisibility(View.GONE);
-                            thirdButton.setVisibility(View.GONE);
-                            symbolPrologueDown.setVisibility(View.GONE);
-                            prologueDownStartGameButton.setVisibility(View.GONE);
-                            progressBarPrologueDown.setVisibility(View.GONE);
-                            secondRadioGroupPrologueDown.setVisibility(View.VISIBLE);
-                            prologueDownStartLuckRadioButton.setVisibility(View.VISIBLE);
-                            prologueDownStartNoLuckRadioButton.setVisibility(View.VISIBLE);
-                            isFinish = true;
+                            if (isTimer) {
+                                timer.cancel();
+                            }
+                            timer = new CountDownTimer(timerTime + timerUp, 1000) {
+                                @Override
+                                public void onTick(long millisUntilFinished) {
+                                    if (timerUp > 2000) {
+                                        timerUp -= 100;
+                                    }
+                                    timerTime = millisUntilFinished;
+                                    countPrologueDown.setText(String.valueOf(millisUntilFinished / 1000));
+                                    progressBarPrologueDown.setProgress((int) millisUntilFinished);
+
+                                }
+
+                                @Override
+                                public void onFinish() {
+                                    ost.stop();
+                                    firstButton.clearAnimation();
+                                    secondButton.clearAnimation();
+                                    thirdButton.clearAnimation();
+                                    countPrologueDown.setVisibility(View.VISIBLE);
+                                    progressBarPrologueDown.setVisibility(View.GONE);
+                                    layoutBackgroundDownFirst.setBackground(res.getDrawable(R.drawable.background_prologue_down_first_scene));
+                                    countPrologueDown.setText(R.string.prologue_game_over_down);
+                                    textPrologueDownStart.setText(R.string.prologue_game_over_down_text);
+                                    textPrologueDownStart.setVisibility(View.VISIBLE);
+                                    firstButton.setVisibility(View.GONE);
+                                    secondButton.setVisibility(View.GONE);
+                                    thirdButton.setVisibility(View.GONE);
+                                    symbolPrologueDown.setVisibility(View.GONE);
+                                    prologueDownStartGameButton.setVisibility(View.GONE);
+                                    progressBarPrologueDown.setVisibility(View.GONE);
+                                    secondRadioGroupPrologueDown.setVisibility(View.VISIBLE);
+                                    prologueDownStartLuckRadioButton.setVisibility(View.VISIBLE);
+                                    prologueDownStartNoLuckRadioButton.setVisibility(View.VISIBLE);
+                                    isFinish = true;
+                                }
+                            }.start();
+                            isTimer = true;
+                            if (!isFinish) {
+                                onStartDownPrologue(miniGame);
+                            }
                         }
                     }.start();
-                    isTimer = true;
-                    if (!isFinish) {
-                        onStartDownPrologue(miniGame);
-                    }
                 }
             }
         });
@@ -418,41 +462,58 @@ public class PrologueDownFirstScene extends GameActivity {
                 if (isTimer) {
                     timer.cancel();
                 }
-                timer = new CountDownTimer(timerTime - timerDown, 1000) {
-                    @Override
+                try{
+                secondButton.startAnimation(falseAnimation);}
+                catch (Exception e ){
+                    secondButton.setVisibility(View.GONE);
+                }
+                new CountDownTimer(300, 300) {
                     public void onTick(long millisUntilFinished) {
-                        timerDown += 80;
-                        timerTime = millisUntilFinished;
-                        countPrologueDown.setText(String.valueOf(millisUntilFinished / 1000));
-                        progressBarPrologueDown.setProgress((int) millisUntilFinished);
-
                     }
 
-                    @Override
                     public void onFinish() {
-                        ost.stop();
-                        firstButton.clearAnimation();
-                        secondButton.clearAnimation();
-                        thirdButton.clearAnimation();
-                        countPrologueDown.setVisibility(View.VISIBLE);
-                        countPrologueDown.setText(R.string.prologue_game_over_down);
-                        textPrologueDownStart.setText(R.string.prologue_game_over_down_text);
-                        textPrologueDownStart.setVisibility(View.VISIBLE);
-                        firstButton.setVisibility(View.GONE);
-                        secondButton.setVisibility(View.GONE);
-                        thirdButton.setVisibility(View.GONE);
-                        symbolPrologueDown.setVisibility(View.GONE);
-                        prologueDownStartGameButton.setVisibility(View.GONE);
-                        progressBarPrologueDown.setVisibility(View.GONE);
-                        secondRadioGroupPrologueDown.setVisibility(View.VISIBLE);
-                        prologueDownStartLuckRadioButton.setVisibility(View.VISIBLE);
-                        prologueDownStartNoLuckRadioButton.setVisibility(View.VISIBLE);
+
+
+                        timer = new CountDownTimer(timerTime - timerDown, 1000) {
+                            @Override
+                            public void onTick(long millisUntilFinished) {
+                                timerDown += 100;
+                                timerTime = millisUntilFinished;
+                                countPrologueDown.setText(String.valueOf(millisUntilFinished / 1000));
+                                progressBarPrologueDown.setProgress((int) millisUntilFinished);
+
+                            }
+
+                            @Override
+                            public void onFinish() {
+                                ost.stop();
+                                firstButton.clearAnimation();
+                                secondButton.clearAnimation();
+                                thirdButton.clearAnimation();
+                                layoutBackgroundDownFirst.setBackground(res.getDrawable(R.drawable.background_prologue_down_first_scene));
+                                countPrologueDown.setVisibility(View.VISIBLE);
+                                progressBarPrologueDown.setVisibility(View.GONE);
+                                countPrologueDown.setText(R.string.prologue_game_over_down);
+                                textPrologueDownStart.setText(R.string.prologue_game_over_down_text);
+                                textPrologueDownStart.setVisibility(View.VISIBLE);
+                                firstButton.setVisibility(View.GONE);
+                                secondButton.setVisibility(View.GONE);
+                                thirdButton.setVisibility(View.GONE);
+                                symbolPrologueDown.setVisibility(View.GONE);
+                                prologueDownStartGameButton.setVisibility(View.GONE);
+                                progressBarPrologueDown.setVisibility(View.GONE);
+                                secondRadioGroupPrologueDown.setVisibility(View.VISIBLE);
+                                prologueDownStartLuckRadioButton.setVisibility(View.VISIBLE);
+                                prologueDownStartNoLuckRadioButton.setVisibility(View.VISIBLE);
+                            }
+                        }.start();
+                        isTimer = true;
+                        if (!isFinish) {
+                            onStartDownPrologue(miniGame);
+                        }
                     }
                 }.start();
-                isTimer = true;
-                if (!isFinish) {
-                    onStartDownPrologue(miniGame);
-                }
+
             }
         });
 
@@ -516,39 +577,50 @@ public class PrologueDownFirstScene extends GameActivity {
                 if (isTimer) {
                     timer.cancel();
                 }
-                timer = new CountDownTimer(timerTime - timerDown, 1000) {
-                    @Override
+
+                thirdButton.startAnimation(falseAnimation);
+                new CountDownTimer(300, 300) {
                     public void onTick(long millisUntilFinished) {
-                        timerDown += 100;
-                        timerTime = millisUntilFinished;
-                        countPrologueDown.setText(String.valueOf(millisUntilFinished / 1000));
-                        progressBarPrologueDown.setProgress((int) millisUntilFinished);
                     }
 
-                    @Override
                     public void onFinish() {
-                        firstButton.clearAnimation();
-                        secondButton.clearAnimation();
-                        thirdButton.clearAnimation();
-                        countPrologueDown.setVisibility(View.VISIBLE);
-                        countPrologueDown.setText(R.string.prologue_game_over_down);
-                        textPrologueDownStart.setText(R.string.prologue_game_over_down_text);
-                        textPrologueDownStart.setVisibility(View.VISIBLE);
-                        firstButton.setVisibility(View.GONE);
-                        secondButton.setVisibility(View.GONE);
-                        thirdButton.setVisibility(View.GONE);
-                        symbolPrologueDown.setVisibility(View.GONE);
-                        prologueDownStartGameButton.setVisibility(View.GONE);
-                        progressBarPrologueDown.setVisibility(View.GONE);
-                        secondRadioGroupPrologueDown.setVisibility(View.VISIBLE);
-                        prologueDownStartLuckRadioButton.setVisibility(View.VISIBLE);
-                        prologueDownStartNoLuckRadioButton.setVisibility(View.VISIBLE);
+                        timer = new CountDownTimer(timerTime - timerDown, 1000) {
+                            @Override
+                            public void onTick(long millisUntilFinished) {
+                                timerDown += 100;
+                                timerTime = millisUntilFinished;
+                                countPrologueDown.setText(String.valueOf(millisUntilFinished / 1000));
+                                progressBarPrologueDown.setProgress((int) millisUntilFinished);
+                            }
+
+                            @Override
+                            public void onFinish() {
+                                firstButton.clearAnimation();
+                                secondButton.clearAnimation();
+                                thirdButton.clearAnimation();
+                                layoutBackgroundDownFirst.setBackground(res.getDrawable(R.drawable.background_prologue_down_first_scene));
+                                countPrologueDown.setVisibility(View.VISIBLE);
+                                progressBarPrologueDown.setVisibility(View.GONE);
+                                countPrologueDown.setText(R.string.prologue_game_over_down);
+                                textPrologueDownStart.setText(R.string.prologue_game_over_down_text);
+                                textPrologueDownStart.setVisibility(View.VISIBLE);
+                                firstButton.setVisibility(View.GONE);
+                                secondButton.setVisibility(View.GONE);
+                                thirdButton.setVisibility(View.GONE);
+                                symbolPrologueDown.setVisibility(View.GONE);
+                                prologueDownStartGameButton.setVisibility(View.GONE);
+                                progressBarPrologueDown.setVisibility(View.GONE);
+                                secondRadioGroupPrologueDown.setVisibility(View.VISIBLE);
+                                prologueDownStartLuckRadioButton.setVisibility(View.VISIBLE);
+                                prologueDownStartNoLuckRadioButton.setVisibility(View.VISIBLE);
+                            }
+                        }.start();
+                        isTimer = true;
+                        if (!isFinish) {
+                            onStartDownPrologue(miniGame);
+                        }
                     }
                 }.start();
-                isTimer = true;
-                if (!isFinish) {
-                    onStartDownPrologue(miniGame);
-                }
             }
         });
         if (isLevel) {

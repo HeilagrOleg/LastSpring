@@ -9,10 +9,17 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.example.last_spring.gameprealpha.res.GameActivity;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class PrologueBadEnding extends GameActivity {
 
@@ -20,7 +27,15 @@ public class PrologueBadEnding extends GameActivity {
     private TextView textFinalBadTitle;
 
     private ConstraintLayout backgroundPrologueFinalBad;
-    private ConstraintLayout constraintLayoutPrologueFinalBadExtraEpisode;
+    private RelativeLayout constraintLayoutPrologueFinalBadExtraEpisode;
+
+    private Button buttonPrologueFinalBadExtraEpisodeTrue;
+    private Button buttonPrologueFinalBadExtraEpisodeFalse;
+    private TextView textPrologueFinalBadExtraEpisode;
+
+    private ScrollView scrollPrologueBadFinal;
+
+    private RadioGroup radioGroupPrologueBadFinalFirst;
 
     private RadioButton buttonPrologueBadFinalFirst;
 
@@ -39,23 +54,39 @@ public class PrologueBadEnding extends GameActivity {
 
         getSave(5.1f);
 
+        buttonPrologueFinalBadExtraEpisodeTrue = (Button) findViewById(R.id.buttonPrologueFinalBadExtraEpisodeTrueID);
+        buttonPrologueFinalBadExtraEpisodeTrue.setTextSize(sizeFonts);
+        buttonPrologueFinalBadExtraEpisodeFalse = (Button) findViewById(R.id.buttonPrologueFinalBadExtraEpisodeFalseID);
+        buttonPrologueFinalBadExtraEpisodeFalse.setTextSize(sizeFonts);
+        textPrologueFinalBadExtraEpisode = (TextView) findViewById(R.id.textPrologueFinalBadExtraEpisodeID);
+        textPrologueFinalBadExtraEpisode.setTextSize(sizeFonts);
+
         textPrologueBadFinal = (TextView) findViewById(R.id.textPrologueBadFinalID);
+        textPrologueBadFinal.setTextSize(sizeFonts);
         textFinalBadTitle = (TextView) findViewById(R.id.textFinalBadTitleID);
+
+        scrollPrologueBadFinal = (ScrollView) findViewById(R.id.scrollPrologueBadFinalID);
+
+        radioGroupPrologueBadFinalFirst = (RadioGroup) findViewById(R.id.radioGroupPrologueBadFinalFirstID);
 
         backgroundPrologueFinalBad = (ConstraintLayout) findViewById(R.id.backgroundPrologueFinalBadID);
 
         buttonPrologueBadFinalFirst = (RadioButton) findViewById(R.id.buttonPrologueBadFinalFirstID);
+        buttonPrologueBadFinalFirst.setTextSize(sizeFonts);
 
-        constraintLayoutPrologueFinalBadExtraEpisode = (ConstraintLayout) findViewById(R.id.constraintLayoutPrologueFinalBadExtraEpisodeID);
+        constraintLayoutPrologueFinalBadExtraEpisode = (RelativeLayout) findViewById(R.id.constraintLayoutPrologueFinalBadExtraEpisodeID);
 
         backgroundAnimation = AnimationUtils.loadAnimation(this, R.anim.title_in);
         titleAnimation = AnimationUtils.loadAnimation(this, R.anim.cut_scene_prologue_text_in_animation);
+
+        startAnimation(new ArrayList<View>(Arrays.asList(scrollPrologueBadFinal, radioGroupPrologueBadFinalFirst)));
 
     }
 
     public void onPrologueCaveAfterFirst(View view) {
         if (isFirst) {
             if (isSecond) {
+                refreshScroll(textPrologueBadFinal);
                 textPrologueBadFinal.setText(R.string.prologue_final_bad_text_final);
                 buttonPrologueBadFinalFirst.setText(R.string.prologue_final_bad_button_exit);
                 isThird = true;
@@ -92,6 +123,7 @@ public class PrologueBadEnding extends GameActivity {
                     }
                 }.start();
             } else {
+                refreshScroll(textPrologueBadFinal);
                 textPrologueBadFinal.setText(R.string.prologue_final_bad_text_next);
                 buttonPrologueBadFinalFirst.setText(R.string.prologue_final_bad_button_next);
                 isSecond = true;

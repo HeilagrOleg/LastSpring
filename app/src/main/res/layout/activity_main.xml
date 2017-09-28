@@ -72,6 +72,25 @@
             app:layout_constraintVertical_bias="0.329" />
 
         <Button
+            android:id="@+id/buttonSettingsMainID"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginBottom="15dp"
+            android:layout_weight="1"
+            android:background="#50585858"
+            android:gravity="right|center"
+            android:onClick="onSettingsMain"
+            android:paddingRight="15dp"
+            android:text="@string/settings_main"
+            android:textColor="#303030"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.329" />
+
+        <Button
             android:id="@+id/buttonExitMainID"
             android:layout_width="match_parent"
             android:layout_height="48dp"

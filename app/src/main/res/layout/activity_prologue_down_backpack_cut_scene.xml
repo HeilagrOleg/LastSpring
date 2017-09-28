@@ -7,72 +7,76 @@
     android:background="@color/hockeyapp_text_black"
     tools:context="com.example.last_spring.gameprealpha.PrologueDownBackpackCutScene">
 
-    <Button
-        android:id="@+id/buttonPrologueDownBackpackCutSceneSleepID"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="onPrologueDownBackpackCutSceneSleep"
-        android:text="@string/button_sleep"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.95"
-        app:layout_constraintHorizontal_bias="0.498" />
-
-    <LinearLayout
-        android:id="@+id/linearBoxPrologueDownBackpackCutSceneID"
-        android:layout_width="294dp"
-        android:layout_height="65dp"
+    <RelativeLayout
+        android:id="@+id/layoutBackpackCutSceneID"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:orientation="vertical"
+        android:visibility="gone"
+        tools:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.87">
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintVertical_bias="1.0">
 
-        <CheckBox
-            android:id="@+id/checkBoxPrologueDownBackpackCutSceneFoodID"
+        <LinearLayout
+            android:id="@+id/linearBoxPrologueDownBackpackCutSceneID"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/check_box_prologue_down_backpack_cut_scene_food" />
+            android:layout_below="@+id/textPrologueDownBackpackCutSceneID"
+            android:orientation="vertical">
 
-        <CheckBox
-            android:id="@+id/checkBoxPrologueDownBackpackCutSceneTreatmentID"
+            <CheckBox
+                android:id="@+id/checkBoxPrologueDownBackpackCutSceneFoodID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/check_box_prologue_down_backpack_cut_scene_food" />
+
+            <CheckBox
+                android:id="@+id/checkBoxPrologueDownBackpackCutSceneTreatmentID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/check_box_prologue_down_backpack_cut_scene_treatment"
+                tools:layout_editor_absoluteX="255dp"
+                tools:layout_editor_absoluteY="478dp" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/buttonPrologueDownBackpackCutSceneSleepID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/linearBoxPrologueDownBackpackCutSceneID"
+            android:layout_centerInParent="true"
+            android:onClick="onPrologueDownBackpackCutSceneSleep"
+            android:text="@string/button_sleep" />
+
+        <ImageView
+            android:id="@+id/imageAnimationID"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/check_box_prologue_down_backpack_cut_scene_treatment"
-            tools:layout_editor_absoluteX="255dp"
-            tools:layout_editor_absoluteY="478dp" />
-    </LinearLayout>
+            android:paddingBottom="10dp"
+            app:srcCompat="@drawable/prologue_cut_scene_animation_backpack_1"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
 
-    <ImageView
-        android:id="@+id/imageAnimationID"
-        android:layout_width="342dp"
-        android:layout_height="261dp"
-        app:layout_constraintBottom_toTopOf="@+id/textPrologueDownBackpackCutSceneID"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.49"
-        app:srcCompat="@drawable/prologue_cut_scene_animation_backpack_1"
-        app:layout_constraintHorizontal_bias="0.492" />
-
-    <TextView
-        android:id="@+id/textPrologueDownBackpackCutSceneID"
-        android:layout_width="346dp"
-        android:layout_height="204dp"
-        android:background="@color/hockeyapp_text_black"
-        android:onClick="onTextPrologueDownBackpackCutSceneNext"
-        android:text="@string/text_prologue_down_backpack_cut_scene_start"
-        android:textSize="16sp"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.687" />
+        <TextView
+            android:id="@+id/textPrologueDownBackpackCutSceneID"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imageAnimationID"
+            android:layout_centerInParent="true"
+            android:background="@color/hockeyapp_text_black"
+            android:lineSpacingExtra="3sp"
+            android:onClick="onTextPrologueDownBackpackCutSceneNext"
+            android:paddingBottom="10dp"
+            android:text="@string/text_prologue_down_backpack_cut_scene_start"
+            android:textSize="16sp"
+            android:visibility="visible" />
+    </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>

@@ -13,10 +13,14 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.last_spring.gameprealpha.res.GameActivity;
 import com.last_spring.gameprealpha.OstWood;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class PrologueDownBackpackCutScene extends GameActivity {
 
@@ -49,6 +53,8 @@ public class PrologueDownBackpackCutScene extends GameActivity {
 
     private TextView textPrologueDownBackpackCutScene;
 
+    private RelativeLayout layoutBackpackCutScene;
+
     private int textCounter;
 
     private SharedPreferences save;
@@ -58,6 +64,7 @@ public class PrologueDownBackpackCutScene extends GameActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_prologue_down_backpack_cut_scene);
         textPrologueDownBackpackCutScene = (TextView) findViewById(R.id.textPrologueDownBackpackCutSceneID);
+        textPrologueDownBackpackCutScene.setTextSize(sizeFonts);
         textCounter = 0;
         level = 2.121f;
 
@@ -74,14 +81,21 @@ public class PrologueDownBackpackCutScene extends GameActivity {
 
         linearBoxPrologueDownBackpackCutScene = (LinearLayout) findViewById(R.id.linearBoxPrologueDownBackpackCutSceneID);
 
+        layoutBackpackCutScene = (RelativeLayout) findViewById(R.id.layoutBackpackCutSceneID);
+
         imageCutScene = (ImageView) findViewById(R.id.imageAnimationID);
         imageAnimation = AnimationUtils.loadAnimation(this, R.anim.cut_scene_prologue_image_animation);
         imageCutScene.startAnimation(imageAnimation);
 
         buttonPrologueDownBackpackCutSceneSleep = (Button) findViewById(R.id.buttonPrologueDownBackpackCutSceneSleepID);
+        buttonPrologueDownBackpackCutSceneSleep.setTextSize(sizeFonts);
 
         checkBoxPrologueDownBackpackCutSceneFood = (CheckBox) findViewById(R.id.checkBoxPrologueDownBackpackCutSceneFoodID);
+        checkBoxPrologueDownBackpackCutSceneFood.setTextSize(sizeFonts);
+
         checkBoxPrologueDownBackpackCutSceneTreatment = (CheckBox) findViewById(R.id.checkBoxPrologueDownBackpackCutSceneTreatmentID);
+        checkBoxPrologueDownBackpackCutSceneTreatment.setTextSize(sizeFonts);
+
         if (!save.getBoolean(APP_SAVE_OINTMENT, false)) {
             checkBoxPrologueDownBackpackCutSceneTreatment.setVisibility(View.GONE);
             treatmentCounterMain = 0;
@@ -89,7 +103,7 @@ public class PrologueDownBackpackCutScene extends GameActivity {
             treatmentCounterMain = 2;
         }
         //linearBoxPrologueDownBackpackCutScene.setVisibility(View.GONE);
-       // buttonPrologueDownBackpackCutSceneSleep.setVisibility(View.GONE);
+        // buttonPrologueDownBackpackCutSceneSleep.setVisibility(View.GONE);
 
         foodCounterMain = 2;
 
@@ -97,6 +111,7 @@ public class PrologueDownBackpackCutScene extends GameActivity {
         outAnimation = AnimationUtils.loadAnimation(this, R.anim.cut_scene_prologue_text_out_animation);
         isNext = false;
 
+        startAnimation(new ArrayList<View>(Arrays.asList(layoutBackpackCutScene)));
     }
 
     public void onTextPrologueDownBackpackCutSceneNext(View view) {

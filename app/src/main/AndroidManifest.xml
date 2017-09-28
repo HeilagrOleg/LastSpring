@@ -20,7 +20,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Prologue_start"
+            android:name=".PrologueStart"
             android:screenOrientation="portrait" />
         <activity
             android:name=".PrologueDownFirstScene"
@@ -59,9 +59,6 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".PrologueCave"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".PrologueOldCamp"
             android:screenOrientation="portrait" />
         <activity
             android:name=".HuntingLodgeHunter"
@@ -119,7 +116,8 @@
             android:name=".PrologueOldStoryAttack"
             android:screenOrientation="portrait" />
         <activity android:name=".PrologueBackpackHunter" />
-        <activity android:name=".HuntingLodgeAfter"></activity>
+        <activity android:name=".HuntingLodgeAfter" />
+        <activity android:name=".MainSettings"></activity>
     </application>
 
 </manifest>

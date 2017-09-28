@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/prologue_simple_background"
+    tools:context=".MainSettings">
+
+    <RelativeLayout
+        android:id="@+id/relativeLayoutSettingsID"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="40dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp">
+
+
+        <TextView
+            android:id="@+id/textSettingsFontsMainID"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:orientation="vertical"
+            android:text="@string/settings_text_font"
+            android:textAlignment="center"
+            android:textColor="@color/hockeyapp_text_black"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="8dp" />
+
+        <ScrollView
+            android:id="@+id/scrollSettingsMainID"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/linearLayoutSettingsMainID"
+            android:layout_above="@+id/buttonSettingsBack"
+            android:layout_centerInParent="true"
+            android:background="#50ffffff"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+            <TextView
+                android:id="@+id/textSettingsMainID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:lineSpacingExtra="0sp"
+                android:lineSpacingMultiplier="0.8"
+                android:orientation="vertical"
+                android:text="@string/prologue_start"
+                android:textColor="#303030"
+                android:textSize="18sp"
+                android:visibility="visible" />
+
+        </ScrollView>
+
+        <LinearLayout
+            android:id="@+id/linearLayoutSettingsMainID"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textSettingsFontsMainID"
+            android:layout_marginBottom="20dp"
+            android:orientation="horizontal"
+            android:visibility="visible">
+
+            <Button
+                android:id="@+id/button7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="onUpTextSize"
+                android:text="-" />
+
+            <Button
+                android:id="@+id/button6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="onDownTextSize"
+                android:text="+" />
+        </LinearLayout>
+
+
+        <Button
+            android:id="@+id/buttonSettingsBack"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:onClick="onBackSettings"
+            android:orientation="vertical"
+            android:text="@string/button_back"
+            android:visibility="visible" />
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>

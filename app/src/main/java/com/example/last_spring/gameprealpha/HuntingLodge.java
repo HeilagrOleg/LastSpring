@@ -9,10 +9,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.example.last_spring.gameprealpha.res.GameActivity;
 import com.last_spring.gameprealpha.OstWood;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class HuntingLodge extends GameActivity {
 
@@ -27,6 +31,8 @@ public class HuntingLodge extends GameActivity {
     private RadioButton radioButtonShedHuntingBeforeStart;
     private RadioButton radioButtonToiletHuntingBeforeStart;
     private RadioButton radioButtonNextHuntingBeforeStart;
+
+    private ScrollView scrollHuntingLodge;
 
     private boolean isWindow;
     private boolean isSaveWindow;
@@ -66,18 +72,30 @@ public class HuntingLodge extends GameActivity {
         startService(new Intent(this, OstWood.class));
         isOstWood = true;
 
+        scrollHuntingLodge = (ScrollView) findViewById(R.id.scrollHuntingLodgeID);
 
         huntingLodgeStartText = (TextView) findViewById(R.id.huntingLodgeStartTextID);
+        huntingLodgeStartText.setTextSize(sizeFonts);
 
         radioGroupHuntingLodgeStart = (RadioGroup) findViewById(R.id.radioGroupHuntingLodgeStartID);
+        radioGroupHuntingLodgeStart.setVisibility(View.GONE);
         radioGroupHuntingLodgeBeforeStart = (RadioGroup) findViewById(R.id.radioGroupHuntingLodgeBeforeStartID);
 
         radioButtonWindowHuntingStart = (RadioButton) findViewById(R.id.radioButtonWindowHuntingStartID);
+        radioButtonWindowHuntingStart.setTextSize(sizeFonts);
         radioButtonDoorHuntingStart = (RadioButton) findViewById(R.id.radioButtonDoorHuntingStartID);
+        radioButtonDoorHuntingStart.setTextSize(sizeFonts);
         radioButtonOpenDoorHuntingStart = (RadioButton) findViewById(R.id.radioButtonOpenDoorHuntingStartID);
+        radioButtonOpenDoorHuntingStart.setTextSize(sizeFonts);
         radioButtonShedHuntingBeforeStart = (RadioButton) findViewById(R.id.radioButtonShedHuntingBeforeStartID);
+        radioButtonShedHuntingBeforeStart.setTextSize(sizeFonts);
         radioButtonToiletHuntingBeforeStart = (RadioButton) findViewById(R.id.radioButtonToiletHuntingBeforeStartID);
+        radioButtonToiletHuntingBeforeStart.setTextSize(sizeFonts);
         radioButtonNextHuntingBeforeStart = (RadioButton) findViewById(R.id.radioButtonNextHuntingBeforeStartID);
+        radioButtonNextHuntingBeforeStart.setTextSize(sizeFonts);
+
+        startAnimation(new ArrayList<View>(Arrays.asList(radioGroupHuntingLodgeBeforeStart,scrollHuntingLodge)));
+
     }
 
     public void onDoorHuntingStart(View view) {

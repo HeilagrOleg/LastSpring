@@ -9,13 +9,18 @@ import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.ScrollView;
 import android.widget.TextClock;
 import android.widget.TextView;
 
 import com.example.last_spring.gameprealpha.res.GameActivity;
 import com.last_spring.gameprealpha.OstWood;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class PrologueBackpackAfterCutScene extends GameActivity {
 
@@ -48,6 +53,10 @@ public class PrologueBackpackAfterCutScene extends GameActivity {
     private RadioButton buttonPrologueBackPackAfterCutSceneBeforeStartFirst;
     private RadioButton buttonPrologueBackPackAfterCutSceneBeforeStartSecond;
     private RadioButton buttonPrologueBackPackAfterCutSceneBeforeStartThird;
+
+    private FrameLayout linearLayoutPrologueBackpackAfterCut;
+
+    private ScrollView scrollPrologueBackPackAfterCutScene;
 
     private ConstraintLayout constraintLayoutCave;
 
@@ -88,14 +97,26 @@ public class PrologueBackpackAfterCutScene extends GameActivity {
         constraintLayoutCave.setBackground(res.getDrawable(R.drawable.prologue_down_second_scene_morning_background));
 
         textPrologueBackpackAfterCut = (TextView) findViewById(R.id.textPrologueBackPackAfterCutSceneBeforeStartID);
+        textPrologueBackpackAfterCut.setTextSize(sizeFonts);
+
+        linearLayoutPrologueBackpackAfterCut = (FrameLayout) findViewById(R.id.linearLayoutPrologueBackpackAfterCutID);
+
+        scrollPrologueBackPackAfterCutScene = (ScrollView) findViewById(R.id.scrollPrologueBackPackAfterCutSceneID);
 
         buttonPrologueBackpackAfterCutSleep = (RadioButton) findViewById(R.id.buttonPrologueBackpackAfterCutSleepID);
+        buttonPrologueBackpackAfterCutSleep.setTextSize(sizeFonts);
         buttonPrologueBackpackAfterCutStandUp = (RadioButton) findViewById(R.id.buttonPrologueBackpackAfterCutStandUpID);
+        buttonPrologueBackpackAfterCutStandUp.setTextSize(sizeFonts);
         buttonPrologueBackpackAfterCutMoveCave = (RadioButton) findViewById(R.id.buttonPrologueBackpackAfterCutMoveCaveID);
+        buttonPrologueBackpackAfterCutMoveCave.setTextSize(sizeFonts);
         buttonPrologueBackpackAfterCutMoveCamp = (RadioButton) findViewById(R.id.buttonPrologueBackpackAfterCutMoveCampID);
+        buttonPrologueBackpackAfterCutMoveCamp.setTextSize(sizeFonts);
         buttonPrologueBackPackAfterCutSceneBeforeStartFirst = (RadioButton) findViewById(R.id.buttonPrologueBackPackAfterCutSceneBeforeStartFirstID);
+        buttonPrologueBackPackAfterCutSceneBeforeStartFirst.setTextSize(sizeFonts);
         buttonPrologueBackPackAfterCutSceneBeforeStartSecond = (RadioButton) findViewById(R.id.buttonPrologueBackPackAfterCutSceneBeforeStartSecondID);
+        buttonPrologueBackPackAfterCutSceneBeforeStartSecond.setTextSize(sizeFonts);
         buttonPrologueBackPackAfterCutSceneBeforeStartThird = (RadioButton) findViewById(R.id.buttonPrologueBackPackAfterCutSceneBeforeStartThirdID);
+        buttonPrologueBackPackAfterCutSceneBeforeStartThird.setTextSize(sizeFonts);
 
         if (save.getBoolean(APP_SAVE_RAINCOAT, false)) {
             raincoat = getString(R.string.text_prologue_backpack_after_cut_start_raincoat);
@@ -131,6 +152,8 @@ public class PrologueBackpackAfterCutScene extends GameActivity {
                 }
             }
         }
+
+        startAnimation(new ArrayList<View>(Arrays.asList(linearLayoutPrologueBackpackAfterCut, scrollPrologueBackPackAfterCutScene)));
     }
 
     public void onPrologueBackpackAfterCutSleep(View view) {

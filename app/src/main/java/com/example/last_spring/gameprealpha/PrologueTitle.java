@@ -3,17 +3,13 @@ package com.example.last_spring.gameprealpha;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.CountDownTimer;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.ActionProvider;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.last_spring.gameprealpha.res.GameActivity;
-import com.example.last_spring.gameprealpha.R;
 import com.last_spring.gameprealpha.OstWood;
 
 public class PrologueTitle extends GameActivity {
@@ -90,7 +86,7 @@ public class PrologueTitle extends GameActivity {
 
 
     public void next() {
-        Intent intent = new Intent(this, Prologue_start.class);
+        Intent intent = new Intent(this, PrologueStart.class);
         getNextScene(intent);
         finish();
         overridePendingTransition(R.anim.first_activity_animation, R.anim.second_activity_animation);

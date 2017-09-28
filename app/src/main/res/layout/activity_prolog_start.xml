@@ -5,88 +5,105 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/prologue_start_background"
-    tools:context="com.example.last_spring.gameprealpha.Prologue_start">
+    tools:context="com.example.last_spring.gameprealpha.PrologueStart">
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="88dp"
-        android:layout_height="wrap_content"
-        android:text="Button"
-        android:onClick="test"
-        tools:layout_editor_absoluteY="0dp"
-        tools:layout_editor_absoluteX="8dp" />
-
-    <TextView
-        android:id="@+id/prologue_textMainID"
-        android:layout_width="342dp"
-        android:layout_height="395dp"
-        android:lineSpacingExtra="0sp"
-        android:lineSpacingMultiplier="0.8"
-        android:text="@string/prologue_start"
-        android:textColor="#303030"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.521"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.003" />
-
-    <RadioGroup
-        android:id="@+id/radioGroupPrologueID"
-        android:layout_width="342dp"
-        android:layout_height="84dp"
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:orientation="vertical"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="40dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.688">
+        app:layout_constraintTop_toTopOf="parent">
 
-        <RadioButton
-            android:id="@+id/buttonPrologueTentID"
+        <RadioGroup
+            android:id="@+id/radioGroupPrologueID"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:background="#60ffffff"
-            android:button="@drawable/radio_button_selector"
-            android:onClick="onPrologueTent"
-            android:text="@string/prologue_tent"
-            android:textColor="#303030"
-            android:textSize="16sp"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="355dp"
-            tools:text="@string/prologue_tent" />
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone"
+            tools:visibility="visible">
 
-        <RadioButton
-            android:id="@+id/buttonPrologueMoveUpID"
+            <RadioButton
+                android:id="@+id/buttonPrologueTentID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="#70ffffff"
+                android:button="@drawable/radio_button_selector"
+                android:onClick="onPrologueTent"
+                android:text="@string/prologue_tent"
+                android:textColor="#303030"
+                android:textSize="16sp"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="355dp" />
+
+            <RadioButton
+                android:id="@+id/buttonPrologueMoveUpID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="#70ffffff"
+                android:button="@drawable/radio_button_selector"
+                android:onClick="onPrologueMoveUp"
+                android:text="@string/prologue_move_up"
+                android:textColor="#303030"
+                android:textSize="16sp"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="387dp" />
+
+            <RadioButton
+                android:id="@+id/buttonPrologueMoveDownID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#70ffffff"
+                android:button="@drawable/radio_button_selector"
+                android:onClick="onPrologueMoveDown"
+                android:text="@string/prologue_move_down"
+                android:textColor="#303030"
+                android:textSize="16sp"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="419dp" />
+
+        </RadioGroup>
+
+        <ScrollView
+            android:id="@+id/scrollPrologueMainID"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:background="#60ffffff"
-            android:button="@drawable/radio_button_selector"
-            android:onClick="onPrologueMoveUp"
-            android:text="@string/prologue_move_up"
-            android:textColor="#303030"
-            android:textSize="16sp"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="387dp"
-            tools:text="@string/prologue_move_up" />
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginBottom="40dp"
+            android:layout_above="@+id/radioGroupPrologueID"
+            android:background="#70ffffff"
+            android:visibility="gone"
+            android:gravity="center"
+            android:orientation="vertical"
+            tools:visibility="visible">
 
-        <RadioButton
-            android:id="@+id/buttonPrologueMoveDownID"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#60ffffff"
-            android:button="@drawable/radio_button_selector"
-            android:onClick="onPrologueMoveDown"
-            android:text="@string/prologue_move_down"
-            android:textColor="#303030"
-            android:textSize="16sp"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="419dp"
-            tools:text="@string/prologue_move_down" />
+            <TextView
+                android:id="@+id/textPrologueMainID"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:lineSpacingExtra="3sp"
+                android:lineSpacingMultiplier="0.8"
+                android:orientation="vertical"
+                android:text="@string/prologue_start"
+                android:textColor="#303030"
+                android:textSize="18sp"
+                android:visibility="visible" />
 
-    </RadioGroup>
+        </ScrollView>
+
+    </RelativeLayout>
+
 </android.support.constraint.ConstraintLayout>

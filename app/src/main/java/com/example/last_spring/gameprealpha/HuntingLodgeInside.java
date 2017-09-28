@@ -7,10 +7,12 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,6 +20,9 @@ import com.example.last_spring.gameprealpha.res.Fortune;
 import com.example.last_spring.gameprealpha.res.GameActivity;
 import com.last_spring.gameprealpha.OstDisturbance;
 import com.last_spring.gameprealpha.OstWood;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class HuntingLodgeInside extends GameActivity {
 
@@ -55,8 +60,13 @@ public class HuntingLodgeInside extends GameActivity {
     private CheckBox checkBoxHuntingLodgeInsideKnife;
     private CheckBox checkBoxHuntingLodgeInsideOintment;
 
+    private Button buttonHuntingLodgeSleeping;
+
     private LinearLayout linearBoxHuntingLodgeInside;
+
     private ConstraintLayout constraintLayoutPrologueHuntingInside;
+
+    private ScrollView scrollHuntingLodgeInside;
 
     private TextView huntingLodgeInsideText;
 
@@ -119,30 +129,53 @@ public class HuntingLodgeInside extends GameActivity {
         radioGroupHuntingLodgeInsideBedside.setVisibility(View.GONE);
 
         checkBoxHuntingLodgeInsideFood = (CheckBox) findViewById(R.id.checkBoxHuntingLodgeInsideFoodID);
+        checkBoxHuntingLodgeInsideFood.setTextSize(sizeFonts);
         checkBoxHuntingLodgeInsideKnife = (CheckBox) findViewById(R.id.checkBoxHuntingLodgeInsideKnifeID);
+        checkBoxHuntingLodgeInsideKnife.setTextSize(sizeFonts);
         checkBoxHuntingLodgeInsideOintment = (CheckBox) findViewById(R.id.checkBoxHuntingLodgeInsideOintmentID);
+        checkBoxHuntingLodgeInsideOintment.setTextSize(sizeFonts);
 
         linearBoxHuntingLodgeInside = (LinearLayout) findViewById(R.id.linearBoxHuntingLodgeInsideID);
         linearBoxHuntingLodgeInside.setVisibility(View.GONE);
 
         radioButtonTableHuntingInside = (RadioButton) findViewById(R.id.radioButtonTableHuntingInsideID);
+        radioButtonTableHuntingInside.setTextSize(sizeFonts);
         radioButtonCupboardHuntingInside = (RadioButton) findViewById(R.id.radioButtonCupboardHuntingInsideID);
+        radioButtonCupboardHuntingInside.setTextSize(sizeFonts);
         radioButtonBedsideTableHuntingInside = (RadioButton) findViewById(R.id.radioButtonBedsideTableHuntingInsideID);
+        radioButtonBedsideTableHuntingInside.setTextSize(sizeFonts);
         radioButtonConserveHuntingInside = (RadioButton) findViewById(R.id.radioButtonConserveHuntingInsideID);
+        radioButtonConserveHuntingInside.setTextSize(sizeFonts);
         radioButtonConserveHuntingInside.setVisibility(View.GONE);
         radioButtonConserveLuckHuntingInside = (RadioButton) findViewById(R.id.radioButtonConserveLuckHuntingInsideID);
+        radioButtonConserveLuckHuntingInside.setTextSize(sizeFonts);
         radioButtonConserveNoLuckHuntingInside = (RadioButton) findViewById(R.id.radioButtonConserveNoLuckHuntingInsideID);
+        radioButtonConserveNoLuckHuntingInside.setTextSize(sizeFonts);
         radioButtonTableKeyHuntingInside = (RadioButton) findViewById(R.id.radioButtonTableKeyHuntingInsideID);
+        radioButtonTableKeyHuntingInside.setTextSize(sizeFonts);
         radioButtonTableNoKeyHuntingInside = (RadioButton) findViewById(R.id.radioButtonTableNoKeyHuntingInsideID);
+        radioButtonTableNoKeyHuntingInside.setTextSize(sizeFonts);
         radioButtonCupboardSleepingBugHuntingInside = (RadioButton) findViewById(R.id.radioButtonCupboardSleepingBugHuntingInsideID);
+        radioButtonCupboardSleepingBugHuntingInside.setTextSize(sizeFonts);
         radioButtonCupboardNoSleepingBugHuntingInside = (RadioButton) findViewById(R.id.radioButtonCupboardNoSleepingBugHuntingInsideID);
+        radioButtonCupboardNoSleepingBugHuntingInside.setTextSize(sizeFonts);
         radioButtonBedsideKeyHuntingInside = (RadioButton) findViewById(R.id.radioButtonBedsideKeyHuntingInsideID);
+        radioButtonBedsideKeyHuntingInside.setTextSize(sizeFonts);
         radioButtonBedsideKeyHuntingInside.setVisibility(View.GONE);
         radioButtonBedsideLuckHuntingInside = (RadioButton) findViewById(R.id.radioButtonBedsideLuckHuntingInsideID);
+        radioButtonBedsideLuckHuntingInside.setTextSize(sizeFonts);
         radioButtonBedsideNoLuckHuntingInside = (RadioButton) findViewById(R.id.radioButtonBedsideNoLuckHuntingInsideID);
+        radioButtonBedsideNoLuckHuntingInside.setTextSize(sizeFonts);
         radioButtonBedsideBackHuntingInside = (RadioButton) findViewById(R.id.radioButtonBedsideBackHuntingInsideID);
+        radioButtonBedsideBackHuntingInside.setTextSize(sizeFonts);
+
+        buttonHuntingLodgeSleeping = (Button) findViewById(R.id.buttonHuntingLodgeSleepingID);
+        buttonHuntingLodgeSleeping.setTextSize(sizeFonts);
+
+        scrollHuntingLodgeInside = (ScrollView) findViewById(R.id.scrollHuntingLodgeInsideID);
 
         huntingLodgeInsideText = (TextView) findViewById(R.id.huntingLodgeInsideTextID);
+        huntingLodgeInsideText.setTextSize(sizeFonts);
 
         if (save.getInt(APP_SAVE_TREATMENT,0)==0) {
             checkBoxHuntingLodgeInsideOintment.setVisibility(View.GONE);
@@ -154,6 +187,8 @@ public class HuntingLodgeInside extends GameActivity {
         } else {
             isConserveButton = true;
         }
+
+        startAnimation(new ArrayList<View>(Arrays.asList(scrollHuntingLodgeInside,  radioGroupHuntingLodgeInside)));
 
         constraintLayoutPrologueHuntingInside.setBackgroundResource(R.drawable.prologue_huntinh_lodge_inside_first_background);
     }

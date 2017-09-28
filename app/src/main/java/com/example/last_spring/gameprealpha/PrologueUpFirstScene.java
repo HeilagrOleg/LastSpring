@@ -6,15 +6,23 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.example.last_spring.gameprealpha.res.GameActivity;
 import com.last_spring.gameprealpha.OstWood;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class PrologueUpFirstScene extends GameActivity {
 
+    private RadioGroup radioGroupPrologueUp;
     private RadioButton prologueMoveHuntingLodge;
     private RadioButton prologueTemporaryCamp;
+
+    private ScrollView scrollPrologueUp;
 
     private TextView textPrologueUp;
 
@@ -27,8 +35,18 @@ public class PrologueUpFirstScene extends GameActivity {
         setContentView(R.layout.activity_prologue_up_first_scene);
 
         prologueMoveHuntingLodge = (RadioButton) findViewById(R.id.prologueMoveHuntingLodgeID);
+        prologueMoveHuntingLodge.setTextSize(sizeFonts);
         prologueTemporaryCamp = (RadioButton) findViewById(R.id.prologueTemporaryCampID);
+        prologueTemporaryCamp.setTextSize(sizeFonts);
+
         textPrologueUp = (TextView) findViewById(R.id.textPrologueUpID);
+        textPrologueUp.setTextSize(sizeFonts);
+
+        radioGroupPrologueUp = (RadioGroup) findViewById(R.id.radioGroupPrologueUpID);
+
+        scrollPrologueUp = (ScrollView) findViewById(R.id.scrollPrologueUpID);
+
+        startAnimation(new ArrayList<View>(Arrays.asList(radioGroupPrologueUp,scrollPrologueUp)));
 
         startService(new Intent(this, OstWood.class));
         isOstWood = true;

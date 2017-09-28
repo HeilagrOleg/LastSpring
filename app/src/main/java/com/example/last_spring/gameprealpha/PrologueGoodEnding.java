@@ -10,10 +10,19 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.example.last_spring.gameprealpha.res.GameActivity;
+
+import org.w3c.dom.Text;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class PrologueGoodEnding extends GameActivity {
 
@@ -21,9 +30,19 @@ public class PrologueGoodEnding extends GameActivity {
     private TextView textFinalGoodTitle;
 
     private ConstraintLayout backgroundPrologueFinalGood;
-    private ConstraintLayout constraintLayoutPrologueFinalGoodExtraEpisode;
+    private RelativeLayout constraintLayoutPrologueFinalGoodExtraEpisode;
+
+    private RadioGroup radioGroupPrologueGoodFinalFirst;
 
     private RadioButton buttonPrologueGoodFinalFirst;
+
+    private ScrollView scrollPrologueGoodFinal;
+
+    private TextView textPrologueFinalGoodExtraEpisode;
+
+    private Button buttonPrologueFinalGoodExtraEpisodeTrue;
+
+    private Button buttonPrologueFinalGoodExtraEpisodeFalse;
 
     private Animation backgroundAnimation;
     private Animation titleAnimation;
@@ -39,17 +58,36 @@ public class PrologueGoodEnding extends GameActivity {
 
         getSave(5.0f);
 
+        radioGroupPrologueGoodFinalFirst = (RadioGroup) findViewById(R.id.radioGroupPrologueGoodFinalFirstID);
+
+        scrollPrologueGoodFinal = (ScrollView) findViewById(R.id.scrollPrologueGoodFinalID);
+
         textPrologueGoodFinal = (TextView) findViewById(R.id.textPrologueGoodFinalID);
+        textPrologueGoodFinal.setTextSize(sizeFonts);
         textFinalGoodTitle = (TextView) findViewById(R.id.textFinalGoodTitleID);
+        textPrologueFinalGoodExtraEpisode = (TextView) findViewById(R.id.textPrologueFinalGoodExtraEpisodeID);
+        textPrologueFinalGoodExtraEpisode.setTextSize(sizeFonts);
 
         backgroundPrologueFinalGood = (ConstraintLayout) findViewById(R.id.backgroundPrologueFinalGoodID);
 
-        buttonPrologueGoodFinalFirst = (RadioButton) findViewById(R.id.buttonPrologueGoodFinalFirstID);
+        buttonPrologueFinalGoodExtraEpisodeTrue = (Button) findViewById(R.id.buttonPrologueFinalGoodExtraEpisodeTrueID);
+        buttonPrologueFinalGoodExtraEpisodeTrue.setTextSize(sizeFonts);
 
-        constraintLayoutPrologueFinalGoodExtraEpisode = (ConstraintLayout) findViewById(R.id.constraintLayoutPrologueFinalGoodExtraEpisodeID);
+        buttonPrologueFinalGoodExtraEpisodeFalse = (Button) findViewById(R.id.buttonPrologueFinalGoodExtraEpisodeFalseID);
+        buttonPrologueFinalGoodExtraEpisodeFalse.setTextSize(sizeFonts);
+
+        buttonPrologueGoodFinalFirst = (RadioButton) findViewById(R.id.buttonPrologueGoodFinalFirstID);
+        buttonPrologueGoodFinalFirst.setTextSize(sizeFonts);
+
+
+
+        constraintLayoutPrologueFinalGoodExtraEpisode = (RelativeLayout) findViewById(R.id.constraintLayoutPrologueFinalGoodExtraEpisodeID);
 
         backgroundAnimation = AnimationUtils.loadAnimation(this, R.anim.title_in);
         titleAnimation = AnimationUtils.loadAnimation(this, R.anim.cut_scene_prologue_text_in_animation);
+
+        startAnimation(new ArrayList<View>(Arrays.asList(radioGroupPrologueGoodFinalFirst, scrollPrologueGoodFinal)));
+
 
     }
 
@@ -88,6 +126,7 @@ public class PrologueGoodEnding extends GameActivity {
                 }.start();
 
             } else {
+                refreshScroll(textPrologueGoodFinal);
                 textPrologueGoodFinal.setText(R.string.prologue_final_good_text_next);
                 buttonPrologueGoodFinalFirst.setText(R.string.prologue_final_good_button_exit);
                 isSecond = true;
@@ -98,6 +137,7 @@ public class PrologueGoodEnding extends GameActivity {
             buttonPrologueGoodFinalFirst.setBackgroundColor(Color.parseColor("#607e9e7f"));
             isFirst = true;
         }
+
     }
 
     public void onPrologueFinalGoodExtraEpisodeTrue(View view) {

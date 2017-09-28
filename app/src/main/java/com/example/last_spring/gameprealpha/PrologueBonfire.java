@@ -7,12 +7,16 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.last_spring.gameprealpha.res.Fortune;
 import com.example.last_spring.gameprealpha.res.GameActivity;
 import com.last_spring.gameprealpha.OstWood;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class PrologueBonfire extends GameActivity {
 
@@ -23,6 +27,8 @@ public class PrologueBonfire extends GameActivity {
 
     private TextView textPrologueBonfireMain;
 
+    private ScrollView scrollPrologueBonfire;
+
     private boolean isFirst;
     private boolean isSecond;
     private boolean isThird;
@@ -31,6 +37,7 @@ public class PrologueBonfire extends GameActivity {
     private boolean isUndergrowth;
     private boolean isDownWay;
     private boolean isUndergrowthWay;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,12 +53,21 @@ public class PrologueBonfire extends GameActivity {
 
         radioGroupPrologueBonfire = (RadioGroup) findViewById(R.id.radioGroupPrologueBonfireID);
         buttonPrologueBonfireFirst = (RadioButton) findViewById(R.id.buttonPrologueBonfireFirstID);
+        buttonPrologueBonfireFirst.setTextSize(sizeFonts);
         buttonPrologueBonfireSecond = (RadioButton) findViewById(R.id.buttonPrologueBonfireSecondID);
+        buttonPrologueBonfireSecond.setTextSize(sizeFonts);
         buttonPrologueBonfireThird = (RadioButton) findViewById(R.id.buttonPrologueBonfireThirdID);
+        buttonPrologueBonfireThird.setTextSize(sizeFonts);
+
+        scrollPrologueBonfire = (ScrollView) findViewById(R.id.scrollPrologueBonfireID);
 
         textPrologueBonfireMain = (TextView) findViewById(R.id.textPrologueBonfireMainID);
+        textPrologueBonfireMain.setTextSize(sizeFonts);
 
         isDown = false;
+
+        startAnimation(new ArrayList<View>(Arrays.asList(scrollPrologueBonfire, radioGroupPrologueBonfire)));
+
 
     }
 
@@ -60,16 +76,22 @@ public class PrologueBonfire extends GameActivity {
             if (isExit) {
                 getNextScene(new Intent(this, PrologueDownBackpackCutScene.class));
                 SharedPreferences.Editor editor = save.edit();
-                editor.putInt(APP_SAVE_FOOD,foodCounterMain);
+                editor.putInt(APP_SAVE_FOOD, foodCounterMain);
                 editor.apply();
                 finish();
             } else if (isDown) {
+                scrollPrologueBonfire.scrollTo(0,0);
+
                 textPrologueBonfireMain.setText(R.string.prologue_bonfire_text_bench);
                 buttonPrologueBonfireFirst.setVisibility(View.GONE);
             } else if (isUndergrowth) {
+                scrollPrologueBonfire.scrollTo(0,0);
+
                 textPrologueBonfireMain.setText(R.string.prologue_bonfire_text_undergrowth_firewood);
                 buttonPrologueBonfireFirst.setVisibility(View.GONE);
             } else {
+                scrollPrologueBonfire.scrollTo(0,0);
+
                 textPrologueBonfireMain.setText(R.string.prologue_bonfire_text_down);
                 buttonPrologueBonfireFirst.setText(R.string.prologue_bonfire_button_down_bench);
                 buttonPrologueBonfireFirst.setVisibility(View.VISIBLE);
@@ -89,21 +111,26 @@ public class PrologueBonfire extends GameActivity {
             buttonPrologueBonfireSecond.setBackgroundColor(Color.parseColor("#60ffffff"));
             buttonPrologueBonfireThird.setBackgroundColor(Color.parseColor("#60ffffff"));
         }
-
     }
 
     public void onPrologueBonfireSecond(View view) {
         if (isSecond) {
             if (isDown) {
+                scrollPrologueBonfire.scrollTo(0,0);
+
                 textPrologueBonfireMain.setText(R.string.prologue_bonfire_text_hill);
                 buttonPrologueBonfireSecond.setVisibility(View.GONE);
             } else if (isUndergrowth) {
                 Toast toast;
                 int chance;
                 if (save.getBoolean(APP_SAVE_KNIFE, false)) {
+                    scrollPrologueBonfire.scrollTo(0,0);
+
                     textPrologueBonfireMain.setText(R.string.prologue_bonfire_text_undergrowth_mushrooms_knife);
                     chance = 40;
                 } else {
+                    scrollPrologueBonfire.scrollTo(0,0);
+
                     textPrologueBonfireMain.setText(R.string.prologue_bonfire_text_undergrowth_mushrooms_no_knife);
                     chance = 60;
                 }
@@ -118,6 +145,7 @@ public class PrologueBonfire extends GameActivity {
                 buttonPrologueBonfireSecond.setVisibility(View.GONE);
             } else {
                 isUndergrowth = true;
+                scrollPrologueBonfire.scrollTo(0,0);
                 textPrologueBonfireMain.setText(R.string.prologue_bonfire_text_undergrowth);
                 buttonPrologueBonfireFirst.setText(R.string.prologue_bonfire_button_undergrowth_firewood);
                 buttonPrologueBonfireFirst.setVisibility(View.VISIBLE);
@@ -141,6 +169,7 @@ public class PrologueBonfire extends GameActivity {
     public void onPrologueBonfireThird(View view) {
         if (isThird) {
             if (isUndergrowthWay && isDownWay) {
+                scrollPrologueBonfire.scrollTo(0,0);
                 textPrologueBonfireMain.setText(R.string.prologue_bonfire_text_forest);
                 buttonPrologueBonfireFirst.setVisibility(View.VISIBLE);
                 buttonPrologueBonfireSecond.setVisibility(View.GONE);
@@ -150,6 +179,7 @@ public class PrologueBonfire extends GameActivity {
             } else if (isDown) {
                 isDown = false;
                 isDownWay = true;
+                scrollPrologueBonfire.scrollTo(0,0);
                 textPrologueBonfireMain.setText(R.string.prologue_bonfire_text_middle);
                 buttonPrologueBonfireFirst.setVisibility(View.GONE);
                 buttonPrologueBonfireSecond.setVisibility(View.VISIBLE);
@@ -164,6 +194,7 @@ public class PrologueBonfire extends GameActivity {
             } else if (isUndergrowth) {
                 isUndergrowth = false;
                 isUndergrowthWay = true;
+                scrollPrologueBonfire.scrollTo(0,0);
                 textPrologueBonfireMain.setText(R.string.prologue_bonfire_text_middle);
                 buttonPrologueBonfireSecond.setVisibility(View.GONE);
                 if (isDownWay) {

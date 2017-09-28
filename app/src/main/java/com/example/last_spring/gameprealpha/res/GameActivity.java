@@ -7,10 +7,14 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.TextView;
 
 import com.example.last_spring.gameprealpha.MainActivity;
 import com.example.last_spring.gameprealpha.R;
@@ -18,9 +22,13 @@ import com.last_spring.gameprealpha.OstCave;
 import com.last_spring.gameprealpha.OstDisturbance;
 import com.last_spring.gameprealpha.OstWood;
 
+import java.util.ArrayList;
+
 public class GameActivity extends AppCompatActivity {
 
     public static final String APP_SAVE = "Save";
+    private static final String APP_SETTINGS = "Settings";
+    private static final String APP_SETTINGS_SETTINGS_FONTS_SIZE = "Fonts size";
     public static final String APP_SAVE_FOOD = "Food";
     public static final String APP_SAVE_WOOD = "Wood";
     public static final String APP_SAVE_FAIM = "Faim";
@@ -33,6 +41,7 @@ public class GameActivity extends AppCompatActivity {
     public static final String APP_SAVE_TREATMENT = "Treatment";
 
     public SharedPreferences save;
+    public SharedPreferences settings;
     private String sleepingBug;
     private String knife;
     private String raincoat;
@@ -51,6 +60,9 @@ public class GameActivity extends AppCompatActivity {
     public boolean isOstCave;
     public boolean isOstDisturbance;
     public float level;
+    public float sizeFonts;
+
+    public Animation animationStart;
 
     public MediaPlayer ost;
 
@@ -71,10 +83,12 @@ public class GameActivity extends AppCompatActivity {
                 | View.SYSTEM_UI_FLAG_FULLSCREEN;
         decorView.setSystemUiVisibility(uiOptions);
         save = getSharedPreferences(APP_SAVE, Context.MODE_PRIVATE);
+        settings = getSharedPreferences(APP_SETTINGS, Context.MODE_PRIVATE);
+        sizeFonts = settings.getFloat(APP_SETTINGS_SETTINGS_FONTS_SIZE, 18f);
         treatmentCounterMain = save.getInt(APP_SAVE_TREATMENT, 0);
         foodCounterMain = save.getInt(APP_SAVE_FOOD, 0);
         fortune = save.getInt(APP_SAVE_FORTUNE, 0);
-        if(fortune<0) {
+        if (fortune < 0) {
             fortune = 10;
         } else if (fortune > 100) {
             fortune = 100;
@@ -84,6 +98,8 @@ public class GameActivity extends AppCompatActivity {
         isSleepingBugMain = save.getBoolean(APP_SAVE_SLEEPING_BAG_PROLOGUE, false);
         isFaim = save.getBoolean(APP_SAVE_FAIM, false);
         wound = save.getInt(APP_SAVE_WOUND, 0);
+
+        animationStart = AnimationUtils.loadAnimation(this, R.anim.title_in);
     }
 
     public void onInventory(View view) {
@@ -128,45 +144,36 @@ public class GameActivity extends AppCompatActivity {
             stFaim = getString(R.string.prologue_inventory_no_faim);
         }
 
-        if(fortune<0) {
+        if (fortune < 0) {
             fortune = 10;
         } else if (fortune > 100) {
             fortune = 100;
         }
 
-        switch (fortune) {
+        stFortune = "test";
 
-            case 10:
-                stFortune = getString(R.string.prologue_inventory_fortune_10);
-                break;
-            case 20:
-                stFortune = getString(R.string.prologue_inventory_fortune_20);
-                break;
-            case 30:
-                stFortune = getString(R.string.prologue_inventory_fortune_30);
-                break;
-            case 40:
-                stFortune = getString(R.string.prologue_inventory_fortune_40);
-                break;
-            case 50:
-                stFortune = getString(R.string.prologue_inventory_fortune_50);
-                break;
-            case 60:
-                stFortune = getString(R.string.prologue_inventory_fortune_60);
-                break;
-            case 70:
-                stFortune = getString(R.string.prologue_inventory_fortune_70);
-                break;
-            case 80:
-                stFortune = getString(R.string.prologue_inventory_fortune_80);
-                break;
-            case 90:
-                stFortune = getString(R.string.prologue_inventory_fortune_90);
-                break;
-            default:
-                stFortune = getString(R.string.prologue_inventory_fortune_100);
-                break;
+        if (fortune <= 10) {
+            stFortune = getString(R.string.prologue_inventory_fortune_10);
+        } else if (fortune <= 20) {
+            stFortune = getString(R.string.prologue_inventory_fortune_20);
+        } else if (fortune <= 30) {
+            stFortune = getString(R.string.prologue_inventory_fortune_30);
+        } else if (fortune <= 40) {
+            stFortune = getString(R.string.prologue_inventory_fortune_40);
+        } else if (fortune <= 50) {
+            stFortune = getString(R.string.prologue_inventory_fortune_50);
+        } else if (fortune <= 60) {
+            stFortune = getString(R.string.prologue_inventory_fortune_60);
+        } else if (fortune <= 70) {
+            stFortune = getString(R.string.prologue_inventory_fortune_70);
+        } else if (fortune <= 80) {
+            stFortune = getString(R.string.prologue_inventory_fortune_80);
+        } else if (fortune <= 90) {
+            stFortune = getString(R.string.prologue_inventory_fortune_90);
+        } else if (fortune <= 100) {
+            stFortune = getString(R.string.prologue_inventory_fortune_100);
         }
+
 
         dialog = new AlertDialog.Builder(this);
         dialog.setTitle(R.string.button_dialog_title);
@@ -216,11 +223,11 @@ public class GameActivity extends AppCompatActivity {
 
     }
 
-    public void finishOst(){
+    public void finishOst() {
         stopService(new Intent(this, OstWood.class));
         stopService(new Intent(this, OstDisturbance.class));
         stopService(new Intent(this, OstCave.class));
-        if(isOst) {
+        if (isOst) {
             ost.stop();
         }
     }
@@ -228,10 +235,10 @@ public class GameActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
-        if(isOst) {
+        if (isOst) {
             ost.stop();
         }
-        if(!isOstStop && !isExitScene) {
+        if (!isOstStop && !isExitScene) {
             finishOst();
             isOstStop = true;
         }
@@ -240,10 +247,10 @@ public class GameActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        if(isOst) {
+        if (isOst) {
             ost.start();
         }
-        if(isOstStop&&!isOst){
+        if (isOstStop && !isOst) {
             if (isOstWood) {
                 startService(new Intent(this, OstWood.class));
             } else if (isOstCave) {
@@ -254,7 +261,7 @@ public class GameActivity extends AppCompatActivity {
         }
     }
 
-    public void getSave (float level) {
+    public void getSave(float level) {
         SharedPreferences.Editor editor = save.edit();
         editor.putFloat(APP_SAVE_LEVEL, level);
         editor.apply();
@@ -264,5 +271,23 @@ public class GameActivity extends AppCompatActivity {
         isExitScene = true;
         startActivity(intent);
         overridePendingTransition(R.anim.first_activity_animation, R.anim.second_activity_animation);
+    }
+
+    public void startAnimation(final ArrayList<View> list) {
+        new CountDownTimer(500, 500) {
+            public void onTick(long millisUntilFinished) {
+            }
+
+            public void onFinish() {
+                for (View e : list) {
+                    e.startAnimation(animationStart);
+                    e.setVisibility(View.VISIBLE);
+                }
+            }
+        }.start();
+    }
+
+    public void refreshScroll(TextView view) {
+        view.setText("test");
     }
 }

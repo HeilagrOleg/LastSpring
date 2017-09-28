@@ -77,6 +77,8 @@ public class HuntingLodgeCutScene extends GameActivity {
             textHuntingLodgeHunterStart.setText(getString(R.string.hunting_Lodge_cut_scene_text_start_no_sleeping_bug));
         }
 
+        textHuntingLodgeHunterStart.setTextSize(sizeFonts);
+
         inAnimation = AnimationUtils.loadAnimation(this, R.anim.cut_scene_prologue_text_in_animation);
         outAnimation = AnimationUtils.loadAnimation(this, R.anim.cut_scene_prologue_text_out_animation);
 
@@ -177,7 +179,7 @@ public class HuntingLodgeCutScene extends GameActivity {
                 case 5:
                     textHuntingLodgeHunterStart.startAnimation(outAnimation);
                     isNext = true;
-                    new CountDownTimer(1000, 1000) {
+                    new CountDownTimer(300, 300) {
                         public void onTick(long millisUntilFinished) {
                         }
                         public void onFinish() {

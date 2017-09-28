@@ -6,14 +6,19 @@ import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.constraint.ConstraintLayout;
 import android.view.View;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 
 import com.example.last_spring.gameprealpha.res.GameActivity;
 import com.last_spring.gameprealpha.OstDisturbance;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 
 public class HuntingLodgeHunter extends GameActivity {
@@ -31,6 +36,8 @@ public class HuntingLodgeHunter extends GameActivity {
     private ConstraintLayout constraintLayoutDialogHuntingLodge;
 
     private TextView textPrologueHunterStart;
+
+    private RadioGroup radioGroupPrologueHunterDialog;
 
     private  Resources res;
 
@@ -66,10 +73,20 @@ public class HuntingLodgeHunter extends GameActivity {
         res = getResources();
 
         firstLine = (RadioButton) findViewById(R.id.buttonPrologueHunterFirstLineID);
+        firstLine.setTextSize(sizeFonts);
         secondLine = (RadioButton) findViewById(R.id.buttonPrologueHunterSecondLineID);
+        secondLine.setTextSize(sizeFonts);
+        secondLine.setVisibility(View.GONE);
         thirdLine = (RadioButton) findViewById(R.id.buttonPrologueHunterThirdLineID);
+        thirdLine.setTextSize(sizeFonts);
+        thirdLine.setVisibility(View.GONE);
+
+        radioGroupPrologueHunterDialog = (RadioGroup) findViewById(R.id.radioGroupPrologueHunterDialogID);
+        radioGroupPrologueHunterDialog.setVisibility(View.GONE);
 
         textPrologueHunterStart = (TextView) findViewById(R.id.textPrologueHunterStartID);
+        textPrologueHunterStart.setTextSize(sizeFonts);
+        textPrologueHunterStart.setVisibility(View.GONE);
 
         if (isKnifeBedside) {
             textPrologueHunterStart.setText(R.string.hunting_lodge_hunter_text_start);
@@ -84,6 +101,14 @@ public class HuntingLodgeHunter extends GameActivity {
 
         strings = res.getStringArray(R.array.dialog_hunter_1);
         nameParagraph = "dialog_hunter_1";
+
+        new CountDownTimer(1000, 1000) {
+            public void onTick(long millisUntilFinished) {
+            }
+            public void onFinish() {
+                startAnimation(new ArrayList<View>(Arrays.asList(radioGroupPrologueHunterDialog, textPrologueHunterStart)));
+            }
+        }.start();
     }
 
 
@@ -98,7 +123,7 @@ public class HuntingLodgeHunter extends GameActivity {
         } else if (isFirstLine) {
                 strings = getStrings(1);
                 getParagraph(strings);
-                firstLine.setBackgroundColor(Color.parseColor("#60ffffff"));
+                firstLine.setBackgroundColor(Color.parseColor("#70303030"));
                 if (secondLine.getText().length() > 2) {
                     secondLine.setVisibility(View.VISIBLE);
                 } else {
@@ -120,8 +145,8 @@ public class HuntingLodgeHunter extends GameActivity {
                 isFirstLine = false;
             } else {
                 firstLine.setBackgroundColor(Color.parseColor("#607e9e7f"));
-                secondLine.setBackgroundColor(Color.parseColor("#60ffffff"));
-                thirdLine.setBackgroundColor(Color.parseColor("#60ffffff"));
+                secondLine.setBackgroundColor(Color.parseColor("#70303030"));
+                thirdLine.setBackgroundColor(Color.parseColor("#70303030"));
                 isFirstLine = true;
                 isSecondLine = false;
                 isThirdLine = false;
@@ -133,7 +158,7 @@ public class HuntingLodgeHunter extends GameActivity {
         if (isSecondLine) {
             strings = getStrings(2);
             getParagraph(strings);
-            secondLine.setBackgroundColor(Color.parseColor("#60ffffff"));
+            secondLine.setBackgroundColor(Color.parseColor("#70303030"));
             if (secondLine.getText().length() > 2) {
                 secondLine.setVisibility(View.VISIBLE);
             } else {
@@ -154,9 +179,9 @@ public class HuntingLodgeHunter extends GameActivity {
 
             isSecondLine = false;
         } else {
-            firstLine.setBackgroundColor(Color.parseColor("#60ffffff"));
+            firstLine.setBackgroundColor(Color.parseColor("#70303030"));
             secondLine.setBackgroundColor(Color.parseColor("#607e9e7f"));
-            thirdLine.setBackgroundColor(Color.parseColor("#60ffffff"));
+            thirdLine.setBackgroundColor(Color.parseColor("#70303030"));
             isFirstLine = false;
             isSecondLine = true;
             isThirdLine = false;
@@ -167,7 +192,7 @@ public class HuntingLodgeHunter extends GameActivity {
         if (isThirdLine) {
             strings = getStrings(3);
             getParagraph(strings);
-            thirdLine.setBackgroundColor(Color.parseColor("#60ffffff"));
+            thirdLine.setBackgroundColor(Color.parseColor("#70303030"));
             if (secondLine.getText().length() > 2) {
                 secondLine.setVisibility(View.VISIBLE);
             } else {
@@ -187,8 +212,8 @@ public class HuntingLodgeHunter extends GameActivity {
             }
             isThirdLine = false;
         } else {
-            firstLine.setBackgroundColor(Color.parseColor("#60ffffff"));
-            secondLine.setBackgroundColor(Color.parseColor("#60ffffff"));
+            firstLine.setBackgroundColor(Color.parseColor("#70303030"));
+            secondLine.setBackgroundColor(Color.parseColor("#70303030"));
             thirdLine.setBackgroundColor(Color.parseColor("#607e9e7f"));
             isFirstLine = false;
             isSecondLine = false;

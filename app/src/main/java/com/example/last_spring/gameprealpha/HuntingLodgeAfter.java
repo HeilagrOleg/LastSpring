@@ -6,10 +6,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.example.last_spring.gameprealpha.res.GameActivity;
 import com.last_spring.gameprealpha.OstWood;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class HuntingLodgeAfter extends GameActivity {
 
@@ -17,6 +22,10 @@ public class HuntingLodgeAfter extends GameActivity {
     private RadioButton buttonHunterLodgeAfterSecond;
 
     private TextView textHunterLodgeAfter;
+
+    private RadioGroup radioGroupPrologueRain;
+
+    private ScrollView scrollPrologueHunterAfter;
 
     private boolean isFirst;
     private boolean isSecond;
@@ -33,7 +42,19 @@ public class HuntingLodgeAfter extends GameActivity {
         isOstWood = true;
 
         buttonHunterLodgeAfterFirst = (RadioButton) findViewById(R.id.buttonHunterLodgeAfterFirstID);
+        buttonHunterLodgeAfterFirst.setTextSize(sizeFonts);
         buttonHunterLodgeAfterSecond = (RadioButton) findViewById(R.id.buttonHunterLodgeAfterSecondID);
+        buttonHunterLodgeAfterSecond.setTextSize(sizeFonts);
+
+        textHunterLodgeAfter = (TextView) findViewById(R.id.textHunterLodgeAfterID);
+        textHunterLodgeAfter.setTextSize(sizeFonts);
+
+        radioGroupPrologueRain = (RadioGroup) findViewById(R.id.radioGroupHunterLodgeAfteID);
+
+        scrollPrologueHunterAfter = (ScrollView) findViewById(R.id.scrollPrologueHunterAfterID);
+
+        startAnimation(new ArrayList<View>(Arrays.asList(radioGroupPrologueRain, scrollPrologueHunterAfter)));
+
     }
 
 

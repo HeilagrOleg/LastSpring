@@ -9,9 +9,13 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.example.last_spring.gameprealpha.res.GameActivity;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class PrologueOldStory extends GameActivity {
 
@@ -27,6 +31,9 @@ public class PrologueOldStory extends GameActivity {
     private RadioButton buttonPrologueOldStorySecond;
     private RadioButton buttonPrologueOldStoryThird;
     private RadioButton buttonPrologueOldStoryFour;
+
+    private ScrollView scrollPrologueOldStory;
+    private ScrollView scrollPrologueOldStoryStart;
 
     private ImageView imagePrologueOldStory;
 
@@ -58,18 +65,29 @@ public class PrologueOldStory extends GameActivity {
 
         radioGroupPrologueOldStory = (RadioGroup) findViewById(R.id.radioGroupPrologueOldStoryID);
         buttonPrologueOldStoryFirst = (RadioButton) findViewById(R.id.buttonPrologueOldStoryFirstID);
+        buttonPrologueOldStoryFirst.setTextSize(sizeFonts);
         buttonPrologueOldStorySecond = (RadioButton) findViewById(R.id.buttonPrologueOldStorySecondID);
+        buttonPrologueOldStorySecond.setTextSize(sizeFonts);
         buttonPrologueOldStoryThird = (RadioButton) findViewById(R.id.buttonPrologueOldStoryThirdID);
+        buttonPrologueOldStoryThird.setTextSize(sizeFonts);
         buttonPrologueOldStoryFour = (RadioButton) findViewById(R.id.buttonPrologueOldStoryFourID);
+        buttonPrologueOldStoryFour.setTextSize(sizeFonts);
+
+        scrollPrologueOldStory = (ScrollView) findViewById(R.id.scrollPrologueOldStoryID);
+        scrollPrologueOldStoryStart = (ScrollView) findViewById(R.id.scrollPrologueOldStoryStartID);
 
         textPrologueOldStoryStart = (TextView) findViewById(R.id.textPrologueOldStoryStartID);
+        textPrologueOldStoryStart.setTextSize(sizeFonts);
         textPrologueOldStory = (TextView) findViewById(R.id.textPrologueOldStoryID);
+        textPrologueOldStory.setTextSize(sizeFonts);
 
         imagePrologueOldStory = (ImageView) findViewById(R.id.imagePrologueOldStoryID);
         imagePrologueOldStory.setVisibility(View.GONE);
 
         hunterCount = 0;
         isStart = true;
+
+        startAnimation(new ArrayList<View>(Arrays.asList(scrollPrologueOldStory,scrollPrologueOldStoryStart,radioGroupPrologueOldStory)));
     }
 
     public void onPrologueOldStoryFirst(View view) {

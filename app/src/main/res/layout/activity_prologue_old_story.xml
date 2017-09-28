@@ -7,142 +7,162 @@
     android:background="@color/hockeyapp_background_header"
     tools:context=".PrologueOldStory">
 
-    <TextView
-        android:id="@+id/textPrologueOldStoryID"
-        android:layout_width="325dp"
-        android:layout_height="356dp"
-        android:layout_weight="1"
-        android:lineSpacingExtra="0sp"
-        android:lineSpacingMultiplier="0.8"
-        android:text="@string/prologue_old_story_text"
-        android:textColor="#303030"
-        android:textSize="16sp"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.017"
-        tools:text="Основной екст" />
-
-    <ImageView
-        android:id="@+id/imagePrologueOldStoryID"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.73"
-        app:srcCompat="@drawable/huns_camp" />
-
-    <RadioGroup
-        android:id="@+id/radioGroupPrologueOldStoryID"
-        android:layout_width="342dp"
-        android:layout_height="133dp"
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="40dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
         android:orientation="vertical"
-        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintTop_toTopOf="parent">
 
-        <RadioButton
-            android:id="@+id/buttonPrologueOldStoryFirstID"
+        <RadioGroup
+            android:id="@+id/radioGroupPrologueOldStoryID"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:background="#60ffffff"
-            android:button="@drawable/radio_button_selector"
-            android:onClick="onPrologueOldStoryFirst"
-            android:text="@string/prologue_old_story_button_start"
-            android:textColor="#303030"
-            android:textSize="16sp"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="387dp" />
-
-        <RadioButton
-            android:id="@+id/buttonPrologueOldStorySecondID"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:background="#60ffffff"
-            android:button="@drawable/radio_button_selector"
-            android:onClick="onPrologueOldStorySecond"
-            android:text="@string/prologue_cave_move_left_way"
-            android:textColor="#303030"
-            android:textSize="16sp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="419dp" />
-
-        <RadioButton
-            android:id="@+id/buttonPrologueOldStoryThirdID"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:background="#60ffffff"
-            android:button="@drawable/radio_button_selector"
-            android:onClick="onPrologueOldStoryThird"
-            android:text="@string/prologue_old_story_button_start"
-            android:textColor="#303030"
-            android:textSize="16sp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:orientation="vertical"
             android:visibility="gone"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="387dp" />
+            tools:visibility="visible">
 
-        <RadioButton
-            android:id="@+id/buttonPrologueOldStoryFourID"
+
+            <RadioButton
+                android:id="@+id/buttonPrologueOldStoryFirstID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="#60ffffff"
+                android:button="@drawable/radio_button_selector"
+                android:onClick="onPrologueOldStoryFirst"
+                android:text="@string/prologue_old_story_button_start"
+                android:textColor="#303030"
+                android:textSize="16sp"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="387dp" />
+
+            <RadioButton
+                android:id="@+id/buttonPrologueOldStorySecondID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="#60ffffff"
+                android:button="@drawable/radio_button_selector"
+                android:onClick="onPrologueOldStorySecond"
+                android:text="@string/prologue_cave_move_left_way"
+                android:textColor="#303030"
+                android:textSize="16sp"
+                android:visibility="invisible"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="419dp" />
+
+            <RadioButton
+                android:id="@+id/buttonPrologueOldStoryThirdID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="#60ffffff"
+                android:button="@drawable/radio_button_selector"
+                android:onClick="onPrologueOldStoryThird"
+                android:text="@string/prologue_old_story_button_start"
+                android:textColor="#303030"
+                android:textSize="16sp"
+                android:visibility="gone"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="387dp" />
+
+            <RadioButton
+                android:id="@+id/buttonPrologueOldStoryFourID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="#60ffffff"
+                android:button="@drawable/radio_button_selector"
+                android:onClick="onPrologueOldStoryFour"
+                android:text="@string/prologue_cave_inspect"
+                android:textColor="#303030"
+                android:textSize="16sp"
+                android:visibility="invisible"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="419dp" />
+
+        </RadioGroup>
+
+        <ScrollView
+            android:id="@+id/scrollPrologueOldStoryID"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:background="#60ffffff"
-            android:button="@drawable/radio_button_selector"
-            android:onClick="onPrologueOldStoryFour"
-            android:text="@string/prologue_cave_inspect"
-            android:textColor="#303030"
-            android:textSize="16sp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="419dp" />
-    </RadioGroup>
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="40dp"
+            android:layout_above="@+id/imagePrologueOldStoryID"
+            android:background="#70ffffff"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone"
+            tools:visibility="visible">
 
-    <ScrollView
-        android:layout_width="377dp"
-        android:layout_height="448dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.066">
+            <TextView
+                android:id="@+id/textPrologueOldStoryID"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:lineSpacingExtra="3sp"
+                android:lineSpacingMultiplier="0.8"
+                android:orientation="vertical"
+                android:text="@string/prologue_old_story_text"
+                android:textColor="#303030"
+                android:textSize="18sp"
+                android:visibility="gone" />
 
-        <LinearLayout
+
+        </ScrollView>
+
+
+        <ScrollView
+            android:id="@+id/scrollPrologueOldStoryStartID"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="40dp"
+            android:layout_above="@+id/radioGroupPrologueOldStoryID"
+            android:background="#70ffffff"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone"
+            tools:visibility="visible">
 
             <TextView
                 android:id="@+id/textPrologueOldStoryStartID"
-                android:layout_width="342dp"
-                android:layout_height="500dp"
-                android:layout_weight="1"
-                android:lineSpacingExtra="0sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:lineSpacingExtra="3sp"
                 android:lineSpacingMultiplier="0.8"
+                android:orientation="vertical"
                 android:text="@string/prologue_old_story_text_start"
                 android:textColor="#303030"
-                android:textSize="16sp"
-                android:visibility="visible"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintHorizontal_bias="0.492"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.017"
-                tools:text="Основной екст" />
-        </LinearLayout>
-    </ScrollView>
+                android:textSize="18sp"
+                android:visibility="visible" />
+
+
+        </ScrollView>
+
+
+        <ImageView
+            android:id="@+id/imagePrologueOldStoryID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/radioGroupPrologueOldStoryID"
+            android:layout_centerInParent="true"
+            app:srcCompat="@drawable/huns_camp" />
+
+    </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>

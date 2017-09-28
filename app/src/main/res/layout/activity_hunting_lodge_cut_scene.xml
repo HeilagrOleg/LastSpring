@@ -7,49 +7,83 @@
     android:background="@color/hockeyapp_text_black"
     tools:context="com.example.last_spring.gameprealpha.HuntingLodgeCutScene">
 
-    <ImageView
-        android:id="@+id/imageAnimationBackID"
-        android:layout_width="342dp"
-        android:layout_height="261dp"
-        android:layout_marginTop="58dp"
-        app:layout_constraintHorizontal_bias="0.492"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/prologue_cut_scene_animation_backpack_1" />
-
-    <ImageView
-        android:id="@+id/imageAnimationID"
-        android:layout_width="342dp"
-        android:layout_height="261dp"
-        android:layout_marginTop="58dp"
-        app:layout_constraintHorizontal_bias="0.492"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/prologue_cut_scene_animation_2" />
-
-    <TextView
-        android:id="@+id/textHuntingLodgeHunterStartID"
-        android:layout_width="347dp"
-        android:layout_height="239dp"
-        android:lineSpacingMultiplier="0.8"
-        android:onClick="onTextHuntingLodgeSceneNext"
-        android:text="Я лег поверх одного спальника, а вторым накрылся. Советский спальник из шкафа был хоть и не в лучшем состоянии, но его хватало, чтобы укрыться как одеялом. Чувство невероятного комфорта нахлынуло на меня. Наконец-то можно немного отдохнуть."
-        android:textColor="@android:color/background_light"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.84" />
-
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
         android:onClick="onClick"
         android:text="Пропустить"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="-2dp" />
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="40dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <FrameLayout
+            android:id="@+id/linearLayoutHuntingLodgeCutSceneID"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_centerInParent="true"
+            android:paddingBottom="35dp"
+            android:gravity="center"
+            android:visibility="visible"
+            tools:visibility="visible">
+
+            <ImageView
+                android:id="@+id/imageAnimationBackID"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="58dp"
+                app:layout_constraintHorizontal_bias="0.492"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/prologue_cut_scene_animation_backpack_1" />
+
+            <ImageView
+                android:id="@+id/imageAnimationID"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="58dp"
+                app:layout_constraintHorizontal_bias="0.492"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/prologue_cut_scene_animation_2" />
+
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/textHuntingLodgeHunterStartID"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/linearLayoutHuntingLodgeCutSceneID"
+            android:layout_centerInParent="true"
+            android:lineSpacingExtra="3sp"
+            android:lineSpacingMultiplier="0.8"
+            android:onClick="onTextHuntingLodgeSceneNext"
+            android:text="Я лег поверх одного спальника, а вторым накрылся. Советский спальник из шкафа был хоть и не в лучшем состоянии, но его хватало, чтобы укрыться как одеялом. Чувство невероятного комфорта нахлынуло на меня. Наконец-то можно немного отдохнуть."
+            android:textColor="@android:color/background_light"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.84" />
+
+    </RelativeLayout>
+
 </android.support.constraint.ConstraintLayout>

@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
     private Button buttonExitMain;
     private MediaPlayer ostMain;
 
+
     private boolean isOstStop;
 
     @Override
@@ -66,7 +67,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        TypefaceUtil.overrideFont(getApplicationContext(), "SERIF", "fonts/circe.otf");
+
+        //TypefaceUtil.overrideFont(getApplicationContext(), "SERIF", "fonts/circe.otf");
         buttonStartMain = (Button) findViewById(R.id.buttonStartMainID);
         buttonСontinueMain = (Button) findViewById(R.id.buttonСontinueMainID);
         buttonExitMain = (Button) findViewById(R.id.buttonExitMainID);
@@ -231,5 +233,10 @@ public class MainActivity extends AppCompatActivity {
         ostMain.stop();
         startActivity(new Intent(this, PrologueBackpackHunter.class));
         finish();
+    }
+
+    public void onSettingsMain(View view) {
+        startActivity(new Intent(this,MainSettings.class));
+
     }
 }

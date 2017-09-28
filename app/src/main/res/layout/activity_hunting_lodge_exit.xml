@@ -4,65 +4,93 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/hockeyapp_background_header"
+    android:background="@drawable/prologue_huntinh_lodge_inside_first_background"
     tools:context="com.example.last_spring.gameprealpha.HuntingLodgeExit">
 
-    <RadioGroup
-        android:id="@+id/radioGroupPrologueHunterDialogD"
-        android:layout_width="347dp"
-        android:layout_height="107dp"
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="40dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
         android:orientation="vertical"
-        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.942"
-        tools:layout_editor_absoluteY="517dp">
+        app:layout_constraintTop_toTopOf="parent">
 
-        <RadioButton
-            android:id="@+id/buttonPrologueHunterExitFirstID"
+        <RadioGroup
+            android:id="@+id/radioGroupPrologueHunterDialogID"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:background="#60ffffff"
-            android:button="@drawable/radio_button_selector"
-            android:onClick="onPrologueHunterExitFirst"
-            android:text="@string/hunting_lodge_hunter_button_start"
-            android:textColor="#303030"
-            android:textSize="16sp"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="387dp" />
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone"
+            tools:visibility="visible">
 
-        <RadioButton
-            android:id="@+id/buttonPrologueHunterExitSecondID"
+            <RadioButton
+                android:id="@+id/buttonPrologueHunterExitFirstID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="#80ffffff"
+                android:button="@drawable/radio_button_selector"
+                android:onClick="onPrologueHunterExitFirst"
+                android:text="@string/hunting_lodge_hunter_button_start"
+                android:textColor="#303030"
+                android:textSize="16sp"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="387dp" />
+
+            <RadioButton
+                android:id="@+id/buttonPrologueHunterExitSecondID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="#80ffffff"
+                android:button="@drawable/radio_button_selector"
+                android:onClick="onPrologueHunterExitSecond"
+                android:text="@string/hunting_lodge_hunter_button_start"
+                android:textColor="#303030"
+                android:textSize="16sp"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="387dp" />
+
+        </RadioGroup>
+
+        <ScrollView
+            android:id="@+id/scrollPrologueHunterExitID"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:background="#60ffffff"
-            android:button="@drawable/radio_button_selector"
-            android:onClick="onPrologueHunterExitSecond"
-            android:text="@string/hunting_lodge_hunter_button_start"
-            android:textColor="#303030"
-            android:textSize="16sp"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="387dp" />
+            android:layout_height="match_parent"
+            android:layout_above="@+id/radioGroupPrologueHunterDialogID"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="40dp"
+            android:background="#80ffffff"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone"
+            tools:visibility="visible">
 
-    </RadioGroup>
+            <TextView
+                android:id="@+id/textPrologueHunterExitID"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:lineSpacingExtra="3sp"
+                android:lineSpacingMultiplier="0.8"
+                android:orientation="vertical"
+                android:text="@string/hunting_lodge_hunter_text_start"
+                android:textColor="#303030"
+                android:textSize="18sp"
+                android:visibility="visible" />
 
-    <TextView
-        android:id="@+id/textPrologueHunterExitID"
-        android:layout_width="378dp"
-        android:layout_height="499dp"
-        android:lineSpacingExtra="0sp"
-        android:lineSpacingMultiplier="0.8"
-        android:text="@string/hunting_lodge_hunter_text_start"
-        android:textColor="#303030"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.515"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.056" />
+        </ScrollView>
+
+    </RelativeLayout>
+
 </android.support.constraint.ConstraintLayout>

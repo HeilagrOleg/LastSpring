@@ -7,106 +7,128 @@
     android:background="@drawable/prologue_breakage_background"
     tools:context=".PrologueBeforeBreakage">
 
-    <ScrollView
-        android:layout_width="377dp"
-        android:layout_height="448dp"
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="40dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.075">
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
+            android:id="@+id/linearLayoutBeforeBreakageID"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:orientation="vertical"
+            android:visibility="gone">
 
-            <TextView
-                android:id="@+id/textBeforeBreakageID"
-                android:layout_width="346dp"
-                android:layout_height="match_parent"
-                android:background="#50ffffff"
-                android:lineSpacingExtra="0sp"
-                android:lineSpacingMultiplier="0.8"
-                android:text="@string/prologue_cave_text_start"
+            <CheckBox
+                android:id="@+id/checkBoxBeforeBreakageID"
+                android:layout_width="match_parent"
+                android:layout_height="37dp"
+                android:text="@string/prologue_before_breakage_button_food"
                 android:textColor="#303030"
-                android:textSize="18sp"
                 android:visibility="visible"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintHorizontal_bias="0.492"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintVertical_bias="0.818" />
+
+            <RadioGroup
+                android:id="@+id/radioGroupBeforeBreakageID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="visible"
+                tools:visibility="visible">
+
+                <RadioButton
+                    android:id="@+id/buttonBeforeBreakageFirstID"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:background="#60ffffff"
+                    android:button="@drawable/radio_button_selector"
+                    android:onClick="onBeforeBreakageFirst"
+                    android:text="@string/prologue_before_breakage_button_breakage"
+                    android:textColor="#303030"
+                    android:textSize="16sp"
+                    tools:layout_editor_absoluteX="16dp"
+                    tools:layout_editor_absoluteY="387dp" />
+
+                <RadioButton
+                    android:id="@+id/buttonBeforeBreakageSecondID"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:background="#60ffffff"
+                    android:button="@drawable/radio_button_selector"
+                    android:onClick="onBeforeBreakageSecond"
+                    android:text="@string/prologue_before_breakage_button_bypass"
+                    android:textColor="#303030"
+                    android:textSize="16sp"
+                    tools:layout_editor_absoluteX="16dp"
+                    tools:layout_editor_absoluteY="419dp" />
+
+                <RadioButton
+                    android:id="@+id/buttonBeforeBreakageThirdID"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:background="#60ffffff"
+                    android:button="@drawable/radio_button_selector"
+                    android:onClick="onBeforeBreakageThird"
+                    android:text="@string/prologue_before_breakage_button_breakage_start"
+                    android:textColor="#303030"
+                    android:textSize="16sp"
+                    tools:layout_editor_absoluteX="16dp"
+                    tools:layout_editor_absoluteY="419dp" />
+
+            </RadioGroup>
         </LinearLayout>
-    </ScrollView>
 
-    <CheckBox
-        android:id="@+id/checkBoxBeforeBreakageID"
-        android:layout_width="342dp"
-        android:layout_height="37dp"
-        android:text="@string/prologue_before_breakage_button_food"
-        android:textColor="#303030"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.818" />
-
-    <RadioGroup
-        android:id="@+id/radioGroupBeforeBreakageID"
-        android:layout_width="342dp"
-        android:layout_height="96dp"
-        android:orientation="vertical"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.971">
-
-        <RadioButton
-            android:id="@+id/buttonBeforeBreakageFirstID"
+        <ScrollView
+            android:id="@+id/scrollBeforeBreakageID"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:background="#60ffffff"
-            android:button="@drawable/radio_button_selector"
-            android:onClick="onBeforeBreakageFirst"
-            android:text="@string/prologue_before_breakage_button_breakage"
-            android:textColor="#303030"
-            android:textSize="16sp"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="387dp" />
+            android:layout_height="match_parent"
+            android:layout_above="@+id/linearLayoutBeforeBreakageID"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="40dp"
+            android:background="#70ffffff"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone"
+            tools:visibility="visible">
 
-        <RadioButton
-            android:id="@+id/buttonBeforeBreakageSecondID"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:background="#60ffffff"
-            android:button="@drawable/radio_button_selector"
-            android:onClick="onBeforeBreakageSecond"
-            android:text="@string/prologue_before_breakage_button_bypass"
-            android:textColor="#303030"
-            android:textSize="16sp"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="419dp" />
+            <TextView
+                android:id="@+id/textBeforeBreakageID"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:lineSpacingExtra="3sp"
+                android:lineSpacingMultiplier="0.8"
+                android:orientation="vertical"
+                android:text="@string/prologue_cave_text_start"
+                android:textColor="#303030"
+                android:textSize="18sp"
+                android:visibility="visible" />
 
-        <RadioButton
-            android:id="@+id/buttonBeforeBreakageThirdID"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:background="#60ffffff"
-            android:button="@drawable/radio_button_selector"
-            android:onClick="onBeforeBreakageThird"
-            android:text="@string/prologue_before_breakage_button_breakage_start"
-            android:textColor="#303030"
-            android:textSize="16sp"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="419dp" />
-    </RadioGroup>
+        </ScrollView>
+
+    </RelativeLayout>
+
 </android.support.constraint.ConstraintLayout>

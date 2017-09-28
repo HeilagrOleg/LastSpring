@@ -7,11 +7,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.example.last_spring.gameprealpha.res.Fortune;
 import com.example.last_spring.gameprealpha.res.GameActivity;
 import com.last_spring.gameprealpha.OstWood;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class AbandonedCar extends GameActivity {
 
@@ -19,11 +24,15 @@ public class AbandonedCar extends GameActivity {
 
     private float level;
 
+    private RadioGroup radioGroupAbandonedCar;
+
     private RadioButton buttonAbandonedCarFirst;
     private RadioButton buttonAbandonedCarSecond;
     private RadioButton buttonAbandonedCarThird;
 
     private TextView textAbandonedCarStart;
+
+    private ScrollView scrollAbandonedCar;
 
     private boolean isFirstButton;
     private boolean isSecondButton;
@@ -48,11 +57,22 @@ public class AbandonedCar extends GameActivity {
         editor.putFloat(APP_SAVE_LEVEL, level);
         editor.apply();
 
+        radioGroupAbandonedCar = (RadioGroup) findViewById(R.id.radioGroupAbandonedCarID);
+
         buttonAbandonedCarFirst = (RadioButton) findViewById(R.id.buttonAbandonedCarFirstID);
+        buttonAbandonedCarFirst.setTextSize(sizeFonts);
         buttonAbandonedCarSecond = (RadioButton) findViewById(R.id.buttonAbandonedCarSecondID);
+        buttonAbandonedCarSecond.setTextSize(sizeFonts);
         buttonAbandonedCarThird = (RadioButton) findViewById(R.id.buttonAbandonedCarThirdID);
+        buttonAbandonedCarThird.setTextSize(sizeFonts);
 
         textAbandonedCarStart = (TextView) findViewById(R.id.textAbandonedCarStartID);
+        textAbandonedCarStart.setTextSize(sizeFonts);
+
+        scrollAbandonedCar = (ScrollView) findViewById(R.id.scrollAbandonedCarID);
+
+        startAnimation(new ArrayList<View>(Arrays.asList(radioGroupAbandonedCar,scrollAbandonedCar)));
+
         startService(new Intent(this, OstWood.class));
         isOstWood = true;
 

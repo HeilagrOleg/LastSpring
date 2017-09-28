@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -14,6 +15,9 @@ import com.example.last_spring.gameprealpha.res.Fortune;
 import com.example.last_spring.gameprealpha.res.GameActivity;
 import com.last_spring.gameprealpha.OstCave;
 import com.last_spring.gameprealpha.OstWood;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class PrologueCave extends GameActivity {
 
@@ -43,6 +47,8 @@ public class PrologueCave extends GameActivity {
     private TextView textPrologueCaveLeft;
 
     private Toast toast;
+
+    private ScrollView scrollPrologueCave;
 
     private boolean isInspect;
     private boolean isLeft;
@@ -78,11 +84,19 @@ public class PrologueCave extends GameActivity {
 
         level = 2.13f;
 
+        radioGroupPrologueCaveStart = (RadioGroup) findViewById(R.id.radioGroupPrologueCaveStartID);
+
         buttonPrologueCaveInspect = (RadioButton) findViewById(R.id.buttonPrologueCaveInspectID);
+        buttonPrologueCaveInspect.setTextSize(sizeFonts);
         buttonPrologueCaveLeftWay = (RadioButton) findViewById(R.id.buttonPrologueCaveLeftWayID);
+        buttonPrologueCaveLeftWay.setTextSize(sizeFonts);
         buttonPrologueCaveRightWay = (RadioButton) findViewById(R.id.buttonPrologueCaveRightWayID);
+        buttonPrologueCaveRightWay.setTextSize(sizeFonts);
+
+        scrollPrologueCave = (ScrollView) findViewById(R.id.scrollPrologueCaveID);
 
         textPrologueCaveStart = (TextView) findViewById(R.id.textPrologueCaveStartID);
+        textPrologueCaveStart.setTextSize(sizeFonts);
 
         save = getSharedPreferences(APP_SAVE, MODE_PRIVATE);
         SharedPreferences.Editor editor = save.edit();
@@ -100,6 +114,8 @@ public class PrologueCave extends GameActivity {
         if(save.getBoolean(APP_SAVE_POOL, false)) {
             buttonPrologueCaveLeftWay.setVisibility(View.GONE);
         }
+
+        startAnimation(new ArrayList<View>(Arrays.asList(scrollPrologueCave, radioGroupPrologueCaveStart)));
 
 
     }

@@ -7,11 +7,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.example.last_spring.gameprealpha.res.GameActivity;
 import com.last_spring.gameprealpha.OstWood;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class PrologueBeforeBreakage extends GameActivity {
 
@@ -19,12 +24,15 @@ public class PrologueBeforeBreakage extends GameActivity {
     public static final String APP_SAVE_RAIN = "Rain";
     public static final String APP_SAVE_BREAKAGE_FOOD = "Breakage food";
 
+    private LinearLayout linearLayoutBeforeBreakage;
 
     private RadioButton buttonBeforeBreakageFirst;
     private RadioButton buttonBeforeBreakageSecond;
     private RadioButton buttonBeforeBreakageThird;
 
     private CheckBox checkBoxBeforeBreakage;
+
+    private ScrollView scrollBeforeBreakage;
 
     private TextView textBeforeBreakage;
 
@@ -64,14 +72,22 @@ public class PrologueBeforeBreakage extends GameActivity {
 
         isBreakageFood = false;
 
+        linearLayoutBeforeBreakage = (LinearLayout) findViewById(R.id.linearLayoutBeforeBreakageID);
+
+        scrollBeforeBreakage = (ScrollView) findViewById(R.id. scrollBeforeBreakageID);
+
         buttonBeforeBreakageFirst = (RadioButton) findViewById(R.id.buttonBeforeBreakageFirstID);
+        buttonBeforeBreakageFirst.setTextSize(sizeFonts);
         buttonBeforeBreakageSecond = (RadioButton) findViewById(R.id.buttonBeforeBreakageSecondID);
+        buttonBeforeBreakageSecond.setTextSize(sizeFonts);
         buttonBeforeBreakageThird = (RadioButton) findViewById(R.id.buttonBeforeBreakageThirdID);
+        buttonBeforeBreakageThird.setTextSize(sizeFonts);
         buttonBeforeBreakageThird.setVisibility(View.GONE);
 
         checkBoxBeforeBreakage = (CheckBox) findViewById(R.id.checkBoxBeforeBreakageID);
 
         textBeforeBreakage = (TextView) findViewById(R.id.textBeforeBreakageID);
+        textBeforeBreakage.setTextSize(sizeFonts);
 
         if (wound > 0) {
             strWound = getString(R.string.prologue_before_breakage_text_wound);
@@ -110,6 +126,9 @@ public class PrologueBeforeBreakage extends GameActivity {
                 strWay,
                 strFood,
                 strFinal));
+
+        startAnimation(new ArrayList<View>(Arrays.asList(linearLayoutBeforeBreakage, scrollBeforeBreakage)));
+
     }
 
     public void onBeforeBreakageFirst(View view) {

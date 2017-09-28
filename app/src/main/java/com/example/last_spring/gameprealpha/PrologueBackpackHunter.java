@@ -10,10 +10,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.example.last_spring.gameprealpha.res.GameActivity;
 import com.last_spring.gameprealpha.OstDisturbance;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class PrologueBackpackHunter extends GameActivity {
 
@@ -24,9 +29,12 @@ private ConstraintLayout  constraintLayoutDialogBackpack;
     private String nameParagraph;
     private String[] strings;
 
+    private RadioGroup radioGroupPrologueBackpackHunterDialog;
     private RadioButton firstLine;
     private RadioButton secondLine;
     private RadioButton thirdLine;
+
+    private ScrollView scrollPrologueBackpackHunterStart;
 
     private TextView textPrologueBackpackHunterStart;
     private TextView textPrologueBackpackHunterStartMain;
@@ -53,12 +61,20 @@ private ConstraintLayout  constraintLayoutDialogBackpack;
         startService(new Intent(this, OstDisturbance.class));
         isOstDisturbance = true;
 
+        radioGroupPrologueBackpackHunterDialog = (RadioGroup) findViewById(R.id.radioGroupPrologueBackpackHunterDialogID);
         firstLine = (RadioButton) findViewById(R.id.buttonPrologueBackpackHunterFirstLineID);
+        firstLine.setTextSize(sizeFonts);
         secondLine = (RadioButton) findViewById(R.id.buttonPrologueHunterSecondLineID);
+        secondLine.setTextSize(sizeFonts);
         thirdLine = (RadioButton) findViewById(R.id.buttonPrologueHunterThirdLineID);
+        thirdLine.setTextSize(sizeFonts);
+
+        scrollPrologueBackpackHunterStart = (ScrollView) findViewById(R.id.scrollPrologueBackpackHunterStartID);
 
         textPrologueBackpackHunterStart = (TextView) findViewById(R.id.textPrologueBackpackHunterStartID);
+        textPrologueBackpackHunterStart.setTextSize(sizeFonts);
         textPrologueBackpackHunterStartMain = (TextView) findViewById(R.id.textPrologueBackpackHunterStartMainID);
+        textPrologueBackpackHunterStartMain.setTextSize(sizeFonts);
 
         constraintLayoutDialogBackpack = (ConstraintLayout) findViewById(R.id.constraintLayoutDialogBackpackID);
 
@@ -76,18 +92,17 @@ private ConstraintLayout  constraintLayoutDialogBackpack;
             textPrologueBackpackHunterStart.setText(R.string.prologue_backpack_hunter_text_start_knife);
         }
 
+        startAnimation(new ArrayList<View>(Arrays.asList(radioGroupPrologueBackpackHunterDialog, scrollPrologueBackpackHunterStart)));
+
     }
 
     public void onPrologueBackpackHunterFirstLine(View view) {
-        if (isStart) {
-            isStart = false;
-            textPrologueBackpackHunterStartMain.setVisibility(View.GONE);
-            textPrologueBackpackHunterStart.setVisibility(View.VISIBLE);
-        }
         if (isFirstLine) {
+            scrollPrologueBackpackHunterStart.setVisibility(View.GONE);
+            textPrologueBackpackHunterStart.setVisibility(View.VISIBLE);
             strings = getStrings(1);
             getParagraph(strings);
-            firstLine.setBackgroundColor(Color.parseColor("#60ffffff"));
+            firstLine.setBackgroundColor(Color.parseColor("#60303030"));
             if (secondLine.getText().length() > 2) {
                 secondLine.setVisibility(View.VISIBLE);
             } else {
@@ -110,8 +125,8 @@ private ConstraintLayout  constraintLayoutDialogBackpack;
             isFirstLine = false;
         } else {
             firstLine.setBackgroundColor(Color.parseColor("#607e9e7f"));
-            secondLine.setBackgroundColor(Color.parseColor("#60ffffff"));
-            thirdLine.setBackgroundColor(Color.parseColor("#60ffffff"));
+            secondLine.setBackgroundColor(Color.parseColor("#60303030"));
+            thirdLine.setBackgroundColor(Color.parseColor("#60303030"));
             isFirstLine = true;
             isSecondLine = false;
             isThirdLine = false;
@@ -119,15 +134,12 @@ private ConstraintLayout  constraintLayoutDialogBackpack;
     }
 
     public void onPrologueBackpackHunterSecondLine(View view) {
-        if (isStart) {
-            isStart = false;
-            textPrologueBackpackHunterStartMain.setVisibility(View.GONE);
-            textPrologueBackpackHunterStart.setVisibility(View.VISIBLE);
-        }
         if (isSecondLine) {
+            scrollPrologueBackpackHunterStart.setVisibility(View.GONE);
+            textPrologueBackpackHunterStart.setVisibility(View.VISIBLE);
             strings = getStrings(2);
             getParagraph(strings);
-            secondLine.setBackgroundColor(Color.parseColor("#60ffffff"));
+            secondLine.setBackgroundColor(Color.parseColor("#60303030"));
             if (secondLine.getText().length() > 2) {
                 secondLine.setVisibility(View.VISIBLE);
             } else {
@@ -149,9 +161,9 @@ private ConstraintLayout  constraintLayoutDialogBackpack;
 
             isSecondLine = false;
         } else {
-            firstLine.setBackgroundColor(Color.parseColor("#60ffffff"));
+            firstLine.setBackgroundColor(Color.parseColor("#60303030"));
             secondLine.setBackgroundColor(Color.parseColor("#607e9e7f"));
-            thirdLine.setBackgroundColor(Color.parseColor("#60ffffff"));
+            thirdLine.setBackgroundColor(Color.parseColor("#60303030"));
             isFirstLine = false;
             isSecondLine = true;
             isThirdLine = false;
@@ -167,11 +179,13 @@ private ConstraintLayout  constraintLayoutDialogBackpack;
             firstLine.setVisibility(View.VISIBLE);
             secondLine.setVisibility(View.VISIBLE);
             textPrologueBackpackHunterStartMain.setText(R.string.prologue_backpack_hunter_text_start_next);
+            textPrologueBackpackHunterStartMain.setBackgroundColor(Color.parseColor("#60303030"));
+            textPrologueBackpackHunterStartMain.setTextColor(Color.parseColor("#FFFFFF"));
             isImage = true;
             constraintLayoutDialogBackpack.setBackground(res.getDrawable(R.drawable.prologue_backpack_hunter_background));
         } else {
-            firstLine.setBackgroundColor(Color.parseColor("#60ffffff"));
-            secondLine.setBackgroundColor(Color.parseColor("#60ffffff"));
+            firstLine.setBackgroundColor(Color.parseColor("#60303030"));
+            secondLine.setBackgroundColor(Color.parseColor("#60303030"));
             thirdLine.setBackgroundColor(Color.parseColor("#607e9e7f"));
             isFirstLine = false;
             isSecondLine = false;
@@ -259,13 +273,13 @@ private ConstraintLayout  constraintLayoutDialogBackpack;
 
         //Ссылка на эти места
         if (nameParagraph.equals("dialog_backpack_1_1_1_2")) {
-            nameParagraph = "dialog_backpack_2_1_2_2";
+            nameParagraph = "dialog_backpack_2_2_2";
             strings = res.getStringArray(res.getIdentifier(nameParagraph, "array", "com.last_spring.gameprealpha"));
         }
 
         //Ссылка на миф
         if (nameParagraph.equals("dialog_backpack_1_1_2_1_2")) {
-            nameParagraph = "dialog_backpack_2_1_2_2_2_1";
+            nameParagraph = "dialog_backpack_2_2_2_2_1";
             strings = res.getStringArray(res.getIdentifier(nameParagraph, "array", "com.last_spring.gameprealpha"));
         }
 
@@ -290,6 +304,11 @@ private ConstraintLayout  constraintLayoutDialogBackpack;
         //Ссылка на культуру какую-то
         if (nameParagraph.equals("dialog_backpack_1_2_2_1_1")) {
             nameParagraph = "dialog_backpack_1_2_1";
+            strings = res.getStringArray(res.getIdentifier(nameParagraph, "array", "com.last_spring.gameprealpha"));
+        }
+
+        if (nameParagraph.equals("dialog_backpack_2_1_2")) {
+            nameParagraph = "dialog_backpack_2_2";
             strings = res.getStringArray(res.getIdentifier(nameParagraph, "array", "com.last_spring.gameprealpha"));
         }
 

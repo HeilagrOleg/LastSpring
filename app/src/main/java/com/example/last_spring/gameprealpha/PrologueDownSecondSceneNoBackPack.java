@@ -8,10 +8,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.example.last_spring.gameprealpha.res.GameActivity;
 import com.last_spring.gameprealpha.OstWood;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class PrologueDownSecondSceneNoBackPack extends GameActivity {
 
@@ -22,10 +27,14 @@ public class PrologueDownSecondSceneNoBackPack extends GameActivity {
     RadioButton noBackPackMoveHuntingLodgeRadioButton;
 
 
-    protected TextView textNoBackpackSleepingBug;
+    protected TextView textNoBackpack;
     protected View decorView;
     protected SharedPreferences save;
     public float level;
+
+    private RadioGroup radioGroupNoBackPack;
+
+    private ScrollView scrollNoBackpack;
 
     private boolean isHuntingLodge;
 
@@ -42,12 +51,18 @@ public class PrologueDownSecondSceneNoBackPack extends GameActivity {
         startService(new Intent(this, OstWood.class));
         isOstWood = true;
 
+        radioGroupNoBackPack = (RadioGroup) findViewById(R.id.radioGroupNoBackPackID);
         noBackPackMoveHuntingLodgeRadioButton = (RadioButton) findViewById(R.id.buttonNoBackPackMoveHuntingLodgeID);
-        textNoBackpackSleepingBug = (TextView) findViewById(R.id.textNoBackpackSleepingBugID);
+        noBackPackMoveHuntingLodgeRadioButton.setTextSize(sizeFonts);
+        textNoBackpack = (TextView) findViewById(R.id.textNoBackpackID);
+        textNoBackpack.setTextSize(sizeFonts);
+        scrollNoBackpack = (ScrollView) findViewById(R.id.scrollNoBackpackID);
 
         if (!save.getBoolean(APP_SAVE_SLEEPING_BAG_PROLOGUE, false)) {
-            textNoBackpackSleepingBug.setVisibility(View.GONE);
+            textNoBackpack.setText(R.string.prologue_game_over_down_text_sleeping_bug);
         }
+
+        startAnimation(new ArrayList<View>(Arrays.asList(scrollNoBackpack, radioGroupNoBackPack)));
     }
 
     public void onNoBackPackMoveHuntingLodge(View view) {

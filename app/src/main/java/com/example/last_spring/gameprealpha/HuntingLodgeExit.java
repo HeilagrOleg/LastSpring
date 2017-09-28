@@ -6,10 +6,15 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.example.last_spring.gameprealpha.res.GameActivity;
 import com.last_spring.gameprealpha.OstDisturbance;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class HuntingLodgeExit extends GameActivity {
 
@@ -21,6 +26,8 @@ public class HuntingLodgeExit extends GameActivity {
     private TextView textPrologueHunterExit;
     private RadioButton buttonPrologueHunterExitFirst;
     private RadioButton buttonPrologueHunterExitSecond;
+    private RadioGroup radioGroupPrologueHunterDialog;
+    private ScrollView scrollPrologueHunterExit;
 
     private boolean isExit;
     private boolean isArm;
@@ -47,8 +54,15 @@ public class HuntingLodgeExit extends GameActivity {
         editor.apply();
 
         textPrologueHunterExit = (TextView) findViewById(R.id.textPrologueHunterExitID);
+        textPrologueHunterExit.setTextSize(sizeFonts);
         buttonPrologueHunterExitFirst = (RadioButton) findViewById(R.id.buttonPrologueHunterExitFirstID);
+        buttonPrologueHunterExitFirst.setTextSize(sizeFonts);
         buttonPrologueHunterExitSecond = (RadioButton) findViewById(R.id.buttonPrologueHunterExitSecondID);
+        buttonPrologueHunterExitSecond.setTextSize(sizeFonts);
+
+        radioGroupPrologueHunterDialog = (RadioGroup) findViewById(R.id.radioGroupPrologueHunterDialogID);
+
+        scrollPrologueHunterExit = (ScrollView) findViewById(R.id.scrollPrologueHunterExitID);
 
         startService(new Intent(this, OstDisturbance.class));
         isOstDisturbance = true;
@@ -88,6 +102,8 @@ public class HuntingLodgeExit extends GameActivity {
                 isExit = true;
             }
         }
+
+        startAnimation(new ArrayList<View>(Arrays.asList(radioGroupPrologueHunterDialog, scrollPrologueHunterExit)));
     }
 
     public void onPrologueHunterExitFirst(View view) {

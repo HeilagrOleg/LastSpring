@@ -6,344 +6,377 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
-        android:id="@+id/linearBoxHuntingLodgeInsideID"
-        android:layout_width="300dp"
-        android:layout_height="158dp"
-        android:background="#60ffffff"
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="40dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.765">
+        app:layout_constraintTop_toTopOf="parent">
 
-        <CheckBox
-            android:id="@+id/checkBoxHuntingLodgeInsideFoodID"
+        <FrameLayout
+            android:id="@+id/linearLayoutHuntingLodgeInsideID"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/hunting_Lodge_inside_check_box_food"
-            android:textColor="#303030" />
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:visibility="visible"
+            tools:visibility="visible">
 
-        <CheckBox
-            android:id="@+id/checkBoxHuntingLodgeInsideKnifeID"
+            <RadioGroup
+                android:id="@+id/radioGroupHuntingLodgeInsideBedsideID"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="gone"
+                tools:visibility="visible">
+
+                <RadioButton
+                    android:id="@+id/radioButtonBedsideKeyHuntingInsideID"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:background="#60ffffff"
+                    android:button="@drawable/radio_button_selector"
+                    android:onClick="onBedsideKeyHuntingInside"
+                    android:text="@string/hunting_Lodge_inside_button_bedside_key"
+                    android:textColor="#303030"
+                    android:textSize="16sp"
+                    tools:layout_editor_absoluteX="16dp"
+                    tools:layout_editor_absoluteY="387dp" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonBedsideLuckHuntingInsideID"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:background="#60ffffff"
+                    android:button="@drawable/radio_button_selector"
+                    android:onClick="onBedsideLuckHuntingInside"
+                    android:text="@string/hunting_Lodge_inside_button_bedside_luck"
+                    android:textColor="#303030"
+                    android:textSize="16sp"
+                    tools:layout_editor_absoluteX="16dp"
+                    tools:layout_editor_absoluteY="387dp" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonBedsideNoLuckHuntingInsideID"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:background="#60ffffff"
+                    android:button="@drawable/radio_button_selector"
+                    android:onClick="onBedsideNoLuckHuntingInside"
+                    android:text="@string/hunting_Lodge_inside_button_bedside_no_luck"
+                    android:textColor="#303030"
+                    android:textSize="16sp"
+                    tools:layout_editor_absoluteX="16dp"
+                    tools:layout_editor_absoluteY="355dp" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonBedsideBackHuntingInsideID"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#60ffffff"
+                    android:button="@drawable/radio_button_selector"
+                    android:onClick="onBedsideBackHuntingInside"
+                    android:text="@string/hunting_Lodge_inside_button_bedside_back"
+                    android:textColor="#303030"
+                    android:textSize="16sp"
+                    tools:layout_editor_absoluteX="16dp"
+                    tools:layout_editor_absoluteY="419dp" />
+
+            </RadioGroup>
+
+            <RadioGroup
+                android:id="@+id/radioGroupHuntingLodgeInsideCupboardID"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="gone"
+                tools:visibility="visible">
+
+                <RadioButton
+                    android:id="@+id/radioButtonCupboardSleepingBugHuntingInsideID"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:background="#60ffffff"
+                    android:button="@drawable/radio_button_selector"
+                    android:onClick="onCupboardSleepingBugHuntingInside"
+                    android:text="@string/hunting_Lodge_inside_button_cupboard_sleeping_bug"
+                    android:textColor="#303030"
+                    android:textSize="16sp"
+                    tools:layout_editor_absoluteX="16dp"
+                    tools:layout_editor_absoluteY="387dp" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonCupboardNoSleepingBugHuntingInsideID"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:background="#60ffffff"
+                    android:button="@drawable/radio_button_selector"
+                    android:onClick="onCupboardNoSleepingBugHuntingInside"
+                    android:text="@string/hunting_Lodge_inside_button_cupboard_no_sleeping_bug"
+                    android:textColor="#303030"
+                    android:textSize="16sp"
+                    tools:layout_editor_absoluteX="16dp"
+                    tools:layout_editor_absoluteY="387dp" />
+
+            </RadioGroup>
+
+            <RadioGroup
+                android:id="@+id/radioGroupHuntingLodgeInsideTableID"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="gone"
+                tools:visibility="visible">
+
+                <RadioButton
+                    android:id="@+id/radioButtonTableKeyHuntingInsideID"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:background="#60ffffff"
+                    android:button="@drawable/radio_button_selector"
+                    android:onClick="onTableKeyHuntingInside"
+                    android:text="@string/hunting_Lodge_inside_button_table_key"
+                    android:textColor="#303030"
+                    android:textSize="16sp"
+                    tools:layout_editor_absoluteX="16dp"
+                    tools:layout_editor_absoluteY="387dp" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonTableNoKeyHuntingInsideID"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:background="#60ffffff"
+                    android:button="@drawable/radio_button_selector"
+                    android:onClick="onTableNoKeyHuntingInside"
+                    android:text="@string/hunting_Lodge_inside_button_table_no_key"
+                    android:textColor="#303030"
+                    android:textSize="16sp"
+                    tools:layout_editor_absoluteX="16dp"
+                    tools:layout_editor_absoluteY="387dp" />
+
+            </RadioGroup>
+
+            <RadioGroup
+                android:id="@+id/radioGroupHuntingLodgeInsideConserveID"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="gone"
+                tools:visibility="visible">
+
+                <RadioButton
+                    android:id="@+id/radioButtonConserveNoLuckHuntingInsideID"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:background="#60ffffff"
+                    android:button="@drawable/radio_button_selector"
+                    android:onClick="onConserveNoLuckHuntingInside"
+                    android:text="@string/hunting_Lodge_inside_button_conserve_no_luck"
+                    android:textColor="#303030"
+                    android:textSize="16sp"
+                    tools:layout_editor_absoluteX="16dp"
+                    tools:layout_editor_absoluteY="387dp" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonConserveLuckHuntingInsideID"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:background="#60ffffff"
+                    android:button="@drawable/radio_button_selector"
+                    android:onClick="onConserveLuckHuntingInside"
+                    android:text="@string/hunting_Lodge_inside_button_conserve_luck"
+                    android:textColor="#303030"
+                    android:textSize="16sp"
+                    tools:layout_editor_absoluteX="16dp"
+                    tools:layout_editor_absoluteY="387dp" />
+
+            </RadioGroup>
+
+            <RadioGroup
+                android:id="@+id/radioGroupHuntingLodgeInsideID"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="gone"
+                tools:visibility="visible">
+
+                <RadioButton
+                    android:id="@+id/radioButtonTableHuntingInsideID"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:background="#60ffffff"
+                    android:button="@drawable/radio_button_selector"
+                    android:onClick="onTableHuntingInside"
+                    android:text="@string/hunting_Lodge_inside_button_table"
+                    android:textColor="#303030"
+                    android:textSize="16sp"
+                    tools:layout_editor_absoluteX="16dp"
+                    tools:layout_editor_absoluteY="387dp" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonCupboardHuntingInsideID"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:background="#60ffffff"
+                    android:button="@drawable/radio_button_selector"
+                    android:onClick="onCupboardHuntingInside"
+                    android:text="@string/hunting_Lodge_inside_button_cupboard"
+                    android:textColor="#303030"
+                    android:textSize="16sp"
+                    tools:layout_editor_absoluteX="16dp"
+                    tools:layout_editor_absoluteY="387dp" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonBedsideTableHuntingInsideID"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:background="#60ffffff"
+                    android:button="@drawable/radio_button_selector"
+                    android:onClick="onBedsideTableHuntingInside"
+                    android:text="@string/hunting_Lodge_inside_button_bedside"
+                    android:textColor="#303030"
+                    android:textSize="16sp"
+                    tools:layout_editor_absoluteX="16dp"
+                    tools:layout_editor_absoluteY="355dp" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonConserveHuntingInsideID"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#60ffffff"
+                    android:button="@drawable/radio_button_selector"
+                    android:onClick="onConserveHuntingInside"
+                    android:text="@string/hunting_Lodge_inside_button_conserve"
+                    android:textColor="#303030"
+                    android:textSize="16sp"
+                    tools:layout_editor_absoluteX="16dp"
+                    tools:layout_editor_absoluteY="419dp" />
+
+            </RadioGroup>
+
+            <LinearLayout
+                android:id="@+id/linearBoxHuntingLodgeInsideID"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_centerInParent="true"
+                android:background="#80ffffff"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <CheckBox
+                    android:id="@+id/checkBoxHuntingLodgeInsideFoodID"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/hunting_Lodge_inside_check_box_food"
+                    android:textColor="#303030" />
+
+                <CheckBox
+                    android:id="@+id/checkBoxHuntingLodgeInsideKnifeID"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/hunting_Lodge_inside_check_box_knife"
+                    android:textColor="#303030"
+                    tools:layout_editor_absoluteX="255dp"
+                    tools:layout_editor_absoluteY="478dp" />
+
+                <CheckBox
+                    android:id="@+id/checkBoxHuntingLodgeInsideOintmentID"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/hunting_Lodge_inside_check_box_ointment"
+                    android:textColor="#303030"
+                    tools:layout_editor_absoluteX="255dp"
+                    tools:layout_editor_absoluteY="478dp" />
+
+                <Button
+                    android:id="@+id/buttonHuntingLodgeSleepingID"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="onHuntingLodgeSleep"
+                    android:text="@string/hunting_Lodge_inside_button_sleep"
+                    tools:layout_editor_absoluteX="161dp"
+                    tools:layout_editor_absoluteY="533dp" />
+            </LinearLayout>
+
+
+
+        </FrameLayout>
+
+
+        <ScrollView
+            android:id="@+id/scrollHuntingLodgeInsideID"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/hunting_Lodge_inside_check_box_knife"
-            android:textColor="#303030"
-            tools:layout_editor_absoluteX="255dp"
-            tools:layout_editor_absoluteY="478dp" />
+            android:layout_height="match_parent"
+            android:layout_above="@+id/linearLayoutHuntingLodgeInsideID"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="40dp"
+            android:background="#80ffffff"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone"
+            tools:visibility="visible">
 
-        <CheckBox
-            android:id="@+id/checkBoxHuntingLodgeInsideOintmentID"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/hunting_Lodge_inside_check_box_ointment"
-            android:textColor="#303030"
-            tools:layout_editor_absoluteX="255dp"
-            tools:layout_editor_absoluteY="478dp" />
+            <TextView
+                android:id="@+id/huntingLodgeInsideTextID"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:lineSpacingExtra="3sp"
+                android:lineSpacingMultiplier="0.8"
+                android:orientation="vertical"
+                android:text="@string/hunting_Lodge_inside_text"
+                android:textColor="#303030"
+                android:textSize="18sp"
+                android:visibility="visible" />
 
-        <Button
-            android:id="@+id/buttonHuntingLodgeSleepingID"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="onHuntingLodgeSleep"
-            android:text="@string/hunting_Lodge_inside_button_sleep"
-            tools:layout_editor_absoluteX="161dp"
-            tools:layout_editor_absoluteY="533dp" />
-    </LinearLayout>
+        </ScrollView>
 
-    <RadioGroup
-        android:id="@+id/radioGroupHuntingLodgeInsideBedsideID"
-        android:layout_width="348dp"
-        android:layout_height="140dp"
-        android:orientation="vertical"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.523"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.732">
+    </RelativeLayout>
 
-        <RadioButton
-            android:id="@+id/radioButtonBedsideKeyHuntingInsideID"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:background="#60ffffff"
-            android:button="@drawable/radio_button_selector"
-            android:onClick="onBedsideKeyHuntingInside"
-            android:text="@string/hunting_Lodge_inside_button_bedside_key"
-            android:textColor="#303030"
-            android:textSize="16sp"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="387dp" />
 
-        <RadioButton
-            android:id="@+id/radioButtonBedsideLuckHuntingInsideID"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:background="#60ffffff"
-            android:button="@drawable/radio_button_selector"
-            android:onClick="onBedsideLuckHuntingInside"
-            android:text="@string/hunting_Lodge_inside_button_bedside_luck"
-            android:textColor="#303030"
-            android:textSize="16sp"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="387dp" />
-
-        <RadioButton
-            android:id="@+id/radioButtonBedsideNoLuckHuntingInsideID"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:background="#60ffffff"
-            android:button="@drawable/radio_button_selector"
-            android:onClick="onBedsideNoLuckHuntingInside"
-            android:text="@string/hunting_Lodge_inside_button_bedside_no_luck"
-            android:textColor="#303030"
-            android:textSize="16sp"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="355dp" />
-
-        <RadioButton
-            android:id="@+id/radioButtonBedsideBackHuntingInsideID"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#60ffffff"
-            android:button="@drawable/radio_button_selector"
-            android:onClick="onBedsideBackHuntingInside"
-            android:text="@string/hunting_Lodge_inside_button_bedside_back"
-            android:textColor="#303030"
-            android:textSize="16sp"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="419dp" />
-    </RadioGroup>
-
-    <RadioGroup
-        android:id="@+id/radioGroupHuntingLodgeInsideCupboardID"
-        android:layout_width="348dp"
-        android:layout_height="140dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.523"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.732">
-
-        <RadioButton
-            android:id="@+id/radioButtonCupboardSleepingBugHuntingInsideID"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:background="#60ffffff"
-            android:button="@drawable/radio_button_selector"
-            android:onClick="onCupboardSleepingBugHuntingInside"
-            android:text="@string/hunting_Lodge_inside_button_cupboard_sleeping_bug"
-            android:textColor="#303030"
-            android:textSize="16sp"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="387dp" />
-
-        <RadioButton
-            android:id="@+id/radioButtonCupboardNoSleepingBugHuntingInsideID"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:background="#60ffffff"
-            android:button="@drawable/radio_button_selector"
-            android:onClick="onCupboardNoSleepingBugHuntingInside"
-            android:text="@string/hunting_Lodge_inside_button_cupboard_no_sleeping_bug"
-            android:textColor="#303030"
-            android:textSize="16sp"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="387dp" />
-
-    </RadioGroup>
-
-    <RadioGroup
-        android:id="@+id/radioGroupHuntingLodgeInsideTableID"
-        android:layout_width="348dp"
-        android:layout_height="140dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.523"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.732">
-
-        <RadioButton
-            android:id="@+id/radioButtonTableKeyHuntingInsideID"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:background="#60ffffff"
-            android:button="@drawable/radio_button_selector"
-            android:onClick="onTableKeyHuntingInside"
-            android:text="@string/hunting_Lodge_inside_button_table_key"
-            android:textColor="#303030"
-            android:textSize="16sp"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="387dp" />
-
-        <RadioButton
-            android:id="@+id/radioButtonTableNoKeyHuntingInsideID"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:background="#60ffffff"
-            android:button="@drawable/radio_button_selector"
-            android:onClick="onTableNoKeyHuntingInside"
-            android:text="@string/hunting_Lodge_inside_button_table_no_key"
-            android:textColor="#303030"
-            android:textSize="16sp"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="387dp" />
-
-    </RadioGroup>
-
-    <RadioGroup
-        android:id="@+id/radioGroupHuntingLodgeInsideConserveID"
-        android:layout_width="348dp"
-        android:layout_height="140dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.523"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.732">
-
-        <RadioButton
-            android:id="@+id/radioButtonConserveNoLuckHuntingInsideID"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:background="#60ffffff"
-            android:button="@drawable/radio_button_selector"
-            android:onClick="onConserveNoLuckHuntingInside"
-            android:text="@string/hunting_Lodge_inside_button_conserve_no_luck"
-            android:textColor="#303030"
-            android:textSize="16sp"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="387dp" />
-
-        <RadioButton
-            android:id="@+id/radioButtonConserveLuckHuntingInsideID"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:background="#60ffffff"
-            android:button="@drawable/radio_button_selector"
-            android:onClick="onConserveLuckHuntingInside"
-            android:text="@string/hunting_Lodge_inside_button_conserve_luck"
-            android:textColor="#303030"
-            android:textSize="16sp"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="387dp" />
-
-    </RadioGroup>
-
-    <TextView
-        android:id="@+id/huntingLodgeInsideTextID"
-        android:layout_width="348dp"
-        android:layout_height="380dp"
-        android:lineSpacingMultiplier="0.8"
-        android:text="@string/hunting_Lodge_inside_text"
-        android:textColor="@color/hockeyapp_background_header"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.003" />
-
-    <RadioGroup
-        android:id="@+id/radioGroupHuntingLodgeInsideID"
-        android:layout_width="348dp"
-        android:layout_height="140dp"
-        android:orientation="vertical"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.523"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.732">
-
-        <RadioButton
-            android:id="@+id/radioButtonTableHuntingInsideID"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:background="#60ffffff"
-            android:button="@drawable/radio_button_selector"
-            android:onClick="onTableHuntingInside"
-            android:text="@string/hunting_Lodge_inside_button_table"
-            android:textColor="#303030"
-            android:textSize="16sp"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="387dp" />
-
-        <RadioButton
-            android:id="@+id/radioButtonCupboardHuntingInsideID"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:background="#60ffffff"
-            android:button="@drawable/radio_button_selector"
-            android:onClick="onCupboardHuntingInside"
-            android:text="@string/hunting_Lodge_inside_button_cupboard"
-            android:textColor="#303030"
-            android:textSize="16sp"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="387dp" />
-
-        <RadioButton
-            android:id="@+id/radioButtonBedsideTableHuntingInsideID"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:background="#60ffffff"
-            android:button="@drawable/radio_button_selector"
-            android:onClick="onBedsideTableHuntingInside"
-            android:text="@string/hunting_Lodge_inside_button_bedside"
-            android:textColor="#303030"
-            android:textSize="16sp"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="355dp" />
-
-        <RadioButton
-            android:id="@+id/radioButtonConserveHuntingInsideID"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#60ffffff"
-            android:button="@drawable/radio_button_selector"
-            android:onClick="onConserveHuntingInside"
-            android:text="@string/hunting_Lodge_inside_button_conserve"
-            android:textColor="#303030"
-            android:textSize="16sp"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="419dp" />
-    </RadioGroup>
-
-    <Button
-        android:id="@+id/buttonInventoryID"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="onInventory"
-        android:text="@string/button_inventory"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
 
 </android.support.constraint.ConstraintLayout>

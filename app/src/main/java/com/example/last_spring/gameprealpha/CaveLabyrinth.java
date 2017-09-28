@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,6 +24,8 @@ public class CaveLabyrinth extends GameActivity {
 
     public static final String APP_SAVE_CAVE_FAIL = "Cave fail";
     public static final String APP_SAVE_CAVE_RETURN = "Cave return";
+
+    private RadioGroup radioGroupCaveLabyrinth;
 
     private RadioButton buttonCaveLabyrinthNorth;
     private RadioButton buttonCaveLabyrinthWest;
@@ -114,13 +117,21 @@ public class CaveLabyrinth extends GameActivity {
         startService(new Intent(this, OstCave.class));
         isOstCave = true;
 
+        radioGroupCaveLabyrinth = (RadioGroup) findViewById(R.id.radioGroupCaveLabyrinthID);
+
         buttonCaveLabyrinthEast = (RadioButton) findViewById(R.id.buttonCaveLabyrinthEastID);
+        buttonCaveLabyrinthEast.setTextSize(sizeFonts);
         buttonCaveLabyrinthWest = (RadioButton) findViewById(R.id.buttonCaveLabyrinthWestID);
+        buttonCaveLabyrinthWest.setTextSize(sizeFonts);
         buttonCaveLabyrinthNorth = (RadioButton) findViewById(R.id.buttonCaveLabyrinthNorthID);
+        buttonCaveLabyrinthNorth.setTextSize(sizeFonts);
         buttonCaveLabyrinthSouth = (RadioButton) findViewById(R.id.buttonCaveLabyrinthSouthID);
+        buttonCaveLabyrinthSouth.setTextSize(sizeFonts);
         buttonCaveLabyrinthExit = (RadioButton) findViewById(R.id.buttonCaveLabyrinthExitID);
+        buttonCaveLabyrinthExit.setTextSize(sizeFonts);
 
         textViewCaveLabyrinth = (TextView) findViewById(R.id.textViewCaveLabyrinthID);
+        textViewCaveLabyrinth.setTextSize(sizeFonts);
         textCounterStep = (TextView) findViewById(R.id.textCounterStepID);
 
 
@@ -193,6 +204,10 @@ public class CaveLabyrinth extends GameActivity {
 
         imageCaveLabyrinth = (ImageView) findViewById(R.id.imageCaveLabyrinthID);
         imageCaveLabyrinth.setImageBitmap(map);
+
+        textCounterStep.setVisibility(View.GONE);
+
+        startAnimation(new ArrayList<View>(Arrays.asList(imageCaveLabyrinth, radioGroupCaveLabyrinth, textViewCaveLabyrinth)));
     }
 
 

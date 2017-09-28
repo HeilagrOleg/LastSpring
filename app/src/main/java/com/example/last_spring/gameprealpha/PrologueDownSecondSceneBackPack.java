@@ -7,14 +7,19 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.last_spring.gameprealpha.res.Fortune;
 import com.example.last_spring.gameprealpha.res.GameActivity;
 import com.last_spring.gameprealpha.OstWood;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class PrologueDownSecondSceneBackPack extends GameActivity {
 
@@ -55,9 +60,16 @@ public class PrologueDownSecondSceneBackPack extends GameActivity {
     private RadioButton additionalBackpackNoOintmentButton;
     private RadioButton additionalBackpackBackButton;
 
+    private FrameLayout linearLayoutBackpack;
+
+    private ScrollView scrollBackpack;
+
     private TextView fortuneCounter;
+    private TextView prologueCutBackpack;
 
     protected float level;
+
+    private String stFortune;
 
     private boolean isTopBackpack;
     private boolean isTopBackpackKnife;
@@ -105,12 +117,21 @@ public class PrologueDownSecondSceneBackPack extends GameActivity {
 
         startService(new Intent(this, OstWood.class));
         isOstWood = true;
+        stFortune = "Test";
         fortuneCounter = (TextView) findViewById(R.id.fortuneCounterID);
-        fortuneCounter.setText(String.valueOf(fortune));
-        fortuneCounter.setTextColor(Color.parseColor("#303030"));
+        fortuneCounter.setText(stFortune);
+        fortuneCounter.setTextSize(sizeFonts);
+        fortuneCounter.setBackgroundColor(Color.parseColor("#303030"));
+        fortuneCounter.setVisibility(View.GONE);
 
         prologueBackpackNextButton = (Button) findViewById(R.id.prologueCutBackpackNextButtonID);
         prologueBackpackNextButton.setVisibility(View.GONE);
+
+        linearLayoutBackpack = (FrameLayout) findViewById(R.id.linearLayoutBackpackID);
+        scrollBackpack = (ScrollView) findViewById(R.id.scrollBackpackID);
+
+        prologueCutBackpack = (TextView) findViewById(R.id.prologueCutBackpackID);
+        prologueCutBackpack.setTextSize(sizeFonts);
 
         prologueDownBackPackMainRadioGroup = (RadioGroup) findViewById(R.id.prologueDownBackPackMainRadioGroupID);
         prologueDownBackpackTopPartRadioGroup = (RadioGroup) findViewById(R.id.prologueDownBackpackTopPartRadioGroupID);
@@ -123,53 +144,75 @@ public class PrologueDownSecondSceneBackPack extends GameActivity {
         prologueDownBackpackAdditionalPartRadioGroup.setVisibility(View.GONE);
 
         topBackpackButton = (RadioButton) findViewById(R.id.buttonBackpackOpenTopPartID);
+        topBackpackButton.setTextSize(sizeFonts);
         topBackpackButton.setBackgroundColor(Color.parseColor("#60ffffff"));
         middleBackPackButton = (RadioButton) findViewById(R.id.buttonBackpackOpenMiddlePartID);
+        middleBackPackButton.setTextSize(sizeFonts);
         middleBackPackButton.setBackgroundColor(Color.parseColor("#60ffffff"));
         basementBackpackButton = (RadioButton) findViewById(R.id.buttonBackpackBasementPartID);
+        basementBackpackButton.setTextSize(sizeFonts);
         basementBackpackButton.setBackgroundColor(Color.parseColor("#60ffffff"));
         additionalBackpackButton = (RadioButton) findViewById(R.id.buttonBackpackAdditionalPartID);
+        additionalBackpackButton.setTextSize(sizeFonts);
         additionalBackpackButton.setBackgroundColor(Color.parseColor("#60ffffff"));
 
         topBackpackKnifeButton = (RadioButton) findViewById(R.id.topBackpackKnifeButtonID);
+        topBackpackKnifeButton.setTextSize(sizeFonts);
         topBackpackKnifeButton.setBackgroundColor(Color.parseColor("#60ffffff"));
         topBackpackKnifeLuckButton = (RadioButton) findViewById(R.id.topBackpackKnifeLuckButtonID);
+        topBackpackKnifeLuckButton.setTextSize(sizeFonts);
         topBackpackKnifeLuckButton.setBackgroundColor(Color.parseColor("#60ffffff"));
         topBackpackNoKnifeButton = (RadioButton) findViewById(R.id.topBackpackNoKnifeButtonID);
+        topBackpackNoKnifeButton.setTextSize(sizeFonts);
         topBackpackNoKnifeButton.setBackgroundColor(Color.parseColor("#60ffffff"));
         topBackpackBackButton = (RadioButton) findViewById(R.id.topBackpackBackButtonID);
+        topBackpackBackButton.setTextSize(sizeFonts);
         topBackpackBackButton.setBackgroundColor(Color.parseColor("#60ffffff"));
 
         middleBackPackSleepingBugButton = (RadioButton) findViewById(R.id.middleBackPackSleepingBugButtonID);
+        middleBackPackSleepingBugButton.setTextSize(sizeFonts);
         middleBackPackSleepingBugButton.setBackgroundColor(Color.parseColor("#60ffffff"));
         middleBackPackSleepingBugLuckButton = (RadioButton) findViewById(R.id.middleBackPackSleepingBugLuckButtonID);
+        middleBackPackSleepingBugLuckButton.setTextSize(sizeFonts);
         middleBackPackSleepingBugLuckButton.setBackgroundColor(Color.parseColor("#60ffffff"));
         middleBackPackNoSleepingBugButton = (RadioButton) findViewById(R.id.middleBackPackNoSleepingBugButtonID);
+        middleBackPackNoSleepingBugButton.setTextSize(sizeFonts);
         middleBackPackNoSleepingBugButton.setBackgroundColor(Color.parseColor("#60ffffff"));
         middleBackPackBackButton = (RadioButton) findViewById(R.id.middleBackPackBackButtonID);
+        middleBackPackBackButton.setTextSize(sizeFonts);
         middleBackPackBackButton.setBackgroundColor(Color.parseColor("#60ffffff"));
 
         basementBackpackRaincoatButton = (RadioButton) findViewById(R.id.basementBackpackRaincoatButtonID);
+        basementBackpackRaincoatButton.setTextSize(sizeFonts);
         basementBackpackRaincoatButton.setBackgroundColor(Color.parseColor("#60ffffff"));
         basementBackpackRaincoatLuckButton = (RadioButton) findViewById(R.id.basementBackpackRaincoatLuckButtonID);
+        basementBackpackRaincoatLuckButton.setTextSize(sizeFonts);
         basementBackpackRaincoatLuckButton.setBackgroundColor(Color.parseColor("#60ffffff"));
         basementBackpackNoRaincoatButton = (RadioButton) findViewById(R.id.basementBackpackNoRaincoatButtonID);
+        basementBackpackNoRaincoatButton.setTextSize(sizeFonts);
         basementBackpackNoRaincoatButton.setBackgroundColor(Color.parseColor("#60ffffff"));
         basementBackpackBackButton = (RadioButton) findViewById(R.id.basementBackpackBackButtonID);
+        basementBackpackBackButton.setTextSize(sizeFonts);
         basementBackpackBackButton.setBackgroundColor(Color.parseColor("#60ffffff"));
 
         additionalBackpackOintmentButton = (RadioButton) findViewById(R.id.additionalBackpackOintmentButtonID);
+        additionalBackpackOintmentButton.setTextSize(sizeFonts);
         additionalBackpackOintmentButton.setBackgroundColor(Color.parseColor("#60ffffff"));
         additionalBackpackOintmentLuckButton = (RadioButton) findViewById(R.id.additionalBackpackOintmentLuckButtonID);
+        additionalBackpackOintmentLuckButton.setTextSize(sizeFonts);
         additionalBackpackOintmentLuckButton.setBackgroundColor(Color.parseColor("#60ffffff"));
         additionalBackpackNoOintmentButton = (RadioButton) findViewById(R.id.additionalBackpackNoOintmentButtonID);
+        additionalBackpackNoOintmentButton.setTextSize(sizeFonts);
         additionalBackpackNoOintmentButton.setBackgroundColor(Color.parseColor("#60ffffff"));
         additionalBackpackBackButton = (RadioButton) findViewById(R.id.additionalBackpackBackButtonID);
+        additionalBackpackBackButton.setTextSize(sizeFonts);
         additionalBackpackBackButton.setBackgroundColor(Color.parseColor("#60ffffff"));
         if (isSleepingBug) {
             middleBackPackSleepingBugButton.setVisibility(View.GONE);
             middleBackPackSleepingBugLuckButton.setVisibility(View.GONE);
         }
+
+        startAnimation(new ArrayList<View>(Arrays.asList(linearLayoutBackpack, scrollBackpack)));
     }
 
     public void onOpenTopPart(View view) {
@@ -238,15 +281,29 @@ public class PrologueDownSecondSceneBackPack extends GameActivity {
             prologueDownBackPackMainRadioGroup.setVisibility(View.VISIBLE);
             additionalBackpackButton.setVisibility(View.GONE);
             isOintment = true;
-            fortune -= 20;
-            treatmentCounterMain++;
-            fortuneCounter.setText(String.valueOf(fortune));
-            isAdditional = true;
-            if (isBasement && isTop && isMiddle) {
-                prologueBackpackNextButton.setVisibility(View.VISIBLE);
+            if (fortune < 20) {
+                toast = Toast.makeText(this, R.string.prologue_backpack_no_luck, Toast.LENGTH_LONG);
+                toast.show();
+                isAdditional = true;
+                if (isBasement && isTop && isMiddle) {
+                    prologueBackpackNextButton.setVisibility(View.VISIBLE);
+                }
+                fortune = 10;
+                getFortune();
+                fortuneCounter.setText(stFortune);
+
+            } else {
+                fortune -= 20;
+                treatmentCounterMain++;
+                isAdditional = true;
+                if (isBasement && isTop && isMiddle) {
+                    prologueBackpackNextButton.setVisibility(View.VISIBLE);
+                }
+                toast = Toast.makeText(this, R.string.prologue_backpack_additional_part_ointment_text_toast, Toast.LENGTH_LONG);
+                toast.show();
+                getFortune();
+                fortuneCounter.setText(stFortune);
             }
-            toast = Toast.makeText(this, R.string.prologue_backpack_additional_part_ointment_text_toast, Toast.LENGTH_LONG);
-            toast.show();
         }
         additionalBackpackOintmentButton.setBackgroundColor(Color.parseColor("#607e9e7f"));
         additionalBackpackOintmentLuckButton.setBackgroundColor(Color.parseColor("#60ffffff"));
@@ -263,20 +320,30 @@ public class PrologueDownSecondSceneBackPack extends GameActivity {
             prologueDownBackpackAdditionalPartRadioGroup.setVisibility(View.GONE);
             prologueDownBackPackMainRadioGroup.setVisibility(View.VISIBLE);
             additionalBackpackButton.setVisibility(View.GONE);
-            isOintment = Fortune.isFiftyFifty();
-            fortune -= 10;
-            fortuneCounter.setText(String.valueOf(fortune));
-            isAdditional = true;
-            if (isBasement && isTop && isMiddle) {
-                prologueBackpackNextButton.setVisibility(View.VISIBLE);
-            }
-            if (isOintment) {
-                treatmentCounterMain++;
-                toast = Toast.makeText(this, R.string.prologue_backpack_additional_part_ointment_text_toast, Toast.LENGTH_LONG);
+            if (fortune < 10) {
+                toast = Toast.makeText(this, R.string.prologue_backpack_no_luck_second, Toast.LENGTH_LONG);
                 toast.show();
+                isAdditional = true;
+                getFortune();
+                fortuneCounter.setText(stFortune);
             } else {
-                toast = Toast.makeText(this, R.string.prologue_backpack_additional_part_no_ointment_text_toast, Toast.LENGTH_LONG);
-                toast.show();
+                isOintment = Fortune.isFiftyFifty();
+                fortune -= 10;
+
+                isAdditional = true;
+                if (isBasement && isTop && isMiddle) {
+                    prologueBackpackNextButton.setVisibility(View.VISIBLE);
+                }
+                if (isOintment) {
+                    treatmentCounterMain++;
+                    toast = Toast.makeText(this, R.string.prologue_backpack_additional_part_ointment_text_toast, Toast.LENGTH_LONG);
+                    toast.show();
+                } else {
+                    toast = Toast.makeText(this, R.string.prologue_backpack_additional_part_no_ointment_text_toast, Toast.LENGTH_LONG);
+                    toast.show();
+                }
+                getFortune();
+                fortuneCounter.setText(stFortune);
             }
         }
         additionalBackpackOintmentButton.setBackgroundColor(Color.parseColor("#60ffffff"));
@@ -296,7 +363,8 @@ public class PrologueDownSecondSceneBackPack extends GameActivity {
             additionalBackpackButton.setVisibility(View.GONE);
             fortune += 10;
             isOintment = false;
-            fortuneCounter.setText(String.valueOf(fortune));
+            getFortune();
+            fortuneCounter.setText(stFortune);
             isAdditional = true;
             if (isBasement && isTop && isMiddle) {
                 prologueBackpackNextButton.setVisibility(View.VISIBLE);
@@ -336,18 +404,30 @@ public class PrologueDownSecondSceneBackPack extends GameActivity {
             prologueDownBackpackTopPartRadioGroup.setVisibility(View.GONE);
             prologueDownBackPackMainRadioGroup.setVisibility(View.VISIBLE);
             topBackpackButton.setVisibility(View.GONE);
-            fortune -= 30;
-            foodCounterMain++;
-            isKnife = true;
-            isKnifeMain = true;
-            isTop = true;
-            if (isBasement && isMiddle && isAdditional) {
-                prologueBackpackNextButton.setVisibility(View.VISIBLE);
+            if (fortune < 30) {
+                fortune = 10;
+                toast = Toast.makeText(this, R.string.prologue_backpack_no_luck_third, Toast.LENGTH_LONG);
+                toast.show();
+                isTop = true;
+                if (isBasement && isMiddle && isAdditional) {
+                    prologueBackpackNextButton.setVisibility(View.VISIBLE);
+                }
+                getFortune();
+                fortuneCounter.setText(stFortune);
+            } else {
+                fortune -= 30;
+                foodCounterMain++;
+                isKnife = true;
+                isKnifeMain = true;
+                isTop = true;
+                if (isBasement && isMiddle && isAdditional) {
+                    prologueBackpackNextButton.setVisibility(View.VISIBLE);
+                }
+                toast = Toast.makeText(this, R.string.prologue_backpack_top_part_knife_text_toast, Toast.LENGTH_LONG);
+                toast.show();
+                getFortune();
+                fortuneCounter.setText(stFortune);
             }
-            fortuneCounter.setText(String.valueOf(fortune));
-            toast = Toast.makeText(this, R.string.prologue_backpack_top_part_knife_text_toast, Toast.LENGTH_LONG);
-            toast.show();
-
         }
         topBackpackKnifeButton.setBackgroundColor(Color.parseColor("#607e9e7f"));
         topBackpackKnifeLuckButton.setBackgroundColor(Color.parseColor("#60ffffff"));
@@ -364,23 +444,36 @@ public class PrologueDownSecondSceneBackPack extends GameActivity {
             prologueDownBackpackTopPartRadioGroup.setVisibility(View.GONE);
             prologueDownBackPackMainRadioGroup.setVisibility(View.VISIBLE);
             topBackpackButton.setVisibility(View.GONE);
-            fortune -= 15;
-            foodCounterMain++;
-            isKnife = Fortune.isFiftyFifty();
-            fortuneCounter.setText(String.valueOf(fortune));
-            isTop = true;
-            if (isBasement && isMiddle && isAdditional) {
-                prologueBackpackNextButton.setVisibility(View.VISIBLE);
-            }
-            if (isKnife) {
-                isKnifeMain = true;
-                toast = Toast.makeText(this, R.string.prologue_backpack_top_part_knife_text_toast, Toast.LENGTH_LONG);
+            if (fortune < 15) {
+                fortune = 10;
+                toast = Toast.makeText(this, R.string.prologue_backpack_no_luck_third, Toast.LENGTH_LONG);
                 toast.show();
+                isTop = true;
+                if (isBasement && isMiddle && isAdditional) {
+                    prologueBackpackNextButton.setVisibility(View.VISIBLE);
+                }
+                getFortune();
+                fortuneCounter.setText(stFortune);
             } else {
-                toast = Toast.makeText(this, R.string.prologue_backpack_top_part_no_knife_text_toast, Toast.LENGTH_LONG);
-                toast.show();
-            }
+                fortune -= 15;
+                foodCounterMain++;
+                isKnife = Fortune.isFiftyFifty();
 
+                isTop = true;
+                if (isBasement && isMiddle && isAdditional) {
+                    prologueBackpackNextButton.setVisibility(View.VISIBLE);
+                }
+                if (isKnife) {
+                    isKnifeMain = true;
+                    toast = Toast.makeText(this, R.string.prologue_backpack_top_part_knife_text_toast, Toast.LENGTH_LONG);
+                    toast.show();
+                } else {
+                    toast = Toast.makeText(this, R.string.prologue_backpack_top_part_no_knife_text_toast, Toast.LENGTH_LONG);
+                    toast.show();
+                }
+                getFortune();
+                fortuneCounter.setText(stFortune);
+            }
         }
         topBackpackKnifeButton.setBackgroundColor(Color.parseColor("#60ffffff"));
         topBackpackKnifeLuckButton.setBackgroundColor(Color.parseColor("#607e9e7f"));
@@ -400,14 +493,14 @@ public class PrologueDownSecondSceneBackPack extends GameActivity {
             fortune += 10;
             isKnife = false;
             foodCounterMain++;
-            fortuneCounter.setText(String.valueOf(fortune));
             isTop = true;
             if (isBasement && isMiddle && isAdditional) {
                 prologueBackpackNextButton.setVisibility(View.VISIBLE);
             }
             toast = Toast.makeText(this, R.string.prologue_backpack_top_part_no_knife_text_toast, Toast.LENGTH_LONG);
             toast.show();
-
+            getFortune();
+            fortuneCounter.setText(stFortune);
         }
         topBackpackKnifeButton.setBackgroundColor(Color.parseColor("#60ffffff"));
         topBackpackKnifeLuckButton.setBackgroundColor(Color.parseColor("#60ffffff"));
@@ -439,17 +532,27 @@ public class PrologueDownSecondSceneBackPack extends GameActivity {
             prologueDownBackpackMiddlePartRadioGroup.setVisibility(View.GONE);
             prologueDownBackPackMainRadioGroup.setVisibility(View.VISIBLE);
             middleBackPackButton.setVisibility(View.GONE);
-            isSleepingBug = true;
-            fortune -= 30;
-            fortuneCounter.setText(String.valueOf(fortune));
-            isSleepingBugMain = true;
-            isMiddle = true;
-            if (isBasement && isTop && isAdditional) {
-                prologueBackpackNextButton.setVisibility(View.VISIBLE);
-            }
-            toast = Toast.makeText(this, R.string.prologue_backpack_middle_part_sleeping_bug_text_toast, Toast.LENGTH_LONG);
-            toast.show();
+            if (fortune < 30) {
+                fortune = 10;
+                toast = Toast.makeText(this, R.string.prologue_backpack_no_luck, Toast.LENGTH_LONG);
+                toast.show();
+                isMiddle = true;
+                getFortune();
+                fortuneCounter.setText(stFortune);
+            } else {
+                fortune -= 30;
+                isSleepingBug = true;
 
+                isSleepingBugMain = true;
+                isMiddle = true;
+                if (isBasement && isTop && isAdditional) {
+                    prologueBackpackNextButton.setVisibility(View.VISIBLE);
+                }
+                toast = Toast.makeText(this, R.string.prologue_backpack_middle_part_sleeping_bug_text_toast, Toast.LENGTH_LONG);
+                toast.show();
+                getFortune();
+                fortuneCounter.setText(stFortune);
+            }
         }
         middleBackPackSleepingBugButton.setBackgroundColor(Color.parseColor("#607e9e7f"));
         middleBackPackSleepingBugLuckButton.setBackgroundColor(Color.parseColor("#60ffffff"));
@@ -466,22 +569,31 @@ public class PrologueDownSecondSceneBackPack extends GameActivity {
             prologueDownBackpackMiddlePartRadioGroup.setVisibility(View.GONE);
             prologueDownBackPackMainRadioGroup.setVisibility(View.VISIBLE);
             middleBackPackButton.setVisibility(View.GONE);
-            isSleepingBug = Fortune.isFiftyFifty();
-            fortune -= 15;
-            fortuneCounter.setText(String.valueOf(fortune));
-            isMiddle = true;
-            if (isBasement && isTop && isAdditional) {
-                prologueBackpackNextButton.setVisibility(View.VISIBLE);
-            }
-            if (isSleepingBug) {
-                isSleepingBugMain = true;
-                toast = Toast.makeText(this, R.string.prologue_backpack_middle_part_sleeping_bug_text_toast, Toast.LENGTH_LONG);
+            if (fortune < 15) {
+                fortune = 10;
+                isMiddle = true;
+                toast = Toast.makeText(this, R.string.prologue_backpack_no_luck, Toast.LENGTH_LONG);
                 toast.show();
+                getFortune();
+                fortuneCounter.setText(stFortune);
             } else {
-                toast = Toast.makeText(this, R.string.prologue_backpack_middle_part_no_sleeping_bug_text_toast, Toast.LENGTH_LONG);
-                toast.show();
+                fortune -= 15;
+                isSleepingBug = Fortune.isFiftyFifty();
+                isMiddle = true;
+                if (isBasement && isTop && isAdditional) {
+                    prologueBackpackNextButton.setVisibility(View.VISIBLE);
+                }
+                if (isSleepingBug) {
+                    isSleepingBugMain = true;
+                    toast = Toast.makeText(this, R.string.prologue_backpack_middle_part_sleeping_bug_text_toast, Toast.LENGTH_LONG);
+                    toast.show();
+                } else {
+                    toast = Toast.makeText(this, R.string.prologue_backpack_middle_part_no_sleeping_bug_text_toast, Toast.LENGTH_LONG);
+                    toast.show();
+                }
+                getFortune();
+                fortuneCounter.setText(stFortune);
             }
-
         }
         middleBackPackSleepingBugButton.setBackgroundColor(Color.parseColor("#60ffffff"));
         middleBackPackSleepingBugLuckButton.setBackgroundColor(Color.parseColor("#607e9e7f"));
@@ -499,14 +611,15 @@ public class PrologueDownSecondSceneBackPack extends GameActivity {
             prologueDownBackPackMainRadioGroup.setVisibility(View.VISIBLE);
             middleBackPackButton.setVisibility(View.GONE);
             fortune += 10;
-            fortuneCounter.setText(String.valueOf(fortune));
+
             isMiddle = true;
             if (isBasement && isTop && isAdditional) {
                 prologueBackpackNextButton.setVisibility(View.VISIBLE);
             }
             toast = Toast.makeText(this, R.string.prologue_backpack_middle_part_no_sleeping_bug_text_toast, Toast.LENGTH_LONG);
             toast.show();
-
+            getFortune();
+            fortuneCounter.setText(stFortune);
         }
         middleBackPackSleepingBugButton.setBackgroundColor(Color.parseColor("#60ffffff"));
         middleBackPackSleepingBugLuckButton.setBackgroundColor(Color.parseColor("#60ffffff"));
@@ -538,16 +651,26 @@ public class PrologueDownSecondSceneBackPack extends GameActivity {
             prologueDownBackpackBasementPartRadioGroup.setVisibility(View.GONE);
             prologueDownBackPackMainRadioGroup.setVisibility(View.VISIBLE);
             basementBackpackButton.setVisibility(View.GONE);
-            isRaincoat = true;
-            isRaincoatMain = true;
-            fortune -= 20;
-            fortuneCounter.setText(String.valueOf(fortune));
-            isBasement = true;
-            if (isTop && isMiddle && isAdditional) {
-                prologueBackpackNextButton.setVisibility(View.VISIBLE);
+            if (fortune < 20) {
+                fortune = 10;
+                isBasement = true;
+                toast = Toast.makeText(this, R.string.prologue_backpack_no_luck, Toast.LENGTH_LONG);
+                toast.show();
+                getFortune();
+                fortuneCounter.setText(stFortune);
+            } else {
+                isRaincoat = true;
+                isRaincoatMain = true;
+                fortune -= 20;
+                isBasement = true;
+                if (isTop && isMiddle && isAdditional) {
+                    prologueBackpackNextButton.setVisibility(View.VISIBLE);
+                }
+                toast = Toast.makeText(this, R.string.prologue_backpack_basement_part_raincoat_text_toast, Toast.LENGTH_LONG);
+                toast.show();
+                getFortune();
+                fortuneCounter.setText(stFortune);
             }
-            toast = Toast.makeText(this, R.string.prologue_backpack_basement_part_raincoat_text_toast, Toast.LENGTH_LONG);
-            toast.show();
 
         }
         basementBackpackRaincoatButton.setBackgroundColor(Color.parseColor("#607e9e7f"));
@@ -566,19 +689,29 @@ public class PrologueDownSecondSceneBackPack extends GameActivity {
             prologueDownBackPackMainRadioGroup.setVisibility(View.VISIBLE);
             basementBackpackButton.setVisibility(View.GONE);
             isRaincoat = Fortune.isFiftyFifty();
-            fortune -= 10;
-            fortuneCounter.setText(String.valueOf(fortune));
-            isBasement = true;
-            if (isTop && isMiddle && isAdditional) {
-                prologueBackpackNextButton.setVisibility(View.VISIBLE);
-            }
-            if (isRaincoat) {
-                isRaincoatMain = true;
-                toast = Toast.makeText(this, R.string.prologue_backpack_basement_part_raincoat_text_toast, Toast.LENGTH_LONG);
+            if (fortune < 10) {
+                fortune = 10;
+                toast = Toast.makeText(this, R.string.prologue_backpack_no_luck, Toast.LENGTH_LONG);
                 toast.show();
+                isBasement = true;
+                getFortune();
+                fortuneCounter.setText(stFortune);
             } else {
-                toast = Toast.makeText(this, R.string.prologue_backpack_basement_part_no_raincoat_text_toast, Toast.LENGTH_LONG);
-                toast.show();
+                fortune -= 10;
+                isBasement = true;
+                if (isTop && isMiddle && isAdditional) {
+                    prologueBackpackNextButton.setVisibility(View.VISIBLE);
+                }
+                if (isRaincoat) {
+                    isRaincoatMain = true;
+                    toast = Toast.makeText(this, R.string.prologue_backpack_basement_part_raincoat_text_toast, Toast.LENGTH_LONG);
+                    toast.show();
+                } else {
+                    toast = Toast.makeText(this, R.string.prologue_backpack_basement_part_no_raincoat_text_toast, Toast.LENGTH_LONG);
+                    toast.show();
+                }
+                getFortune();
+                fortuneCounter.setText(stFortune);
             }
         }
         basementBackpackRaincoatButton.setBackgroundColor(Color.parseColor("#60ffffff"));
@@ -598,13 +731,14 @@ public class PrologueDownSecondSceneBackPack extends GameActivity {
             basementBackpackButton.setVisibility(View.GONE);
             isRaincoat = false;
             fortune += 10;
-            fortuneCounter.setText(String.valueOf(fortune));
             isBasement = true;
             if (isTop && isMiddle && isAdditional) {
                 prologueBackpackNextButton.setVisibility(View.VISIBLE);
             }
             toast = Toast.makeText(this, R.string.prologue_backpack_basement_part_no_raincoat_text_toast, Toast.LENGTH_LONG);
             toast.show();
+            getFortune();
+            fortuneCounter.setText(stFortune);
         }
         basementBackpackRaincoatButton.setBackgroundColor(Color.parseColor("#60ffffff"));
         basementBackpackRaincoatLuckButton.setBackgroundColor(Color.parseColor("#60ffffff"));
@@ -646,4 +780,40 @@ public class PrologueDownSecondSceneBackPack extends GameActivity {
         overridePendingTransition(R.anim.first_activity_animation, R.anim.second_activity_animation);
         finish();
     }
+
+    private void getFortune() {
+        fortuneCounter.setVisibility(View.VISIBLE);
+        if (fortune <= 10) {
+            stFortune = "Удача:\nБез комментариев";
+            fortuneCounter.setTextColor(Color.parseColor("#ff6666"));
+        } else if (fortune <= 20) {
+            stFortune = "Удача:\nКак любовник в шкафу";
+            fortuneCounter.setTextColor(Color.parseColor("#ff7f7f"));
+        } else if (fortune <= 30) {
+            stFortune = "Удача:\nКак девственник в 45 лет";
+            fortuneCounter.setTextColor(Color.parseColor("#ffb2b2"));
+        } else if (fortune <= 40) {
+            stFortune = "Удача:\nИногда везет....";
+            fortuneCounter.setTextColor(Color.parseColor("#ffe5e5"));
+        } else if (fortune <= 50) {
+            stFortune = "Удача:\n50/50";
+            fortuneCounter.setTextColor(Color.parseColor("#ffffff"));
+        } else if (fortune <= 60) {
+            stFortune = "Удача:\nКак уйти после 9 класса";
+            fortuneCounter.setTextColor(Color.parseColor("#a2c57f"));
+        } else if (fortune <= 70) {
+            stFortune = "Удача:\nБеспечный Ангел";
+            fortuneCounter.setTextColor(Color.parseColor("#7cad4c"));
+        } else if (fortune <= 80) {
+            stFortune = "Удача:\nБлеск!";
+            fortuneCounter.setTextColor(Color.parseColor("#6aa232"));
+        } else if (fortune <= 90) {
+            stFortune = "Удача:\nКаре из тузов";
+            fortuneCounter.setTextColor(Color.parseColor("#579619"));
+        } else if (fortune <= 100) {
+            stFortune = "Удача:\nИз двух орлов - решка!";
+            fortuneCounter.setTextColor(Color.parseColor("#3e7d00"));
+        }
+    }
 }
+

@@ -1,38 +1,39 @@
 package com.example.last_spring.gameprealpha;
 
-import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.os.IBinder;
-import android.support.annotation.Nullable;
+import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.example.last_spring.gameprealpha.res.GameActivity;
+import com.example.last_spring.gameprealpha.res.TypefaceUtil;
 import com.last_spring.gameprealpha.OstWood;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 
-public class Prologue_start extends GameActivity {
+public class PrologueStart extends GameActivity {
     public RadioButton buttonPrologueTent;
     public RadioButton buttonPrologueMoveUp;
     public RadioButton buttonPrologueMoveDown;
-    public static final String APP_SAVE_LEVEL = "Level";
-    public static final String APP_SAVE_FORTUNE = "Fortune";
     public static final String APP_SAVE_SLEEPING_BAG_PROLOGUE = "Sleeping bag";
     public static final String APP_SAVE_TENT_PROLOGUE = "Tent_prologue";
-    public static final String APP_SAVE = "Save";
-    public TextView prologueTextMain;
+    public TextView textPrologueMain;
     public boolean isButtonPrologueTent;
     public boolean isButtonPrologueMoveUp;
     public boolean isButtonPrologueMoveDown;
     public float level;
     public RadioGroup radioGroupPrologue;
+
+    private ScrollView scrollPrologueMain;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,22 +43,25 @@ public class Prologue_start extends GameActivity {
         fortune = 60;
         wound = 1;
         save = getSharedPreferences(APP_SAVE, Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = save.edit();
-        editor.putFloat(APP_SAVE_LEVEL, level);
-        editor.putInt(APP_SAVE_FORTUNE, fortune);
-        editor.putInt(APP_SAVE_WOUND, wound);
-        editor.apply();
         buttonPrologueTent = (RadioButton) findViewById(R.id.buttonPrologueTentID);
         buttonPrologueMoveUp = (RadioButton) findViewById(R.id.buttonPrologueMoveUpID);
         buttonPrologueMoveDown = (RadioButton) findViewById(R.id.buttonPrologueMoveDownID);
         radioGroupPrologue = (RadioGroup) findViewById(R.id.radioGroupPrologueID);
-        prologueTextMain = (TextView) findViewById(R.id.prologue_textMainID);
+        textPrologueMain = (TextView) findViewById(R.id.textPrologueMainID);
+        scrollPrologueMain = (ScrollView) findViewById(R.id.scrollPrologueMainID);
         startService(new Intent(this, OstWood.class));
         isOstWood = true;
 
         if (save.getInt(APP_SAVE_TENT_PROLOGUE, 0) != 0) {
             buttonPrologueTent.setVisibility(View.GONE);
         }
+
+        textPrologueMain.setTextSize(sizeFonts);
+        buttonPrologueMoveDown.setTextSize(sizeFonts);
+        buttonPrologueMoveUp.setTextSize(sizeFonts);
+        buttonPrologueTent.setTextSize(sizeFonts);
+
+        startAnimation(new ArrayList<View>(Arrays.asList(radioGroupPrologue,scrollPrologueMain)));
     }
 
     public void onPrologueTent(View view) {
@@ -76,7 +80,7 @@ public class Prologue_start extends GameActivity {
 
     public void onPrologueMoveUp(View view) {
         if (isButtonPrologueMoveUp) {
-            Intent intent = new Intent(Prologue_start.this, PrologueUpFirstScene.class);
+            Intent intent = new Intent(PrologueStart.this, PrologueUpFirstScene.class);
             getNextScene(intent);
             finish();
         } else {
@@ -91,7 +95,7 @@ public class Prologue_start extends GameActivity {
 
     public void onPrologueMoveDown(View view) {
         if (isButtonPrologueMoveDown) {
-            Intent intent = new Intent(Prologue_start.this, PrologueDownFirstScene.class);
+            Intent intent = new Intent(PrologueStart.this, PrologueDownFirstScene.class);
             getNextScene(intent);
             finish();
             overridePendingTransition(R.anim.first_activity_animation, R.anim.second_activity_animation);
@@ -116,8 +120,9 @@ public class Prologue_start extends GameActivity {
             editor.putInt(APP_SAVE_FORTUNE, fortune);
             editor.putInt(APP_SAVE_TENT_PROLOGUE, 1);
             editor.putBoolean(APP_SAVE_SLEEPING_BAG_PROLOGUE, false);
+            editor.putInt(APP_SAVE_WOUND,wound);
             editor.apply();
-            prologueTextMain.setText(R.string.prologue_tent_fail);
+            textPrologueMain.setText(R.string.prologue_tent_fail);
             return fortune;
         } else {
             save = getSharedPreferences(APP_SAVE, Context.MODE_PRIVATE);
@@ -128,16 +133,12 @@ public class Prologue_start extends GameActivity {
             editor.putInt(APP_SAVE_FORTUNE, fortune);
             editor.putInt(APP_SAVE_TENT_PROLOGUE, 2);
             editor.putBoolean(APP_SAVE_SLEEPING_BAG_PROLOGUE, true);
+            editor.putInt(APP_SAVE_WOUND,wound);
             editor.apply();
             isSleepingBugMain = true;
-            prologueTextMain.setText(R.string.prologue_tent_luck);
+            textPrologueMain.setText(R.string.prologue_tent_luck);
             return fortune;
         }
-    }
-
-    public void test(View view) {
-        getNextScene(new Intent(this, PrologueBreakage.class));
-        finish();
     }
 }
 

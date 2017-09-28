@@ -2,92 +2,190 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layoutBackgroundDownFirstID"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_prologue_down_first_scene"
     tools:context="com.example.last_spring.gameprealpha.PrologueDownFirstScene">
 
-    <RadioGroup
-        android:id="@+id/secondRadioGroupPrologueDownID"
-        android:layout_width="342dp"
-        android:layout_height="115dp"
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ProgressBar
+            android:id="@+id/progressBarPrologueDownID"
+            style="@android:style/Widget.DeviceDefault.Light.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_alignParentBottom="true"
+            android:maxHeight="10dp"
+            android:minHeight="10dp"
+            android:progressDrawable="@drawable/seekbar_prologue_first"
+            android:visibility="gone"
+            tools:progress="10" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="40dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textPrologueDownID"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerInParent="true"
+            android:lineSpacingExtra="3sp"
+            android:scrollbars = "vertical"
+            android:background="#70ffffff"
+            android:lineSpacingMultiplier="0.8"
+            android:textColor="#303030"
+            android:textSize="16sp"
+            android:visibility="gone" />
+
+        <FrameLayout
+            android:id="@+id/framePrologueFirstID"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:visibility="gone"
+            tools:visibility="visible">
+
+            <RadioGroup
+                android:id="@+id/radioGroupPrologueDownID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:orientation="vertical"
+
+                >
+
+                <RadioButton
+                    android:id="@+id/prologueDownStartGameButtonID"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:background="#60ffffff"
+                    android:button="@drawable/radio_button_selector"
+                    android:onClick="onPrologueDownStartGame"
+                    android:text="@string/prologue_down_start_game"
+                    android:textColor="#303030"
+                    android:textSize="16sp"
+                    tools:layout_editor_absoluteX="60dp"
+                    tools:layout_editor_absoluteY="404dp" />
+
+                <RadioButton
+                    android:id="@+id/prologueDownStartExitButtonID"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:background="#60ffffff"
+                    android:button="@drawable/radio_button_selector"
+                    android:onClick="onPrologueDownExit"
+                    android:text="@string/prologue_down_start_exit"
+                    android:textColor="#303030"
+                    android:textSize="16sp"
+                    tools:layout_editor_absoluteX="62dp"
+                    tools:layout_editor_absoluteY="440dp" />
+            </RadioGroup>
+
+            <RadioGroup
+                android:id="@+id/secondRadioGroupPrologueDownID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:orientation="vertical">
+
+                <RadioButton
+                    android:id="@+id/prologueDownStartLuckButtonID"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:background="#60ffffff"
+                    android:button="@drawable/radio_button_selector"
+                    android:onClick="onPrologueDownLuck"
+                    android:text="@string/prologue_down_start_game"
+                    android:textColor="#303030"
+                    android:textSize="16sp"
+                    tools:layout_editor_absoluteX="60dp"
+                    tools:layout_editor_absoluteY="404dp" />
+
+                <RadioButton
+                    android:id="@+id/prologueDownStartNoLuckButtonID"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:background="#60ffffff"
+                    android:button="@drawable/radio_button_selector"
+                    android:onClick="onPrologueDownNoLuck"
+                    android:text="@string/prologue_down_start_exit"
+                    android:textColor="#303030"
+                    android:textSize="16sp"
+                    tools:layout_editor_absoluteX="62dp"
+                    tools:layout_editor_absoluteY="440dp" />
+            </RadioGroup>
+        </FrameLayout>
+
+        <Button
+            android:id="@+id/buttonProlDownStartID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_centerInParent="true"
+            android:background="#90e9f7f7"
+            android:gravity="center"
+            android:onClick="onStartDownPrologue"
+            android:text="@string/start"
+            android:textColor="#303030"
+            android:visibility="visible"
+            tools:visibility="visible" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="40dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.472">
+        app:layout_constraintVertical_bias="0.0">
 
-        <RadioButton
-            android:id="@+id/prologueDownStartLuckButtonID"
-            android:layout_width="match_parent"
+        <ImageButton
+            android:id="@+id/prolDownTextDirectionID"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:background="#60ffffff"
-            android:button="@drawable/radio_button_selector"
-            android:onClick="onPrologueDownLuck"
-            android:text="@string/prologue_down_start_game"
-            android:textColor="#303030"
-            android:textSize="16sp"
-            tools:layout_editor_absoluteX="60dp"
-            tools:layout_editor_absoluteY="404dp" />
-
-        <RadioButton
-            android:id="@+id/prologueDownStartNoLuckButtonID"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:background="#60ffffff"
-            android:button="@drawable/radio_button_selector"
-            android:onClick="onPrologueDownNoLuck"
-            android:text="@string/prologue_down_start_exit"
-            android:textColor="#303030"
-            android:textSize="16sp"
-            tools:layout_editor_absoluteX="62dp"
-            tools:layout_editor_absoluteY="440dp" />
-    </RadioGroup>
-
-    <RadioGroup
-        android:id="@+id/radioGroupPrologueDownID"
-        android:layout_width="342dp"
-        android:layout_height="115dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.472">
-
-        <RadioButton
-            android:id="@+id/prologueDownStartGameButtonID"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:background="#60ffffff"
-            android:button="@drawable/radio_button_selector"
-            android:onClick="onPrologueDownStartGame"
-            android:text="@string/prologue_down_start_game"
-            android:textColor="#303030"
-            android:textSize="16sp"
-            tools:layout_editor_absoluteX="60dp"
-            tools:layout_editor_absoluteY="404dp" />
-
-        <RadioButton
-            android:id="@+id/prologueDownStartExitButtonID"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:background="#60ffffff"
-            android:button="@drawable/radio_button_selector"
-            android:onClick="onPrologueDownExit"
-            android:text="@string/prologue_down_start_exit"
-            android:textColor="#303030"
-            android:textSize="16sp"
-            tools:layout_editor_absoluteX="62dp"
-            tools:layout_editor_absoluteY="440dp" />
-    </RadioGroup>
+            android:layout_alignParentBottom="true"
+            android:layout_centerInParent="true"
+            android:background="@null" />
+    </RelativeLayout>
 
     <ImageButton
         android:id="@+id/firstButtonPlolDownID"
@@ -199,30 +297,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.142" />
 
-    <ImageButton
-        android:id="@+id/prolDownTextDirectionID"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@null"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.774"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.894" />
-
-    <Button
-        android:id="@+id/buttonProlDownStartID"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="onStartDownPrologue"
-        android:text="@string/start"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.593"
-        app:layout_constraintLeft_toRightOf="@+id/thirdButtonPlolDownID"
-        app:layout_constraintRight_toLeftOf="@+id/fourthButtonPlolDownID"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.909" />
 
     <TextView
         android:id="@+id/counterPrologDownID"
@@ -235,30 +309,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.029" />
 
-    <ProgressBar
-        android:id="@+id/progressBarPrologueDownID"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="344dp"
-        android:layout_height="21dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.99" />
-
-    <TextView
-        android:id="@+id/textPrologDownID"
-        android:layout_width="342dp"
-        android:layout_height="248dp"
-        android:lineSpacingMultiplier="0.8"
-        android:textColor="#303030"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.039" />
-
     <Button
         android:id="@+id/twoID"
         android:layout_width="wrap_content"
@@ -266,7 +316,7 @@
         android:onClick="onTwo"
         android:text="Пропустить"
         tools:layout_editor_absoluteX="261dp"
-        tools:layout_editor_absoluteY="519dp" />
+        tools:layout_editor_absoluteY="517dp" />
 
 
 </android.support.constraint.ConstraintLayout>
