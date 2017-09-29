@@ -231,7 +231,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void onHunting(View view) {
         ostMain.stop();
-        startActivity(new Intent(this, PrologueBackpackHunter.class));
+        startActivity(new Intent(this, PrologueBreakage.class));
         finish();
     }
 

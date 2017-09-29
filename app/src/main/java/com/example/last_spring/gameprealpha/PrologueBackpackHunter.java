@@ -58,6 +58,8 @@ private ConstraintLayout  constraintLayoutDialogBackpack;
         editor.putFloat(APP_SAVE_LEVEL, level);
         editor.apply();
 
+        finishOst();
+
         startService(new Intent(this, OstDisturbance.class));
         isOstDisturbance = true;
 

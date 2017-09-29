@@ -50,18 +50,22 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_centerInParent="true"
-            android:lineSpacingExtra="3sp"
-            android:scrollbars = "vertical"
+            android:layout_above="@+id/framePrologueFirstID"
             android:background="#70ffffff"
+            android:lineSpacingExtra="3sp"
             android:lineSpacingMultiplier="0.8"
+            android:scrollbars="vertical"
             android:textColor="#303030"
             android:textSize="16sp"
-            android:visibility="gone" />
+            android:visibility="gone"
+            tools:text="@string/prologue_bonfire_text_down"
+            tools:visibility="visible" />
 
         <FrameLayout
             android:id="@+id/framePrologueFirstID"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_centerInParent="true"
