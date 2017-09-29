@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.last_spring.gameprealpha.res.TypefaceUtil;
+
 public class MainSettings extends AppCompatActivity {
 
     private static final String APP_SETTINGS_SETTINGS_FONTS_SIZE = "Fonts size";
@@ -18,6 +20,8 @@ public class MainSettings extends AppCompatActivity {
     private SharedPreferences settings;
 
     private float size;
+
+    private int fontsCounter;
 
     private TextView textSettingsMain;
 
@@ -36,6 +40,8 @@ public class MainSettings extends AppCompatActivity {
 
         textSettingsMain = (TextView) findViewById(R.id.textSettingsMainID);
         textSettingsMain.setTextSize(size);
+
+        fontsCounter = 0;
     }
 
     @Override
@@ -57,6 +63,8 @@ public class MainSettings extends AppCompatActivity {
 
         size --;
         textSettingsMain.setTextSize(size);
+        textSettingsMain = (TextView) findViewById(R.id.textSettingsMainID);
+        textSettingsMain.setTextSize(size);
 
     }
 
@@ -65,6 +73,8 @@ public class MainSettings extends AppCompatActivity {
             size ++;
         }
         textSettingsMain.setTextSize(size);
+        textSettingsMain = (TextView) findViewById(R.id.textSettingsMainID);
+        textSettingsMain.setTextSize(size);
     }
 
     public void onBackSettings(View view) {
@@ -72,5 +82,24 @@ public class MainSettings extends AppCompatActivity {
         editor.putFloat(APP_SETTINGS_SETTINGS_FONTS_SIZE, size);
         editor.apply();
         finish();
+    }
+
+    public void onSettingsFonts(View view) {
+        if (fontsCounter==0) {
+            TypefaceUtil.overrideFont(getApplicationContext(), "SERIF", "fonts/geometria.otf");
+            setContentView(R.layout.activity_main_settings);
+            textSettingsMain.setTextSize(size);
+            fontsCounter++;
+        } else if (fontsCounter==1) {
+            TypefaceUtil.overrideFont(getApplicationContext(), "SERIF", "fonts/neris.otf");
+            setContentView(R.layout.activity_main_settings);
+            textSettingsMain.setTextSize(size);
+            fontsCounter++;
+        } else {
+            TypefaceUtil.overrideFont(getApplicationContext(), "SERIF", "fonts/proba.otf");
+            setContentView(R.layout.activity_main_settings);
+            textSettingsMain.setTextSize(size);
+            fontsCounter=0;
+        }
     }
 }

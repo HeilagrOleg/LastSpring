@@ -2,6 +2,7 @@ package com.example.last_spring.gameprealpha;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.os.CountDownTimer;
 import android.support.constraint.ConstraintLayout;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ import com.example.last_spring.gameprealpha.res.GameActivity;
 public class PrologueBreakage extends GameActivity {
 
     public static final String APP_SAVE_BREAKAGE_FOOD = "Breakage food";
+
 
     private ConstraintLayout constraintLayoutFirst;
     private ConstraintLayout constraintLayoutSecond;
@@ -36,9 +38,10 @@ public class PrologueBreakage extends GameActivity {
     private String stFailCount;
 
     private int pointsCounter;
+    private int pointsCounterMain;
     private int failCounter;
     private int maxPointsForSecondRight;
-    private int maxPointsForSecondLeft;
+    private int maxFail;
     private int leftCounter;
     private int rightCounter;
     private int right;
@@ -79,11 +82,21 @@ public class PrologueBreakage extends GameActivity {
         imageButtonBreakageSecond = (ImageButton) findViewById(R.id.imageButtonBreakageSecondID);
 
         buttonBreakage = (Button) findViewById(R.id.buttonBreakageID);
+        buttonBreakage.setTextSize(sizeFonts);
         buttonBreakageTest = (Button) findViewById(R.id.buttonBreakageTestID);
+        buttonBreakageTest.setTextSize(sizeFonts);
+
+        ost = MediaPlayer.create(this, R.raw.ost_action_prologue);
+
 
         maxPointsForSecondRight = 15;
-        maxPointsForSecondLeft = 15;
+        if (save.getBoolean(APP_SAVE_BREAKAGE_FOOD, false)) {
+            maxFail = 14;
+        } else {
+            maxFail = 14;
+        }
         pointsCounter = 200;
+        pointsCounterMain = 200;
         failCounter = 0;
         time = 160;
         leftCounter = 0;
@@ -97,12 +110,17 @@ public class PrologueBreakage extends GameActivity {
         stFailCount = "Ошибок: " + failCounter;
         textFailCounter = (TextView) findViewById(R.id.textFailCounterID);
         textFailCounter.setText(stFailCount);
+        textFailCounter.setTextSize(sizeFonts);
 
         textTime = (TextView) findViewById(R.id.textTimeID);
+        textTime.setTextSize(sizeFonts);
 
     }
 
     public void onBreakage(View view) {
+        isOst = true;
+        ost.start();
+        ost.setLooping(true);
         time = 450;
         failCounter = 0;
         buttonBreakageTest.setVisibility(View.GONE);
@@ -123,14 +141,14 @@ public class PrologueBreakage extends GameActivity {
                 time--;
                 textTime.setText(String.valueOf((int) time / 10));
 
-                if (rightCounter<6) {
+                if (rightCounter < 6) {
                     right = rightCounter;
                 } else {
                     rightCounter = 6;
                     right = 6;
                 }
 
-                if (leftCounter<6) {
+                if (leftCounter < 6) {
                     left = leftCounter;
                 } else {
                     leftCounter = 6;
@@ -160,14 +178,14 @@ public class PrologueBreakage extends GameActivity {
                     }
                     isSide = false;
                     leftCounter++;
-                    pointsCounter -= 1 + (int) (Math.random() * maxPointsForSecondRight)+ left;
+                    pointsCounter -= 1 + (int) (Math.random() * maxPointsForSecondRight) + left;
                 } else if (leftCounter < rightCounter) {
                     if (leftCounter > 0) {
                         leftCounter--;
                     }
                     isSide = false;
                     rightCounter++;
-                    pointsCounter += (1 + (int) (Math.random() * maxPointsForSecondRight))+right;
+                    pointsCounter += (1 + (int) (Math.random() * maxPointsForSecondRight)) + right;
                 } else {
                     if ((int) (1 + Math.random() * 2) == 1) {
                         if (leftCounter > 0) {
@@ -180,7 +198,7 @@ public class PrologueBreakage extends GameActivity {
                             rightCounter--;
                         }
                         leftCounter++;
-                        pointsCounter -= 1 + (int) (Math.random() * maxPointsForSecondRight)+ left;
+                        pointsCounter -= 1 + (int) (Math.random() * maxPointsForSecondRight) + left;
                     }
                 }
 
@@ -191,9 +209,9 @@ public class PrologueBreakage extends GameActivity {
                     isGameOver = true;
                 } else if (pointsCounter > 450 || pointsCounter < 150) {
                     failCounter++;
-                    stFailCount = "Ошибок: " + failCounter / 4;
+                    stFailCount = "Ошибок: " + failCounter / 4 + "/" + maxFail;
                     textFailCounter.setText(stFailCount);
-                    if (failCounter > 28) {
+                    if (failCounter > maxFail*4) {
                         isGameOver = true;
                     }
                 }
@@ -205,8 +223,9 @@ public class PrologueBreakage extends GameActivity {
                     constraintLayoutFirst.setVisibility(View.GONE);
                     constraintLayoutSecond.setVisibility(View.GONE);
                     maxPointsForSecondRight = 18;
-                    maxPointsForSecondLeft = 18;
                     pointsCounter = 300;
+                    ost.pause();
+                    isOst = false;
                     seekBarBreakage.setProgress(pointsCounter);
                     failCounter = 0;
                     left = 0;
@@ -231,22 +250,24 @@ public class PrologueBreakage extends GameActivity {
 
 
     public void onButtonBreakageFirst(View view) {
-        int points = 25+left;
+        int points = 25 + left;
         pointsCounter -= points;
-        leftCounter+=2;
-        rightCounter -=2;
+        leftCounter += 2;
+        rightCounter -= 2;
         seekBarBreakage.setProgress(pointsCounter);
     }
 
     public void onButtonBreakageSecond(View view) {
-        int points = 25+right;
+        int points = 25 + right;
         pointsCounter += points;
-        leftCounter -=2;
-        rightCounter+=2;
+        leftCounter -= 2;
+        rightCounter += 2;
         seekBarBreakage.setProgress(pointsCounter);
     }
 
     public void getFinal() {
+        ost.stop();
+        isOst = false;
         Intent intent = new Intent(this, PrologueGoodEnding.class);
         getNextScene(intent);
         overridePendingTransition(R.anim.first_activity_animation, R.anim.second_activity_animation);
@@ -254,6 +275,8 @@ public class PrologueBreakage extends GameActivity {
     }
 
     public void getGameOver() {
+        ost.stop();
+        isOst = false;
         Intent intent = new Intent(this, PrologueBadEnding.class);
         getNextScene(intent);
         overridePendingTransition(R.anim.first_activity_animation, R.anim.second_activity_animation);
@@ -263,6 +286,8 @@ public class PrologueBreakage extends GameActivity {
     public void onBreakageTest(View view) {
         time = 450;
         failCounter = 0;
+        ost.pause();
+        isOst = false;
         buttonBreakageTest.setVisibility(View.GONE);
         textFailCounter.setVisibility(View.VISIBLE);
         stFailCount = "Ошибок: " + failCounter;
@@ -281,14 +306,14 @@ public class PrologueBreakage extends GameActivity {
                 time--;
                 textTime.setText(String.valueOf((int) time / 10));
 
-                if (rightCounter<6) {
+                if (rightCounter < 6) {
                     right = rightCounter;
                 } else {
                     rightCounter = 6;
                     right = 6;
                 }
 
-                if (leftCounter<6) {
+                if (leftCounter < 6) {
                     left = leftCounter;
                 } else {
                     leftCounter = 6;
@@ -318,14 +343,14 @@ public class PrologueBreakage extends GameActivity {
                     }
                     isSide = false;
                     leftCounter++;
-                    pointsCounter -= 1 + (int) (Math.random() * maxPointsForSecondRight)+ left;
+                    pointsCounter -= 1 + (int) (Math.random() * maxPointsForSecondRight) + left;
                 } else if (leftCounter < rightCounter) {
                     if (leftCounter > 0) {
                         leftCounter--;
                     }
                     isSide = false;
                     rightCounter++;
-                    pointsCounter += (1 + (int) (Math.random() * maxPointsForSecondRight))+right;
+                    pointsCounter += (1 + (int) (Math.random() * maxPointsForSecondRight)) + right;
                 } else {
                     if ((int) (1 + Math.random() * 2) == 1) {
                         if (leftCounter > 0) {
@@ -338,7 +363,7 @@ public class PrologueBreakage extends GameActivity {
                             rightCounter--;
                         }
                         leftCounter++;
-                        pointsCounter -= 1 + (int) (Math.random() * maxPointsForSecondRight)+ left;
+                        pointsCounter -= 1 + (int) (Math.random() * maxPointsForSecondRight) + left;
                     }
                 }
 
@@ -349,9 +374,9 @@ public class PrologueBreakage extends GameActivity {
                     isGameOver = true;
                 } else if (pointsCounter > 450 || pointsCounter < 150) {
                     failCounter++;
-                    stFailCount = "Ошибок: " + failCounter / 4;
+                    stFailCount = "Ошибок: " + failCounter / 4 + "/" + maxFail;
                     textFailCounter.setText(stFailCount);
-                    if (failCounter > 28) {
+                    if (failCounter > maxFail*4) {
                         isGameOver = true;
                     }
                 }
@@ -367,6 +392,7 @@ public class PrologueBreakage extends GameActivity {
                     leftCounter = 0;
                     right = 0;
                     rightCounter = 0;
+                    ost.pause();
                     isStart = true;
                     isFinish = true;
                     buttonBreakage.setVisibility(View.VISIBLE);

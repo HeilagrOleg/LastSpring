@@ -5,7 +5,7 @@
     android:id="@+id/constraintLayoutDialogBackpackID"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/prologue_down_forest_background"
+    android:background="@drawable/prologue_backpack_shadow_background"
     tools:context=".PrologueBackpackHunter">
 
     <RelativeLayout
@@ -67,11 +67,11 @@
                 android:id="@+id/buttonPrologueHunterThirdLineID"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#60ffffff"
+                android:background="#70303030"
                 android:button="@drawable/radio_button_selector"
                 android:onClick="onPrologueBackpackHunterThirdLine"
                 android:text="@string/prologue_backpack_hunter_button_start"
-                android:textColor="#303030"
+                android:textColor="@android:color/background_light"
                 android:textSize="16sp"
                 tools:layout_editor_absoluteX="16dp"
                 tools:layout_editor_absoluteY="419dp" />
@@ -95,12 +95,12 @@
                 android:id="@+id/textPrologueBackpackHunterStartMainID"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="#70ffffff"
+                android:background="#70303030"
                 android:lineSpacingExtra="3sp"
                 android:lineSpacingMultiplier="0.8"
                 android:orientation="vertical"
                 android:text="@string/prologue_backpack_hunter_text_start"
-                android:textColor="#303030"
+                android:textColor="@android:color/background_light"
                 android:textSize="18sp"
                 android:visibility="visible" />
 

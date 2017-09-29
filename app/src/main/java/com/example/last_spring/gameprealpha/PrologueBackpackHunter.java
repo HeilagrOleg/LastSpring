@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.Color;
+import android.os.CountDownTimer;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -94,7 +95,17 @@ private ConstraintLayout  constraintLayoutDialogBackpack;
             textPrologueBackpackHunterStart.setText(R.string.prologue_backpack_hunter_text_start_knife);
         }
 
-        startAnimation(new ArrayList<View>(Arrays.asList(radioGroupPrologueBackpackHunterDialog, scrollPrologueBackpackHunterStart)));
+
+        new CountDownTimer(1000, 1000) {
+            public void onTick(long millisUntilFinished) {
+            }
+            public void onFinish() {
+                startAnimation(new ArrayList<View>(Arrays.asList(radioGroupPrologueBackpackHunterDialog, scrollPrologueBackpackHunterStart)));
+            }
+        }.start();
+
+
+
 
     }
 

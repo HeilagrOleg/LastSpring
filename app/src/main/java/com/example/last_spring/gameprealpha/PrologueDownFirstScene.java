@@ -218,7 +218,6 @@ public class PrologueDownFirstScene extends GameActivity {
         prologueDownStartGameButton.setVisibility(View.GONE);
         textPrologueDownStart.setVisibility(View.GONE);
         progressBarPrologueDown.setVisibility(View.VISIBLE);
-
         layoutBackgroundDownFirst.setBackground(res.getDrawable(R.drawable.background_prologue_down_first_scene_game));
 
         if (!isFirstStart) {
@@ -320,13 +319,16 @@ public class PrologueDownFirstScene extends GameActivity {
                 break;
         }
 
+
+        ost.start();
+
         firstButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (timerTime >= 50000) {
                     if (isLevel) {
                         timer.cancel();
-                        ost.stop();
+                        ost.pause();
                         gameVictory();
                     } else {
                         timer.cancel();
@@ -368,7 +370,7 @@ public class PrologueDownFirstScene extends GameActivity {
 
                                 @Override
                                 public void onFinish() {
-                                    ost.stop();
+                                    ost.pause();
                                     firstButton.clearAnimation();
                                     secondButton.clearAnimation();
                                     thirdButton.clearAnimation();
@@ -486,7 +488,7 @@ public class PrologueDownFirstScene extends GameActivity {
 
                             @Override
                             public void onFinish() {
-                                ost.stop();
+                                ost.pause();
                                 firstButton.clearAnimation();
                                 secondButton.clearAnimation();
                                 thirdButton.clearAnimation();
@@ -633,6 +635,7 @@ public class PrologueDownFirstScene extends GameActivity {
     }
 
     public void gameVictory() {
+        ost.stop();
         firstButton.clearAnimation();
         secondButton.clearAnimation();
         thirdButton.clearAnimation();

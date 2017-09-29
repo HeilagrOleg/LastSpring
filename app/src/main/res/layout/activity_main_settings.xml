@@ -8,7 +8,7 @@
     tools:context=".MainSettings">
 
     <RelativeLayout
-        android:id="@+id/relativeLayoutSettingsID"
+        android:id="@+id/relativeLayoutSettingsFontsSizeID"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:gravity="center"
@@ -44,7 +44,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/linearLayoutSettingsMainID"
-            android:layout_above="@+id/buttonSettingsBack"
+            android:layout_above="@+id/buttonSettingsFonts"
             android:layout_centerInParent="true"
             android:background="#50ffffff"
             android:gravity="center"
@@ -101,6 +101,16 @@
             android:onClick="onBackSettings"
             android:orientation="vertical"
             android:text="@string/button_back"
+            android:visibility="visible" />
+
+        <Button
+            android:id="@+id/buttonSettingsFonts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/buttonSettingsBack"
+            android:onClick="onSettingsFonts"
+            android:orientation="vertical"
+            android:text="@string/settings_fonts"
             android:visibility="visible" />
     </RelativeLayout>
 

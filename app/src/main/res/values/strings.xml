@@ -21,6 +21,13 @@
         В палатке Адам нашел чудом оставшийся сухим, спальник.</string>
     <string name="prologue_move_up">Идти вверх по течению</string>
     <string name="prologue_move_down">Идти вниз по течению</string>
+
+    // Настройки
+
+    <string name="settings_fonts">Изменить шрифт</string>
+
+
+
     // Пролог, вниз по течению
     <string name="prologue_game_over_down">Адам не смог ухватиться за рюкзак</string>
     <string name="prologue_game_over_down_luck">Попробовать ухватиться за бревно</string>
@@ -1029,6 +1036,17 @@
     <string name="prologue_before_breakage_button_bypass">
        Идти в обход
     </string>
+
+    // Обрыв.
+
+    <string name="prologue_breakage_button_start">
+       Старт
+    </string>
+
+    <string name="prologue_breakage_button_test">
+       Потренироваться
+    </string>
+
 
     //Диалог с охотником.
 
