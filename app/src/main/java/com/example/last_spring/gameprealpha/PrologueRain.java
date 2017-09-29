@@ -62,9 +62,10 @@ public class PrologueRain extends GameActivity {
         buttonPrologueRainThird.setTextSize(sizeFonts);
 
         scrollPrologueRain = (ScrollView) findViewById(R.id.scrollPrologueRainID);
+        sScroll(scrollPrologueRain);
 
         textPrologueRainStart = (TextView) findViewById(R.id.textPrologueRainStartID);
-        textPrologueRainStart.setTextSize(sizeFonts);
+        sText(textPrologueRainStart);
 
         if (save.getBoolean(APP_SAVE_CAVE_FAIL, false)) {
             textPrologueRainStart.setText(R.string.prologue_rain_text_start_cave_fail);
@@ -80,6 +81,7 @@ public class PrologueRain extends GameActivity {
 
     public void onPrologueRainFirst(View view) {
         if (isFirst) {
+            refreshScroll(scrollPrologueRain);
             textPrologueRainStart.setText(R.string.prologue_rain_text_raincoat);
             buttonPrologueRainFirst.setVisibility(View.GONE);
             isFirst = false;
@@ -97,6 +99,7 @@ public class PrologueRain extends GameActivity {
 
     public void onPrologueRainThird(View view) {
         if (isSecond) {
+            refreshScroll(scrollPrologueRain);
             SharedPreferences.Editor editor = save.edit();
             editor.putInt(APP_SAVE_WOUND, wound);
             editor.apply();

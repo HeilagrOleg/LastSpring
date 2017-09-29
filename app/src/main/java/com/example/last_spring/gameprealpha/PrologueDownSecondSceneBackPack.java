@@ -129,9 +129,10 @@ public class PrologueDownSecondSceneBackPack extends GameActivity {
 
         linearLayoutBackpack = (FrameLayout) findViewById(R.id.linearLayoutBackpackID);
         scrollBackpack = (ScrollView) findViewById(R.id.scrollBackpackID);
+        sScroll(scrollBackpack);
 
         prologueCutBackpack = (TextView) findViewById(R.id.prologueCutBackpackID);
-        prologueCutBackpack.setTextSize(sizeFonts);
+        sText(prologueCutBackpack);
 
         prologueDownBackPackMainRadioGroup = (RadioGroup) findViewById(R.id.prologueDownBackPackMainRadioGroupID);
         prologueDownBackpackTopPartRadioGroup = (RadioGroup) findViewById(R.id.prologueDownBackpackTopPartRadioGroupID);
@@ -217,6 +218,7 @@ public class PrologueDownSecondSceneBackPack extends GameActivity {
 
     public void onOpenTopPart(View view) {
         if (isTopBackpack) {
+            refreshScroll(scrollBackpack);
             prologueDownBackPackMainRadioGroup.setVisibility(View.GONE);
             prologueDownBackpackTopPartRadioGroup.setVisibility(View.VISIBLE);
         }
@@ -232,6 +234,7 @@ public class PrologueDownSecondSceneBackPack extends GameActivity {
 
     public void onOpenMiddlePart(View view) {
         if (isMiddleBackPack) {
+            refreshScroll(scrollBackpack);
             prologueDownBackPackMainRadioGroup.setVisibility(View.GONE);
             prologueDownBackpackMiddlePartRadioGroup.setVisibility(View.VISIBLE);
         }
@@ -247,6 +250,7 @@ public class PrologueDownSecondSceneBackPack extends GameActivity {
 
     public void onBasementPart(View view) {
         if (isBasementBackpack) {
+            refreshScroll(scrollBackpack);
             prologueDownBackPackMainRadioGroup.setVisibility(View.GONE);
             prologueDownBackpackBasementPartRadioGroup.setVisibility(View.VISIBLE);
         }
@@ -262,6 +266,7 @@ public class PrologueDownSecondSceneBackPack extends GameActivity {
 
     public void onAdditionalPart(View view) {
         if (isAdditionalBackpack) {
+            refreshScroll(scrollBackpack);
             prologueDownBackPackMainRadioGroup.setVisibility(View.GONE);
             prologueDownBackpackAdditionalPartRadioGroup.setVisibility(View.VISIBLE);
         }
@@ -277,6 +282,7 @@ public class PrologueDownSecondSceneBackPack extends GameActivity {
 
     public void onAdditionalOintmentBackPack(View view) {
         if (isAdditionalBackpackOintment) {
+            refreshScroll(scrollBackpack);
             prologueDownBackpackAdditionalPartRadioGroup.setVisibility(View.GONE);
             prologueDownBackPackMainRadioGroup.setVisibility(View.VISIBLE);
             additionalBackpackButton.setVisibility(View.GONE);
@@ -317,6 +323,7 @@ public class PrologueDownSecondSceneBackPack extends GameActivity {
 
     public void onAdditionalOintmentLuckBackPack(View view) {
         if (isAdditionalBackpackOintmentLuck) {
+            refreshScroll(scrollBackpack);
             prologueDownBackpackAdditionalPartRadioGroup.setVisibility(View.GONE);
             prologueDownBackPackMainRadioGroup.setVisibility(View.VISIBLE);
             additionalBackpackButton.setVisibility(View.GONE);
@@ -358,6 +365,7 @@ public class PrologueDownSecondSceneBackPack extends GameActivity {
 
     public void onAdditionalNoOintmentBackPack(View view) {
         if (isAdditionalBackpackNoOintment) {
+            refreshScroll(scrollBackpack);
             prologueDownBackpackAdditionalPartRadioGroup.setVisibility(View.GONE);
             prologueDownBackPackMainRadioGroup.setVisibility(View.VISIBLE);
             additionalBackpackButton.setVisibility(View.GONE);
@@ -385,6 +393,7 @@ public class PrologueDownSecondSceneBackPack extends GameActivity {
 
     public void onAdditionalPartBack(View view) {
         if (isAdditionalBackpackBack) {
+            refreshScroll(scrollBackpack);
             prologueDownBackpackAdditionalPartRadioGroup.setVisibility(View.GONE);
             prologueDownBackPackMainRadioGroup.setVisibility(View.VISIBLE);
         }
@@ -401,6 +410,7 @@ public class PrologueDownSecondSceneBackPack extends GameActivity {
 
     public void onTopBackpackKnife(View view) {
         if (isTopBackpackKnife) {
+            refreshScroll(scrollBackpack);
             prologueDownBackpackTopPartRadioGroup.setVisibility(View.GONE);
             prologueDownBackPackMainRadioGroup.setVisibility(View.VISIBLE);
             topBackpackButton.setVisibility(View.GONE);
@@ -441,6 +451,7 @@ public class PrologueDownSecondSceneBackPack extends GameActivity {
 
     public void onTopBackpackKnifeLuck(View view) {
         if (isTopBackpackKnifeLuck) {
+            refreshScroll(scrollBackpack);
             prologueDownBackpackTopPartRadioGroup.setVisibility(View.GONE);
             prologueDownBackPackMainRadioGroup.setVisibility(View.VISIBLE);
             topBackpackButton.setVisibility(View.GONE);
@@ -487,6 +498,7 @@ public class PrologueDownSecondSceneBackPack extends GameActivity {
 
     public void onTopBackpackNoKnife(View view) {
         if (isTopBackpackNoKnife) {
+            refreshScroll(scrollBackpack);
             prologueDownBackpackTopPartRadioGroup.setVisibility(View.GONE);
             prologueDownBackPackMainRadioGroup.setVisibility(View.VISIBLE);
             topBackpackButton.setVisibility(View.GONE);
@@ -514,6 +526,7 @@ public class PrologueDownSecondSceneBackPack extends GameActivity {
 
     public void onTopPartBack(View view) {
         if (isTopBackpackBack) {
+            refreshScroll(scrollBackpack);
             prologueDownBackpackTopPartRadioGroup.setVisibility(View.GONE);
             prologueDownBackPackMainRadioGroup.setVisibility(View.VISIBLE);
         }
@@ -529,6 +542,7 @@ public class PrologueDownSecondSceneBackPack extends GameActivity {
 
     public void onMiddleBackPackSleepingBug(View view) {
         if (isMiddleBackPackSleepingBug) {
+            refreshScroll(scrollBackpack);
             prologueDownBackpackMiddlePartRadioGroup.setVisibility(View.GONE);
             prologueDownBackPackMainRadioGroup.setVisibility(View.VISIBLE);
             middleBackPackButton.setVisibility(View.GONE);
@@ -566,6 +580,7 @@ public class PrologueDownSecondSceneBackPack extends GameActivity {
 
     public void onMiddleBackPackSleepingBugLuck(View view) {
         if (isMiddleBackPackSleepingBugLuck) {
+            refreshScroll(scrollBackpack);
             prologueDownBackpackMiddlePartRadioGroup.setVisibility(View.GONE);
             prologueDownBackPackMainRadioGroup.setVisibility(View.VISIBLE);
             middleBackPackButton.setVisibility(View.GONE);
@@ -607,6 +622,7 @@ public class PrologueDownSecondSceneBackPack extends GameActivity {
 
     public void onMiddleBackPackNoSleepingBug(View view) {
         if (isMiddleBackPackNoSleepingBug) {
+            refreshScroll(scrollBackpack);
             prologueDownBackpackMiddlePartRadioGroup.setVisibility(View.GONE);
             prologueDownBackPackMainRadioGroup.setVisibility(View.VISIBLE);
             middleBackPackButton.setVisibility(View.GONE);
@@ -633,6 +649,7 @@ public class PrologueDownSecondSceneBackPack extends GameActivity {
 
     public void onMiddlePartBack(View view) {
         if (isMiddleBackPackBack) {
+            refreshScroll(scrollBackpack);
             prologueDownBackpackMiddlePartRadioGroup.setVisibility(View.GONE);
             prologueDownBackPackMainRadioGroup.setVisibility(View.VISIBLE);
         }
@@ -648,6 +665,7 @@ public class PrologueDownSecondSceneBackPack extends GameActivity {
 
     public void onBasementBackpackRaincoat(View view) {
         if (isBasementBackpackRaincoat) {
+            refreshScroll(scrollBackpack);
             prologueDownBackpackBasementPartRadioGroup.setVisibility(View.GONE);
             prologueDownBackPackMainRadioGroup.setVisibility(View.VISIBLE);
             basementBackpackButton.setVisibility(View.GONE);
@@ -685,6 +703,7 @@ public class PrologueDownSecondSceneBackPack extends GameActivity {
 
     public void onBasementBackpackRaincoatLuckButton(View view) {
         if (isBasementBackpackRaincoatLuck) {
+            refreshScroll(scrollBackpack);
             prologueDownBackpackBasementPartRadioGroup.setVisibility(View.GONE);
             prologueDownBackPackMainRadioGroup.setVisibility(View.VISIBLE);
             basementBackpackButton.setVisibility(View.GONE);
@@ -726,6 +745,7 @@ public class PrologueDownSecondSceneBackPack extends GameActivity {
 
     public void onBasementBackpackNoRaincoat(View view) {
         if (isBasementBackpackNoRaincoat) {
+            refreshScroll(scrollBackpack);
             prologueDownBackpackBasementPartRadioGroup.setVisibility(View.GONE);
             prologueDownBackPackMainRadioGroup.setVisibility(View.VISIBLE);
             basementBackpackButton.setVisibility(View.GONE);
@@ -752,6 +772,7 @@ public class PrologueDownSecondSceneBackPack extends GameActivity {
 
     public void onBasementPartBack(View view) {
         if (isBasementBackpackBack) {
+            refreshScroll(scrollBackpack);
             prologueDownBackpackBasementPartRadioGroup.setVisibility(View.GONE);
             prologueDownBackPackMainRadioGroup.setVisibility(View.VISIBLE);
         }

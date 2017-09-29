@@ -55,8 +55,9 @@ public class PrologueDownSecondSceneNoBackPack extends GameActivity {
         noBackPackMoveHuntingLodgeRadioButton = (RadioButton) findViewById(R.id.buttonNoBackPackMoveHuntingLodgeID);
         noBackPackMoveHuntingLodgeRadioButton.setTextSize(sizeFonts);
         textNoBackpack = (TextView) findViewById(R.id.textNoBackpackID);
-        textNoBackpack.setTextSize(sizeFonts);
+        sText(textNoBackpack);
         scrollNoBackpack = (ScrollView) findViewById(R.id.scrollNoBackpackID);
+        sScroll(scrollNoBackpack);
 
         if (!save.getBoolean(APP_SAVE_SLEEPING_BAG_PROLOGUE, false)) {
             textNoBackpack.setText(R.string.prologue_game_over_down_text_sleeping_bug);
@@ -67,6 +68,7 @@ public class PrologueDownSecondSceneNoBackPack extends GameActivity {
 
     public void onNoBackPackMoveHuntingLodge(View view) {
         if (isHuntingLodge) {
+            refreshScroll(scrollNoBackpack);
             Intent intent = new Intent(this, HuntingLodge.class);
             getNextScene(intent);
             overridePendingTransition(R.anim.first_activity_animation, R.anim.second_activity_animation);

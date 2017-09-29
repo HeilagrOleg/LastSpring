@@ -322,5 +322,91 @@
             android:background="@null" />
     </RelativeLayout>
 
+    <RelativeLayout
+        android:id="@+id/layoutPrologueTrainingBackPackID"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="80dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="60dp"
+        android:background="#96c7cf"
+        android:orientation="vertical"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <LinearLayout
+            android:id="@+id/linearLayoutTrainingPrologueFirst"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical">
+
+            <CheckBox
+                android:id="@+id/checkBoxPrologueTrainingBackPackID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/radioButtonTraining"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:paddingBottom="10dp"
+                android:text="@string/prologue_training_button_training"
+                android:textColor="#303030" />
+
+            <RadioButton
+                android:id="@+id/radioButtonTrainingBackPackID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/layoutPrologueTrainingBackgroundID"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="#96c7cf"
+                android:button="@drawable/radio_button_selector"
+                android:onClick="onPrologueStartTrainingBackpack"
+                android:text="@string/prologue_training_button_close"
+                android:textColor="#303030"
+                android:textSize="16sp"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="419dp" />
+
+        </LinearLayout>
+
+        <ScrollView
+            android:id="@+id/scrollPrologueTrainingID"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/linearLayoutTrainingPrologueFirst"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            tools:visibility="visible">
+
+            <TextView
+                android:id="@+id/textPrologueTrainingBackPackID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:lineSpacingExtra="3sp"
+                android:lineSpacingMultiplier="0.8"
+                android:orientation="vertical"
+                android:text="@string/prologue_training_backpack_scene_text"
+                android:textColor="#303030"
+                android:textSize="18sp"
+                android:visibility="visible" />
+
+        </ScrollView>
+
+    </RelativeLayout>
+
 
 </android.support.constraint.ConstraintLayout>

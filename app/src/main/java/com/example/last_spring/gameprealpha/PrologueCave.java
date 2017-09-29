@@ -94,9 +94,10 @@ public class PrologueCave extends GameActivity {
         buttonPrologueCaveRightWay.setTextSize(sizeFonts);
 
         scrollPrologueCave = (ScrollView) findViewById(R.id.scrollPrologueCaveID);
+        sScroll(scrollPrologueCave);
 
         textPrologueCaveStart = (TextView) findViewById(R.id.textPrologueCaveStartID);
-        textPrologueCaveStart.setTextSize(sizeFonts);
+        sText(textPrologueCaveStart);
 
         save = getSharedPreferences(APP_SAVE, MODE_PRIVATE);
         SharedPreferences.Editor editor = save.edit();
@@ -122,6 +123,7 @@ public class PrologueCave extends GameActivity {
 
     public void onPrologueCaveInspect(View view) {
         if (isInspect) {
+            refreshScroll(scrollPrologueCave);
             buttonPrologueCaveInspect.setVisibility(View.GONE);
            boolean answer = Fortune.isLuck(fortune,40);
             if (answer) {
@@ -142,6 +144,7 @@ public class PrologueCave extends GameActivity {
 
     public void onPrologueCaveRightWay(View view) {
         if (isRight) {
+            refreshScroll(scrollPrologueCave);
             getNextScene(new Intent(this, CaveLabyrinth.class));
             overridePendingTransition(R.anim.first_activity_animation, R.anim.second_activity_animation);
         }
@@ -155,6 +158,7 @@ public class PrologueCave extends GameActivity {
 
     public void onPrologueCaveLeftWay(View view) {
         if (isLeft) {
+            refreshScroll(scrollPrologueCave);
             getNextScene(new Intent(this, PrologueCavePool.class));
             overridePendingTransition(R.anim.first_activity_animation, R.anim.second_activity_animation);
         }

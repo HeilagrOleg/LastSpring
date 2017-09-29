@@ -67,9 +67,10 @@ public class AbandonedCar extends GameActivity {
         buttonAbandonedCarThird.setTextSize(sizeFonts);
 
         textAbandonedCarStart = (TextView) findViewById(R.id.textAbandonedCarStartID);
-        textAbandonedCarStart.setTextSize(sizeFonts);
+        sText(textAbandonedCarStart);
 
         scrollAbandonedCar = (ScrollView) findViewById(R.id.scrollAbandonedCarID);
+        sScroll(scrollAbandonedCar);
 
         startAnimation(new ArrayList<View>(Arrays.asList(radioGroupAbandonedCar,scrollAbandonedCar)));
 
@@ -87,7 +88,7 @@ public class AbandonedCar extends GameActivity {
 
     public void onAbandonedCarFirst(View view) {
         if (isFirstButton) {
-
+            refreshScroll(scrollAbandonedCar);
             if (isCar) {
                 buttonAbandonedCarFirst.setVisibility(View.GONE);
                 textAbandonedCarStart.setText(R.string.abandoned_car_text_glove_box);
@@ -137,6 +138,7 @@ public class AbandonedCar extends GameActivity {
 
     public void onAbandonedCarSecond(View view) {
         if (isSecondButton) {
+            refreshScroll(scrollAbandonedCar);
             if (isStart || isExit) {
                 getNextScene(new Intent(this, HuntingLodge.class));
                 overridePendingTransition(R.anim.first_activity_animation, R.anim.second_activity_animation);
@@ -173,6 +175,7 @@ public class AbandonedCar extends GameActivity {
 
     public void onAbandonedCarThird(View view) {
         if (isThirdButton) {
+            refreshScroll(scrollAbandonedCar);
             if (isCar) {
                 if (Fortune.isLuck(save.getInt(APP_SAVE_FORTUNE, 0), 60)) {
                     textAbandonedCarStart.setText(R.string.abandoned_car_text_trunk_luck);

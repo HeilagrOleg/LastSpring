@@ -54,7 +54,7 @@ public class HuntingLodgeExit extends GameActivity {
         editor.apply();
 
         textPrologueHunterExit = (TextView) findViewById(R.id.textPrologueHunterExitID);
-        textPrologueHunterExit.setTextSize(sizeFonts);
+        sText(textPrologueHunterExit);
         buttonPrologueHunterExitFirst = (RadioButton) findViewById(R.id.buttonPrologueHunterExitFirstID);
         buttonPrologueHunterExitFirst.setTextSize(sizeFonts);
         buttonPrologueHunterExitSecond = (RadioButton) findViewById(R.id.buttonPrologueHunterExitSecondID);
@@ -63,6 +63,7 @@ public class HuntingLodgeExit extends GameActivity {
         radioGroupPrologueHunterDialog = (RadioGroup) findViewById(R.id.radioGroupPrologueHunterDialogID);
 
         scrollPrologueHunterExit = (ScrollView) findViewById(R.id.scrollPrologueHunterExitID);
+        refreshScroll(scrollPrologueHunterExit);
 
         startService(new Intent(this, OstDisturbance.class));
         isOstDisturbance = true;
@@ -108,6 +109,9 @@ public class HuntingLodgeExit extends GameActivity {
 
     public void onPrologueHunterExitFirst(View view) {
         if (isFirst) {
+
+            refreshScroll(scrollPrologueHunterExit);
+
             if (isStop) {
                 textPrologueHunterExit.setText(R.string.hunting_exit_text_fight_no_knife_hunger_exit);
                 buttonPrologueHunterExitFirst.setText(R.string.hunting_exit_button_exit);
@@ -188,6 +192,9 @@ public class HuntingLodgeExit extends GameActivity {
 
     public void onPrologueHunterExitSecond(View view) {
         if (isSecond) {
+
+            refreshScroll(scrollPrologueHunterExit);
+
             if (isNextNoKnifeNoWoundNoHunger || isNextNoKnifeWoundNoHunger || isNextNoKnifeNoWoundHunger) {
                 if (isNextNoKnifeNoWoundNoHunger) {
                     textPrologueHunterExit.setText(R.string.hunting_exit_text_fight_knife_no_knife_no_wound_no_hunger_next);

@@ -60,9 +60,10 @@ public class PrologueBonfire extends GameActivity {
         buttonPrologueBonfireThird.setTextSize(sizeFonts);
 
         scrollPrologueBonfire = (ScrollView) findViewById(R.id.scrollPrologueBonfireID);
+        sScroll( scrollPrologueBonfire);
 
         textPrologueBonfireMain = (TextView) findViewById(R.id.textPrologueBonfireMainID);
-        textPrologueBonfireMain.setTextSize(sizeFonts);
+        sText(textPrologueBonfireMain);
 
         isDown = false;
 
@@ -73,6 +74,7 @@ public class PrologueBonfire extends GameActivity {
 
     public void onPrologueBonfireFirst(View view) {
         if (isFirst) {
+            refreshScroll(scrollPrologueBonfire);
             if (isExit) {
                 getNextScene(new Intent(this, PrologueDownBackpackCutScene.class));
                 SharedPreferences.Editor editor = save.edit();
@@ -115,6 +117,7 @@ public class PrologueBonfire extends GameActivity {
 
     public void onPrologueBonfireSecond(View view) {
         if (isSecond) {
+            refreshScroll(scrollPrologueBonfire);
             if (isDown) {
                 scrollPrologueBonfire.scrollTo(0,0);
 
@@ -168,6 +171,7 @@ public class PrologueBonfire extends GameActivity {
 
     public void onPrologueBonfireThird(View view) {
         if (isThird) {
+            refreshScroll(scrollPrologueBonfire);
             if (isUndergrowthWay && isDownWay) {
                 scrollPrologueBonfire.scrollTo(0,0);
                 textPrologueBonfireMain.setText(R.string.prologue_bonfire_text_forest);

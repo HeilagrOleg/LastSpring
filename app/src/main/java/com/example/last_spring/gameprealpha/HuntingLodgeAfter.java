@@ -47,11 +47,12 @@ public class HuntingLodgeAfter extends GameActivity {
         buttonHunterLodgeAfterSecond.setTextSize(sizeFonts);
 
         textHunterLodgeAfter = (TextView) findViewById(R.id.textHunterLodgeAfterID);
-        textHunterLodgeAfter.setTextSize(sizeFonts);
+        sText( textHunterLodgeAfter);
 
         radioGroupPrologueRain = (RadioGroup) findViewById(R.id.radioGroupHunterLodgeAfteID);
 
         scrollPrologueHunterAfter = (ScrollView) findViewById(R.id.scrollPrologueHunterAfterID);
+        sScroll(scrollPrologueHunterAfter);
 
         startAnimation(new ArrayList<View>(Arrays.asList(radioGroupPrologueRain, scrollPrologueHunterAfter)));
 
@@ -60,6 +61,7 @@ public class HuntingLodgeAfter extends GameActivity {
 
     public void onHunterLodgeAfterFirst(View view) {
         if (isFirst) {
+            refreshScroll(scrollPrologueHunterAfter);
             getNextScene(new Intent(this, PrologueCave.class));
             finish();
             isFirst = false;
@@ -74,6 +76,7 @@ public class HuntingLodgeAfter extends GameActivity {
 
     public void onHunterLodgeAfterSecond(View view) {
         if (isSecond) {
+            refreshScroll(scrollPrologueHunterAfter);
             getNextScene(new Intent(this, PrologueRain.class));
             finish();
             isSecond = false;

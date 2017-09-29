@@ -73,9 +73,11 @@ public class HuntingLodge extends GameActivity {
         isOstWood = true;
 
         scrollHuntingLodge = (ScrollView) findViewById(R.id.scrollHuntingLodgeID);
+        sScroll(scrollHuntingLodge);
 
         huntingLodgeStartText = (TextView) findViewById(R.id.huntingLodgeStartTextID);
         huntingLodgeStartText.setTextSize(sizeFonts);
+        sText(huntingLodgeStartText);
 
         radioGroupHuntingLodgeStart = (RadioGroup) findViewById(R.id.radioGroupHuntingLodgeStartID);
         radioGroupHuntingLodgeStart.setVisibility(View.GONE);
@@ -113,6 +115,7 @@ public class HuntingLodge extends GameActivity {
 
     public void onWindowHuntingStart(View view) {
         if (isWindow) {
+            refreshScroll(scrollHuntingLodge);
             huntingLodgeStartText.setText(R.string.hunting_Lodge_start_text_next_window);
             radioButtonWindowHuntingStart.setVisibility(View.GONE);
             isSaveWindow = true;
@@ -145,6 +148,7 @@ public class HuntingLodge extends GameActivity {
 
     public void onShedHuntingBeforeStart(View view) {
         if (isShed) {
+            refreshScroll(scrollHuntingLodge);
             if (isShedFive) {
                 huntingLodgeStartText.setText(R.string.hunting_Lodge_start_before_text_again);
                 if (isToiletMain) {
@@ -200,6 +204,7 @@ public class HuntingLodge extends GameActivity {
 
     public void onToiletHuntingBeforeStart(View view) {
         if (isToilet) {
+            refreshScroll(scrollHuntingLodge);
             if (isShedFirst) {
                 huntingLodgeStartText.setText(R.string.hunting_Lodge_start_before_text_shed_hand);
                 radioButtonToiletHuntingBeforeStart.setVisibility(View.GONE);
@@ -237,6 +242,7 @@ public class HuntingLodge extends GameActivity {
 
     public void onNextHuntingBeforeStart(View view) {
         if (isNext) {
+            refreshScroll(scrollHuntingLodge);
             if (isShedFirst) {
                 huntingLodgeStartText.setText(R.string.hunting_Lodge_start_before_text_again);
                 if (isToiletMain) {

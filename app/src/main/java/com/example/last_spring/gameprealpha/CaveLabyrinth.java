@@ -131,7 +131,7 @@ public class CaveLabyrinth extends GameActivity {
         buttonCaveLabyrinthExit.setTextSize(sizeFonts);
 
         textViewCaveLabyrinth = (TextView) findViewById(R.id.textViewCaveLabyrinthID);
-        textViewCaveLabyrinth.setTextSize(sizeFonts);
+        sText(textViewCaveLabyrinth);
         textCounterStep = (TextView) findViewById(R.id.textCounterStepID);
 
 
@@ -485,7 +485,7 @@ public class CaveLabyrinth extends GameActivity {
                 buttonCaveLabyrinthNorth.setVisibility(View.GONE);
                 imageCaveLabyrinth.setVisibility(View.INVISIBLE);
                 isFail = true;
-                if (save.getInt(APP_SAVE_WOUND, 0)<2) {
+                if (save.getInt(APP_SAVE_WOUND, 0) < 2) {
                     wound++;
                 }
             }
@@ -663,15 +663,15 @@ public class CaveLabyrinth extends GameActivity {
                 finish();
             } else if (getNextRoute(name).isStart()) {
                 SharedPreferences.Editor editor = save.edit();
-                editor.putBoolean(APP_SAVE_CAVE_RETURN,true);
+                editor.putBoolean(APP_SAVE_CAVE_RETURN, true);
                 editor.apply();
                 getNextScene(new Intent(this, PrologueCave.class));
                 overridePendingTransition(R.anim.first_activity_animation, R.anim.second_activity_animation);
                 finish();
             } else if (isFail) {
                 SharedPreferences.Editor editor = save.edit();
-                editor.putBoolean(APP_SAVE_CAVE_FAIL,true);
-                editor.putInt(APP_SAVE_WOUND,wound);
+                editor.putBoolean(APP_SAVE_CAVE_FAIL, true);
+                editor.putInt(APP_SAVE_WOUND, wound);
                 editor.apply();
                 getNextScene(new Intent(this, PrologueRain.class));
                 overridePendingTransition(R.anim.first_activity_animation, R.anim.second_activity_animation);

@@ -75,6 +75,7 @@ public class PrologueBeforeBreakage extends GameActivity {
         linearLayoutBeforeBreakage = (LinearLayout) findViewById(R.id.linearLayoutBeforeBreakageID);
 
         scrollBeforeBreakage = (ScrollView) findViewById(R.id. scrollBeforeBreakageID);
+        sScroll(scrollBeforeBreakage);
 
         buttonBeforeBreakageFirst = (RadioButton) findViewById(R.id.buttonBeforeBreakageFirstID);
         buttonBeforeBreakageFirst.setTextSize(sizeFonts);
@@ -87,7 +88,7 @@ public class PrologueBeforeBreakage extends GameActivity {
         checkBoxBeforeBreakage = (CheckBox) findViewById(R.id.checkBoxBeforeBreakageID);
 
         textBeforeBreakage = (TextView) findViewById(R.id.textBeforeBreakageID);
-        textBeforeBreakage.setTextSize(sizeFonts);
+        sText(textBeforeBreakage);
 
         if (wound > 0) {
             strWound = getString(R.string.prologue_before_breakage_text_wound);
@@ -133,6 +134,7 @@ public class PrologueBeforeBreakage extends GameActivity {
 
     public void onBeforeBreakageFirst(View view) {
         if (isFirst) {
+            refreshScroll(scrollBeforeBreakage);
             if (checkBoxBeforeBreakage.isChecked()) {
                 isBreakageFood = true;
                 textBeforeBreakage.setText(R.string.prologue_before_breakage_text_breakage_food);
@@ -160,6 +162,7 @@ public class PrologueBeforeBreakage extends GameActivity {
 
     public void onBeforeBreakageSecond(View view) {
         if (isSecond) {
+            refreshScroll(scrollBeforeBreakage);
             Intent intent = new Intent(this, PrologueBadEnding.class);
             getNextScene(intent);
             overridePendingTransition(R.anim.first_activity_animation, R.anim.second_activity_animation);
@@ -176,6 +179,7 @@ public class PrologueBeforeBreakage extends GameActivity {
 
     public void onBeforeBreakageThird(View view) {
         if (isThird) {
+            refreshScroll(scrollBeforeBreakage);
             SharedPreferences.Editor editor = save.edit();
             editor.putBoolean(APP_SAVE_BREAKAGE_FOOD, isBreakageFood);
             editor.apply();

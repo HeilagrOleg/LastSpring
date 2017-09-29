@@ -237,6 +237,5 @@ public class MainActivity extends AppCompatActivity {
 
     public void onSettingsMain(View view) {
         startActivity(new Intent(this,MainSettings.class));
-
     }
 }

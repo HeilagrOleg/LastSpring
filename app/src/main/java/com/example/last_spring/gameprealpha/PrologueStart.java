@@ -7,8 +7,10 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
@@ -27,11 +29,20 @@ public class PrologueStart extends GameActivity {
     public static final String APP_SAVE_SLEEPING_BAG_PROLOGUE = "Sleeping bag";
     public static final String APP_SAVE_TENT_PROLOGUE = "Tent_prologue";
     public TextView textPrologueMain;
+    public TextView textPrologueTraining;
     public boolean isButtonPrologueTent;
     public boolean isButtonPrologueMoveUp;
     public boolean isButtonPrologueMoveDown;
     public float level;
     public RadioGroup radioGroupPrologue;
+
+    private CheckBox checkBoxPrologueTraining;
+
+    private RelativeLayout layoutPrologueTraining;
+
+    private RadioButton radioButtonTraining;
+
+    private boolean isTreaning;
 
     private ScrollView scrollPrologueMain;
 
@@ -48,7 +59,16 @@ public class PrologueStart extends GameActivity {
         buttonPrologueMoveDown = (RadioButton) findViewById(R.id.buttonPrologueMoveDownID);
         radioGroupPrologue = (RadioGroup) findViewById(R.id.radioGroupPrologueID);
         textPrologueMain = (TextView) findViewById(R.id.textPrologueMainID);
+        radioButtonTraining = (RadioButton) findViewById(R.id.radioButtonTrainingID);
         scrollPrologueMain = (ScrollView) findViewById(R.id.scrollPrologueMainID);
+        layoutPrologueTraining = (RelativeLayout) findViewById(R.id.layoutPrologueTrainingID);
+        layoutPrologueTraining.setVisibility(View.GONE);
+        textPrologueTraining = (TextView) findViewById(R.id.textPrologueTrainingID);
+        sText(textPrologueTraining);
+        checkBoxPrologueTraining = (CheckBox) findViewById(R.id.checkBoxPrologueTrainingID);
+        checkBoxPrologueTraining.setTextSize(sizeFonts);
+        radioButtonTraining.setTextSize(sizeFonts);
+        sScroll(scrollPrologueMain);
         startService(new Intent(this, OstWood.class));
         isOstWood = true;
 
@@ -56,16 +76,22 @@ public class PrologueStart extends GameActivity {
             buttonPrologueTent.setVisibility(View.GONE);
         }
 
-        textPrologueMain.setTextSize(sizeFonts);
+        sText(textPrologueMain);
         buttonPrologueMoveDown.setTextSize(sizeFonts);
         buttonPrologueMoveUp.setTextSize(sizeFonts);
         buttonPrologueTent.setTextSize(sizeFonts);
+
+        if (!save.getBoolean(APP_SAVE_TRAINING, false)) {
+            layoutPrologueTraining.setVisibility(View.VISIBLE);
+        }
+
 
         startAnimation(new ArrayList<View>(Arrays.asList(radioGroupPrologue,scrollPrologueMain)));
     }
 
     public void onPrologueTent(View view) {
         if (isButtonPrologueTent) {
+            refreshScroll(scrollPrologueMain);
            fortune = checkTentPrologue(fortune);
             view.setVisibility(View.GONE);
         } else {
@@ -80,6 +106,7 @@ public class PrologueStart extends GameActivity {
 
     public void onPrologueMoveUp(View view) {
         if (isButtonPrologueMoveUp) {
+            refreshScroll(scrollPrologueMain);
             Intent intent = new Intent(PrologueStart.this, PrologueUpFirstScene.class);
             getNextScene(intent);
             finish();
@@ -95,6 +122,7 @@ public class PrologueStart extends GameActivity {
 
     public void onPrologueMoveDown(View view) {
         if (isButtonPrologueMoveDown) {
+            refreshScroll(scrollPrologueMain);
             Intent intent = new Intent(PrologueStart.this, PrologueDownFirstScene.class);
             getNextScene(intent);
             finish();
@@ -109,6 +137,7 @@ public class PrologueStart extends GameActivity {
     }
 
     private int checkTentPrologue(int fortune) {
+        refreshScroll(scrollPrologueMain);
         Random random = new Random();
         int number = random.nextInt(65);
         if (number > fortune) {
@@ -137,8 +166,26 @@ public class PrologueStart extends GameActivity {
             editor.apply();
             isSleepingBugMain = true;
             textPrologueMain.setText(R.string.prologue_tent_luck);
+            refreshScroll(scrollPrologueMain);
             return fortune;
         }
+    }
+
+    public void onPrologueStartTraining(View view) {
+        if (isTreaning) {
+
+            if(checkBoxPrologueTraining.isChecked()) {
+                SharedPreferences.Editor editor = save.edit();
+                editor.putBoolean(APP_SAVE_TRAINING, true);
+                editor.apply();
+            }
+
+            layoutPrologueTraining.setVisibility(View.GONE);
+        } else {
+            isTreaning = true;
+            radioButtonTraining.setBackgroundColor(Color.parseColor("#607e9e7f"));
+        }
+
     }
 }
 

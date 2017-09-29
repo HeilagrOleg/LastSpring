@@ -14,6 +14,7 @@ import android.text.Html;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.example.last_spring.gameprealpha.MainActivity;
@@ -26,10 +27,13 @@ import java.util.ArrayList;
 
 public class GameActivity extends AppCompatActivity {
 
-    public static final String APP_SAVE = "Save";
     private static final String APP_SETTINGS = "Settings";
     private static final String APP_SETTINGS_SETTINGS_FONTS_SIZE = "Fonts size";
+    private static final String APP_SETTINGS_SETTINGS_FONTS_LINE_SPACING = "Line spacing";
+
+    public static final String APP_SAVE = "Save";
     public static final String APP_SAVE_FOOD = "Food";
+    public static final String APP_SAVE_TRAINING = "Training";
     public static final String APP_SAVE_WOOD = "Wood";
     public static final String APP_SAVE_FAIM = "Faim";
     public static final String APP_SAVE_KNIFE = "Knife";
@@ -61,6 +65,7 @@ public class GameActivity extends AppCompatActivity {
     public boolean isOstDisturbance;
     public float level;
     public float sizeFonts;
+    public float lineSpacing;
 
     public Animation animationStart;
 
@@ -85,6 +90,7 @@ public class GameActivity extends AppCompatActivity {
         save = getSharedPreferences(APP_SAVE, Context.MODE_PRIVATE);
         settings = getSharedPreferences(APP_SETTINGS, Context.MODE_PRIVATE);
         sizeFonts = settings.getFloat(APP_SETTINGS_SETTINGS_FONTS_SIZE, 18f);
+        lineSpacing = settings.getFloat(APP_SETTINGS_SETTINGS_FONTS_LINE_SPACING, 3f);
         treatmentCounterMain = save.getInt(APP_SAVE_TREATMENT, 0);
         foodCounterMain = save.getInt(APP_SAVE_FOOD, 0);
         fortune = save.getInt(APP_SAVE_FORTUNE, 0);
@@ -287,7 +293,16 @@ public class GameActivity extends AppCompatActivity {
         }.start();
     }
 
-    public void refreshScroll(TextView view) {
-        view.setText("test");
+    public void sText(TextView view) {
+        view.setTextSize(sizeFonts);
+        view.setLineSpacing(lineSpacing, 0.8f);
+    }
+
+    public void sScroll(ScrollView view) {
+
+    }
+
+    public void refreshScroll(ScrollView view) {
+        view.scrollTo(0, 0);
     }
 }

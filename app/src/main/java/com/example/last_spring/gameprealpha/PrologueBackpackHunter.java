@@ -73,11 +73,12 @@ private ConstraintLayout  constraintLayoutDialogBackpack;
         thirdLine.setTextSize(sizeFonts);
 
         scrollPrologueBackpackHunterStart = (ScrollView) findViewById(R.id.scrollPrologueBackpackHunterStartID);
+        sScroll(scrollPrologueBackpackHunterStart);
 
         textPrologueBackpackHunterStart = (TextView) findViewById(R.id.textPrologueBackpackHunterStartID);
-        textPrologueBackpackHunterStart.setTextSize(sizeFonts);
+        sText(textPrologueBackpackHunterStart);
         textPrologueBackpackHunterStartMain = (TextView) findViewById(R.id.textPrologueBackpackHunterStartMainID);
-        textPrologueBackpackHunterStartMain.setTextSize(sizeFonts);
+        sText(textPrologueBackpackHunterStartMain);
 
         constraintLayoutDialogBackpack = (ConstraintLayout) findViewById(R.id.constraintLayoutDialogBackpackID);
 
@@ -111,6 +112,7 @@ private ConstraintLayout  constraintLayoutDialogBackpack;
 
     public void onPrologueBackpackHunterFirstLine(View view) {
         if (isFirstLine) {
+            refreshScroll(scrollPrologueBackpackHunterStart);
             scrollPrologueBackpackHunterStart.setVisibility(View.GONE);
             textPrologueBackpackHunterStart.setVisibility(View.VISIBLE);
             strings = getStrings(1);
@@ -148,6 +150,7 @@ private ConstraintLayout  constraintLayoutDialogBackpack;
 
     public void onPrologueBackpackHunterSecondLine(View view) {
         if (isSecondLine) {
+            refreshScroll(scrollPrologueBackpackHunterStart);
             scrollPrologueBackpackHunterStart.setVisibility(View.GONE);
             textPrologueBackpackHunterStart.setVisibility(View.VISIBLE);
             strings = getStrings(2);
@@ -186,6 +189,7 @@ private ConstraintLayout  constraintLayoutDialogBackpack;
 
     public void onPrologueBackpackHunterThirdLine(View view) {
         if (isThirdLine) {
+            refreshScroll(scrollPrologueBackpackHunterStart);
             isThirdLine = false;
             isStart = true;
             thirdLine.setVisibility(View.GONE);

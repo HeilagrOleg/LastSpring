@@ -61,9 +61,10 @@ public class PrologueGoodEnding extends GameActivity {
         radioGroupPrologueGoodFinalFirst = (RadioGroup) findViewById(R.id.radioGroupPrologueGoodFinalFirstID);
 
         scrollPrologueGoodFinal = (ScrollView) findViewById(R.id.scrollPrologueGoodFinalID);
+        sScroll(scrollPrologueGoodFinal);
 
         textPrologueGoodFinal = (TextView) findViewById(R.id.textPrologueGoodFinalID);
-        textPrologueGoodFinal.setTextSize(sizeFonts);
+        sText(textPrologueGoodFinal);
         textFinalGoodTitle = (TextView) findViewById(R.id.textFinalGoodTitleID);
         textPrologueFinalGoodExtraEpisode = (TextView) findViewById(R.id.textPrologueFinalGoodExtraEpisodeID);
         textPrologueFinalGoodExtraEpisode.setTextSize(sizeFonts);
@@ -93,6 +94,7 @@ public class PrologueGoodEnding extends GameActivity {
 
     public void onPrologueCaveAfterFirst(View view) {
         if (isFirst) {
+            refreshScroll(scrollPrologueGoodFinal);
             if (isSecond) {
                 buttonPrologueGoodFinalFirst.setClickable(false);
                 backgroundPrologueFinalGood.startAnimation(backgroundAnimation);
@@ -126,7 +128,7 @@ public class PrologueGoodEnding extends GameActivity {
                 }.start();
 
             } else {
-                refreshScroll(textPrologueGoodFinal);
+                refreshScroll(scrollPrologueGoodFinal);
                 textPrologueGoodFinal.setText(R.string.prologue_final_good_text_next);
                 buttonPrologueGoodFinalFirst.setText(R.string.prologue_final_good_button_exit);
                 isSecond = true;

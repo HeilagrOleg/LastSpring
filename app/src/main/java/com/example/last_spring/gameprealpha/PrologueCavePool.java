@@ -56,6 +56,7 @@ public class PrologueCavePool extends GameActivity {
         radioGroupCavePool = (RadioGroup) findViewById(R.id.radioGroupCavePoolID);
 
         scrollCavePool = (ScrollView) findViewById(R.id.scrollCavePoolID);
+        sScroll(scrollCavePool);
 
         radioButtonCavePoolFirst = (RadioButton) findViewById(R.id.radioButtonCavePoolFirstID);
         radioButtonCavePoolFirst.setTextSize(sizeFonts);
@@ -65,7 +66,7 @@ public class PrologueCavePool extends GameActivity {
         radioButtonCavePoolThird.setTextSize(sizeFonts);
 
         textCavePool = (TextView) findViewById(R.id.textCavePoolID);
-        textCavePool.setTextSize(sizeFonts);
+        sText(textCavePool);
 
         startService(new Intent(this, OstCave.class));
         isOstCave = true;
@@ -84,6 +85,7 @@ public class PrologueCavePool extends GameActivity {
 
     public void onCavePoolFirst(View view) {
         if (isFirst) {
+            refreshScroll(scrollCavePool);
             if (isStart) {
                 textCavePool.setText(R.string.prologue_cave_pool_text_start);
                 radioButtonCavePoolFirst.setText(R.string.prologue_cave_pool_button_move_wall);
@@ -167,6 +169,7 @@ public class PrologueCavePool extends GameActivity {
 
     public void onCavePoolSecond(View view) {
         if (isSecond) {
+            refreshScroll(scrollCavePool);
             if (isMovePool) {
                 textCavePool.setText(R.string.prologue_cave_pool_text_pool_drunk);
                 radioButtonCavePoolFirst.setVisibility(View.GONE);
@@ -199,6 +202,7 @@ public class PrologueCavePool extends GameActivity {
 
     public void onCavePoolThirdID(View view) {
         if (isThird) {
+            refreshScroll(scrollCavePool);
             if (isMain || isMovePool) {
                 textCavePool.setText(R.string.prologue_cave_pool_text_start);
                 radioButtonCavePoolFirst.setText(R.string.prologue_cave_pool_button_move_wall);

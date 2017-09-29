@@ -85,7 +85,7 @@ public class HuntingLodgeHunter extends GameActivity {
         radioGroupPrologueHunterDialog.setVisibility(View.GONE);
 
         textPrologueHunterStart = (TextView) findViewById(R.id.textPrologueHunterStartID);
-        textPrologueHunterStart.setTextSize(sizeFonts);
+        sText( textPrologueHunterStart);
         textPrologueHunterStart.setVisibility(View.GONE);
 
         if (isKnifeBedside) {

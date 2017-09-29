@@ -2,13 +2,17 @@ package com.example.last_spring.gameprealpha;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.CountDownTimer;
 import android.support.constraint.ConstraintLayout;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ImageButton;
+import android.widget.RadioButton;
+import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
@@ -22,14 +26,21 @@ public class PrologueBreakage extends GameActivity {
     private ConstraintLayout constraintLayoutFirst;
     private ConstraintLayout constraintLayoutSecond;
 
+    private RelativeLayout layoutPrologueTrainingBreakage;
+
     private ImageButton imageButtonBreakageFirst;
     private ImageButton imageButtonBreakageSecond;
 
     private Button buttonBreakage;
     private Button buttonBreakageTest;
 
+    private CheckBox checkBoxPrologueTrainingBreakage;
+
+    private RadioButton radioButtonTrainingBreakage;
+
     private TextView textFailCounter;
     private TextView textTime;
+    private TextView textPrologueTrainingBreakage;
 
     private CountDownTimer timer;
 
@@ -55,6 +66,7 @@ public class PrologueBreakage extends GameActivity {
     private boolean isFinish;
     private boolean isGameOver;
     private boolean isStart;
+    private boolean isTraining;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,11 +80,23 @@ public class PrologueBreakage extends GameActivity {
         editor.putFloat(APP_SAVE_LEVEL, level);
         editor.apply();
 
+        layoutPrologueTrainingBreakage = (RelativeLayout) findViewById(R.id.layoutPrologueTrainingBreakageID);
+
+
         constraintLayoutFirst = (ConstraintLayout) findViewById(R.id.constraintLayoutFirstID);
         constraintLayoutSecond = (ConstraintLayout) findViewById(R.id.constraintLayoutSecondID);
 
         constraintLayoutFirst.setVisibility(View.GONE);
         constraintLayoutSecond.setVisibility(View.GONE);
+
+        checkBoxPrologueTrainingBreakage = (CheckBox) findViewById(R.id.checkBoxPrologueTrainingBreakageID);
+        checkBoxPrologueTrainingBreakage.setTextSize(sizeFonts);
+
+        radioButtonTrainingBreakage = (RadioButton) findViewById(R.id.radioButtonTrainingBreakageID);
+        radioButtonTrainingBreakage.setTextSize(sizeFonts);
+
+        textPrologueTrainingBreakage = (TextView) findViewById(R.id.textPrologueTrainingBreakageID);
+        sText(textPrologueTrainingBreakage);
 
         seekBarBreakage = (SeekBar) findViewById(R.id.seekBarBreakageID);
         seekBarBreakage.setMax(600);
@@ -93,7 +117,7 @@ public class PrologueBreakage extends GameActivity {
         if (save.getBoolean(APP_SAVE_BREAKAGE_FOOD, false)) {
             maxFail = 14;
         } else {
-            maxFail = 14;
+            maxFail = 7;
         }
         pointsCounter = 200;
         pointsCounterMain = 200;
@@ -107,13 +131,17 @@ public class PrologueBreakage extends GameActivity {
         isStart = true;
 
 
-        stFailCount = "Ошибок: " + failCounter;
+        stFailCount = "Ошибок: " + failCounter + "/" + maxFail;
         textFailCounter = (TextView) findViewById(R.id.textFailCounterID);
         textFailCounter.setText(stFailCount);
         textFailCounter.setTextSize(sizeFonts);
 
         textTime = (TextView) findViewById(R.id.textTimeID);
         textTime.setTextSize(sizeFonts);
+
+        if (!save.getBoolean(APP_SAVE_TRAINING, false)) {
+            layoutPrologueTrainingBreakage.setVisibility(View.VISIBLE);
+        }
 
     }
 
@@ -125,7 +153,7 @@ public class PrologueBreakage extends GameActivity {
         failCounter = 0;
         buttonBreakageTest.setVisibility(View.GONE);
         textFailCounter.setVisibility(View.VISIBLE);
-        stFailCount = "Ошибок: " + failCounter;
+        stFailCount = "Ошибок: " + failCounter + "/" + maxFail;
         textFailCounter.setText(stFailCount);
         textTime.setVisibility(View.VISIBLE);
         textTime.setText(String.valueOf(time));
@@ -211,7 +239,7 @@ public class PrologueBreakage extends GameActivity {
                     failCounter++;
                     stFailCount = "Ошибок: " + failCounter / 4 + "/" + maxFail;
                     textFailCounter.setText(stFailCount);
-                    if (failCounter > maxFail*4) {
+                    if (failCounter > maxFail * 4) {
                         isGameOver = true;
                     }
                 }
@@ -376,7 +404,7 @@ public class PrologueBreakage extends GameActivity {
                     failCounter++;
                     stFailCount = "Ошибок: " + failCounter / 4 + "/" + maxFail;
                     textFailCounter.setText(stFailCount);
-                    if (failCounter > maxFail*4) {
+                    if (failCounter > maxFail * 4) {
                         isGameOver = true;
                     }
                 }
@@ -407,5 +435,22 @@ public class PrologueBreakage extends GameActivity {
             timer.start();
             isStart = false;
         }
+    }
+
+    public void onPrologueStartTrainingBackpack(View view) {
+        if (isTraining) {
+
+            if (checkBoxPrologueTrainingBreakage.isChecked()) {
+                SharedPreferences.Editor editor = save.edit();
+                editor.putBoolean(APP_SAVE_TRAINING, true);
+                editor.apply();
+            }
+
+            layoutPrologueTrainingBreakage.setVisibility(View.GONE);
+        } else {
+            isTraining = true;
+            radioButtonTrainingBreakage.setBackgroundColor(Color.parseColor("#607e9e7f"));
+        }
+
     }
 }

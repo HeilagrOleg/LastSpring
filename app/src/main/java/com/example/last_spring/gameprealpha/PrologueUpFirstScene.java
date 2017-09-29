@@ -40,11 +40,12 @@ public class PrologueUpFirstScene extends GameActivity {
         prologueTemporaryCamp.setTextSize(sizeFonts);
 
         textPrologueUp = (TextView) findViewById(R.id.textPrologueUpID);
-        textPrologueUp.setTextSize(sizeFonts);
+        sText(textPrologueUp);
 
         radioGroupPrologueUp = (RadioGroup) findViewById(R.id.radioGroupPrologueUpID);
 
         scrollPrologueUp = (ScrollView) findViewById(R.id.scrollPrologueUpID);
+        sScroll(scrollPrologueUp);
 
         startAnimation(new ArrayList<View>(Arrays.asList(radioGroupPrologueUp,scrollPrologueUp)));
 
@@ -57,6 +58,7 @@ public class PrologueUpFirstScene extends GameActivity {
 
     public void onUpMoveHuntingLodge(View view) {
         if (isExit) {
+            refreshScroll(scrollPrologueUp);
             Intent intent = new Intent(this, AbandonedCar.class);
             getNextScene(intent);
             overridePendingTransition(R.anim.first_activity_animation, R.anim.second_activity_animation);
@@ -72,6 +74,7 @@ public class PrologueUpFirstScene extends GameActivity {
 
     public void onTemporaryCamp(View view) {
         if(isSearch) {
+            refreshScroll(scrollPrologueUp);
             textPrologueUp.setText(R.string.prologue_up_text_search);
             prologueTemporaryCamp.setVisibility(View.GONE);
         }

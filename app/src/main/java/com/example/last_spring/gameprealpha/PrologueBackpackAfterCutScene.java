@@ -97,11 +97,12 @@ public class PrologueBackpackAfterCutScene extends GameActivity {
         constraintLayoutCave.setBackground(res.getDrawable(R.drawable.prologue_down_second_scene_morning_background));
 
         textPrologueBackpackAfterCut = (TextView) findViewById(R.id.textPrologueBackPackAfterCutSceneBeforeStartID);
-        textPrologueBackpackAfterCut.setTextSize(sizeFonts);
+        sText(textPrologueBackpackAfterCut);
 
         linearLayoutPrologueBackpackAfterCut = (FrameLayout) findViewById(R.id.linearLayoutPrologueBackpackAfterCutID);
 
         scrollPrologueBackPackAfterCutScene = (ScrollView) findViewById(R.id.scrollPrologueBackPackAfterCutSceneID);
+        sScroll(scrollPrologueBackPackAfterCutScene);
 
         buttonPrologueBackpackAfterCutSleep = (RadioButton) findViewById(R.id.buttonPrologueBackpackAfterCutSleepID);
         buttonPrologueBackpackAfterCutSleep.setTextSize(sizeFonts);
@@ -158,6 +159,7 @@ public class PrologueBackpackAfterCutScene extends GameActivity {
 
     public void onPrologueBackpackAfterCutSleep(View view) {
         if (isSleep) {
+            refreshScroll(scrollPrologueBackPackAfterCutScene);
             radioGroupPrologueBackpackAfterCutStart.setVisibility(View.GONE);
             textPrologueBackpackAfterCut.setText(getString(R.string.text_prologue_backpack_after_cut_start_sleep, raincoat));
             Resources res = getResources();
@@ -172,6 +174,7 @@ public class PrologueBackpackAfterCutScene extends GameActivity {
 
     public void onPrologueBackpackAfterCutStandUp(View view) {
         if (isStandUp) {
+            refreshScroll(scrollPrologueBackPackAfterCutScene);
             radioGroupPrologueBackpackAfterCutStart.setVisibility(View.GONE);
             textPrologueBackpackAfterCut.setText(getString(R.string.text_prologue_backpack_after_cut_start_no_sleep, raincoat));
             Resources res = getResources();
@@ -186,6 +189,7 @@ public class PrologueBackpackAfterCutScene extends GameActivity {
 
     public void onPrologueBackpackAfterCutMoveCave(View view) {
         if (isCave) {
+            refreshScroll(scrollPrologueBackPackAfterCutScene);
             getNextScene(new Intent(this, PrologueCave.class));
             finish();
             overridePendingTransition(R.anim.first_activity_animation, R.anim.second_activity_animation);
@@ -198,6 +202,7 @@ public class PrologueBackpackAfterCutScene extends GameActivity {
 
     public void onPrologueBackpackAfterCutMoveCamp(View view) {
         if (isCamp) {
+            refreshScroll(scrollPrologueBackPackAfterCutScene);
             getNextScene(new Intent(this, PrologueRain.class));
             finish();
             overridePendingTransition(R.anim.first_activity_animation, R.anim.second_activity_animation);
@@ -210,6 +215,7 @@ public class PrologueBackpackAfterCutScene extends GameActivity {
 
     public void onPrologueBackPackAfterCutSceneBeforeStartFirst(View view) {
         if (isFirst) {
+            refreshScroll(scrollPrologueBackPackAfterCutScene);
             if (isKnife) {
                 textPrologueBackpackAfterCut.setText(R.string.button_prologue_backpack_after_cut_scene_text_knife_knife);
                 radioGrouprologueBackPackAfterCutSceneBeforeStart.setVisibility(View.GONE);
@@ -231,6 +237,7 @@ public class PrologueBackpackAfterCutScene extends GameActivity {
 
     public void onPrologueBackPackAfterCutSceneBeforeStartSecond(View view) {
         if (isSecond) {
+            refreshScroll(scrollPrologueBackPackAfterCutScene);
             if (isKnife) {
                 if (wound == 0 && !isFaim) {
                     textPrologueBackpackAfterCut.setText(R.string.button_prologue_backpack_after_cut_scene_text_knife_no_knife);
@@ -266,6 +273,7 @@ public class PrologueBackpackAfterCutScene extends GameActivity {
 
     public void onPrologueBackPackAfterCutSceneBeforeStartThird(View view) {
         if (isThird) {
+            refreshScroll(scrollPrologueBackPackAfterCutScene);
             if (isKnife) {
                 if (wound == 0 && !isFaim) {
                     textPrologueBackpackAfterCut.setText(R.string.button_prologue_backpack_after_cut_scene_text_knife_no_knife_next);

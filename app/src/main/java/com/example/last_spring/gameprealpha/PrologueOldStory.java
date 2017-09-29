@@ -74,12 +74,14 @@ public class PrologueOldStory extends GameActivity {
         buttonPrologueOldStoryFour.setTextSize(sizeFonts);
 
         scrollPrologueOldStory = (ScrollView) findViewById(R.id.scrollPrologueOldStoryID);
+        sScroll(scrollPrologueOldStory);
         scrollPrologueOldStoryStart = (ScrollView) findViewById(R.id.scrollPrologueOldStoryStartID);
+        sScroll(scrollPrologueOldStoryStart);
 
         textPrologueOldStoryStart = (TextView) findViewById(R.id.textPrologueOldStoryStartID);
-        textPrologueOldStoryStart.setTextSize(sizeFonts);
+        sText(textPrologueOldStoryStart);
         textPrologueOldStory = (TextView) findViewById(R.id.textPrologueOldStoryID);
-        textPrologueOldStory.setTextSize(sizeFonts);
+        sText(textPrologueOldStory);
 
         imagePrologueOldStory = (ImageView) findViewById(R.id.imagePrologueOldStoryID);
         imagePrologueOldStory.setVisibility(View.GONE);
@@ -92,6 +94,8 @@ public class PrologueOldStory extends GameActivity {
 
     public void onPrologueOldStoryFirst(View view) {
         if (isFirst) {
+            sScroll(scrollPrologueOldStoryStart);
+            sScroll(scrollPrologueOldStory);
             if (isStart) {
                 textPrologueOldStoryStart.setVisibility(View.GONE);
                 textPrologueOldStory.setVisibility(View.VISIBLE);
@@ -171,6 +175,8 @@ public class PrologueOldStory extends GameActivity {
 
     public void onPrologueOldStorySecond(View view) {
         if (isSecond) {
+            sScroll(scrollPrologueOldStoryStart);
+            sScroll(scrollPrologueOldStory);
             if (isPlanAttack) {
                 textPrologueOldStory.setText(R.string.prologue_old_story_text_west);
                 buttonPrologueOldStoryFirst.setText(R.string.prologue_old_story_button_plan_back);
@@ -213,6 +219,8 @@ public class PrologueOldStory extends GameActivity {
 
     public void onPrologueOldStoryThird(View view) {
         if (isThird) {
+            sScroll(scrollPrologueOldStoryStart);
+            sScroll(scrollPrologueOldStory);
             if (isNorth) {
                 textPrologueOldStory.setText(R.string.prologue_old_story_text_north_attack);
                 buttonPrologueOldStoryFirst.setText(R.string.prologue_old_story_button_hunter_one);
@@ -260,6 +268,8 @@ public class PrologueOldStory extends GameActivity {
 
     public void onPrologueOldStoryFour(View view) {
         if (isFour) {
+            sScroll(scrollPrologueOldStoryStart);
+            sScroll(scrollPrologueOldStory);
             if (isWest) {
                 textPrologueOldStory.setText(R.string.prologue_old_story_text_west_attack);
                 buttonPrologueOldStoryFirst.setText(R.string.prologue_old_story_button_hunter_one);

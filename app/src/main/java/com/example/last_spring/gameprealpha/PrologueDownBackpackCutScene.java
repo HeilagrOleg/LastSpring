@@ -64,7 +64,7 @@ public class PrologueDownBackpackCutScene extends GameActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_prologue_down_backpack_cut_scene);
         textPrologueDownBackpackCutScene = (TextView) findViewById(R.id.textPrologueDownBackpackCutSceneID);
-        textPrologueDownBackpackCutScene.setTextSize(sizeFonts);
+        sText(textPrologueDownBackpackCutScene);
         textCounter = 0;
         level = 2.121f;
 

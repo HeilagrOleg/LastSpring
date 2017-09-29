@@ -57,9 +57,10 @@ public class PrologueCaveAfterLabyrinth extends GameActivity {
         buttonPrologueCaveAfterThird.setTextSize(sizeFonts);
 
         textPrologueCaveAfter = (TextView) findViewById(R.id.textPrologueCaveAfterID);
-        textPrologueCaveAfter.setTextSize(sizeFonts);
+        sText(textPrologueCaveAfter);
 
         scrollPrologueCaveAfter = (ScrollView) findViewById(R.id.scrollPrologueCaveAfterID);
+        sScroll(scrollPrologueCaveAfter);
 
         if (fortune < 80) {
             fortune += 20;
@@ -76,6 +77,7 @@ public class PrologueCaveAfterLabyrinth extends GameActivity {
 
     public void onPrologueCaveAfterFirst(View view) {
         if (isFirst) {
+            refreshScroll(scrollPrologueCaveAfter);
             SharedPreferences.Editor editor = save.edit();
             editor.putInt(APP_SAVE_FORTUNE, fortune);
             editor.putInt(APP_SAVE_WOUND, wound);
@@ -95,13 +97,14 @@ public class PrologueCaveAfterLabyrinth extends GameActivity {
 
     public void onPrologueCaveAfterSecond(View view) {
         if (isSecond) {
-        textPrologueCaveAfter.setText(R.string.prologue_after_labyrinth_text_relax);
-        buttonPrologueCaveAfterSecond.setVisibility(View.GONE);
-        if(fortune<90) {
-            fortune += 10;
-        } else {
-            fortune = 100;
-        }
+            refreshScroll(scrollPrologueCaveAfter);
+            textPrologueCaveAfter.setText(R.string.prologue_after_labyrinth_text_relax);
+            buttonPrologueCaveAfterSecond.setVisibility(View.GONE);
+            if (fortune < 90) {
+                fortune += 10;
+            } else {
+                fortune = 100;
+            }
             isSecond = false;
             buttonPrologueCaveAfterSecond.setBackgroundColor(Color.parseColor("#60ffffff"));
         } else {

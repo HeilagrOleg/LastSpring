@@ -12,6 +12,7 @@ import com.example.last_spring.gameprealpha.res.TypefaceUtil;
 public class MainSettings extends AppCompatActivity {
 
     private static final String APP_SETTINGS_SETTINGS_FONTS_SIZE = "Fonts size";
+    private static final String APP_SETTINGS_SETTINGS_FONTS_LINE_SPACING = "Line spacing";
     private static final String APP_SETTINGS = "Settings";
 
 
@@ -20,6 +21,7 @@ public class MainSettings extends AppCompatActivity {
     private SharedPreferences settings;
 
     private float size;
+    private float lineSpacing;
 
     private int fontsCounter;
 
@@ -37,11 +39,14 @@ public class MainSettings extends AppCompatActivity {
         settings = getSharedPreferences(APP_SETTINGS, Context.MODE_PRIVATE);
 
         size = settings.getFloat(APP_SETTINGS_SETTINGS_FONTS_SIZE, 18f);
+        lineSpacing = (settings.getFloat(APP_SETTINGS_SETTINGS_FONTS_LINE_SPACING, 3f));
 
         textSettingsMain = (TextView) findViewById(R.id.textSettingsMainID);
         textSettingsMain.setTextSize(size);
+        textSettingsMain.setLineSpacing(lineSpacing,0.8f);
 
         fontsCounter = 0;
+
     }
 
     @Override
@@ -60,46 +65,71 @@ public class MainSettings extends AppCompatActivity {
 
 
     public void onUpTextSize(View view) {
+        size--;
 
-        size --;
-        textSettingsMain.setTextSize(size);
         textSettingsMain = (TextView) findViewById(R.id.textSettingsMainID);
         textSettingsMain.setTextSize(size);
-
+        textSettingsMain.setLineSpacing(lineSpacing,0.8f);;
     }
 
     public void onDownTextSize(View view) {
         if (size > 2) {
-            size ++;
+            size++;
         }
-        textSettingsMain.setTextSize(size);
+
         textSettingsMain = (TextView) findViewById(R.id.textSettingsMainID);
         textSettingsMain.setTextSize(size);
+        textSettingsMain.setLineSpacing(lineSpacing,0.8f);
     }
 
     public void onBackSettings(View view) {
         SharedPreferences.Editor editor = settings.edit();
         editor.putFloat(APP_SETTINGS_SETTINGS_FONTS_SIZE, size);
+        editor.putFloat(APP_SETTINGS_SETTINGS_FONTS_LINE_SPACING, lineSpacing);
         editor.apply();
         finish();
     }
 
     public void onSettingsFonts(View view) {
-        if (fontsCounter==0) {
+        if (fontsCounter == 0) {
             TypefaceUtil.overrideFont(getApplicationContext(), "SERIF", "fonts/geometria.otf");
             setContentView(R.layout.activity_main_settings);
+            textSettingsMain = (TextView) findViewById(R.id.textSettingsMainID);
             textSettingsMain.setTextSize(size);
+            textSettingsMain.setLineSpacing(lineSpacing,0.8f);
             fontsCounter++;
-        } else if (fontsCounter==1) {
+        } else if (fontsCounter == 1) {
             TypefaceUtil.overrideFont(getApplicationContext(), "SERIF", "fonts/neris.otf");
             setContentView(R.layout.activity_main_settings);
+            textSettingsMain = (TextView) findViewById(R.id.textSettingsMainID);
             textSettingsMain.setTextSize(size);
+            textSettingsMain.setLineSpacing(lineSpacing,0.8f);
             fontsCounter++;
         } else {
             TypefaceUtil.overrideFont(getApplicationContext(), "SERIF", "fonts/proba.otf");
             setContentView(R.layout.activity_main_settings);
+            textSettingsMain = (TextView) findViewById(R.id.textSettingsMainID);
             textSettingsMain.setTextSize(size);
-            fontsCounter=0;
+            textSettingsMain.setLineSpacing(lineSpacing,0.8f);
+            fontsCounter = 0;
         }
+    }
+
+    public void onDownLineSpacing(View view) {
+        if (lineSpacing > 1) {
+            lineSpacing--;
+
+            textSettingsMain = (TextView) findViewById(R.id.textSettingsMainID);
+            textSettingsMain.setTextSize(size);
+            textSettingsMain.setLineSpacing(lineSpacing,0.8f);
+        }
+    }
+
+    public void onUpLineSpacing(View view) {
+        lineSpacing++;
+
+        textSettingsMain = (TextView) findViewById(R.id.textSettingsMainID);
+        textSettingsMain.setTextSize(size);
+        textSettingsMain.setLineSpacing(lineSpacing,0.8f);
     }
 }

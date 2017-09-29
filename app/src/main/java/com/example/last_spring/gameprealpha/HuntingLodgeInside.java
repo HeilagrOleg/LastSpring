@@ -173,9 +173,10 @@ public class HuntingLodgeInside extends GameActivity {
         buttonHuntingLodgeSleeping.setTextSize(sizeFonts);
 
         scrollHuntingLodgeInside = (ScrollView) findViewById(R.id.scrollHuntingLodgeInsideID);
+        sScroll(scrollHuntingLodgeInside);
 
         huntingLodgeInsideText = (TextView) findViewById(R.id.huntingLodgeInsideTextID);
-        huntingLodgeInsideText.setTextSize(sizeFonts);
+        sText(huntingLodgeInsideText);
 
         if (save.getInt(APP_SAVE_TREATMENT,0)==0) {
             checkBoxHuntingLodgeInsideOintment.setVisibility(View.GONE);
@@ -195,6 +196,7 @@ public class HuntingLodgeInside extends GameActivity {
 
     public void onConserveHuntingInside(View view) {
         if (isConserve) {
+            refreshScroll(scrollHuntingLodgeInside);
             foodCounterMain++;
             huntingLodgeInsideText.setText(R.string.hunting_Lodge_inside_text_check_conserve);
             radioGroupHuntingLodgeInside.setVisibility(View.GONE);
@@ -212,6 +214,7 @@ public class HuntingLodgeInside extends GameActivity {
 
     public void onTableHuntingInside(View view) {
         if (isTable) {
+            refreshScroll(scrollHuntingLodgeInside);
             radioGroupHuntingLodgeInsideTable.setVisibility(View.VISIBLE);
             radioGroupHuntingLodgeInside.setVisibility(View.GONE);
             huntingLodgeInsideText.setText(R.string.hunting_Lodge_inside_text_check_table);
@@ -228,6 +231,7 @@ public class HuntingLodgeInside extends GameActivity {
 
     public void onTableKeyHuntingInside(View view) {
         if (isTableKey) {
+            refreshScroll(scrollHuntingLodgeInside);
             isKey = true;
             radioGroupHuntingLodgeInsideTable.setVisibility(View.GONE);
             radioGroupHuntingLodgeInside.setVisibility(View.VISIBLE);
@@ -257,6 +261,7 @@ public class HuntingLodgeInside extends GameActivity {
 
     public void onTableNoKeyHuntingInside(View view) {
         if (isTableNoKey) {
+            refreshScroll(scrollHuntingLodgeInside);
             radioGroupHuntingLodgeInsideTable.setVisibility(View.GONE);
             radioGroupHuntingLodgeInside.setVisibility(View.VISIBLE);
             radioButtonTableHuntingInside.setVisibility(View.GONE);
@@ -283,6 +288,7 @@ public class HuntingLodgeInside extends GameActivity {
 
     public void onConserveLuckHuntingInside(View view) {
         if (isConserveLuck) {
+            refreshScroll(scrollHuntingLodgeInside);
             radioGroupHuntingLodgeInsideConserve.setVisibility(View.GONE);
             radioGroupHuntingLodgeInside.setVisibility(View.VISIBLE);
             huntingLodgeInsideText.setText(R.string.hunting_Lodge_inside_text_second);
@@ -320,6 +326,7 @@ public class HuntingLodgeInside extends GameActivity {
 
     public void onConserveNoLuckHuntingInside(View view) {
         if (isConserveNoLuck) {
+            refreshScroll(scrollHuntingLodgeInside);
             foodCounterMain++;
             radioGroupHuntingLodgeInsideConserve.setVisibility(View.GONE);
             radioGroupHuntingLodgeInside.setVisibility(View.VISIBLE);
@@ -347,6 +354,7 @@ public class HuntingLodgeInside extends GameActivity {
 
     public void onCupboardHuntingInside(View view) {
         if (isCupboard) {
+            refreshScroll(scrollHuntingLodgeInside);
             if (save.getBoolean(APP_SAVE_SLEEPING_BAG_PROLOGUE, false)) {
                 radioGroupHuntingLodgeInsideCupboard.setVisibility(View.VISIBLE);
                 radioGroupHuntingLodgeInside.setVisibility(View.GONE);
@@ -370,6 +378,7 @@ public class HuntingLodgeInside extends GameActivity {
 
     public void onCupboardSleepingBugHuntingInside(View view) {
         if (isCupboardSleepingBug) {
+            refreshScroll(scrollHuntingLodgeInside);
             isSleepingBugMain = true;
             if (save.getBoolean(APP_SAVE_SLEEPING_BAG_PROLOGUE, false)) {
                 isExtraSleepingBug = true;
@@ -402,6 +411,7 @@ public class HuntingLodgeInside extends GameActivity {
 
     public void onCupboardNoSleepingBugHuntingInside(View view) {
         if (isCupboardNoSleepingBug) {
+            refreshScroll(scrollHuntingLodgeInside);
             isSleepingBugMain = true;
             radioGroupHuntingLodgeInsideCupboard.setVisibility(View.GONE);
             radioGroupHuntingLodgeInside.setVisibility(View.VISIBLE);
@@ -429,6 +439,7 @@ public class HuntingLodgeInside extends GameActivity {
 
     public void onBedsideTableHuntingInside(View view) {
         if (isBedsideTable) {
+            refreshScroll(scrollHuntingLodgeInside);
             radioGroupHuntingLodgeInside.setVisibility(View.GONE);
             radioGroupHuntingLodgeInsideBedside.setVisibility(View.VISIBLE);
             if (save.getBoolean(APP_SAVE_PROLOGUE_DIARY, false)) {
@@ -452,6 +463,7 @@ public class HuntingLodgeInside extends GameActivity {
 
     public void onBedsideKeyHuntingInside(View view) {
         if (isBedsideTableKey) {
+            refreshScroll(scrollHuntingLodgeInside);
             isKnifeMain = true;
             radioGroupHuntingLodgeInside.setVisibility(View.VISIBLE);
             radioGroupHuntingLodgeInsideBedside.setVisibility(View.GONE);
@@ -483,6 +495,7 @@ public class HuntingLodgeInside extends GameActivity {
 
     public void onBedsideLuckHuntingInside(View view) {
         if (isBedsideTableLuck) {
+            refreshScroll(scrollHuntingLodgeInside);
             radioGroupHuntingLodgeInside.setVisibility(View.VISIBLE);
             radioGroupHuntingLodgeInsideBedside.setVisibility(View.GONE);
             radioButtonBedsideTableHuntingInside.setVisibility(View.GONE);
@@ -522,6 +535,7 @@ public class HuntingLodgeInside extends GameActivity {
 
     public void onBedsideNoLuckHuntingInside(View view) {
         if (isBedsideTableNoLuck) {
+            refreshScroll(scrollHuntingLodgeInside);
             radioGroupHuntingLodgeInside.setVisibility(View.VISIBLE);
             radioGroupHuntingLodgeInsideBedside.setVisibility(View.GONE);
             radioButtonBedsideTableHuntingInside.setVisibility(View.GONE);
@@ -550,6 +564,7 @@ constraintLayoutPrologueHuntingInside.setBackgroundResource(R.drawable.prologue_
 
     public void onBedsideBackHuntingInside(View view) {
         if (isBedsideTableBack) {
+            refreshScroll(scrollHuntingLodgeInside);
             radioGroupHuntingLodgeInside.setVisibility(View.VISIBLE);
             radioGroupHuntingLodgeInsideBedside.setVisibility(View.GONE);
         }

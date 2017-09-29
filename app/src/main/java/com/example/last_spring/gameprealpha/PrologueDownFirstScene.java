@@ -14,11 +14,13 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.last_spring.gameprealpha.res.GameActivity;
@@ -84,7 +86,14 @@ public class PrologueDownFirstScene extends GameActivity {
     private Animation falseAnimation;
     private FrameLayout framePrologueFirst;
     private ConstraintLayout layoutBackgroundDownFirst;
+    private RelativeLayout layoutPrologueTrainingBackPack;
+    private TextView textPrologueTraining;
+    private RadioButton radioButtonTrainingBackPack;
+    private CheckBox checkBoxPrologueTrainingBackPack;
     private Resources res;
+
+    private boolean isTraining;
+    private boolean isTrainingButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,6 +108,8 @@ public class PrologueDownFirstScene extends GameActivity {
         startService(new Intent(this, OstWood.class));
         isOstWood = true;
 
+        isTraining = true;
+
         ost = MediaPlayer.create(this, R.raw.ost_action_prologue);
 
         framePrologueFirst = (FrameLayout) findViewById(R.id.framePrologueFirstID);
@@ -108,10 +119,19 @@ public class PrologueDownFirstScene extends GameActivity {
         progressBarPrologueDown = (ProgressBar) findViewById(R.id.progressBarPrologueDownID);
         progressBarPrologueDown.setMax(50000);
 
+        radioButtonTrainingBackPack = (RadioButton) findViewById(R.id.radioButtonTrainingBackPackID);
+        radioButtonTrainingBackPack.setTextSize(sizeFonts);
+
+        checkBoxPrologueTrainingBackPack = (CheckBox) findViewById(R.id.checkBoxPrologueTrainingBackPackID);
+        checkBoxPrologueTrainingBackPack.setTextSize(sizeFonts);
+
         textPrologueDownStart = (TextView) findViewById(R.id.textPrologueDownID);
-        textPrologueDownStart.setTextSize(sizeFonts);
+        sText(textPrologueDownStart);
         textPrologueDownStart.setText(R.string.prologue_down_start);
         textPrologueDownStart.setMovementMethod(new ScrollingMovementMethod());
+
+        textPrologueTraining = (TextView) findViewById(R.id.textPrologueTrainingBackPackID);
+        sText(textPrologueTraining);
 
         isTimer = false;
         isFirstStart = true;
@@ -138,6 +158,8 @@ public class PrologueDownFirstScene extends GameActivity {
         prologueDownStartNoLuckRadioButton.setVisibility(View.GONE);
         prologueDownStartNoLuckRadioButton.setText(R.string.prologue_game_over_down_no_luck);
         secondRadioGroupPrologueDown.setVisibility(View.GONE);
+        layoutPrologueTrainingBackPack = (RelativeLayout) findViewById(R.id.layoutPrologueTrainingBackPackID);
+
 
         layoutBackgroundDownFirst = (ConstraintLayout) findViewById(R.id.layoutBackgroundDownFirstID);
 
@@ -220,16 +242,33 @@ public class PrologueDownFirstScene extends GameActivity {
         progressBarPrologueDown.setVisibility(View.VISIBLE);
         layoutBackgroundDownFirst.setBackground(res.getDrawable(R.drawable.background_prologue_down_first_scene_game));
 
+        if (isTraining) {
+            if (!save.getBoolean(APP_SAVE_TRAINING, false)) {
+                layoutPrologueTrainingBackPack.setVisibility(View.VISIBLE);
+                firstButton.setClickable(false);
+                secondButton.setClickable(false);
+                thirdButton.setClickable(false);
+                isTraining = false;
+            }
+        }
+
+
         if (!isFirstStart) {
             firstButton.clearAnimation();
             secondButton.clearAnimation();
             thirdButton.clearAnimation();
         }
 
+
+
         if (isFirstStart) {
-            finishOst();
+
+            stopService(new Intent(this, OstWood.class));
+
             isOst = true;
             ost.start();
+            ost.setLooping(true);
+
             progressBarPrologueDown.setVisibility(View.VISIBLE);
             progressBarPrologueDown.setProgress(25000);
             countPrologueDown.setVisibility(View.GONE);
@@ -239,13 +278,6 @@ public class PrologueDownFirstScene extends GameActivity {
             timerTime = 15000;
         }
 
-
-        ost.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer mp) {
-                mp.start();
-            }
-        });
 
         miniGame = view;
         firstButton.setVisibility(View.GONE);
@@ -319,18 +351,15 @@ public class PrologueDownFirstScene extends GameActivity {
                 break;
         }
 
-
-        ost.start();
-
         firstButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (timerTime >= 50000) {
                     if (isLevel) {
                         timer.cancel();
-                        ost.pause();
                         gameVictory();
                     } else {
+                        ost.pause();
                         timer.cancel();
                         isLevel = true;
                         layoutBackgroundDownFirst.setBackground(res.getDrawable(R.drawable.background_prologue_down_first_scene));
@@ -395,6 +424,7 @@ public class PrologueDownFirstScene extends GameActivity {
                             isTimer = true;
                             if (!isFinish) {
                                 onStartDownPrologue(miniGame);
+
                             }
                         }
                     }.start();
@@ -597,6 +627,7 @@ public class PrologueDownFirstScene extends GameActivity {
 
                             @Override
                             public void onFinish() {
+                                ost.pause();
                                 firstButton.clearAnimation();
                                 secondButton.clearAnimation();
                                 thirdButton.clearAnimation();
@@ -636,6 +667,7 @@ public class PrologueDownFirstScene extends GameActivity {
 
     public void gameVictory() {
         ost.stop();
+        finishOst();
         firstButton.clearAnimation();
         secondButton.clearAnimation();
         thirdButton.clearAnimation();
@@ -674,6 +706,7 @@ public class PrologueDownFirstScene extends GameActivity {
 
     public void onPrologueDownExit(View view) {
         if (isRadioButtonExit) {
+            finishOst();
             Intent intent = new Intent(PrologueDownFirstScene.this, PrologueDownSecondSceneNoBackPack.class);
             getNextScene(intent);
             finish();
@@ -695,6 +728,7 @@ public class PrologueDownFirstScene extends GameActivity {
                 if (fortune <= 85) {
                     fortune += 15;
                 }
+                finishOst();
                 SharedPreferences.Editor editor = settings.edit();
                 editor.putBoolean(APP_SAVE_BACKPACK, false);
                 editor.putInt(APP_SAVE_FORTUNE, fortune);
@@ -723,6 +757,7 @@ public class PrologueDownFirstScene extends GameActivity {
 
     public void onPrologueDownNoLuck(View view) {
         if (isRadioButtonNoLuck) {
+            finishOst();
             Intent intent = new Intent(PrologueDownFirstScene.this, PrologueDownSecondSceneNoBackPack.class);
             getNextScene(intent);
             finish();
@@ -735,6 +770,7 @@ public class PrologueDownFirstScene extends GameActivity {
     }
 
     public void onTwo(View view) {
+        finishOst();
         Intent intent = new Intent(PrologueDownFirstScene.this, PrologueDownSecondSceneBackPack.class);
         getNextScene(intent);
         finish();
@@ -745,5 +781,23 @@ public class PrologueDownFirstScene extends GameActivity {
     protected void onResume() {
         super.onResume();
         ost = MediaPlayer.create(this, R.raw.ost_action_prologue);
+    }
+
+    public void onPrologueStartTrainingBackpack(View view) {
+        if (isTrainingButton) {
+            if(checkBoxPrologueTrainingBackPack.isChecked()) {
+                SharedPreferences.Editor editor = save.edit();
+                editor.putBoolean(APP_SAVE_TRAINING, true);
+                editor.apply();
+            }
+            firstButton.setClickable(true);
+            secondButton.setClickable(true);
+            thirdButton.setClickable(true);
+            layoutPrologueTrainingBackPack.setVisibility(View.GONE);
+        } else {
+            isTrainingButton = true;
+            radioButtonTrainingBackPack.setBackgroundColor(Color.parseColor("#607e9e7f"));
+        }
+
     }
 }

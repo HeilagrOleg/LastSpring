@@ -93,6 +93,7 @@ public class PrologueOldStoryAttack extends GameActivity {
         frameRadioGroupPrologueOldStoryAttackStart = (FrameLayout) findViewById(R.id.frameRadioGroupPrologueOldStoryAttackStartID);
 
         scrollPrologueOldStoryAttackStart = (ScrollView) findViewById(R.id.scrollPrologueOldStoryAttackStartID);
+        sScroll(scrollPrologueOldStoryAttackStart);
 
         textPrologueOldStoryAttackStart = (TextView) findViewById(R.id.textPrologueOldStoryAttackStartID);
         textPrologueOldStoryAttackStart.setTextSize(sizeFonts);
@@ -121,11 +122,11 @@ public class PrologueOldStoryAttack extends GameActivity {
         radioGroupPrologueOldStoryAttackMain = (RadioGroup) findViewById(R.id.radioGroupPrologueOldStoryAttackMainID);
 
         buttonPrologueOldStoryAttackMainFirst = (RadioButton) findViewById(R.id.buttonPrologueOldStoryAttackMainFirstID);
-        buttonPrologueOldStoryAttackMainFirst.setTextSize(sizeFonts);
+        sText(buttonPrologueOldStoryAttackMainFirst);
         buttonPrologueOldStoryAttackMainSecond = (RadioButton) findViewById(R.id.buttonPrologueOldStoryAttackMainSecondID);
-        buttonPrologueOldStoryAttackMainSecond.setTextSize(sizeFonts);
+        sText(buttonPrologueOldStoryAttackMainSecond);
         buttonPrologueOldStoryAttackMainThird = (RadioButton) findViewById(R.id.buttonPrologueOldStoryAttackMainThirdID);
-        buttonPrologueOldStoryAttackMainThird.setTextSize(sizeFonts);
+        sText(buttonPrologueOldStoryAttackMainThird);
 
         textPrologueOldStoryAttackAction.setVisibility(View.GONE);
         textPrologueOldStoryAttackStatus.setVisibility(View.GONE);
@@ -159,6 +160,7 @@ public class PrologueOldStoryAttack extends GameActivity {
 
     public void onPrologueOldStoryAttackNorthFirst(View view) {
         if (isFirst) {
+            refreshScroll(scrollPrologueOldStoryAttackStart);
             if (isStart) {
                 textPrologueOldStoryAttackStart.setVisibility(View.GONE);
                 textPrologueOldStoryAttackStatus.setVisibility(View.VISIBLE);
@@ -238,6 +240,7 @@ public class PrologueOldStoryAttack extends GameActivity {
 
     public void onPrologueOldStoryAttackNorthSecond(View view) {
         if (isSecond) {
+            refreshScroll(scrollPrologueOldStoryAttackStart);
             if (isStart) {
                 textPrologueOldStoryAttackStart.setVisibility(View.GONE);
                 textPrologueOldStoryAttackStatus.setVisibility(View.VISIBLE);
@@ -315,6 +318,7 @@ public class PrologueOldStoryAttack extends GameActivity {
 
     public void onPrologueOldStoryAttackNorthThird(View view) {
         if (isThird) {
+            refreshScroll(scrollPrologueOldStoryAttackStart);
             if (isNorthFight) {
                 textPrologueOldStoryAttackAction.setText(R.string.prologue_old_story_attack_text_north_attack_signal);
                 statusCamp -= 10;
@@ -341,6 +345,7 @@ public class PrologueOldStoryAttack extends GameActivity {
 
     public void onPrologueOldStoryAttackWestFirst(View view) {
         if (isFirst) {
+            refreshScroll(scrollPrologueOldStoryAttackStart);
             if (isStart) {
                 textPrologueOldStoryAttackStart.setVisibility(View.GONE);
                 textPrologueOldStoryAttackAction.setText(R.string.prologue_old_story_attack_text_west_blade);
@@ -469,6 +474,7 @@ public class PrologueOldStoryAttack extends GameActivity {
 
     public void onPrologueOldStoryAttackWestSecond(View view) {
         if (isSecond) {
+            refreshScroll(scrollPrologueOldStoryAttackStart);
             if (isStart) {
                 textPrologueOldStoryAttackStart.setVisibility(View.GONE);
                 textPrologueOldStoryAttackAction.setText(R.string.prologue_old_story_attack_text_west_bow);
@@ -534,6 +540,7 @@ public class PrologueOldStoryAttack extends GameActivity {
 
     public void onPrologueOldStoryAttackWestThird(View view) {
         if (isThird) {
+            refreshScroll(scrollPrologueOldStoryAttackStart);
             if (isStart) {
                 textPrologueOldStoryAttackStart.setVisibility(View.GONE);
                 textPrologueOldStoryAttackAction.setText(R.string.prologue_old_story_attack_text_west_forest_attack);
@@ -576,6 +583,7 @@ public class PrologueOldStoryAttack extends GameActivity {
 
     public void onPrologueOldStoryAttackMainFirst(View view) {
         if (isFirst) {
+            refreshScroll(scrollPrologueOldStoryAttackStart);
             if (isAttack) {
                 textPrologueOldStoryAttackAction.setText(R.string.prologue_old_story_attack_text_main_attack_start);
                 isAttack = false;
@@ -647,6 +655,7 @@ public class PrologueOldStoryAttack extends GameActivity {
 
     public void onPrologueOldStoryAttackMainSecond(View view) {
         if (isSecond) {
+            refreshScroll(scrollPrologueOldStoryAttackStart);
             if (isMainFight) {
                 if (enemiesCount > 12) {
                     if (statusCamp <= 60) {
@@ -702,6 +711,7 @@ public class PrologueOldStoryAttack extends GameActivity {
 
     public void onPrologueOldStoryAttackMainThird(View view) {
         if (isThird) {
+            refreshScroll(scrollPrologueOldStoryAttackStart);
             if (isMainFight) {
                 if (statusCamp <= 60) {
                     textPrologueOldStoryAttackAction.setText(R.string.prologue_old_story_attack_text_main_attack_leader_success);
