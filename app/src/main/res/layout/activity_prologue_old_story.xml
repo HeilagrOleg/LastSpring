@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/hockeyapp_background_header"
-    tools:context=".PrologueOldStory">
+    tools:context=".oldStory.PrologueOldStory">
 
     <RelativeLayout
         android:layout_width="0dp"

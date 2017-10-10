@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/prologue_breakage_game_background"
-    tools:context="com.example.last_spring.gameprealpha.PrologueBreakage">
+    tools:context="com.example.last_spring.gameprealpha.prologue.PrologueBreakage">
 
     <Button
         android:id="@+id/buttonBreakageID"

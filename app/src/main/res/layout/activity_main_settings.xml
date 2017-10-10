@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/prologue_simple_background"
-    tools:context=".MainSettings">
+    tools:context=".mainMenu.MainSettings">
 
     <RelativeLayout
         android:id="@+id/relativeLayoutSettingsFontsSizeID"
@@ -150,7 +150,7 @@
             android:layout_alignParentBottom="true"
             android:onClick="onBackSettings"
             android:orientation="vertical"
-            android:text="@string/button_back"
+            android:text="@string/settings_button_close"
             android:visibility="visible" />
 
         <Button

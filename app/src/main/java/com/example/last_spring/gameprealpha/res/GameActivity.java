@@ -14,10 +14,12 @@ import android.text.Html;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
-import com.example.last_spring.gameprealpha.MainActivity;
+import com.example.last_spring.gameprealpha.mainMenu.MainActivity;
 import com.example.last_spring.gameprealpha.R;
 import com.last_spring.gameprealpha.OstCave;
 import com.last_spring.gameprealpha.OstDisturbance;
@@ -67,7 +69,11 @@ public class GameActivity extends AppCompatActivity {
     public float sizeFonts;
     public float lineSpacing;
 
+    public ImageButton buttonMenu;
+
     public Animation animationStart;
+    public Animation luckAnimation;
+    public Animation failAnimation;
 
     public MediaPlayer ost;
 
@@ -91,6 +97,8 @@ public class GameActivity extends AppCompatActivity {
         settings = getSharedPreferences(APP_SETTINGS, Context.MODE_PRIVATE);
         sizeFonts = settings.getFloat(APP_SETTINGS_SETTINGS_FONTS_SIZE, 18f);
         lineSpacing = settings.getFloat(APP_SETTINGS_SETTINGS_FONTS_LINE_SPACING, 3f);
+        luckAnimation = AnimationUtils.loadAnimation(this, R.anim.background_luck_animation);
+        failAnimation = AnimationUtils.loadAnimation(this, R.anim.background_luck_animation);
         treatmentCounterMain = save.getInt(APP_SAVE_TREATMENT, 0);
         foodCounterMain = save.getInt(APP_SAVE_FOOD, 0);
         fortune = save.getInt(APP_SAVE_FORTUNE, 0);
@@ -305,4 +313,10 @@ public class GameActivity extends AppCompatActivity {
     public void refreshScroll(ScrollView view) {
         view.scrollTo(0, 0);
     }
+
+
+    public void onButtonMenu(View view) {
+        openQuitDialog();
+    }
+
 }

@@ -5,12 +5,35 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/prologue_cave_background"
-    tools:context=".HuntingLodgeAfter">
+    tools:context=".prologue.HuntingLodgeAfter">
 
     <RelativeLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
+
+        <ImageButton
+            android:id="@+id/buttonMenuID"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10dp"
+            android:background="@null"
+            android:onClick="onButtonMenu"
+            android:layout_centerHorizontal="true"
+            android:scaleType="fitXY"
+            android:visibility="visible"
+            app:srcCompat="@drawable/button_menu" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="60dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="20dp"
@@ -18,7 +41,9 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp">
 
         <RadioGroup
             android:id="@+id/radioGroupHunterLodgeAfteID"
@@ -30,6 +55,7 @@
             android:gravity="center"
             android:orientation="vertical"
             android:visibility="gone"
+            android:layout_marginBottom="10dp"
             tools:visibility="visible">
 
             <RadioButton

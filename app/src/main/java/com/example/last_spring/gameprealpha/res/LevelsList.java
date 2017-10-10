@@ -1,30 +1,31 @@
 package com.example.last_spring.gameprealpha.res;
 
-import com.example.last_spring.gameprealpha.AbandonedCar;
-import com.example.last_spring.gameprealpha.CaveLabyrinth;
-import com.example.last_spring.gameprealpha.HuntingLodge;
-import com.example.last_spring.gameprealpha.HuntingLodgeAfter;
-import com.example.last_spring.gameprealpha.HuntingLodgeCutScene;
-import com.example.last_spring.gameprealpha.HuntingLodgeExit;
-import com.example.last_spring.gameprealpha.HuntingLodgeHunter;
-import com.example.last_spring.gameprealpha.HuntingLodgeInside;
-import com.example.last_spring.gameprealpha.PrologueBackpackAfterCutScene;
-import com.example.last_spring.gameprealpha.PrologueBackpackHunter;
-import com.example.last_spring.gameprealpha.PrologueBadEnding;
-import com.example.last_spring.gameprealpha.PrologueBeforeBreakage;
-import com.example.last_spring.gameprealpha.PrologueBonfire;
-import com.example.last_spring.gameprealpha.PrologueBreakage;
-import com.example.last_spring.gameprealpha.PrologueCave;
-import com.example.last_spring.gameprealpha.PrologueCaveAfterLabyrinth;
-import com.example.last_spring.gameprealpha.PrologueDownBackpackCutScene;
-import com.example.last_spring.gameprealpha.PrologueDownFirstScene;
-import com.example.last_spring.gameprealpha.PrologueDownSecondSceneBackPack;
-import com.example.last_spring.gameprealpha.PrologueDownSecondSceneNoBackPack;
-import com.example.last_spring.gameprealpha.PrologueGoodEnding;
-import com.example.last_spring.gameprealpha.PrologueOldStory;
-import com.example.last_spring.gameprealpha.PrologueOldStoryAttack;
-import com.example.last_spring.gameprealpha.PrologueRain;
-import com.example.last_spring.gameprealpha.PrologueStart;
+import com.example.last_spring.gameprealpha.prologue.AbandonedCar;
+import com.example.last_spring.gameprealpha.prologue.CaveLabyrinth;
+import com.example.last_spring.gameprealpha.prologue.HuntingLodge;
+import com.example.last_spring.gameprealpha.prologue.HuntingLodgeAfter;
+import com.example.last_spring.gameprealpha.prologue.HuntingLodgeCutScene;
+import com.example.last_spring.gameprealpha.prologue.HuntingLodgeExit;
+import com.example.last_spring.gameprealpha.prologue.HuntingLodgeHunter;
+import com.example.last_spring.gameprealpha.prologue.HuntingLodgeInside;
+import com.example.last_spring.gameprealpha.prologue.PrologueBackpackAfterCutScene;
+import com.example.last_spring.gameprealpha.prologue.PrologueBackpackHunter;
+import com.example.last_spring.gameprealpha.prologue.PrologueBadEnding;
+import com.example.last_spring.gameprealpha.prologue.PrologueBeforeBreakage;
+import com.example.last_spring.gameprealpha.prologue.PrologueBonfire;
+import com.example.last_spring.gameprealpha.prologue.PrologueBox;
+import com.example.last_spring.gameprealpha.prologue.PrologueBreakage;
+import com.example.last_spring.gameprealpha.prologue.PrologueCave;
+import com.example.last_spring.gameprealpha.prologue.PrologueCaveAfterLabyrinth;
+import com.example.last_spring.gameprealpha.prologue.PrologueDownBackpackCutScene;
+import com.example.last_spring.gameprealpha.prologue.PrologueDownFirstScene;
+import com.example.last_spring.gameprealpha.prologue.PrologueDownSecondSceneBackPack;
+import com.example.last_spring.gameprealpha.prologue.PrologueDownSecondSceneNoBackPack;
+import com.example.last_spring.gameprealpha.prologue.PrologueGoodEnding;
+import com.example.last_spring.gameprealpha.oldStory.PrologueOldStory;
+import com.example.last_spring.gameprealpha.oldStory.PrologueOldStoryAttack;
+import com.example.last_spring.gameprealpha.prologue.PrologueRain;
+import com.example.last_spring.gameprealpha.prologue.PrologueStart;
 
 public class LevelsList {
     public static Class getLevel(float level) {
@@ -45,6 +46,9 @@ public class LevelsList {
         }
         if (level == 1.12f) {
             return HuntingLodgeInside.class;
+        }
+        if (level == 1.121f) {
+            return PrologueBox.class;
         }
         if (level == 1.13f) {
             return HuntingLodgeCutScene.class;

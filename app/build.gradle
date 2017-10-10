@@ -36,6 +36,7 @@ android {
             versionName '0.26'
         }
     }
+
 }
 
 dependencies {

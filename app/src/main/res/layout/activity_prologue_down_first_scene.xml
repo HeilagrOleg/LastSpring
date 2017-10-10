@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_prologue_down_first_scene"
-    tools:context="com.example.last_spring.gameprealpha.PrologueDownFirstScene">
+    tools:context="com.example.last_spring.gameprealpha.prologue.PrologueDownFirstScene">
 
     <RelativeLayout
         android:layout_width="0dp"
@@ -78,6 +78,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
+
                 android:orientation="vertical"
 
                 >

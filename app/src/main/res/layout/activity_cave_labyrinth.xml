@@ -5,12 +5,52 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/prologue_cave_inside_background"
-    tools:context="com.example.last_spring.gameprealpha.CaveLabyrinth">
+    tools:context="com.example.last_spring.gameprealpha.prologue.CaveLabyrinth">
+
+    <RelativeLayout
+        android:id="@+id/interfaceID"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
+
+        <ImageView
+            android:id="@+id/imageBackgroundLuckTrueID"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:visibility="gone"
+            app:srcCompat="@drawable/background_luck_true" />
+
+        <ImageView
+            android:id="@+id/imageBackgroundLuckFalseID"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:visibility="gone"
+            app:srcCompat="@drawable/background_luck_false" />
+
+        <ImageButton
+            android:id="@+id/buttonMenuID"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10dp"
+            android:background="@null"
+            android:onClick="onButtonMenu"
+            android:scaleType="fitXY"
+            android:visibility="gone"
+            app:srcCompat="@drawable/button_menu" />
+    </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="60dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="20dp"
@@ -18,7 +58,9 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp">
 
         <TextView
             android:id="@+id/textViewCaveLabyrinthID"
@@ -47,25 +89,39 @@
 
         <ImageView
             android:id="@+id/imageCaveLabyrinthID"
-            android:layout_width="373dp"
-            android:layout_height="253dp"
-            android:background="@drawable/notebook_cave"
-            android:layout_centerInParent="true"
+            android:layout_width="300dp"
+            android:layout_height="200dp"
             android:layout_above="@+id/radioGroupCaveLabyrinthID"
-            tools:visibility="visible"
+            android:layout_centerInParent="true"
+            android:background="@drawable/notebook_cave"
             android:visibility="gone"
-            />
+            tools:visibility="visible" />
 
         <RadioGroup
             android:id="@+id/radioGroupCaveLabyrinthID"
-            android:layout_width="347dp"
-            android:layout_height="169dp"
-            android:orientation="vertical"
-            android:paddingTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            tools:visibility="visible"
-            android:visibility="gone">
+            android:orientation="vertical"
+            android:paddingTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:visibility="gone"
+            tools:visibility="visible">
+
+            <RadioButton
+                android:id="@+id/buttonCaveLabyrinthLuckID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="#60ffffff"
+                android:button="@drawable/radio_button_selector"
+                android:onClick="onCaveLabyrinthLuck"
+                android:text="@string/cave_labyrinth_text_air_luck"
+                android:textColor="#303030"
+                android:textSize="16sp"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="387dp" />
 
             <RadioButton
                 android:id="@+id/buttonCaveLabyrinthNorthID"

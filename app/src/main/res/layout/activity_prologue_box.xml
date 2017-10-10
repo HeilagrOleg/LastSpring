@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/prologue_huntinh_lodge_box_background"
+    tools:context=".prologue.PrologueBox">
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="60dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RadioGroup
+            android:id="@+id/radioGroupPrologueBoxID"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_centerInParent="true"
+            android:layout_marginBottom="10dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone"
+            tools:visibility="visible">
+
+            <RadioButton
+                android:id="@+id/buttonPrologueBoxFirstID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="#70ffffff"
+                android:button="@drawable/radio_button_selector"
+                android:onClick="onPrologueBoxFirst"
+                android:text="@string/prologue_hunting_lodge_box_button_start"
+                android:textColor="#303030"
+                android:textSize="16sp"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="355dp" />
+
+            <RadioButton
+                android:id="@+id/buttonPrologueBoxSecondID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="#70ffffff"
+                android:button="@drawable/radio_button_selector"
+                android:onClick="onPrologueBoxSecond"
+                android:text="@string/prologue_hunting_lodge_box_button_exit"
+                android:textColor="#303030"
+                android:textSize="16sp"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="387dp" />
+
+            <RadioButton
+                android:id="@+id/buttonPrologueBoxThirdID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#70ffffff"
+                android:button="@drawable/radio_button_selector"
+                android:onClick="onPrologueBoxThird"
+                android:text="@string/prologue_move_down"
+                android:textColor="#303030"
+                android:textSize="16sp"
+                android:visibility="gone"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="419dp" />
+
+        </RadioGroup>
+
+        <ScrollView
+            android:id="@+id/scrollPrologueBoxID"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/radioGroupPrologueBoxID"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="40dp"
+            android:background="#70ffffff"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone"
+            tools:visibility="visible">
+
+            <TextView
+                android:id="@+id/textPrologueBoxID"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:lineSpacingExtra="3sp"
+                android:lineSpacingMultiplier="0.8"
+                android:orientation="vertical"
+                android:text="@string/prologue_hunting_lodge_box_text_start"
+                android:textColor="#303030"
+                android:textSize="18sp"
+                android:visibility="visible" />
+
+        </ScrollView>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layoutGamePrologueBoxThirdID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorButtonNormal"
+        android:orientation="vertical"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.532"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/imageButtonBoxThirdID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imageButtonBoxSecondID"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:background="@null"
+            android:onClick="onButtonBoxThird"
+            app:srcCompat="@drawable/hunting_third_one"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="0dp" />
+
+        <ImageButton
+            android:id="@+id/imageButtonBoxSecondID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imageButtonBoxFirstID"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:background="@null"
+            android:cropToPadding="false"
+            android:onClick="onButtonBoxSecond"
+            app:srcCompat="@drawable/hunting_second_one" />
+
+        <ImageButton
+            android:id="@+id/imageButtonBoxFourID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imageButtonBoxThirdID"
+            android:layout_centerInParent="true"
+            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:background="@null"
+            android:onClick="onButtonBoxFour"
+            app:srcCompat="@drawable/hunting_four_one" />
+
+        <ImageButton
+            android:id="@+id/imageButtonBoxFirstID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="15dp"
+            android:background="@null"
+            android:onClick="onButtonBoxFirst"
+            app:srcCompat="@drawable/hunting_first_one" />
+
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>
