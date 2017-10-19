@@ -81,6 +81,8 @@ public class PrologueCavePool extends GameActivity {
 
         buttonMenu = (ImageButton) findViewById(R.id.buttonMenuID);
 
+        getInterface(false);
+
         startAnimation(new ArrayList<View>(Arrays.asList(scrollCavePool, radioGroupCavePool, buttonMenu)));
 
     }

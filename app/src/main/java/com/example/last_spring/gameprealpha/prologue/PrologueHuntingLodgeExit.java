@@ -18,7 +18,7 @@ import com.last_spring.gameprealpha.OstDisturbance;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class HuntingLodgeExit extends GameActivity {
+public class PrologueHuntingLodgeExit extends GameActivity {
 
     private static final String APP_SAVE_PROLOGUE_HUNTING_KNIFE = "Knife bedside";
     private static final String APP_SAVE_PROLOGUE_HUNTER_CAMP = "Old camp";
@@ -108,6 +108,8 @@ public class HuntingLodgeExit extends GameActivity {
 
         buttonMenu = (ImageButton) findViewById(R.id.buttonMenuID);
 
+        getInterface(false);
+
         startAnimation(new ArrayList<View>(Arrays.asList(radioGroupPrologueHunterDialog, scrollPrologueHunterExit, buttonMenu)));
     }
 
@@ -132,7 +134,7 @@ public class HuntingLodgeExit extends GameActivity {
                 }
                 editor.putInt(APP_SAVE_WOUND, wound);
                 editor.apply();
-                getNextScene(new Intent(this, HuntingLodgeAfter.class));
+                getNextScene(new Intent(this, PrologueHuntingLodgeAfter.class));
                 textPrologueHunterExit.setVisibility(View.GONE);
                 finish();
             } else if (isNextHunger || isNextWound) {

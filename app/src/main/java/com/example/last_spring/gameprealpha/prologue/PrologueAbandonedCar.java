@@ -19,7 +19,7 @@ import com.last_spring.gameprealpha.OstWood;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class AbandonedCar extends GameActivity {
+public class PrologueAbandonedCar extends GameActivity {
 
     private static final String APP_SAVE_PROLOGUE_DIARY = "Diary";
 
@@ -87,6 +87,10 @@ public class AbandonedCar extends GameActivity {
         isMiddle = false;
         isTrunk = false;
         isOintment = false;
+
+        getInterface(true);
+        textMessage.setText(R.string.abandoned_car_message_raincoat);
+
     }
 
     public void onAbandonedCarFirst(View view) {
@@ -144,7 +148,7 @@ public class AbandonedCar extends GameActivity {
         if (isSecondButton) {
             refreshScroll(scrollAbandonedCar);
             if (isStart || isExit) {
-                getNextScene(new Intent(this, HuntingLodge.class));
+                getNextScene(new Intent(this, PrologueHuntingLodge.class));
                 overridePendingTransition(R.anim.first_activity_animation, R.anim.second_activity_animation);
                 finish();
             }
@@ -187,10 +191,13 @@ public class AbandonedCar extends GameActivity {
                     isRaincoat = true;
                     isRaincoatMain = true;
                     isTrunk = true;
+                    showMessage(textMessage, false);
+                    getLuckImage(true);
                 } else {
                     textAbandonedCarStart.setText(R.string.abandoned_car_text_trunk_fail);
                     buttonAbandonedCarThird.setVisibility(View.GONE);
                     isTrunk = true;
+                    getLuckImage(false);
                 }
                 if (isTrunk && isGloveBox && isMiddle) {
                     isCar = false;

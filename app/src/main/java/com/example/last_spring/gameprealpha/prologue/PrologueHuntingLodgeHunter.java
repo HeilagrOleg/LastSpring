@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.constraint.ConstraintLayout;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -22,7 +23,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 
-public class HuntingLodgeHunter extends GameActivity {
+public class PrologueHuntingLodgeHunter extends GameActivity {
 
     private static final String APP_SAVE_PROLOGUE_HUNTING_KNIFE = "Knife bedside";
     private static final String APP_SAVE_PROLOGUE_HUNTER_CAMP = "Old camp";
@@ -102,6 +103,12 @@ public class HuntingLodgeHunter extends GameActivity {
 
         strings = res.getStringArray(R.array.dialog_hunter_1);
         nameParagraph = "dialog_hunter_1";
+
+        buttonMenu = (ImageButton) findViewById(R.id.buttonMenuID);
+        buttonMenu.setVisibility(View.INVISIBLE);
+
+        getInterface(false);
+
 
         new CountDownTimer(1000, 1000) {
             public void onTick(long millisUntilFinished) {
@@ -247,7 +254,7 @@ public class HuntingLodgeHunter extends GameActivity {
                     editor.putBoolean(APP_SAVE_PROLOGUE_HUNTER_THINGS, false);
                     editor.apply();
                 }
-                getNextScene(new Intent(this, HuntingLodgeExit.class));
+                getNextScene(new Intent(this, PrologueHuntingLodgeExit.class));
                 finish();
                 overridePendingTransition(R.anim.first_activity_animation, R.anim.second_activity_animation);
             } else if (nameParagraph.equals("dialog_hunter_1_1_1_1_2_1_1_1_1_1") ||
@@ -263,7 +270,7 @@ public class HuntingLodgeHunter extends GameActivity {
                 editor.putBoolean(APP_SAVE_PROLOGUE_HUNTING_KNIFE, false);
                 editor.putInt(APP_SAVE_FOOD, 0);
                 editor.apply();
-                getNextScene(new Intent(this, HuntingLodgeExit.class));
+                getNextScene(new Intent(this, PrologueHuntingLodgeExit.class));
                 finish();
                 overridePendingTransition(R.anim.first_activity_animation, R.anim.second_activity_animation);
             } else {
@@ -277,7 +284,7 @@ public class HuntingLodgeHunter extends GameActivity {
                 SharedPreferences.Editor editor = save.edit();
                 editor.putBoolean(APP_SAVE_PROLOGUE_HUNTER_FIGHT, true);
                 editor.apply();
-                getNextScene(new Intent(this, HuntingLodgeExit.class));
+                getNextScene(new Intent(this, PrologueHuntingLodgeExit.class));
                 finish();
                 overridePendingTransition(R.anim.first_activity_animation, R.anim.second_activity_animation);
             } else if (nameParagraph.equals("dialog_hunter_1_1_1_1_2_1_2_1_2") ||
@@ -295,7 +302,7 @@ public class HuntingLodgeHunter extends GameActivity {
                     editor.putBoolean(APP_SAVE_PROLOGUE_HUNTER_THINGS, false);
                     editor.putBoolean(APP_SAVE_PROLOGUE_HUNTER_FIGHT, false);
                     editor.apply();
-                    getNextScene(new Intent(this, HuntingLodgeExit.class));
+                    getNextScene(new Intent(this, PrologueHuntingLodgeExit.class));
                     finish();
                     overridePendingTransition(R.anim.first_activity_animation, R.anim.second_activity_animation);
                 } else {
@@ -304,7 +311,7 @@ public class HuntingLodgeHunter extends GameActivity {
                     editor.putBoolean(APP_SAVE_PROLOGUE_HUNTER_THINGS, false);
                     editor.putBoolean(APP_SAVE_PROLOGUE_HUNTER_FIGHT, false);
                     editor.apply();
-                    getNextScene(new Intent(this, HuntingLodgeExit.class));
+                    getNextScene(new Intent(this, PrologueHuntingLodgeExit.class));
                     finish();
                     overridePendingTransition(R.anim.first_activity_animation, R.anim.second_activity_animation);
                 }

@@ -150,9 +150,6 @@ public class PrologueDownSecondSceneBackPack extends GameActivity {
         prologueDownBackpackAdditionalPartRadioGroup = (RadioGroup) findViewById(R.id.prologueDownBackpackAdditionalPartRadioGroupID);
         prologueDownBackpackAdditionalPartRadioGroup.setVisibility(View.GONE);
 
-        imageBackgroundLuckFalse = (ImageView) findViewById(R.id.imageBackgroundLuckFalseID);
-        imageBackgroundLuckTrue = (ImageView) findViewById(R.id.imageBackgroundLuckTrueID);
-
         topBackpackButton = (RadioButton) findViewById(R.id.buttonBackpackOpenTopPartID);
         topBackpackButton.setTextSize(sizeFonts);
         topBackpackButton.setBackgroundColor(Color.parseColor("#60ffffff"));
@@ -225,6 +222,12 @@ public class PrologueDownSecondSceneBackPack extends GameActivity {
         buttonMenu = (ImageButton) findViewById(R.id.buttonMenuID);
 
         startAnimation(new ArrayList<View>(Arrays.asList(linearLayoutBackpack, scrollBackpack, buttonMenu)));
+
+        getInterface(true);
+
+        textMessage.setText(R.string.prologue_message_backpack);
+
+        showMessage(textMessage, true);
     }
 
     public void onOpenTopPart(View view) {
@@ -299,10 +302,9 @@ public class PrologueDownSecondSceneBackPack extends GameActivity {
             additionalBackpackButton.setVisibility(View.GONE);
             isOintment = true;
             if (fortune < 20) {
-                toast = Toast.makeText(this, R.string.prologue_backpack_no_luck, Toast.LENGTH_LONG);
-                toast.show();
-                imageBackgroundLuckFalse.setVisibility(View.VISIBLE);
-                imageBackgroundLuckFalse.startAnimation(failAnimation);
+                textMessage.setText(R.string.prologue_backpack_no_luck);
+                showMessage(textMessage, false);
+                getLuckImage(false);
                 isAdditional = true;
                 if (isBasement && isTop && isMiddle) {
                     prologueBackpackNextButton.setVisibility(View.VISIBLE);
@@ -315,13 +317,12 @@ public class PrologueDownSecondSceneBackPack extends GameActivity {
                 fortune -= 20;
                 treatmentCounterMain++;
                 isAdditional = true;
-                imageBackgroundLuckTrue.setVisibility(View.VISIBLE);
-                imageBackgroundLuckTrue.startAnimation(luckAnimation);
+                getLuckImage(true);
                 if (isBasement && isTop && isMiddle) {
                     prologueBackpackNextButton.setVisibility(View.VISIBLE);
                 }
-                toast = Toast.makeText(this, R.string.prologue_backpack_additional_part_ointment_text_toast, Toast.LENGTH_LONG);
-                toast.show();
+                textMessage.setText(R.string.prologue_backpack_additional_part_ointment_text_toast);
+                showMessage(textMessage, false);
                 getFortune();
                 fortuneCounter.setText(stFortune);
             }
@@ -343,10 +344,9 @@ public class PrologueDownSecondSceneBackPack extends GameActivity {
             prologueDownBackPackMainRadioGroup.setVisibility(View.VISIBLE);
             additionalBackpackButton.setVisibility(View.GONE);
             if (fortune < 10) {
-                toast = Toast.makeText(this, R.string.prologue_backpack_no_luck_second, Toast.LENGTH_LONG);
-                toast.show();
-                imageBackgroundLuckFalse.setVisibility(View.VISIBLE);
-                imageBackgroundLuckFalse.startAnimation(failAnimation);;
+                textMessage.setText(R.string.prologue_backpack_no_luck_second);
+                showMessage(textMessage, false);
+                getLuckImage(false);
                 isAdditional = true;
                 getFortune();
                 fortuneCounter.setText(stFortune);
@@ -360,17 +360,13 @@ public class PrologueDownSecondSceneBackPack extends GameActivity {
                 }
                 if (isOintment) {
                     treatmentCounterMain++;
-                    toast = Toast.makeText(this, R.string.prologue_backpack_additional_part_ointment_text_toast, Toast.LENGTH_LONG);
-                    toast.show();
-                    imageBackgroundLuckTrue.setVisibility(View.VISIBLE);
-                    imageBackgroundLuckTrue.startAnimation(luckAnimation);
-                    imageBackgroundLuckFalse.setVisibility(View.GONE);
+                    textMessage.setText(R.string.prologue_backpack_additional_part_ointment_text_toast);
+                    showMessage(textMessage, false);
+                    getLuckImage(true);
                 } else {
-                    toast = Toast.makeText(this, R.string.prologue_backpack_additional_part_no_ointment_text_toast, Toast.LENGTH_LONG);
-                    toast.show();
-                    imageBackgroundLuckFalse.setVisibility(View.VISIBLE);
-                    imageBackgroundLuckFalse.startAnimation(failAnimation);
-                    imageBackgroundLuckTrue.setVisibility(View.GONE);
+                    textMessage.setText(R.string.prologue_backpack_additional_part_no_ointment_text_toast);
+                    showMessage(textMessage, false);
+                    getLuckImage(false);
                 }
                 getFortune();
                 fortuneCounter.setText(stFortune);
@@ -395,16 +391,14 @@ public class PrologueDownSecondSceneBackPack extends GameActivity {
             fortune += 10;
             isOintment = false;
             getFortune();
-            imageBackgroundLuckFalse.setVisibility(View.VISIBLE);
-            imageBackgroundLuckFalse.startAnimation(failAnimation);
-            imageBackgroundLuckTrue.setVisibility(View.GONE);
+            getLuckImage(false);
             fortuneCounter.setText(stFortune);
             isAdditional = true;
             if (isBasement && isTop && isMiddle) {
                 prologueBackpackNextButton.setVisibility(View.VISIBLE);
             }
-            toast = Toast.makeText(this, R.string.prologue_backpack_additional_part_no_ointment_text_toast, Toast.LENGTH_LONG);
-            toast.show();
+            textMessage.setText(R.string.prologue_backpack_additional_part_no_ointment_text_toast);
+            showMessage(textMessage, false);
         }
         additionalBackpackOintmentButton.setBackgroundColor(Color.parseColor("#60ffffff"));
         additionalBackpackOintmentLuckButton.setBackgroundColor(Color.parseColor("#60ffffff"));
@@ -442,11 +436,9 @@ public class PrologueDownSecondSceneBackPack extends GameActivity {
             topBackpackButton.setVisibility(View.GONE);
             if (fortune < 30) {
                 fortune = 10;
-                imageBackgroundLuckFalse.setVisibility(View.VISIBLE);
-                imageBackgroundLuckFalse.startAnimation(failAnimation);
-                imageBackgroundLuckTrue.setVisibility(View.GONE);
-                toast = Toast.makeText(this, R.string.prologue_backpack_no_luck_third, Toast.LENGTH_LONG);
-                toast.show();
+                getLuckImage(false);
+                textMessage.setText(R.string.prologue_backpack_no_luck_third);
+                showMessage(textMessage, false);
                 isTop = true;
                 if (isBasement && isMiddle && isAdditional) {
                     prologueBackpackNextButton.setVisibility(View.VISIBLE);
@@ -459,14 +451,12 @@ public class PrologueDownSecondSceneBackPack extends GameActivity {
                 isKnife = true;
                 isKnifeMain = true;
                 isTop = true;
-                imageBackgroundLuckTrue.setVisibility(View.VISIBLE);
-                imageBackgroundLuckTrue.startAnimation(luckAnimation);
-                imageBackgroundLuckFalse.setVisibility(View.GONE);
+                getLuckImage(true);
                 if (isBasement && isMiddle && isAdditional) {
                     prologueBackpackNextButton.setVisibility(View.VISIBLE);
                 }
-                toast = Toast.makeText(this, R.string.prologue_backpack_top_part_knife_text_toast, Toast.LENGTH_LONG);
-                toast.show();
+                textMessage.setText(R.string.prologue_backpack_top_part_knife_text_toast);
+                showMessage(textMessage, false);
                 getFortune();
                 fortuneCounter.setText(stFortune);
             }
@@ -489,11 +479,9 @@ public class PrologueDownSecondSceneBackPack extends GameActivity {
             topBackpackButton.setVisibility(View.GONE);
             if (fortune < 15) {
                 fortune = 10;
-                toast = Toast.makeText(this, R.string.prologue_backpack_no_luck_third, Toast.LENGTH_LONG);
-                toast.show();
-                imageBackgroundLuckFalse.setVisibility(View.VISIBLE);
-                imageBackgroundLuckFalse.startAnimation(failAnimation);
-                imageBackgroundLuckTrue.setVisibility(View.GONE);
+                textMessage.setText(R.string.prologue_backpack_no_luck_third);
+                showMessage(textMessage, false);
+                getLuckImage(false);
                 isTop = true;
                 if (isBasement && isMiddle && isAdditional) {
                     prologueBackpackNextButton.setVisibility(View.VISIBLE);
@@ -511,17 +499,13 @@ public class PrologueDownSecondSceneBackPack extends GameActivity {
                 }
                 if (isKnife) {
                     isKnifeMain = true;
-                    imageBackgroundLuckTrue.setVisibility(View.VISIBLE);
-                    imageBackgroundLuckTrue.startAnimation(luckAnimation);
-                    imageBackgroundLuckFalse.setVisibility(View.GONE);
-                    toast = Toast.makeText(this, R.string.prologue_backpack_top_part_knife_text_toast, Toast.LENGTH_LONG);
-                    toast.show();
+                    getLuckImage(true);
+                    textMessage.setText(R.string.prologue_backpack_top_part_knife_text_toast);
+                    showMessage(textMessage, false);
                 } else {
-                    imageBackgroundLuckFalse.setVisibility(View.VISIBLE);
-                    imageBackgroundLuckFalse.startAnimation(failAnimation);
-                    imageBackgroundLuckTrue.setVisibility(View.GONE);
-                    toast = Toast.makeText(this, R.string.prologue_backpack_top_part_no_knife_text_toast, Toast.LENGTH_LONG);
-                    toast.show();
+                    getLuckImage(false);
+                    textMessage.setText(R.string.prologue_backpack_top_part_no_knife_text_toast);
+                    showMessage(textMessage, false);
                 }
                 getFortune();
                 fortuneCounter.setText(stFortune);
@@ -545,16 +529,14 @@ public class PrologueDownSecondSceneBackPack extends GameActivity {
             topBackpackButton.setVisibility(View.GONE);
             fortune += 10;
             isKnife = false;
-            imageBackgroundLuckFalse.setVisibility(View.VISIBLE);
-            imageBackgroundLuckFalse.startAnimation(failAnimation);
-            imageBackgroundLuckTrue.setVisibility(View.GONE);
+            getLuckImage(false);
             foodCounterMain++;
             isTop = true;
             if (isBasement && isMiddle && isAdditional) {
                 prologueBackpackNextButton.setVisibility(View.VISIBLE);
             }
-            toast = Toast.makeText(this, R.string.prologue_backpack_top_part_no_knife_text_toast, Toast.LENGTH_LONG);
-            toast.show();
+            textMessage.setText(R.string.prologue_backpack_top_part_no_knife_text_toast);
+            showMessage(textMessage, false);
             getFortune();
             fortuneCounter.setText(stFortune);
         }
@@ -592,27 +574,23 @@ public class PrologueDownSecondSceneBackPack extends GameActivity {
             middleBackPackButton.setVisibility(View.GONE);
             if (fortune < 30) {
                 fortune = 10;
-                imageBackgroundLuckFalse.setVisibility(View.VISIBLE);
-                imageBackgroundLuckFalse.startAnimation(failAnimation);
-                imageBackgroundLuckTrue.setVisibility(View.GONE);
-                toast = Toast.makeText(this, R.string.prologue_backpack_no_luck, Toast.LENGTH_LONG);
-                toast.show();
+                getLuckImage(false);
+                textMessage.setText(R.string.prologue_backpack_no_luck);
+                showMessage(textMessage, false);
                 isMiddle = true;
                 getFortune();
                 fortuneCounter.setText(stFortune);
             } else {
                 fortune -= 30;
                 isSleepingBug = true;
-                imageBackgroundLuckTrue.setVisibility(View.VISIBLE);
-                imageBackgroundLuckTrue.startAnimation(luckAnimation);
-                imageBackgroundLuckFalse.setVisibility(View.GONE);
+                getLuckImage(true);
                 isSleepingBugMain = true;
                 isMiddle = true;
                 if (isBasement && isTop && isAdditional) {
                     prologueBackpackNextButton.setVisibility(View.VISIBLE);
                 }
-                toast = Toast.makeText(this, R.string.prologue_backpack_middle_part_sleeping_bug_text_toast, Toast.LENGTH_LONG);
-                toast.show();
+                textMessage.setText(R.string.prologue_backpack_middle_part_sleeping_bug_text_toast);
+                showMessage(textMessage, false);
                 getFortune();
                 fortuneCounter.setText(stFortune);
             }
@@ -636,12 +614,10 @@ public class PrologueDownSecondSceneBackPack extends GameActivity {
             if (fortune < 15) {
                 fortune = 10;
                 isMiddle = true;
-                toast = Toast.makeText(this, R.string.prologue_backpack_no_luck, Toast.LENGTH_LONG);
-                toast.show();
+                textMessage.setText(R.string.prologue_backpack_no_luck);
+                showMessage(textMessage, false);
                 getFortune();
-                imageBackgroundLuckFalse.setVisibility(View.VISIBLE);
-                imageBackgroundLuckFalse.startAnimation(failAnimation);
-                imageBackgroundLuckTrue.setVisibility(View.GONE);
+                getLuckImage(false);
                 fortuneCounter.setText(stFortune);
             } else {
                 fortune -= 15;
@@ -651,18 +627,14 @@ public class PrologueDownSecondSceneBackPack extends GameActivity {
                     prologueBackpackNextButton.setVisibility(View.VISIBLE);
                 }
                 if (isSleepingBug) {
-                    imageBackgroundLuckTrue.setVisibility(View.VISIBLE);
-                    imageBackgroundLuckTrue.startAnimation(luckAnimation);
-                    imageBackgroundLuckFalse.setVisibility(View.GONE);
+                    getLuckImage(true);
                     isSleepingBugMain = true;
-                    toast = Toast.makeText(this, R.string.prologue_backpack_middle_part_sleeping_bug_text_toast, Toast.LENGTH_LONG);
-                    toast.show();
+                    textMessage.setText(R.string.prologue_backpack_middle_part_sleeping_bug_text_toast);
+                    showMessage(textMessage, false);
                 } else {
-                    imageBackgroundLuckFalse.setVisibility(View.VISIBLE);
-                    imageBackgroundLuckFalse.startAnimation(failAnimation);
-                    imageBackgroundLuckTrue.setVisibility(View.GONE);
-                    toast = Toast.makeText(this, R.string.prologue_backpack_middle_part_no_sleeping_bug_text_toast, Toast.LENGTH_LONG);
-                    toast.show();
+                    getLuckImage(false);
+                    textMessage.setText(R.string.prologue_backpack_middle_part_no_sleeping_bug_text_toast);
+                    showMessage(textMessage, false);
                 }
                 getFortune();
                 fortuneCounter.setText(stFortune);
@@ -685,15 +657,13 @@ public class PrologueDownSecondSceneBackPack extends GameActivity {
             prologueDownBackPackMainRadioGroup.setVisibility(View.VISIBLE);
             middleBackPackButton.setVisibility(View.GONE);
             fortune += 10;
-            imageBackgroundLuckFalse.setVisibility(View.VISIBLE);
-            imageBackgroundLuckFalse.startAnimation(failAnimation);
-            imageBackgroundLuckTrue.setVisibility(View.GONE);
+            getLuckImage(false);
             isMiddle = true;
             if (isBasement && isTop && isAdditional) {
                 prologueBackpackNextButton.setVisibility(View.VISIBLE);
             }
-            toast = Toast.makeText(this, R.string.prologue_backpack_middle_part_no_sleeping_bug_text_toast, Toast.LENGTH_LONG);
-            toast.show();
+            textMessage.setText(R.string.prologue_backpack_middle_part_no_sleeping_bug_text_toast);
+            showMessage(textMessage, false);
             getFortune();
             fortuneCounter.setText(stFortune);
         }
@@ -731,27 +701,23 @@ public class PrologueDownSecondSceneBackPack extends GameActivity {
             basementBackpackButton.setVisibility(View.GONE);
             if (fortune < 20) {
                 fortune = 10;
-                imageBackgroundLuckFalse.setVisibility(View.VISIBLE);
-                imageBackgroundLuckFalse.startAnimation(failAnimation);
-                imageBackgroundLuckTrue.setVisibility(View.GONE);
+                getLuckImage(false);
                 isBasement = true;
-                toast = Toast.makeText(this, R.string.prologue_backpack_no_luck, Toast.LENGTH_LONG);
-                toast.show();
+                textMessage.setText(R.string.prologue_backpack_no_luck);
+                showMessage(textMessage, false);
                 getFortune();
                 fortuneCounter.setText(stFortune);
             } else {
                 isRaincoat = true;
                 isRaincoatMain = true;
                 fortune -= 20;
-                imageBackgroundLuckTrue.setVisibility(View.VISIBLE);
-                imageBackgroundLuckTrue.startAnimation(luckAnimation);
-                imageBackgroundLuckFalse.setVisibility(View.GONE);
+                getLuckImage(true);
                 isBasement = true;
                 if (isTop && isMiddle && isAdditional) {
                     prologueBackpackNextButton.setVisibility(View.VISIBLE);
                 }
-                toast = Toast.makeText(this, R.string.prologue_backpack_basement_part_raincoat_text_toast, Toast.LENGTH_LONG);
-                toast.show();
+                textMessage.setText(R.string.prologue_backpack_basement_part_raincoat_text_toast);
+                showMessage(textMessage, false);
                 getFortune();
                 fortuneCounter.setText(stFortune);
             }
@@ -776,8 +742,8 @@ public class PrologueDownSecondSceneBackPack extends GameActivity {
             isRaincoat = Fortune.isFiftyFifty();
             if (fortune < 10) {
                 fortune = 10;
-                toast = Toast.makeText(this, R.string.prologue_backpack_no_luck, Toast.LENGTH_LONG);
-                toast.show();
+                textMessage.setText(R.string.prologue_backpack_no_luck);
+                showMessage(textMessage, false);
                 isBasement = true;
                 getFortune();
                 fortuneCounter.setText(stFortune);
@@ -788,18 +754,14 @@ public class PrologueDownSecondSceneBackPack extends GameActivity {
                     prologueBackpackNextButton.setVisibility(View.VISIBLE);
                 }
                 if (isRaincoat) {
-                    imageBackgroundLuckTrue.setVisibility(View.VISIBLE);
-                    imageBackgroundLuckTrue.startAnimation(luckAnimation);
-                    imageBackgroundLuckFalse.setVisibility(View.GONE);
+                    getLuckImage(true);
                     isRaincoatMain = true;
-                    toast = Toast.makeText(this, R.string.prologue_backpack_basement_part_raincoat_text_toast, Toast.LENGTH_LONG);
-                    toast.show();
+                    textMessage.setText(R.string.prologue_backpack_basement_part_raincoat_text_toast);
+                    showMessage(textMessage, false);
                 } else {
-                    imageBackgroundLuckFalse.setVisibility(View.VISIBLE);
-                    imageBackgroundLuckFalse.startAnimation(failAnimation);
-                    imageBackgroundLuckTrue.setVisibility(View.GONE);
-                    toast = Toast.makeText(this, R.string.prologue_backpack_basement_part_no_raincoat_text_toast, Toast.LENGTH_LONG);
-                    toast.show();
+                    getLuckImage(false);
+                    textMessage.setText(R.string.prologue_backpack_basement_part_no_raincoat_text_toast);
+                    showMessage(textMessage, false);
                 }
                 getFortune();
                 fortuneCounter.setText(stFortune);
@@ -823,14 +785,13 @@ public class PrologueDownSecondSceneBackPack extends GameActivity {
             basementBackpackButton.setVisibility(View.GONE);
             isRaincoat = false;
             fortune += 10;
-            imageBackgroundLuckFalse.setVisibility(View.VISIBLE);
-            imageBackgroundLuckFalse.startAnimation(failAnimation);
+            getLuckImage(false);
             isBasement = true;
             if (isTop && isMiddle && isAdditional) {
                 prologueBackpackNextButton.setVisibility(View.VISIBLE);
             }
-            toast = Toast.makeText(this, R.string.prologue_backpack_basement_part_no_raincoat_text_toast, Toast.LENGTH_LONG);
-            toast.show();
+            textMessage.setText(R.string.prologue_backpack_basement_part_no_raincoat_text_toast);
+            showMessage(textMessage, false);
             getFortune();
             fortuneCounter.setText(stFortune);
         }

@@ -44,6 +44,8 @@ public class PrologueStart extends GameActivity {
     private ImageView imageBackgroundLuckTrue;
     private ImageView imageBackgroundLuckFalse;
 
+    private TextView textMessage;
+
     private CheckBox checkBoxPrologueTraining;
 
     private RelativeLayout layoutPrologueTraining;
@@ -60,7 +62,7 @@ public class PrologueStart extends GameActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_prolog_start);
         level = 1;
-        fortune = 60;
+        fortune = 66;
         wound = 1;
         save = getSharedPreferences(APP_SAVE, Context.MODE_PRIVATE);
         buttonPrologueTent = (RadioButton) findViewById(R.id.buttonPrologueTentID);
@@ -93,12 +95,15 @@ public class PrologueStart extends GameActivity {
         buttonPrologueMoveUp.setTextSize(sizeFonts);
         buttonPrologueTent.setTextSize(sizeFonts);
 
+        textMessage = (TextView) findViewById(R.id.textMessageID);
+        textMessage.setTextSize(sizeFonts+4);
 
         buttonMenu = (ImageButton) findViewById(R.id.buttonMenuID);
 
 
         startAnimation(new ArrayList<View>(Arrays.asList(radioGroupPrologue, scrollPrologueMain, buttonMenu)));
 
+        menuMain = (RelativeLayout) findViewById(R.id.menuMainID);
 
         if (!save.getBoolean(APP_SAVE_TRAINING, false)) {
 
@@ -124,11 +129,13 @@ public class PrologueStart extends GameActivity {
     }
 
     public void onPrologueTent(View view) {
+
         if (isButtonPrologueTent) {
             refreshScroll(scrollPrologueMain);
             fortune = checkTentPrologue(fortune);
-            view.setVisibility(View.GONE);
+            buttonPrologueTent.setVisibility(View.GONE);
         } else {
+            showButtonMainAnimation(view);
             buttonPrologueTent.setBackgroundColor(Color.parseColor("#607e9e7f"));
             buttonPrologueMoveUp.setBackgroundColor(Color.parseColor("#60ffffff"));
             buttonPrologueMoveDown.setBackgroundColor(Color.parseColor("#60ffffff"));
@@ -145,6 +152,7 @@ public class PrologueStart extends GameActivity {
             getNextScene(intent);
             finish();
         } else {
+            showButtonMainAnimation(view);
             buttonPrologueTent.setBackgroundColor(Color.parseColor("#60ffffff"));
             buttonPrologueMoveUp.setBackgroundColor(Color.parseColor("#607e9e7f"));
             buttonPrologueMoveDown.setBackgroundColor(Color.parseColor("#60ffffff"));
@@ -161,13 +169,15 @@ public class PrologueStart extends GameActivity {
             getNextScene(intent);
             finish();
             overridePendingTransition(R.anim.first_activity_animation, R.anim.second_activity_animation);
+        } else {
+            showButtonMainAnimation(view);
+            buttonPrologueTent.setBackgroundColor(Color.parseColor("#60ffffff"));
+            buttonPrologueMoveUp.setBackgroundColor(Color.parseColor("#60ffffff"));
+            buttonPrologueMoveDown.setBackgroundColor(Color.parseColor("#607e9e7f"));
+            isButtonPrologueTent = false;
+            isButtonPrologueMoveUp = false;
+            isButtonPrologueMoveDown = true;
         }
-        buttonPrologueTent.setBackgroundColor(Color.parseColor("#60ffffff"));
-        buttonPrologueMoveUp.setBackgroundColor(Color.parseColor("#60ffffff"));
-        buttonPrologueMoveDown.setBackgroundColor(Color.parseColor("#607e9e7f"));
-        isButtonPrologueTent = false;
-        isButtonPrologueMoveUp = false;
-        isButtonPrologueMoveDown = true;
     }
 
     private int checkTentPrologue(int fortune) {
@@ -180,6 +190,8 @@ public class PrologueStart extends GameActivity {
                 fortune += 10;
             }
             SharedPreferences.Editor editor = save.edit();
+            textMessage.setText(R.string.prologue_message_fail);
+            showMessage(textMessage, false);
             imageBackgroundLuckFalse.setVisibility(View.VISIBLE);
             imageBackgroundLuckFalse.startAnimation(luckAnimation);
             editor.putInt(APP_SAVE_FORTUNE, fortune);
@@ -200,6 +212,7 @@ public class PrologueStart extends GameActivity {
             editor.putBoolean(APP_SAVE_SLEEPING_BAG_PROLOGUE, true);
             editor.putInt(APP_SAVE_WOUND, wound);
             editor.apply();
+            showMessage(textMessage, false);
             imageBackgroundLuckTrue.setVisibility(View.VISIBLE);
             imageBackgroundLuckTrue.startAnimation(luckAnimation);
             isSleepingBugMain = true;
@@ -211,7 +224,6 @@ public class PrologueStart extends GameActivity {
 
     public void onPrologueStartTraining(View view) {
         if (isTreaning) {
-
             if (checkBoxPrologueTraining.isChecked()) {
                 SharedPreferences.Editor editor = save.edit();
                 editor.putBoolean(APP_SAVE_TRAINING, true);
@@ -224,10 +236,12 @@ public class PrologueStart extends GameActivity {
 
             layoutPrologueTraining.setVisibility(View.GONE);
         } else {
+            showButtonMainAnimation(view);
             isTreaning = true;
             radioButtonTraining.setBackgroundColor(Color.parseColor("#607e9e7f"));
         }
 
     }
+
 }
 

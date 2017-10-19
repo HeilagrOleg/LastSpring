@@ -74,7 +74,12 @@ public class PrologueCaveAfterLabyrinth extends GameActivity {
 
         buttonMenu = (ImageButton) findViewById(R.id.buttonMenuID);
 
+        getInterface(false);
+
         startAnimation(new ArrayList<View>(Arrays.asList(radioGroupPrologueCaveStart, scrollPrologueCaveAfter, buttonMenu)));
+
+        textMessage.setText(R.string.prologue_cave_message);
+        showMessage(textMessage, true);
 
     }
 
@@ -100,6 +105,8 @@ public class PrologueCaveAfterLabyrinth extends GameActivity {
 
     public void onPrologueCaveAfterSecond(View view) {
         if (isSecond) {
+            textMessage.setText(R.string.prologue_cave_message_second);
+            showMessage(textMessage, true);
             refreshScroll(scrollPrologueCaveAfter);
             textPrologueCaveAfter.setText(R.string.prologue_after_labyrinth_text_relax);
             buttonPrologueCaveAfterSecond.setVisibility(View.GONE);

@@ -1,18 +1,25 @@
 package com.example.last_spring.gameprealpha.mainMenu;
 
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.graphics.drawable.AnimationDrawable;
+import android.graphics.drawable.BitmapDrawable;
 import android.media.MediaPlayer;
 import android.os.CountDownTimer;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import net.hockeyapp.android.CrashManager;
 import net.hockeyapp.android.UpdateManager;
@@ -43,6 +50,15 @@ public class MainActivity extends AppCompatActivity {
     private Button buttonExitMain;
     private MediaPlayer ostMain;
 
+    Animation animationBirdFirst;
+    Animation animationBirdSecond;
+
+    private AnimationDrawable animationDrawable;
+    private int timeAnimation;
+
+    private ImageView imageBonfireMain;
+    private ImageView imageBirdFirst;
+    private ImageView imageBirdSecond;
 
     private boolean isOstStop;
 
@@ -69,6 +85,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        imageBonfireMain = (ImageView) findViewById(R.id.imageBonfireMainID);
+
         buttonSettingsMain = (Button) findViewById(R.id.buttonSettingsMainID);
 
 
@@ -77,12 +95,75 @@ public class MainActivity extends AppCompatActivity {
         buttonСontinueMain = (Button) findViewById(R.id.buttonСontinueMainID);
         buttonExitMain = (Button) findViewById(R.id.buttonExitMainID);
         checkForUpdates();
+
+        BitmapDrawable bonfireFirst = (BitmapDrawable) getResources().getDrawable(R.drawable.bonfire_first);
+        BitmapDrawable bonfireSecond = (BitmapDrawable) getResources().getDrawable(R.drawable.bonfire_second);
+        BitmapDrawable bonfireThird = (BitmapDrawable) getResources().getDrawable(R.drawable.bonfire_third);
+        BitmapDrawable bonfireFour = (BitmapDrawable) getResources().getDrawable(R.drawable.bonfire_four);
+        BitmapDrawable bonfireFive = (BitmapDrawable) getResources().getDrawable(R.drawable.bonfire_five);
+        BitmapDrawable bonfireSix = (BitmapDrawable) getResources().getDrawable(R.drawable.bonfire_six);
+
+        animationDrawable = new AnimationDrawable();
+
+        timeAnimation = 150;
+
+        animationDrawable.setOneShot(false);
+        animationDrawable.addFrame(bonfireFirst, timeAnimation);
+        animationDrawable.addFrame(bonfireSecond, timeAnimation);
+        animationDrawable.addFrame(bonfireThird, timeAnimation);
+        animationDrawable.addFrame(bonfireFour, timeAnimation);
+        animationDrawable.addFrame(bonfireFive, timeAnimation);
+        animationDrawable.addFrame(bonfireSix, timeAnimation);
+
+        imageBonfireMain.setImageDrawable(animationDrawable);
+
+        animationDrawable.start();
+
+        imageBirdFirst = (ImageView) findViewById(R.id.imageBirdFirstID);
+        imageBirdSecond = (ImageView) findViewById(R.id.imageBirdSecondID);
+
+        animationBirdFirst = AnimationUtils.loadAnimation(this, R.anim.main_menu_bird_first_animation);
+        animationBirdSecond = AnimationUtils.loadAnimation(this, R.anim.main_menu_bird_second_animation);
+
+        new CountDownTimer(600000, 10000) {
+            public void onTick(long millisUntilFinished) {
+                getAnimationBirdFirst();
+
+            }
+
+            public void onFinish() {
+
+            }
+        }.start();
+
+        new CountDownTimer(3000, 3000) {
+            public void onTick(long millisUntilFinished) {
+
+            }
+
+            public void onFinish() {
+                new CountDownTimer(600000, 10000) {
+                    public void onTick(long millisUntilFinished) {
+                        getAnimationBirdSecond();
+
+                    }
+
+                    public void onFinish() {
+
+                    }
+                }.start();
+
+            }
+        }.start();
+
+
+
     }
 
     public void onResume() {
         super.onResume();
         checkForCrashes();
-        if(isOstStop) {
+        if (isOstStop) {
             ostMain = MediaPlayer.create(this, R.raw.ost_main);
             isOstStop = false;
             ostMain.start();
@@ -180,7 +261,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
     @Override
     public void onDestroy() {
         super.onDestroy();
@@ -199,7 +279,6 @@ public class MainActivity extends AppCompatActivity {
     private void unregisterManagers() {
         UpdateManager.unregister();
     }
-
 
 
     @Override
@@ -253,6 +332,21 @@ public class MainActivity extends AppCompatActivity {
             }
         }.start();
 
-        startActivity(new Intent(this,MainSettings.class));
+        startActivity(new Intent(this, MainSettings.class));
     }
-}
+
+    public void getAnimationBirdFirst() {
+
+        imageBirdFirst.startAnimation(animationBirdFirst);
+
+        imageBirdFirst.setVisibility(View.VISIBLE);
+    }
+
+    public void getAnimationBirdSecond() {
+
+        imageBirdSecond.startAnimation(animationBirdSecond);
+
+        imageBirdSecond.setVisibility(View.VISIBLE);
+    }
+
+ }

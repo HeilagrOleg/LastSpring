@@ -17,7 +17,7 @@ import com.last_spring.gameprealpha.OstWood;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class HuntingLodgeAfter extends GameActivity {
+public class PrologueHuntingLodgeAfter extends GameActivity {
 
     private RadioButton buttonHunterLodgeAfterFirst;
     private RadioButton buttonHunterLodgeAfterSecond;
@@ -58,6 +58,8 @@ public class HuntingLodgeAfter extends GameActivity {
         buttonMenu = (ImageButton) findViewById(R.id.buttonMenuID);
 
         startAnimation(new ArrayList<View>(Arrays.asList(radioGroupPrologueRain, scrollPrologueHunterAfter, buttonMenu)));
+
+        getInterface(false);
 
     }
 

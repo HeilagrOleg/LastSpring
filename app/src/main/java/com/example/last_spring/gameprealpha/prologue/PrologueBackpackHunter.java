@@ -9,6 +9,7 @@ import android.os.CountDownTimer;
 import android.support.constraint.ConstraintLayout;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.ScrollView;
@@ -64,6 +65,8 @@ private ConstraintLayout  constraintLayoutDialogBackpack;
         startService(new Intent(this, OstDisturbance.class));
         isOstDisturbance = true;
 
+        buttonMenu = (ImageButton) findViewById(R.id.buttonMenuID);
+
         radioGroupPrologueBackpackHunterDialog = (RadioGroup) findViewById(R.id.radioGroupPrologueBackpackHunterDialogID);
         firstLine = (RadioButton) findViewById(R.id.buttonPrologueBackpackHunterFirstLineID);
         firstLine.setTextSize(sizeFonts);
@@ -96,17 +99,18 @@ private ConstraintLayout  constraintLayoutDialogBackpack;
             textPrologueBackpackHunterStart.setText(R.string.prologue_backpack_hunter_text_start_knife);
         }
 
+        buttonMenu = (ImageButton) findViewById(R.id.buttonMenuID);
+        buttonMenu.setVisibility(View.INVISIBLE);
+
+        getInterface(false);
 
         new CountDownTimer(1000, 1000) {
             public void onTick(long millisUntilFinished) {
             }
             public void onFinish() {
-                startAnimation(new ArrayList<View>(Arrays.asList(radioGroupPrologueBackpackHunterDialog, scrollPrologueBackpackHunterStart)));
+                startAnimation(new ArrayList<View>(Arrays.asList(radioGroupPrologueBackpackHunterDialog, scrollPrologueBackpackHunterStart, buttonMenu)));
             }
         }.start();
-
-
-
 
     }
 

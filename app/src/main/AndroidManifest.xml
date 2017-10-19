@@ -5,7 +5,7 @@
     <application
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
-        android:label="Долина Фортуны"
+        android:label="Valley of Fortune"
         android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
@@ -40,10 +40,10 @@
             android:value="${HOCKEYAPP_APP_ID}" />
 
         <activity
-            android:name=".prologue.HuntingLodge"
+            android:name=".prologue.PrologueHuntingLodge"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".prologue.HuntingLodgeInside"
+            android:name=".prologue.PrologueHuntingLodgeInside"
             android:screenOrientation="portrait" />
         <activity
             android:name=".prologue.PrologueDownBackpackCutScene"
@@ -55,22 +55,22 @@
             android:name=".prologue.PrologueInventory"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".prologue.HuntingLodgeCutScene"
+            android:name=".prologue.PrologueHuntingLodgeCutScene"
             android:screenOrientation="portrait" />
         <activity
             android:name=".prologue.PrologueCave"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".prologue.HuntingLodgeHunter"
+            android:name=".prologue.PrologueHuntingLodgeHunter"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".prologue.HuntingLodgeExit"
+            android:name=".prologue.PrologueHuntingLodgeExit"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".prologue.AbandonedCar"
+            android:name=".prologue.PrologueAbandonedCar"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".prologue.CaveLabyrinth"
+            android:name=".prologue.PrologueCaveLabyrinth"
             android:screenOrientation="portrait" />
         <activity android:name=".prologue.PrologueBreakage" />
 
@@ -116,7 +116,7 @@
             android:name=".oldStory.PrologueOldStoryAttack"
             android:screenOrientation="portrait" />
         <activity android:name=".prologue.PrologueBackpackHunter" />
-        <activity android:name=".prologue.HuntingLodgeAfter" />
+        <activity android:name=".prologue.PrologueHuntingLodgeAfter" />
         <activity android:name=".mainMenu.MainSettings" />
         <activity android:name=".chapterTwo.ChapterTwoStart" />
         <activity android:name=".prologue.PrologueBox"></activity>

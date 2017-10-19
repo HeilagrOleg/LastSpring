@@ -78,6 +78,8 @@ public class PrologueRain extends GameActivity {
 
         buttonMenu = (ImageButton) findViewById(R.id.buttonMenuID);
 
+        getInterface(false);
+
         startAnimation(new ArrayList<View>(Arrays.asList(scrollPrologueRain, radioGroupPrologueRain, buttonMenu)));
 
     }

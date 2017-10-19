@@ -9,14 +9,16 @@ import android.os.CountDownTimer;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.last_spring.gameprealpha.R;
 import com.example.last_spring.gameprealpha.res.GameActivity;
 import com.last_spring.gameprealpha.OstDisturbance;
 
-public class HuntingLodgeCutScene extends GameActivity {
+public class PrologueHuntingLodgeCutScene extends GameActivity {
 
     public static final String APP_SAVE_LEVEL = "Level";
     private static final String APP_SAVE_PROLOGUE_HUNTING_KNIFE = "Knife bedside";
@@ -38,6 +40,8 @@ public class HuntingLodgeCutScene extends GameActivity {
     private boolean isFood;
     private boolean isSleepingBug;
     private boolean isNext;
+
+    private Toast toast;
 
     private SharedPreferences save;
 
@@ -86,6 +90,22 @@ public class HuntingLodgeCutScene extends GameActivity {
         outAnimation = AnimationUtils.loadAnimation(this, R.anim.cut_scene_prologue_text_out_animation);
 
         isNext = false;
+
+        buttonMenu = (ImageButton) findViewById(R.id.buttonMenuID);
+        buttonMenu.setVisibility(View.INVISIBLE);
+
+        getInterface(false);
+
+        new CountDownTimer(2000, 2000) {
+            public void onTick(long millisUntilFinished) {
+
+            }
+
+            public void onFinish() {
+                getMessage();
+            }
+        }.start();
+
     }
 
     public void onTextHuntingLodgeSceneNext(View view) {
@@ -357,7 +377,7 @@ public class HuntingLodgeCutScene extends GameActivity {
                 default:
                     stopService(new Intent(this, OstDisturbance.class));
                     ost.stop();
-                    getNextScene(new Intent(this, HuntingLodgeHunter.class));
+                    getNextScene(new Intent(this, PrologueHuntingLodgeHunter.class));
                     finish();
                     overridePendingTransition(R.anim.first_activity_animation, R.anim.second_activity_animation);
             }
@@ -367,7 +387,12 @@ public class HuntingLodgeCutScene extends GameActivity {
     public void onClick(View view) {
         stopService(new Intent(this, OstDisturbance.class));
         ost.stop();
-        getNextScene(new Intent(this, HuntingLodgeHunter.class));
+        getNextScene(new Intent(this, PrologueHuntingLodgeHunter.class));
         finish();
+    }
+
+    public void getMessage() {
+        textMessage.setText(R.string.prologue_training_toast_cut_scene);
+        showMessage(textMessage, false);
     }
 }

@@ -17,6 +17,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -232,10 +233,13 @@ public class PrologueDownFirstScene extends GameActivity {
 
         res = getResources();
 
+        getInterface(true);
 
+        textMessage.setText(R.string.prologue_down_message);
+
+        showMessage(textMessage, true);
 
         startAnimation(new ArrayList<View>(Arrays.asList(textPrologueDownStart, framePrologueFirst)));
-
 
     }
 
@@ -736,6 +740,8 @@ public class PrologueDownFirstScene extends GameActivity {
                 editor.putBoolean(APP_SAVE_BACKPACK, false);
                 editor.putInt(APP_SAVE_FORTUNE, fortune);
                 editor.apply();
+                imageBackgroundLuckFalse.setVisibility(View.VISIBLE);
+                imageBackgroundLuckFalse.startAnimation(luckAnimation);
                 Intent intent = new Intent(PrologueDownFirstScene.this, PrologueDownSecondSceneNoBackPack.class);
                 getNextScene(intent);
                 finish();
@@ -745,6 +751,8 @@ public class PrologueDownFirstScene extends GameActivity {
                 if (fortune >= 15) {
                     fortune -= 15;
                 }
+                imageBackgroundLuckTrue.setVisibility(View.VISIBLE);
+                imageBackgroundLuckTrue.startAnimation(luckAnimation);
                 SharedPreferences.Editor editor = settings.edit();
                 editor.putBoolean(APP_SAVE_BACKPACK, true);
                 editor.putInt(APP_SAVE_FORTUNE, fortune);

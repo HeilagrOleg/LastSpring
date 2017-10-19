@@ -1,10 +1,13 @@
 package com.example.last_spring.gameprealpha.res;
 
+import android.animation.Animator;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
+import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -16,6 +19,9 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
@@ -65,21 +71,49 @@ public class GameActivity extends AppCompatActivity {
     public boolean isOstWood;
     public boolean isOstCave;
     public boolean isOstDisturbance;
+    public boolean isMenu;
     public float level;
     public float sizeFonts;
     public float lineSpacing;
 
     public ImageButton buttonMenu;
 
+    public Button buttonMenuCancel;
+
     public Animation animationStart;
     public Animation luckAnimation;
     public Animation failAnimation;
+    public Animation buttonMainAnimation;
+
+    public ImageView imageBackgroundLuckTrue;
+    public ImageView imageBackgroundLuckFalse;
+
+    public TextView textMessage;
+    public TextView textInventoryFood;
+    public TextView textInventoryDrugs;
+    public TextView textInventorySleepingBug;
+    public TextView textInventoryRaincoat;
+    public TextView textInventoryKnife;
+    public TextView textInventoryText;
+
+    public ProgressBar progressBarMenuHealth;
+    public ProgressBar progressBarMenuHunger;
+    public ProgressBar progressBarMenuLuck;
 
     public MediaPlayer ost;
 
+    public Resources res;
+
+    public RelativeLayout menuMain;
+
     @Override
     public void onBackPressed() {
-        openQuitDialog();
+        if (isMenu) {
+            menuMain.setVisibility(View.GONE);
+            isMenu = false;
+        } else {
+            onButtonMenu(buttonMenu);
+        }
     }
 
     AlertDialog.Builder dialog;
@@ -107,120 +141,22 @@ public class GameActivity extends AppCompatActivity {
         } else if (fortune > 100) {
             fortune = 100;
         }
+
+        res = getResources();
+
+        isMenu = false;
+
         isKnifeMain = save.getBoolean(APP_SAVE_KNIFE, false);
         isRaincoatMain = save.getBoolean(APP_SAVE_RAINCOAT, false);
         isSleepingBugMain = save.getBoolean(APP_SAVE_SLEEPING_BAG_PROLOGUE, false);
         isFaim = save.getBoolean(APP_SAVE_FAIM, false);
         wound = save.getInt(APP_SAVE_WOUND, 0);
 
+
+        buttonMainAnimation = AnimationUtils.loadAnimation(this, R.anim.button_main_animation);
         animationStart = AnimationUtils.loadAnimation(this, R.anim.title_in);
     }
 
-    public void onInventory(View view) {
-        openQuitDialog();
-    }
-
-    private void openQuitDialog() {
-
-        String stFortune;
-        String stWound;
-        String stFaim;
-
-        if (isSleepingBugMain) {
-            sleepingBug = getString(R.string.prologue_inventory_sleeping_bug);
-        } else {
-            sleepingBug = getString(R.string.prologue_inventory_no_sleeping_bug);
-        }
-
-        if (isKnifeMain) {
-            knife = getString(R.string.prologue_inventory_knife);
-        } else {
-            knife = getString(R.string.prologue_inventory_no_knife);
-        }
-
-        if (isRaincoatMain) {
-            raincoat = getString(R.string.prologue_inventory_raincoat);
-        } else {
-            raincoat = getString(R.string.prologue_inventory_no_raincoat);
-        }
-
-        if (wound == 0) {
-            stWound = getString(R.string.prologue_inventory_hp_100);
-        } else if (wound == 1) {
-            stWound = getString(R.string.prologue_inventory_hp_50);
-        } else {
-            stWound = getString(R.string.prologue_inventory_hp_0);
-        }
-
-        if (isFaim) {
-            stFaim = getString(R.string.prologue_inventory_faim);
-        } else {
-            stFaim = getString(R.string.prologue_inventory_no_faim);
-        }
-
-        if (fortune < 0) {
-            fortune = 10;
-        } else if (fortune > 100) {
-            fortune = 100;
-        }
-
-        stFortune = "test";
-
-        if (fortune <= 10) {
-            stFortune = getString(R.string.prologue_inventory_fortune_10);
-        } else if (fortune <= 20) {
-            stFortune = getString(R.string.prologue_inventory_fortune_20);
-        } else if (fortune <= 30) {
-            stFortune = getString(R.string.prologue_inventory_fortune_30);
-        } else if (fortune <= 40) {
-            stFortune = getString(R.string.prologue_inventory_fortune_40);
-        } else if (fortune <= 50) {
-            stFortune = getString(R.string.prologue_inventory_fortune_50);
-        } else if (fortune <= 60) {
-            stFortune = getString(R.string.prologue_inventory_fortune_60);
-        } else if (fortune <= 70) {
-            stFortune = getString(R.string.prologue_inventory_fortune_70);
-        } else if (fortune <= 80) {
-            stFortune = getString(R.string.prologue_inventory_fortune_80);
-        } else if (fortune <= 90) {
-            stFortune = getString(R.string.prologue_inventory_fortune_90);
-        } else if (fortune <= 100) {
-            stFortune = getString(R.string.prologue_inventory_fortune_100);
-        }
-
-
-        dialog = new AlertDialog.Builder(this);
-        dialog.setTitle(R.string.button_dialog_title);
-        dialog.setMessage(Html.fromHtml(getString(R.string.prologue_inventory, sleepingBug,
-                foodCounterMain,
-                treatmentCounterMain,
-                knife,
-                raincoat,
-                stFortune, stWound, stFaim)));
-        dialog.setPositiveButton(R.string.button_dialog_exit, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                finishOst();
-                finish();
-            }
-        });
-        dialog.setNeutralButton(R.string.button_dialog_menu, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                finishOst();
-                Intent intent = new Intent(GameActivity.this, MainActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
-        dialog.setNegativeButton(R.string.button_dialog_cancel, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.cancel();
-            }
-        });
-        dialog.show();
-    }
 
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
@@ -255,6 +191,24 @@ public class GameActivity extends AppCompatActivity {
         if (!isOstStop && !isExitScene) {
             finishOst();
             isOstStop = true;
+        }
+        finish();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (isOst) {
+            ost.start();
+        }
+        if (isOstStop && !isOst) {
+            if (isOstWood) {
+                startService(new Intent(this, OstWood.class));
+            } else if (isOstCave) {
+                startService(new Intent(this, OstCave.class));
+            } else if (isOstDisturbance) {
+                startService(new Intent(this, OstDisturbance.class));
+            }
         }
     }
 
@@ -316,7 +270,206 @@ public class GameActivity extends AppCompatActivity {
 
 
     public void onButtonMenu(View view) {
-        openQuitDialog();
+        menuMain.setVisibility(View.VISIBLE);
+
+        isMenu = true;
+
+        if (fortune < 0) {
+            fortune = 10;
+        } else if (fortune > 100) {
+            fortune = 100;
+        }
+
+        textInventoryFood = (TextView) findViewById(R.id.textInventoryFoodID);
+        textInventoryFood.setTextSize(sizeFonts + 2);
+        textInventoryDrugs = (TextView) findViewById(R.id.textInventoryDrugsID);
+        textInventoryDrugs.setTextSize(sizeFonts + 2);
+        textInventorySleepingBug = (TextView) findViewById(R.id.textInventorySleepingBugID);
+        textInventorySleepingBug.setTextSize(sizeFonts + 2);
+        textInventoryRaincoat = (TextView) findViewById(R.id.textInventoryRaincoatID);
+        textInventoryRaincoat.setTextSize(sizeFonts + 2);
+        textInventoryKnife = (TextView) findViewById(R.id.textInventoryKnifeID);
+        textInventoryKnife.setTextSize(sizeFonts + 2);
+        textInventoryText = (TextView) findViewById(R.id.textInventoryTextID);
+        textInventoryText.setTextSize(sizeFonts - 2);
+
+        progressBarMenuHealth = (ProgressBar) findViewById(R.id.progressBarMenuHealthID);
+        progressBarMenuHunger = (ProgressBar) findViewById(R.id.progressBarMenuHungerID);
+        progressBarMenuLuck = (ProgressBar) findViewById(R.id.progressBarMenuLuckID);
+
+        String stFood = res.getString(R.string.inventory_food) + " " + foodCounterMain;
+        String stDrug = res.getString(R.string.inventory_drugs) + " " + treatmentCounterMain;
+
+        textInventoryDrugs.setText(stDrug);
+        textInventoryFood.setText(stFood);
+
+        if (isSleepingBugMain) {
+            textInventorySleepingBug.setTextColor(Color.parseColor("#ffffff"));
+            textInventorySleepingBug.setBackgroundColor(Color.parseColor("#90e9f7f7"));
+        }
+
+        if (isKnifeMain) {
+            textInventoryKnife.setTextColor(Color.parseColor("#ffffff"));
+            textInventoryKnife.setBackgroundColor(Color.parseColor("#90e9f7f7"));
+        }
+
+        if (isRaincoatMain) {
+            textInventoryRaincoat.setTextColor(Color.parseColor("#ffffff"));
+            textInventoryRaincoat.setBackgroundColor(Color.parseColor("#90e9f7f7"));
+        }
+
+        if (fortune > 65) {
+            progressBarMenuLuck.setProgressDrawable(res.getDrawable(R.drawable.progress_bar_menu_vertical_good));
+        } else if (fortune < 35) {
+            progressBarMenuLuck.setProgressDrawable(res.getDrawable(R.drawable.progress_bar_menu_vertical_bad));
+        } else {
+            progressBarMenuLuck.setProgressDrawable(res.getDrawable(R.drawable.progress_bar_menu_vertical_normal));
+        }
+
+        if (wound == 0) {
+            progressBarMenuHealth.setProgressDrawable(res.getDrawable(R.drawable.progress_bar_menu_vertical_good));
+            progressBarMenuHealth.setProgress(100);
+        } else if (wound == 1) {
+            progressBarMenuHealth.setProgressDrawable(res.getDrawable(R.drawable.progress_bar_menu_vertical_normal));
+            progressBarMenuHealth.setProgress(45);
+        } else {
+            progressBarMenuHealth.setProgressDrawable(res.getDrawable(R.drawable.progress_bar_menu_vertical_bad));
+            progressBarMenuHealth.setProgress(10);
+        }
+
+        if (isFaim) {
+            progressBarMenuHunger.setProgressDrawable(res.getDrawable(R.drawable.progress_bar_menu_vertical_bad));
+            progressBarMenuHunger.setProgress(25);
+        } else {
+            progressBarMenuHunger.setProgressDrawable(res.getDrawable(R.drawable.progress_bar_menu_vertical_good));
+            progressBarMenuHunger.setProgress(75);
+        }
+
+        buttonMenuCancel = (Button) findViewById(R.id.buttonMenuCancelD);
+
+        progressBarMenuLuck.setProgress(fortune);
     }
 
+    public void showMessage(TextView textView, boolean isStart) {
+
+        if (isStart) {
+            Animation animation = AnimationUtils.loadAnimation(this, R.anim.message_animation_start);
+            textView.startAnimation(animation);
+            textView.setVisibility(View.VISIBLE);
+        } else {
+            Animation animation = AnimationUtils.loadAnimation(this, R.anim.message_animation);
+            textView.startAnimation(animation);
+            textView.setVisibility(View.VISIBLE);
+        }
+
+
+    }
+
+    public void getInterface(boolean isImage) {
+
+        if (isImage) {
+            imageBackgroundLuckTrue = (ImageView) findViewById(R.id.imageBackgroundLuckTrueID);
+            imageBackgroundLuckFalse = (ImageView) findViewById(R.id.imageBackgroundLuckFalseID);
+        }
+
+        menuMain = (RelativeLayout) findViewById(R.id.menuMainID);
+
+        textMessage = (TextView) findViewById(R.id.textMessageID);
+        textMessage.setTextSize(sizeFonts + 4);
+    }
+
+    public void getLuckImage(boolean isLuck) {
+        if (isLuck) {
+            imageBackgroundLuckFalse.setVisibility(View.GONE);
+            imageBackgroundLuckTrue.setVisibility(View.VISIBLE);
+            imageBackgroundLuckTrue.startAnimation(luckAnimation);
+        } else {
+            imageBackgroundLuckTrue.setVisibility(View.GONE);
+            imageBackgroundLuckFalse.setVisibility(View.VISIBLE);
+            imageBackgroundLuckFalse.startAnimation(failAnimation);
+        }
+    }
+
+
+    public void onBarMenuHealth(View view) {
+        showButtonMainAnimation(view);
+        textInventoryText.setText(R.string.inventory_text_health);
+    }
+
+    public void onBarBarMenuHunger(View view) {
+        showButtonMainAnimation(view);
+        textInventoryText.setText(R.string.inventory_text_hunger);
+    }
+
+    public void onBarMenuLuck(View view) {
+        showButtonMainAnimation(view);
+        textInventoryText.setText(R.string.inventory_text_luck);
+    }
+
+    public void onInventoryKnife(View view) {
+        if (isKnifeMain) {
+            showButtonMainAnimation(view);
+            textInventoryText.setText(R.string.inventory_text_knife);
+        }
+    }
+
+    public void onInventoryRaincoat(View view) {
+        if (isRaincoatMain) {
+            showButtonMainAnimation(view);
+            textInventoryText.setText(R.string.inventory_text_raincoat);
+        }
+    }
+
+    public void onInventorySleepingBug(View view) {
+        if (isSleepingBugMain) {
+            showButtonMainAnimation(view);
+            textInventoryText.setText(R.string.inventory_text_sleeping_bug);
+        }
+    }
+
+    public void onInventoryDrugs(View view) {
+        showButtonMainAnimation(view);
+        textInventoryText.setText(R.string.inventory_text_drugs);
+    }
+
+    public void onInventoryFood(View view) {
+        showButtonMainAnimation(view);
+        textInventoryText.setText(R.string.inventory_text_food);
+    }
+
+
+    public void onMenuLuckUp(View view) {
+    }
+
+    public void onMenuCancelD(View view) {
+        textInventoryText.setText(R.string.inventory_text_main);
+        menuMain.setVisibility(View.GONE);
+    }
+
+
+    public void onMenuMenu(View view) {
+        Intent intent = new Intent(GameActivity.this, MainActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+
+    public void onMenuExit(View view) {
+        finishOst();
+        finish();
+    }
+
+    public void showButtonMainAnimation(final View view) {
+        view.setClickable(false);
+
+        view.startAnimation(AnimationUtils.loadAnimation(this, R.anim.button_main_animation));
+        new CountDownTimer(300, 300) {
+            public void onTick(long millisUntilFinished) {
+            }
+
+            public void onFinish() {
+                view.setClickable(true);
+            }
+        }.start();
+    }
 }

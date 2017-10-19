@@ -26,7 +26,7 @@ import com.last_spring.gameprealpha.OstWood;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class HuntingLodgeInside extends GameActivity {
+public class PrologueHuntingLodgeInside extends GameActivity {
 
     public static final String APP_SAVE = "Save";
     public static final String APP_SAVE_LEVEL = "Level";
@@ -197,6 +197,10 @@ public class HuntingLodgeInside extends GameActivity {
 
         buttonMenu = (ImageButton) findViewById(R.id.buttonMenuID);
 
+        getInterface(true);
+        textMessage.setText(R.string.hunting_Lodge_inside_message_sleeping_bug);
+
+
         startAnimation(new ArrayList<View>(Arrays.asList(scrollHuntingLodgeInside, radioGroupHuntingLodgeInside, buttonMenu)));
 
         constraintLayoutPrologueHuntingInside.setBackgroundResource(R.drawable.prologue_huntinh_lodge_inside_first_background);
@@ -245,8 +249,9 @@ public class HuntingLodgeInside extends GameActivity {
             radioGroupHuntingLodgeInside.setVisibility(View.VISIBLE);
             radioButtonTableHuntingInside.setVisibility(View.GONE);
             huntingLodgeInsideText.setText(R.string.hunting_Lodge_inside_text_second);
-            toast = Toast.makeText(this, R.string.hunting_Lodge_inside_button_table_get_key, Toast.LENGTH_LONG);
-            toast.show();
+            textMessage.setText(R.string.hunting_Lodge_inside_message_key);
+            showMessage(textMessage, false);
+
             isTableButton = true;
             if (isBedsideTableButton && isCupboardButton && isConserveButton) {
                 linearBoxHuntingLodgeInside.setVisibility(View.VISIBLE);
@@ -302,12 +307,14 @@ public class HuntingLodgeInside extends GameActivity {
             huntingLodgeInsideText.setText(R.string.hunting_Lodge_inside_text_second);
             if (Fortune.isLuck(fortune, 80)) {
                 foodCounterMain++;
-                toast = Toast.makeText(this, R.string.hunting_Lodge_inside_button_conserve_victory, Toast.LENGTH_LONG);
-                toast.show();
+                getLuckImage(true);
+                textMessage.setText(R.string.hunting_Lodge_inside_button_conserve_victory);
+                showMessage(textMessage, false);
                 fortune -= 10;
             } else {
-                toast = Toast.makeText(this, R.string.hunting_Lodge_inside_button_conserve_fail, Toast.LENGTH_LONG);
-                toast.show();
+                getLuckImage(false);
+                textMessage.setText(R.string.hunting_Lodge_inside_button_conserve_fail);
+                showMessage(textMessage, false);
                 fortune += 10;
             }
             radioButtonConserveHuntingInside.setVisibility(View.GONE);
@@ -395,8 +402,8 @@ public class HuntingLodgeInside extends GameActivity {
             radioGroupHuntingLodgeInside.setVisibility(View.VISIBLE);
             huntingLodgeInsideText.setText(R.string.hunting_Lodge_inside_text_second);
             radioButtonCupboardHuntingInside.setVisibility(View.GONE);
-            toast = Toast.makeText(this, R.string.hunting_Lodge_inside_button_cupboard_get_sleeping_bug, Toast.LENGTH_LONG);
-            toast.show();
+            textMessage.setText(R.string.hunting_Lodge_inside_message_sleeping_bug);
+            showMessage(textMessage, false);
             isCupboardButton = true;
             if (isBedsideTableButton && isConserveButton && isTableButton) {
                 linearBoxHuntingLodgeInside.setVisibility(View.VISIBLE);
@@ -476,8 +483,8 @@ public class HuntingLodgeInside extends GameActivity {
             radioGroupHuntingLodgeInside.setVisibility(View.VISIBLE);
             radioGroupHuntingLodgeInsideBedside.setVisibility(View.GONE);
             radioButtonBedsideTableHuntingInside.setVisibility(View.GONE);
-            toast = Toast.makeText(this, R.string.hunting_Lodge_inside_button_bedside_get_knife, Toast.LENGTH_LONG);
-            toast.show();
+            textMessage.setText(R.string.hunting_Lodge_inside_button_bedside_get_knife);
+            showMessage(textMessage, false);
             isBedsideTableButton = true;
             if (isCupboardButton && isConserveButton && isTableButton) {
                 linearBoxHuntingLodgeInside.setVisibility(View.VISIBLE);
@@ -509,12 +516,14 @@ public class HuntingLodgeInside extends GameActivity {
             radioButtonBedsideTableHuntingInside.setVisibility(View.GONE);
             if (Fortune.isLuck(fortune, 80)) {
                 isKnifeMain = true;
-                toast = Toast.makeText(this, R.string.hunting_Lodge_inside_button_bedside_get_knife, Toast.LENGTH_LONG);
-                toast.show();
+                getLuckImage(true);
+                textMessage.setText(R.string.hunting_Lodge_inside_button_bedside_get_knife_luck);
+                showMessage(textMessage, false);
                 fortune -= 10;
             } else {
-                toast = Toast.makeText(this, R.string.hunting_Lodge_inside_button_bedside_fail, Toast.LENGTH_LONG);
-                toast.show();
+                getLuckImage(false);
+                textMessage.setText(R.string.hunting_Lodge_inside_button_bedside_fail);
+                showMessage(textMessage, false);
                 fortune += 10;
             }
             radioButtonBedsideLuckHuntingInside.setVisibility(View.GONE);
@@ -623,7 +632,7 @@ public class HuntingLodgeInside extends GameActivity {
             getNextScene(new Intent(this, PrologueBox.class));
             finish();
         } else {
-            Intent intent = new Intent(this, HuntingLodgeCutScene.class);
+            Intent intent = new Intent(this, PrologueHuntingLodgeCutScene.class);
             getNextScene(intent);
             overridePendingTransition(R.anim.first_activity_animation, R.anim.second_activity_animation);
             finish();

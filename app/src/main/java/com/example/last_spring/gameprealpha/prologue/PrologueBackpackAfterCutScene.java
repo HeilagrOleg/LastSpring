@@ -28,6 +28,7 @@ public class PrologueBackpackAfterCutScene extends GameActivity {
     private static final String APP_SAVE_LEVEL = "Level";
     private static final String APP_SAVE_SLEEPING_BAG_PROLOGUE = "Sleeping bag";
     private static final String APP_SAVE_PROLOGUE_BACKPACK_HUNTER_FIGHT = "Backpack hunter fight";
+    private static final String APP_SAVE_PROLOGUE_BACKPACK_HUNTER_MAIN = "Backpack hunter main";
 
     private float level;
 
@@ -87,6 +88,8 @@ public class PrologueBackpackAfterCutScene extends GameActivity {
         startService(new Intent(this, OstWood.class));
         isOstWood = true;
 
+        textMessage = (TextView) findViewById(R.id.textMessageID);
+
         radioGroupPrologueBackpackAfterCutStart = (RadioGroup) findViewById(R.id.radioGroupPrologueBackpackAfterCutStartID);
         radioGroupPrologueBackpackAfterCutNext = (RadioGroup) findViewById(R.id.radioGroupPrologueBackpackAfterCutNextID);
         radioGroupPrologueBackpackAfterCutNext.setVisibility(View.GONE);
@@ -126,6 +129,12 @@ public class PrologueBackpackAfterCutScene extends GameActivity {
         }
 
         if (save.getBoolean(APP_SAVE_PROLOGUE_BACKPACK_HUNTER_FIGHT, false)) {
+
+
+
+            textMessage.setText(R.string.button_prologue_backpack_after_cut_scene_message_start);
+            showMessage(textMessage, true);
+
             if (isKnifeMain) {
                 textPrologueBackpackAfterCut.setText(R.string.button_prologue_backpack_after_cut_scene_knife);
                 radioGroupPrologueBackpackAfterCutStart.setVisibility(View.GONE);
@@ -152,7 +161,12 @@ public class PrologueBackpackAfterCutScene extends GameActivity {
                     buttonPrologueBackPackAfterCutSceneBeforeStartFirst.setVisibility(View.GONE);
                 }
             }
+        } else {
+            textMessage.setText(R.string.button_prologue_backpack_after_cut_scene_message_hunter);
+            showMessage(textMessage, true);
         }
+
+        getInterface(true);
 
         buttonMenu = (ImageButton) findViewById(R.id.buttonMenuID);
 
@@ -219,6 +233,8 @@ public class PrologueBackpackAfterCutScene extends GameActivity {
         if (isFirst) {
             refreshScroll(scrollPrologueBackPackAfterCutScene);
             if (isKnife) {
+                textMessage.setText(R.string.button_prologue_backpack_after_cut_scene_message_hunter_wound);
+                showMessage(textMessage, false);
                 textPrologueBackpackAfterCut.setText(R.string.button_prologue_backpack_after_cut_scene_text_knife_knife);
                 radioGrouprologueBackPackAfterCutSceneBeforeStart.setVisibility(View.GONE);
                 radioGroupPrologueBackpackAfterCutStart.setVisibility(View.VISIBLE);

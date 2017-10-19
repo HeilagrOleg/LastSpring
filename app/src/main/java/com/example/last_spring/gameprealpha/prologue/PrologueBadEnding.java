@@ -25,6 +25,8 @@ import java.util.Arrays;
 
 public class PrologueBadEnding extends GameActivity {
 
+    public static final String APP_SAVE_BREAKAGE_GONE = "Breakage gone";
+
     private TextView textPrologueBadFinal;
     private TextView textFinalBadTitle;
 
@@ -84,6 +86,10 @@ public class PrologueBadEnding extends GameActivity {
 
         startAnimation(new ArrayList<View>(Arrays.asList(scrollPrologueBadFinal, radioGroupPrologueBadFinalFirst)));
 
+        if (save.getBoolean(APP_SAVE_BREAKAGE_GONE,false)) {
+            textPrologueBadFinal.setText(R.string.prologue_final_bad_text_start_second);
+        }
+
     }
 
     public void onPrologueCaveAfterFirst(View view) {
@@ -92,6 +98,9 @@ public class PrologueBadEnding extends GameActivity {
             if (isSecond) {
                 textPrologueBadFinal.setText(R.string.prologue_final_bad_text_final);
                 buttonPrologueBadFinalFirst.setText(R.string.prologue_final_bad_button_exit);
+                if (save.getBoolean(APP_SAVE_BREAKAGE_GONE,false)) {
+                    textPrologueBadFinal.setText(R.string.prologue_final_bad_text_final_second);
+                }
                 isThird = true;
                 isSecond = false;
             } else if (isThird) {
@@ -129,6 +138,9 @@ public class PrologueBadEnding extends GameActivity {
                 refreshScroll(scrollPrologueBadFinal);
                 textPrologueBadFinal.setText(R.string.prologue_final_bad_text_next);
                 buttonPrologueBadFinalFirst.setText(R.string.prologue_final_bad_button_next);
+                if (save.getBoolean(APP_SAVE_BREAKAGE_GONE,false)) {
+                    textPrologueBadFinal.setText(R.string.prologue_final_bad_text_next_second);
+                }
                 isSecond = true;
             }
             isFirst = false;

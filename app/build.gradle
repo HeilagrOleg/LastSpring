@@ -16,8 +16,8 @@ android {
         manifestPlaceholders = [HOCKEYAPP_APP_ID: "8f6ddf6550e54f26897ecce923a9347e"]
         minSdkVersion 16
         targetSdkVersion 22
-        versionCode 7
-        versionName "0.26"
+        versionCode 8
+        versionName "0.27.1"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         signingConfig signingConfigs.config
     }
@@ -32,8 +32,8 @@ android {
             minSdkVersion 16
             signingConfig signingConfigs.config
             targetSdkVersion 22
-            versionCode 7
-            versionName '0.26'
+            versionCode 8
+            versionName '0.27.1'
         }
     }
 

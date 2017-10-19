@@ -17,8 +17,8 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.example.last_spring.gameprealpha.R;
-import com.example.last_spring.gameprealpha.mainMenu.MainActivity;
 import com.example.last_spring.gameprealpha.res.GameActivity;
+import com.last_spring.gameprealpha.OstDisturbance;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -69,6 +69,8 @@ public class PrologueBox extends GameActivity {
 
         getSave(1.121f);
 
+        startService(new Intent(this, OstDisturbance.class));
+
         imageButtonBoxFirst = (ImageButton) findViewById(R.id.imageButtonBoxFirstID);
         imageButtonBoxSecond = (ImageButton) findViewById(R.id.imageButtonBoxSecondID);
         imageButtonBoxThird = (ImageButton) findViewById(R.id.imageButtonBoxThirdID);
@@ -101,6 +103,9 @@ public class PrologueBox extends GameActivity {
         fourCounter = 0;
 
         startAnimation(new ArrayList<View>(Arrays.asList(scrollPrologueBox, radioGroupPrologueBox)));
+
+        getInterface(false);
+        textMessage.setText(R.string.prologue_hunting_lodge_box_message);
 
     }
 
@@ -193,6 +198,8 @@ public class PrologueBox extends GameActivity {
                 public void onFinish() {
                     startAnimation(new ArrayList<View>(Arrays.asList(radioGroupPrologueBox, scrollPrologueBox)));
                     buttonPrologueBoxFirst.setVisibility(View.GONE);
+                    showMessage(textMessage, false);
+                    textPrologueBox.setText(R.string.prologue_hunting_lodge_box_text_final);
                 }
             }.start();
         }
@@ -202,6 +209,7 @@ public class PrologueBox extends GameActivity {
         if (isFirst) {
             radioGroupPrologueBox.startAnimation(outAnimation);
             scrollPrologueBox.startAnimation(outAnimation);
+           ;
 
             new CountDownTimer(2000, 2000) {
                 public void onTick(long millisUntilFinished) {
@@ -230,12 +238,13 @@ public class PrologueBox extends GameActivity {
 
     public void onPrologueBoxSecond(View view) {
         if (isFirst) {
-            getNextScene(new Intent(this, MainActivity.class));
+            getNextScene(new Intent(this, PrologueHuntingLodgeCutScene.class));
+            finish();
         } else {
             buttonPrologueBoxFirst.setBackgroundColor(Color.parseColor("#60ffffff"));
             buttonPrologueBoxSecond.setBackgroundColor(Color.parseColor("#607e9e7f"));
-            isFirst = false;
-            isSecond = true;
+            isFirst = true;
+            isSecond = false;
         }
     }
 }

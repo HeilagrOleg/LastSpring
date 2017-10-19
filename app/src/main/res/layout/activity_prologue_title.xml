@@ -9,8 +9,9 @@
 
     <TextView
         android:id="@+id/prologueTitleID"
-        android:layout_width="238dp"
+        android:layout_width="match_parent"
         android:layout_height="288dp"
+        android:lineSpacingExtra="14sp"
         android:onClick="onNext"
         android:text="@string/prologue_title"
         android:textAlignment="center"

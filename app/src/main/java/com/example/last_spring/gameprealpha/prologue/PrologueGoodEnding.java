@@ -79,7 +79,7 @@ public class PrologueGoodEnding extends GameActivity {
         buttonPrologueGoodFinalFirst = (RadioButton) findViewById(R.id.buttonPrologueGoodFinalFirstID);
         buttonPrologueGoodFinalFirst.setTextSize(sizeFonts);
 
-
+        getInterface(false);
 
         constraintLayoutPrologueFinalGoodExtraEpisode = (RelativeLayout) findViewById(R.id.constraintLayoutPrologueFinalGoodExtraEpisodeID);
 

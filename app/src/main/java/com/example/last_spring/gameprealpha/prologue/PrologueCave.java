@@ -55,6 +55,7 @@ public class PrologueCave extends GameActivity {
     private boolean isInspect;
     private boolean isLeft;
     private boolean isRight;
+    private boolean answer;
     private boolean isPoolMain;
     private boolean isWall;
     private boolean isReturn;
@@ -106,19 +107,21 @@ public class PrologueCave extends GameActivity {
         editor.putFloat(APP_SAVE_LEVEL, level);
         editor.apply();
 
-        if(save.getBoolean(APP_SAVE_CAVE_RETURN,false)) {
+        if (save.getBoolean(APP_SAVE_CAVE_RETURN, false)) {
             textPrologueCaveStart.setText(R.string.prologue_cave_text_return);
         }
 
-        if(save.getInt(APP_SAVE_OLD_COINS, 0)==1) {
+        if (save.getInt(APP_SAVE_OLD_COINS, 0) == 1) {
             buttonPrologueCaveInspect.setVisibility(View.GONE);
         }
 
-        if(save.getBoolean(APP_SAVE_POOL, false)) {
+        if (save.getBoolean(APP_SAVE_POOL, false)) {
             buttonPrologueCaveLeftWay.setVisibility(View.GONE);
         }
 
         buttonMenu = (ImageButton) findViewById(R.id.buttonMenuID);
+
+        getInterface(false);
 
         startAnimation(new ArrayList<View>(Arrays.asList(scrollPrologueCave, radioGroupPrologueCaveStart, buttonMenu)));
 
@@ -129,13 +132,15 @@ public class PrologueCave extends GameActivity {
         if (isInspect) {
             refreshScroll(scrollPrologueCave);
             buttonPrologueCaveInspect.setVisibility(View.GONE);
-           boolean answer = Fortune.isLuck(fortune,40);
+            answer = Fortune.isLuck(fortune, 40);
             if (answer) {
-                toast = Toast.makeText(this, R.string.prologue_cave_inspect_text_luck, Toast.LENGTH_LONG);
-                toast.show();
+                fortune -= 10;
+                textMessage.setText(R.string.prologue_cave_inspect_text_luck);
+                showMessage(textMessage, false);
             } else {
-                toast = Toast.makeText(this, R.string.prologue_cave_inspect_text_fail, Toast.LENGTH_LONG);
-                toast.show();
+                fortune += 10;
+                textMessage.setText(R.string.prologue_cave_inspect_text_fail);
+                showMessage(textMessage, false);
             }
         }
         buttonPrologueCaveInspect.setBackgroundColor(Color.parseColor("#607e9e7f"));
@@ -148,9 +153,16 @@ public class PrologueCave extends GameActivity {
 
     public void onPrologueCaveRightWay(View view) {
         if (isRight) {
+            SharedPreferences.Editor editor = save.edit();
+            if (answer) {
+                editor.putInt(APP_SAVE_OLD_COINS, 1);
+            }
+            editor.putInt(APP_SAVE_FORTUNE, fortune);
+            editor.apply();
             refreshScroll(scrollPrologueCave);
-            getNextScene(new Intent(this, CaveLabyrinth.class));
+            getNextScene(new Intent(this, PrologueCaveLabyrinth.class));
             overridePendingTransition(R.anim.first_activity_animation, R.anim.second_activity_animation);
+            finish();
         }
         buttonPrologueCaveInspect.setBackgroundColor(Color.parseColor("#60ffffff"));
         buttonPrologueCaveLeftWay.setBackgroundColor(Color.parseColor("#60ffffff"));
@@ -162,9 +174,16 @@ public class PrologueCave extends GameActivity {
 
     public void onPrologueCaveLeftWay(View view) {
         if (isLeft) {
+            SharedPreferences.Editor editor = save.edit();
+            if (answer) {
+                editor.putInt(APP_SAVE_OLD_COINS, 1);
+            }
+            editor.putInt(APP_SAVE_FORTUNE, fortune);
+            editor.apply();
             refreshScroll(scrollPrologueCave);
             getNextScene(new Intent(this, PrologueCavePool.class));
             overridePendingTransition(R.anim.first_activity_animation, R.anim.second_activity_animation);
+            finish();
         }
         buttonPrologueCaveInspect.setBackgroundColor(Color.parseColor("#60ffffff"));
         buttonPrologueCaveLeftWay.setBackgroundColor(Color.parseColor("#607e9e7f"));

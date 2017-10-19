@@ -8,15 +8,33 @@
     android:background="@drawable/background_main">
 
     <ImageView
-        android:id="@+id/tentMainID"
-        android:layout_width="298dp"
-        android:layout_height="257dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.953"
+        android:id="@+id/imageBirdFirstID"
+        android:layout_width="51dp"
+        android:layout_height="27dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/imageBonfireMainID"
+        app:layout_constraintHorizontal_bias="0.003"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.758"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/bird_first"
+        tools:layout_editor_absoluteY="18dp"
+        tools:visibility="visible" />
+
+    <ImageView
+        android:id="@+id/tentMainID"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_alignParentBottom="true"
+
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.799"
         app:srcCompat="@drawable/tent_main" />
 
     <LinearLayout
@@ -114,12 +132,13 @@
         android:id="@+id/button3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
         android:onClick="onHunting"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintHorizontal_bias="0.95"
+        android:text="Button"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.95"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.026" />
 
@@ -129,8 +148,36 @@
         android:layout_height="wrap_content"
         android:onClick="onOldCamp"
         android:text="Button"
+        android:visibility="visible"
         tools:layout_editor_absoluteX="1dp"
         tools:layout_editor_absoluteY="7dp" />
+
+    <ImageView
+        android:id="@+id/imageBonfireMainID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.004"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.917"
+        app:srcCompat="@drawable/bonfire_first" />
+
+    <ImageView
+        android:id="@+id/imageBirdSecondID"
+        android:layout_width="51dp"
+        android:layout_height="27dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.452"
+        app:srcCompat="@drawable/bird_second"
+        tools:visibility="visible" />
 
 
 </android.support.constraint.ConstraintLayout>

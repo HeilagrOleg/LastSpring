@@ -23,7 +23,7 @@ import com.last_spring.gameprealpha.OstCave;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class CaveLabyrinth extends GameActivity {
+public class PrologueCaveLabyrinth extends GameActivity {
 
     public static final String APP_SAVE_CAVE_FAIL = "Cave fail";
     public static final String APP_SAVE_CAVE_RETURN = "Cave return";
@@ -226,6 +226,8 @@ public class CaveLabyrinth extends GameActivity {
 
         buttonMenu = (ImageButton) findViewById(R.id.buttonMenuID);
 
+        getInterface(true);
+
         startAnimation(new ArrayList<View>(Arrays.asList(imageCaveLabyrinth, radioGroupCaveLabyrinth, textViewCaveLabyrinth, buttonMenu)));
     }
 
@@ -269,11 +271,11 @@ public class CaveLabyrinth extends GameActivity {
             }
             step++;
             if (step == 9) {
-                toast = Toast.makeText(this, R.string.cave_labyrinth_toast_air, Toast.LENGTH_LONG);
-                toast.show();
+                textMessage.setText(R.string.cave_labyrinth_toast_air);
+                showMessage(textMessage, false);
             } else if (step == 14) {
-                toast = Toast.makeText(this, R.string.cave_labyrinth_toast_no_air, Toast.LENGTH_LONG);
-                toast.show();
+                textMessage.setText(R.string.cave_labyrinth_toast_no_air);
+                showMessage(textMessage, false);
             } else if (step == 18) {
                 textViewCaveLabyrinth.setText(R.string.cave_labyrinth_text_air_fail);
                 buttonCaveLabyrinthExit.setVisibility(View.VISIBLE);
@@ -383,11 +385,11 @@ public class CaveLabyrinth extends GameActivity {
             }
             step++;
             if (step == 9) {
-                toast = Toast.makeText(this, R.string.cave_labyrinth_toast_air, Toast.LENGTH_LONG);
-                toast.show();
+                textMessage.setText(R.string.cave_labyrinth_toast_air);
+                showMessage(textMessage, false);
             } else if (step == 14) {
-                toast = Toast.makeText(this, R.string.cave_labyrinth_toast_no_air, Toast.LENGTH_LONG);
-                toast.show();
+                textMessage.setText(R.string.cave_labyrinth_toast_no_air);
+                showMessage(textMessage, false);
             } else if (step == 18) {
                 textViewCaveLabyrinth.setText(R.string.cave_labyrinth_text_air_fail);
                 if (!isLuck) {
@@ -498,11 +500,11 @@ public class CaveLabyrinth extends GameActivity {
             }
             step++;
             if (step == 9) {
-                toast = Toast.makeText(this, R.string.cave_labyrinth_toast_air, Toast.LENGTH_LONG);
-                toast.show();
+                textMessage.setText(R.string.cave_labyrinth_toast_air);
+                showMessage(textMessage, false);
             } else if (step == 14) {
-                toast = Toast.makeText(this, R.string.cave_labyrinth_toast_no_air, Toast.LENGTH_LONG);
-                toast.show();
+                textMessage.setText(R.string.cave_labyrinth_toast_no_air);
+                showMessage(textMessage, false);
             } else if (step == 18) {
                 textViewCaveLabyrinth.setText(R.string.cave_labyrinth_text_air_fail);
                 if (!isLuck) {
@@ -613,11 +615,11 @@ public class CaveLabyrinth extends GameActivity {
             }
             step++;
             if (step == 9) {
-                toast = Toast.makeText(this, R.string.cave_labyrinth_toast_air, Toast.LENGTH_LONG);
-                toast.show();
+                textMessage.setText(R.string.cave_labyrinth_toast_air);
+                showMessage(textMessage, false);
             } else if (step == 14) {
-                toast = Toast.makeText(this, R.string.cave_labyrinth_toast_no_air, Toast.LENGTH_LONG);
-                toast.show();
+                textMessage.setText(R.string.cave_labyrinth_toast_no_air);
+                showMessage(textMessage, false);
             } else if (step == 18) {
                 textViewCaveLabyrinth.setText(R.string.cave_labyrinth_text_air_fail);
                 if (!isLuck) {

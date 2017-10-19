@@ -11,10 +11,12 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.last_spring.gameprealpha.R;
 import com.example.last_spring.gameprealpha.res.GameActivity;
@@ -57,6 +59,8 @@ public class PrologueDownBackpackCutScene extends GameActivity {
     private RelativeLayout layoutBackpackCutScene;
 
     private int textCounter;
+
+    private Toast toast;
 
     private SharedPreferences save;
 
@@ -113,6 +117,23 @@ public class PrologueDownBackpackCutScene extends GameActivity {
         isNext = false;
 
         startAnimation(new ArrayList<View>(Arrays.asList(layoutBackpackCutScene)));
+
+        buttonMenu = (ImageButton) findViewById(R.id.buttonMenuID);
+        buttonMenu.setVisibility(View.INVISIBLE);
+
+        getInterface(false);
+
+
+
+        new CountDownTimer(3000, 3000) {
+            public void onTick(long millisUntilFinished) {
+
+            }
+
+            public void onFinish() {
+               getMessage();
+            }
+        }.start();
     }
 
     public void onTextPrologueDownBackpackCutSceneNext(View view) {
@@ -399,5 +420,10 @@ public class PrologueDownBackpackCutScene extends GameActivity {
         getNextScene(intent);
         finish();
         overridePendingTransition(R.anim.first_activity_animation, R.anim.second_activity_animation);
+    }
+
+    public void getMessage() {
+        textMessage.setText(R.string.prologue_training_toast_cut_scene);
+        showMessage(textMessage, false);
     }
 }

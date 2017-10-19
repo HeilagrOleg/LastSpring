@@ -23,6 +23,7 @@ public class PrologueBeforeBreakage extends GameActivity {
 
     public static final String APP_SAVE_WAY_CAVE = "Way cave";
     public static final String APP_SAVE_RAIN = "Rain";
+    public static final String APP_SAVE_BREAKAGE_GONE = "Breakage gone";
     public static final String APP_SAVE_BREAKAGE_FOOD = "Breakage food";
 
     private LinearLayout linearLayoutBeforeBreakage;
@@ -131,6 +132,8 @@ public class PrologueBeforeBreakage extends GameActivity {
 
         buttonMenu = (ImageButton) findViewById(R.id.buttonMenuID);
 
+        getInterface(true);
+
         startAnimation(new ArrayList<View>(Arrays.asList(linearLayoutBeforeBreakage, scrollBeforeBreakage, buttonMenu)));
 
     }
@@ -167,6 +170,9 @@ public class PrologueBeforeBreakage extends GameActivity {
         if (isSecond) {
             refreshScroll(scrollBeforeBreakage);
             Intent intent = new Intent(this, PrologueBadEnding.class);
+            SharedPreferences.Editor editor = save.edit();
+            editor.putBoolean(APP_SAVE_BREAKAGE_GONE, true);
+            editor.apply();
             getNextScene(intent);
             overridePendingTransition(R.anim.first_activity_animation, R.anim.second_activity_animation);
             finish();

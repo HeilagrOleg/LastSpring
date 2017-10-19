@@ -1,13 +1,13 @@
 package com.example.last_spring.gameprealpha.res;
 
-import com.example.last_spring.gameprealpha.prologue.AbandonedCar;
-import com.example.last_spring.gameprealpha.prologue.CaveLabyrinth;
-import com.example.last_spring.gameprealpha.prologue.HuntingLodge;
-import com.example.last_spring.gameprealpha.prologue.HuntingLodgeAfter;
-import com.example.last_spring.gameprealpha.prologue.HuntingLodgeCutScene;
-import com.example.last_spring.gameprealpha.prologue.HuntingLodgeExit;
-import com.example.last_spring.gameprealpha.prologue.HuntingLodgeHunter;
-import com.example.last_spring.gameprealpha.prologue.HuntingLodgeInside;
+import com.example.last_spring.gameprealpha.prologue.PrologueAbandonedCar;
+import com.example.last_spring.gameprealpha.prologue.PrologueCaveLabyrinth;
+import com.example.last_spring.gameprealpha.prologue.PrologueHuntingLodge;
+import com.example.last_spring.gameprealpha.prologue.PrologueHuntingLodgeAfter;
+import com.example.last_spring.gameprealpha.prologue.PrologueHuntingLodgeCutScene;
+import com.example.last_spring.gameprealpha.prologue.PrologueHuntingLodgeExit;
+import com.example.last_spring.gameprealpha.prologue.PrologueHuntingLodgeHunter;
+import com.example.last_spring.gameprealpha.prologue.PrologueHuntingLodgeInside;
 import com.example.last_spring.gameprealpha.prologue.PrologueBackpackAfterCutScene;
 import com.example.last_spring.gameprealpha.prologue.PrologueBackpackHunter;
 import com.example.last_spring.gameprealpha.prologue.PrologueBadEnding;
@@ -39,28 +39,28 @@ public class LevelsList {
             return PrologueStart.class;
         }
         if (level == 1.10f) {
-            return AbandonedCar.class;
+            return PrologueAbandonedCar.class;
         }
         if (level == 1.11f) {
-            return HuntingLodge.class;
+            return PrologueHuntingLodge.class;
         }
         if (level == 1.12f) {
-            return HuntingLodgeInside.class;
+            return PrologueHuntingLodgeInside.class;
         }
         if (level == 1.121f) {
             return PrologueBox.class;
         }
         if (level == 1.13f) {
-            return HuntingLodgeCutScene.class;
+            return PrologueHuntingLodgeCutScene.class;
         }
         if (level == 1.14f) {
-            return HuntingLodgeHunter.class;
+            return PrologueHuntingLodgeHunter.class;
         }
         if (level == 1.15f) {
-            return HuntingLodgeExit.class;
+            return PrologueHuntingLodgeExit.class;
         }
         if (level == 1.16f) {
-            return HuntingLodgeAfter.class;
+            return PrologueHuntingLodgeAfter.class;
         }
         if (level == 2.1f) {
             return PrologueDownFirstScene.class;
@@ -87,7 +87,7 @@ public class LevelsList {
             return PrologueCave.class;
         }
         if (level == 2.131f) {
-            return CaveLabyrinth.class;
+            return PrologueCaveLabyrinth.class;
         }
         if (level == 2.14f) {
             return PrologueCaveAfterLabyrinth.class;

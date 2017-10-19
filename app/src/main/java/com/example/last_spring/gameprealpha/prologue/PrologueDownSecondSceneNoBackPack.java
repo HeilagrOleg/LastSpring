@@ -67,12 +67,17 @@ public class PrologueDownSecondSceneNoBackPack extends GameActivity {
         buttonMenu = (ImageButton) findViewById(R.id.buttonMenuID);
 
         startAnimation(new ArrayList<View>(Arrays.asList(scrollNoBackpack, radioGroupNoBackPack, buttonMenu)));
+
+        getInterface(false);
+        textMessage.setText(R.string.prologue_message_no_backpack);
+        showMessage(textMessage, true);
+
     }
 
     public void onNoBackPackMoveHuntingLodge(View view) {
         if (isHuntingLodge) {
             refreshScroll(scrollNoBackpack);
-            Intent intent = new Intent(this, HuntingLodge.class);
+            Intent intent = new Intent(this, PrologueHuntingLodge.class);
             getNextScene(intent);
             overridePendingTransition(R.anim.first_activity_animation, R.anim.second_activity_animation);
             finish();

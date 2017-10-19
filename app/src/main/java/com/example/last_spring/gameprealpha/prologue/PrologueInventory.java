@@ -30,34 +30,6 @@ public class PrologueInventory extends GameActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_prologue_inventory);
-
-        save = getSharedPreferences(APP_SAVE, Context.MODE_PRIVATE);
-
-        if (save.getBoolean(APP_SAVE_SLEEPING_BAG_PROLOGUE, false)) {
-            sleepingBug = getString(R.string.prologue_inventory_sleeping_bug);
-        } else {
-            sleepingBug = getString(R.string.prologue_inventory_no_sleeping_bug);
-        }
-
-        if (save.getBoolean(APP_SAVE_KNIFE, false)) {
-            knife = getString(R.string.prologue_inventory_knife);
-        } else {
-            knife = getString(R.string.prologue_inventory_no_knife);
-        }
-
-        if (save.getBoolean(APP_SAVE_RAINCOAT, false)) {
-            raincoat = getString(R.string.prologue_inventory_raincoat);
-        } else {
-            raincoat = getString(R.string.prologue_inventory_no_raincoat);
-        }
-
-        textPrologueInventory = (TextView) findViewById(R.id.textPrologueInventoryID);
-        textPrologueInventory.setText(getString(R.string.prologue_inventory, sleepingBug,
-                        save.getInt(APP_SAVE_FOOD, 0),
-                        save.getInt(APP_SAVE_TREATMENT, 0),
-                        knife,
-                raincoat
-                ));
     }
 
     public void onPrologueInventoryBack(View view) {

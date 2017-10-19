@@ -19,7 +19,7 @@ import com.last_spring.gameprealpha.OstWood;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class HuntingLodge extends GameActivity {
+public class PrologueHuntingLodge extends GameActivity {
 
 
     private RadioGroup radioGroupHuntingLodgeStart;
@@ -99,6 +99,8 @@ public class HuntingLodge extends GameActivity {
 
         buttonMenu = (ImageButton) findViewById(R.id.buttonMenuID);
 
+        getInterface(true);
+
         startAnimation(new ArrayList<View>(Arrays.asList(radioGroupHuntingLodgeBeforeStart,scrollHuntingLodge, buttonMenu)));
 
     }
@@ -136,7 +138,7 @@ public class HuntingLodge extends GameActivity {
             SharedPreferences.Editor editor = save.edit();
             editor.putBoolean(APP_SAVE_PROLOGUE_HUNTING_WINDOW, isSaveWindow);
             editor.apply();
-            Intent intent = new Intent(this, HuntingLodgeInside.class);
+            Intent intent = new Intent(this, PrologueHuntingLodgeInside.class);
             getNextScene(intent);
             finish();
             overridePendingTransition(R.anim.first_activity_animation, R.anim.second_activity_animation);

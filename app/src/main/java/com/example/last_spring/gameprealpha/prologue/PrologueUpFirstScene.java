@@ -57,12 +57,18 @@ public class PrologueUpFirstScene extends GameActivity {
 
         isExit = false;
         isSearch = false;
+
+        getInterface(false);
+
+        textMessage.setText(R.string.prologue_up_message);
+
+        showMessage(textMessage, true);
     }
 
     public void onUpMoveHuntingLodge(View view) {
         if (isExit) {
             refreshScroll(scrollPrologueUp);
-            Intent intent = new Intent(this, AbandonedCar.class);
+            Intent intent = new Intent(this, PrologueAbandonedCar.class);
             getNextScene(intent);
             overridePendingTransition(R.anim.first_activity_animation, R.anim.second_activity_animation);
             finish();

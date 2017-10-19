@@ -62,7 +62,7 @@ public class PrologueBonfire extends GameActivity {
         buttonPrologueBonfireThird.setTextSize(sizeFonts);
 
         scrollPrologueBonfire = (ScrollView) findViewById(R.id.scrollPrologueBonfireID);
-        sScroll( scrollPrologueBonfire);
+        sScroll(scrollPrologueBonfire);
 
         textPrologueBonfireMain = (TextView) findViewById(R.id.textPrologueBonfireMainID);
         sText(textPrologueBonfireMain);
@@ -75,6 +75,7 @@ public class PrologueBonfire extends GameActivity {
 
         startAnimation(new ArrayList<View>(Arrays.asList(scrollPrologueBonfire, radioGroupPrologueBonfire, buttonMenu)));
 
+        getInterface(true);
 
     }
 
@@ -88,17 +89,17 @@ public class PrologueBonfire extends GameActivity {
                 editor.apply();
                 finish();
             } else if (isDown) {
-                scrollPrologueBonfire.scrollTo(0,0);
+                scrollPrologueBonfire.scrollTo(0, 0);
 
                 textPrologueBonfireMain.setText(R.string.prologue_bonfire_text_bench);
                 buttonPrologueBonfireFirst.setVisibility(View.GONE);
             } else if (isUndergrowth) {
-                scrollPrologueBonfire.scrollTo(0,0);
+                scrollPrologueBonfire.scrollTo(0, 0);
 
                 textPrologueBonfireMain.setText(R.string.prologue_bonfire_text_undergrowth_firewood);
                 buttonPrologueBonfireFirst.setVisibility(View.GONE);
             } else {
-                scrollPrologueBonfire.scrollTo(0,0);
+                scrollPrologueBonfire.scrollTo(0, 0);
 
                 textPrologueBonfireMain.setText(R.string.prologue_bonfire_text_down);
                 buttonPrologueBonfireFirst.setText(R.string.prologue_bonfire_button_down_bench);
@@ -125,7 +126,7 @@ public class PrologueBonfire extends GameActivity {
         if (isSecond) {
             refreshScroll(scrollPrologueBonfire);
             if (isDown) {
-                scrollPrologueBonfire.scrollTo(0,0);
+                scrollPrologueBonfire.scrollTo(0, 0);
 
                 textPrologueBonfireMain.setText(R.string.prologue_bonfire_text_hill);
                 buttonPrologueBonfireSecond.setVisibility(View.GONE);
@@ -133,28 +134,32 @@ public class PrologueBonfire extends GameActivity {
                 Toast toast;
                 int chance;
                 if (save.getBoolean(APP_SAVE_KNIFE, false)) {
-                    scrollPrologueBonfire.scrollTo(0,0);
+                    scrollPrologueBonfire.scrollTo(0, 0);
 
                     textPrologueBonfireMain.setText(R.string.prologue_bonfire_text_undergrowth_mushrooms_knife);
                     chance = 40;
                 } else {
-                    scrollPrologueBonfire.scrollTo(0,0);
+                    scrollPrologueBonfire.scrollTo(0, 0);
 
                     textPrologueBonfireMain.setText(R.string.prologue_bonfire_text_undergrowth_mushrooms_no_knife);
                     chance = 60;
                 }
                 if (Fortune.isLuck(save.getInt(APP_SAVE_FORTUNE, 0), chance)) {
                     foodCounterMain++;
-                    toast = Toast.makeText(this, R.string.prologue_bonfire_toast_undergrowth_mushrooms_luck, Toast.LENGTH_LONG);
-                    toast.show();
+                    fortune -= 5;
+                    getLuckImage(true);
+                    textMessage.setText(R.string.prologue_bonfire_toast_undergrowth_mushrooms_luck);
+                    showMessage(textMessage, false);
                 } else {
-                    toast = Toast.makeText(this, R.string.prologue_bonfire_toast_undergrowth_mushrooms_fail, Toast.LENGTH_LONG);
-                    toast.show();
+                    getLuckImage(false);
+                    fortune += 10;
+                    textMessage.setText(R.string.prologue_bonfire_toast_undergrowth_mushrooms_fail);
+                    showMessage(textMessage, false);
                 }
                 buttonPrologueBonfireSecond.setVisibility(View.GONE);
             } else {
                 isUndergrowth = true;
-                scrollPrologueBonfire.scrollTo(0,0);
+                scrollPrologueBonfire.scrollTo(0, 0);
                 textPrologueBonfireMain.setText(R.string.prologue_bonfire_text_undergrowth);
                 buttonPrologueBonfireFirst.setText(R.string.prologue_bonfire_button_undergrowth_firewood);
                 buttonPrologueBonfireFirst.setVisibility(View.VISIBLE);
@@ -179,7 +184,7 @@ public class PrologueBonfire extends GameActivity {
         if (isThird) {
             refreshScroll(scrollPrologueBonfire);
             if (isUndergrowthWay && isDownWay) {
-                scrollPrologueBonfire.scrollTo(0,0);
+                scrollPrologueBonfire.scrollTo(0, 0);
                 textPrologueBonfireMain.setText(R.string.prologue_bonfire_text_forest);
                 buttonPrologueBonfireFirst.setVisibility(View.VISIBLE);
                 buttonPrologueBonfireSecond.setVisibility(View.GONE);
@@ -189,7 +194,7 @@ public class PrologueBonfire extends GameActivity {
             } else if (isDown) {
                 isDown = false;
                 isDownWay = true;
-                scrollPrologueBonfire.scrollTo(0,0);
+                scrollPrologueBonfire.scrollTo(0, 0);
                 textPrologueBonfireMain.setText(R.string.prologue_bonfire_text_middle);
                 buttonPrologueBonfireFirst.setVisibility(View.GONE);
                 buttonPrologueBonfireSecond.setVisibility(View.VISIBLE);
@@ -204,7 +209,7 @@ public class PrologueBonfire extends GameActivity {
             } else if (isUndergrowth) {
                 isUndergrowth = false;
                 isUndergrowthWay = true;
-                scrollPrologueBonfire.scrollTo(0,0);
+                scrollPrologueBonfire.scrollTo(0, 0);
                 textPrologueBonfireMain.setText(R.string.prologue_bonfire_text_middle);
                 buttonPrologueBonfireSecond.setVisibility(View.GONE);
                 if (isDownWay) {

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android"
+    android:repeatMode="reverse"
+    android:repeatCount="infinite"
+    android:fillAfter="true"
+    >
+
+    <translate
+        android:duration="3000"
+        android:fromXDelta="200"
+        android:toXDelta="-800" />
+
+
+    <rotate
+        android:duration="2000"
+        android:fromDegrees="0"
+        android:pivotX="500"
+        android:pivotY="0"
+        android:startOffset="1000"
+        android:toDegrees="30" />
+
+</set>

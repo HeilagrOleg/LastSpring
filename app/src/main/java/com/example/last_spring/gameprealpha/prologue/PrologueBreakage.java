@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.CountDownTimer;
+import android.sax.EndTextElementListener;
 import android.support.constraint.ConstraintLayout;
 import android.os.Bundle;
 import android.view.View;
@@ -12,12 +13,17 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.example.last_spring.gameprealpha.R;
 import com.example.last_spring.gameprealpha.res.GameActivity;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class PrologueBreakage extends GameActivity {
 
@@ -42,6 +48,13 @@ public class PrologueBreakage extends GameActivity {
     private TextView textFailCounter;
     private TextView textTime;
     private TextView textPrologueTrainingBreakage;
+    private TextView textPrologueBreakage;
+
+    private RadioGroup radioGroupPrologueBreakage;
+
+    private ScrollView scrollPrologueBreakage;
+
+    private RadioButton buttonPrologueBreakageFirst;
 
     private CountDownTimer timer;
 
@@ -68,6 +81,7 @@ public class PrologueBreakage extends GameActivity {
     private boolean isGameOver;
     private boolean isStart;
     private boolean isTraining;
+    private boolean isFirst;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,8 +110,18 @@ public class PrologueBreakage extends GameActivity {
         radioButtonTrainingBreakage = (RadioButton) findViewById(R.id.radioButtonTrainingBreakageID);
         radioButtonTrainingBreakage.setTextSize(sizeFonts);
 
+        buttonPrologueBreakageFirst = (RadioButton) findViewById(R.id.buttonPrologueBreakageFirstID);
+        buttonPrologueBreakageFirst.setTextSize(sizeFonts);
+
         textPrologueTrainingBreakage = (TextView) findViewById(R.id.textPrologueTrainingBreakageID);
         sText(textPrologueTrainingBreakage);
+
+        textPrologueBreakage = (TextView) findViewById(R.id.textPrologueBreakageID);
+        sText(textPrologueBreakage);
+
+        radioGroupPrologueBreakage = (RadioGroup) findViewById(R.id.radioGroupPrologueBreakageID);
+        scrollPrologueBreakage = (ScrollView) findViewById(R.id.scrollPrologueBreakageID);
+        sScroll(scrollPrologueBreakage);
 
         seekBarBreakage = (SeekBar) findViewById(R.id.seekBarBreakageID);
         seekBarBreakage.setMax(600);
@@ -142,7 +166,12 @@ public class PrologueBreakage extends GameActivity {
 
         if (!save.getBoolean(APP_SAVE_TRAINING, false)) {
             layoutPrologueTrainingBreakage.setVisibility(View.VISIBLE);
+        } else  {
+            buttonBreakage.setVisibility(View.VISIBLE);
+            buttonBreakageTest.setVisibility(View.VISIBLE);
         }
+
+        getInterface(true);
 
     }
 
@@ -306,10 +335,14 @@ public class PrologueBreakage extends GameActivity {
     public void getGameOver() {
         ost.stop();
         isOst = false;
-        Intent intent = new Intent(this, PrologueBadEnding.class);
-        getNextScene(intent);
-        overridePendingTransition(R.anim.first_activity_animation, R.anim.second_activity_animation);
-        finish();
+        startAnimation(new ArrayList<View>(Arrays.asList(scrollPrologueBreakage, radioGroupPrologueBreakage)));
+        textFailCounter.setVisibility(View.GONE);
+        textTime.setVisibility(View.GONE);
+        seekBarBreakage.setVisibility(View.GONE);
+        constraintLayoutFirst.setVisibility(View.GONE);
+        constraintLayoutSecond.setVisibility(View.GONE);
+        buttonBreakage.setVisibility(View.GONE);
+        buttonBreakageTest.setVisibility(View.GONE);
     }
 
     public void onBreakageTest(View view) {
@@ -447,11 +480,24 @@ public class PrologueBreakage extends GameActivity {
                 editor.apply();
             }
 
+            buttonBreakageTest.setVisibility(View.VISIBLE);
+            buttonBreakage.setVisibility(View.VISIBLE);
+
             layoutPrologueTrainingBreakage.setVisibility(View.GONE);
         } else {
             isTraining = true;
             radioButtonTrainingBreakage.setBackgroundColor(Color.parseColor("#607e9e7f"));
         }
 
+    }
+
+    public void onPrologueBreakageFirst(View view) {
+        if (isFirst) {
+            getNextScene(new Intent(this, PrologueBadEnding.class));
+            finish();
+        } else {
+            buttonPrologueBreakageFirst.setBackgroundColor(Color.parseColor("#607e9e7f"));
+            isFirst = true;
+        }
     }
 }
