@@ -51,7 +51,7 @@ public class PrologueAbandonedCar extends GameActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_abandoned_car);
+        setContentView(R.layout.activity_prologue_abandoned_car);
 
         level = 1.10f;
         SharedPreferences.Editor editor = save.edit();

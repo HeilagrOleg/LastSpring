@@ -133,7 +133,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="onHunting"
-        android:text="Button"
+        android:text="2 глава"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.95"
@@ -148,9 +148,9 @@
         android:layout_height="wrap_content"
         android:onClick="onOldCamp"
         android:text="Button"
-        android:visibility="visible"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="7dp" />
+        android:visibility="gone"
+        tools:layout_editor_absoluteX="277dp"
+        tools:layout_editor_absoluteY="17dp" />
 
     <ImageView
         android:id="@+id/imageBonfireMainID"

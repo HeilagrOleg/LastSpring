@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="#96c7cf" />
+    <stroke
+        android:width="1dp"
+        android:color="@color/hockeyapp_text_black"
+        />
+    <corners android:radius="20.0dp" />
+</shape>

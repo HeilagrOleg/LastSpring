@@ -199,17 +199,13 @@ public class GameActivity extends AppCompatActivity {
     public void onDestroy() {
         super.onDestroy();
         if (isOst) {
-            ost.start();
+            ost.stop();
         }
-        if (isOstStop && !isOst) {
-            if (isOstWood) {
-                startService(new Intent(this, OstWood.class));
-            } else if (isOstCave) {
-                startService(new Intent(this, OstCave.class));
-            } else if (isOstDisturbance) {
-                startService(new Intent(this, OstDisturbance.class));
-            }
+        if (!isOstStop && !isExitScene) {
+            finishOst();
+            isOstStop = true;
         }
+        finish();
     }
 
     @Override
@@ -448,6 +444,7 @@ public class GameActivity extends AppCompatActivity {
 
 
     public void onMenuMenu(View view) {
+        finishOst();
         Intent intent = new Intent(GameActivity.this, MainActivity.class);
         startActivity(intent);
         finish();

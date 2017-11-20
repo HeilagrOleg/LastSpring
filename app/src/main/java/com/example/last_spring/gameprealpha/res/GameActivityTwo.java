@@ -5,14 +5,21 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.annotation.Nullable;
+import android.support.annotation.StringRes;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
@@ -32,7 +39,18 @@ public class GameActivityTwo extends AppCompatActivity {
 
     public static final String APP_SAVE = "Save";
     public static final String APP_SAVE_LEVEL = "Level";
-    public static final String APP_SAVE_FORTUNE = "Fortune";
+    public static final String APP_SAVE_CHAPTER_TWO_FORTUNE = "Fortune";
+
+    public RadioGroup radioGroupChapterTwo;
+
+    public RadioButton buttonChapterTwoFirst;
+    public RadioButton buttonChapterTwoSecond;
+    public RadioButton buttonChapterTwoThird;
+    public RadioButton buttonChapterTwoFour;
+
+    public ScrollView scrollChapterTwo;
+    public TextView textChapterTwo;
+    public TextView textMessage;
 
     public SharedPreferences save;
     public SharedPreferences settings;
@@ -44,13 +62,28 @@ public class GameActivityTwo extends AppCompatActivity {
     public boolean isOstWood;
     public boolean isOstCave;
     public boolean isOstDisturbance;
+
+
+    public Animation animationOut;
+    public Animation animationIn;
+
+    public boolean isFirst;
+    public boolean isSecond;
+    public boolean isThird;
+    public boolean isFour;
+
     public float level;
     public float sizeFonts;
     public float lineSpacing;
 
-    public Animation animationStart;
+    public String colorChoice;
+    public String colorButton;
+
+    public Animation animationStart; //3000 Длительность
 
     public MediaPlayer ost;
+
+    public SharedPreferences.Editor editor;
 
     @Override
     public void onBackPressed() {
@@ -71,12 +104,20 @@ public class GameActivityTwo extends AppCompatActivity {
         settings = getSharedPreferences(APP_SETTINGS, Context.MODE_PRIVATE);
         sizeFonts = settings.getFloat(APP_SETTINGS_SETTINGS_FONTS_SIZE, 18f);
         lineSpacing = settings.getFloat(APP_SETTINGS_SETTINGS_FONTS_LINE_SPACING, 3f);
-        fortune = save.getInt(APP_SAVE_FORTUNE, 0);
+        fortune = save.getInt(APP_SAVE_CHAPTER_TWO_FORTUNE, 0);
         if (fortune < 0) {
             fortune = 10;
         } else if (fortune > 100) {
             fortune = 100;
         }
+
+        animationOut = AnimationUtils.loadAnimation(this, R.anim.cut_scene_prologue_text_out_animation);
+        animationIn = AnimationUtils.loadAnimation(this, R.anim.cut_scene_prologue_text_in_animation);
+
+        colorChoice = "#6e9ba1";
+        colorButton = "#60ffffff";
+
+        editor = save.edit();
 
         animationStart = AnimationUtils.loadAnimation(this, R.anim.title_in);
     }
@@ -179,9 +220,11 @@ public class GameActivityTwo extends AppCompatActivity {
         editor.apply();
     }
 
-    public void getNextScene(Intent intent) {
+    public void getNextScene(Class<?> cls) {
         isExitScene = true;
-        startActivity(intent);
+        editor.putInt(APP_SAVE_CHAPTER_TWO_FORTUNE, fortune);
+        editor.apply();
+        startActivity(new Intent(this, cls));
         overridePendingTransition(R.anim.first_activity_animation, R.anim.second_activity_animation);
     }
 
@@ -210,5 +253,121 @@ public class GameActivityTwo extends AppCompatActivity {
 
     public void refreshScroll(ScrollView view) {
         view.scrollTo(0, 0);
+    }
+
+    public void startAnimationChapterTwo(final ArrayList<View> list) {
+
+        new CountDownTimer(500, 500) {
+            public void onTick(long millisUntilFinished) {
+            }
+
+            public void onFinish() {
+                for (View e : list) {
+                    e.startAnimation(animationStart);
+                    e.setVisibility(View.VISIBLE);
+                }
+            }
+        }.start();
+    }
+
+    public void startAnimationChapterTwo(final View view) {
+
+        new CountDownTimer(500, 500) {
+            public void onTick(long millisUntilFinished) {
+            }
+
+            public void onFinish() {
+                view.startAnimation(animationStart);
+                view.setVisibility(View.VISIBLE);
+            }
+        }.start();
+    }
+
+
+    public void getButtons() {
+
+        radioGroupChapterTwo = (RadioGroup) findViewById(R.id.radioGroupChapterTwoID);
+
+        buttonChapterTwoFirst = (RadioButton) findViewById(R.id.buttonChapterTwoFirstID);
+        buttonChapterTwoFirst.setTextSize(sizeFonts);
+        buttonChapterTwoSecond = (RadioButton) findViewById(R.id.buttonChapterTwoSecondID);
+        buttonChapterTwoSecond.setTextSize(sizeFonts);
+        buttonChapterTwoThird = (RadioButton) findViewById(R.id.buttonChapterTwoThirdID);
+        buttonChapterTwoThird.setTextSize(sizeFonts);
+        buttonChapterTwoFour = (RadioButton) findViewById(R.id.buttonChapterTwoFourID);
+        buttonChapterTwoFour.setTextSize(sizeFonts);
+
+        textChapterTwo = (TextView) findViewById(R.id.textChapterTwoID);
+        sText(textChapterTwo);
+        scrollChapterTwo = (ScrollView) findViewById(R.id.scrollChapterTwoID);
+        sScroll(scrollChapterTwo);
+    }
+
+    public void getChoiceButton(RadioButton button) {
+        buttonChapterTwoFirst.setBackgroundColor(Color.parseColor(colorButton));
+        buttonChapterTwoSecond.setBackgroundColor(Color.parseColor(colorButton));
+        buttonChapterTwoThird.setBackgroundColor(Color.parseColor(colorButton));
+        buttonChapterTwoFour.setBackgroundColor(Color.parseColor(colorButton));
+
+        isFirst = false;
+        isSecond = false;
+        isThird = false;
+        isFour = false;
+
+        button.setBackgroundColor(Color.parseColor(colorChoice));
+    }
+
+    public void getChoiceButton() {
+        buttonChapterTwoFirst.setBackgroundColor(Color.parseColor(colorButton));
+        buttonChapterTwoSecond.setBackgroundColor(Color.parseColor(colorButton));
+        buttonChapterTwoThird.setBackgroundColor(Color.parseColor(colorButton));
+        buttonChapterTwoFour.setBackgroundColor(Color.parseColor(colorButton));
+
+        isFirst = false;
+        isSecond = false;
+        isThird = false;
+        isFour = false;
+    }
+
+    public void nextText(@StringRes final int resid) {
+        textChapterTwo.startAnimation(animationOut);
+
+        new CountDownTimer(1000, 1000) {
+            public void onTick(long millisUntilFinished) {
+
+            }
+
+            public void onFinish() {
+                textChapterTwo.setText(resid);
+                textChapterTwo.startAnimation(animationIn);
+            }
+        }.start();
+    }
+
+    public void nextText(final Button button, @StringRes final int resid) {
+        button.startAnimation(animationOut);
+
+        new CountDownTimer(1000, 1000) {
+            public void onTick(long millisUntilFinished) {
+
+            }
+
+            public void onFinish() {
+                button.setText(resid);
+                button.startAnimation(animationIn);
+            }
+        }.start();
+    }
+
+    public void getInterfaceChapterTwo() {
+        textMessage = (TextView) findViewById(R.id.textMessageID);
+        textMessage.setTextSize(sizeFonts + 4);
+    }
+
+    public void showMessageChapterTwo(@StringRes final int resid) {
+        Animation animation = AnimationUtils.loadAnimation(this, R.anim.message_animation);
+        textMessage.setText(resid);
+        textMessage.startAnimation(animation);
+        textMessage.setVisibility(View.VISIBLE);
     }
 }

@@ -1,7 +1,5 @@
 package com.example.last_spring.gameprealpha.mainMenu;
 
-import android.animation.AnimatorSet;
-import android.animation.ObjectAnimator;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -26,11 +24,14 @@ import net.hockeyapp.android.UpdateManager;
 
 
 import com.example.last_spring.gameprealpha.R;
+import com.example.last_spring.gameprealpha.chapterTwo.ChapterTwoApartment;
+import com.example.last_spring.gameprealpha.chapterTwo.ChapterTwoCabinet;
+import com.example.last_spring.gameprealpha.chapterTwo.ChapterTwoCar;
 import com.example.last_spring.gameprealpha.chapterTwo.ChapterTwoStart;
-import com.example.last_spring.gameprealpha.oldStory.PrologueOldStory;
-import com.example.last_spring.gameprealpha.prologue.PrologueBox;
-import com.example.last_spring.gameprealpha.prologue.PrologueBreakage;
+import com.example.last_spring.gameprealpha.chapterTwo.ChapterTwoTrafficJam;
+import com.example.last_spring.gameprealpha.chapterTwo.ChapterTwoTrafficJamTest;
 import com.example.last_spring.gameprealpha.prologue.PrologueTitle;
+import com.example.last_spring.gameprealpha.res.GameActivityTwo;
 import com.example.last_spring.gameprealpha.res.LevelsList;
 import com.example.last_spring.gameprealpha.res.TypefaceUtil;
 
@@ -308,13 +309,13 @@ public class MainActivity extends AppCompatActivity {
 
     public void onOldCamp(View view) {
         ostMain.stop();
-        startActivity(new Intent(this, PrologueBox.class));
+        startActivity(new Intent(this, ChapterTwoApartment.class));
         finish();
     }
 
     public void onHunting(View view) {
         ostMain.stop();
-        startActivity(new Intent(this, PrologueBreakage.class));
+        startActivity(new Intent(this, ChapterTwoApartment.class));
         finish();
     }
 

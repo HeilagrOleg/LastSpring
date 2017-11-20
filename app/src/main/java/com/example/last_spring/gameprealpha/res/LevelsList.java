@@ -1,5 +1,9 @@
 package com.example.last_spring.gameprealpha.res;
 
+import com.example.last_spring.gameprealpha.chapterTwo.ChapterTwoInstituteEntrance;
+import com.example.last_spring.gameprealpha.chapterTwo.ChapterTwoPorch;
+import com.example.last_spring.gameprealpha.chapterTwo.ChapterTwoTrafficJam;
+import com.example.last_spring.gameprealpha.chapterTwo.ChapterTwoTrafficJamTest;
 import com.example.last_spring.gameprealpha.prologue.PrologueAbandonedCar;
 import com.example.last_spring.gameprealpha.prologue.PrologueCaveLabyrinth;
 import com.example.last_spring.gameprealpha.prologue.PrologueHuntingLodge;
@@ -109,6 +113,25 @@ public class LevelsList {
         if (level == 5.1f) {
             return PrologueBadEnding.class;
         }
+
+        if (level == 8f) {
+            return ChapterTwoPorch.class;
+        }
+
+        if (level == 9f) {
+            return ChapterTwoTrafficJamTest.class;
+        }
+
+
+        if (level == 10f) {
+            return ChapterTwoTrafficJam.class;
+        }
+
+        if (level == 11f) {
+            return ChapterTwoInstituteEntrance.class;
+        }
+
+
         return null;
     }
 }

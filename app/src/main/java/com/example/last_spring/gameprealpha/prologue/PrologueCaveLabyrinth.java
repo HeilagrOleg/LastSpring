@@ -113,7 +113,7 @@ public class PrologueCaveLabyrinth extends GameActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cave_labyrinth);
+        setContentView(R.layout.activity_prologue_cave_labyrinth);
 
         level = 2.131f;
 

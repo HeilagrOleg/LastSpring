@@ -15,6 +15,7 @@ import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import com.example.last_spring.gameprealpha.chapterTwo.ChapterTwoStart;
 import com.example.last_spring.gameprealpha.mainMenu.MainActivity;
 import com.example.last_spring.gameprealpha.oldStory.PrologueOldStory;
 import com.example.last_spring.gameprealpha.R;
@@ -146,7 +147,7 @@ public class PrologueGoodEnding extends GameActivity {
     }
 
     public void onPrologueFinalGoodExtraEpisodeTrue(View view) {
-        getNextScene(new Intent(this, PrologueOldStory.class));
+        getNextScene(new Intent(this, ChapterTwoStart.class));
         finish();
     }
 

@@ -2,17 +2,18 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    tools:context=".chapterTwo.ChapterTwoStart">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <RelativeLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -25,9 +26,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_toRightOf="@+id/imageChapterTwoBackgroundTwoID"
-                android:background="@null"
                 android:scaleType="fitXY"
-                app:srcCompat="@drawable/background_main" />
+                app:srcCompat="@drawable/chapter_two_start_background_third" />
 
             <ImageView
                 android:id="@+id/imageChapterTwoBackgroundTwoID"
@@ -35,7 +35,7 @@
                 android:layout_height="match_parent"
                 android:layout_toRightOf="@+id/imageChapterTwoBackgroundFirstID"
                 android:scaleType="fitXY"
-                app:srcCompat="@drawable/background_prologue_down_first_scene" />
+                app:srcCompat="@drawable/chapter_two_start_background_second" />
 
             <ImageView
                 android:id="@+id/imageChapterTwoBackgroundFirstID"
@@ -43,8 +43,25 @@
                 android:layout_height="match_parent"
                 android:scaleType="fitXY"
                 android:visibility="visible"
-                app:srcCompat="@drawable/background_prologue_down_first_scene_game" />
-        </FrameLayout>
+                app:srcCompat="@drawable/chapter_two_start_background_first" />
 
+        </FrameLayout>
     </RelativeLayout>
+
+    <ImageButton
+        android:id="@+id/buttonChapterTwoStartNextID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:visibility="visible"
+        android:onClick="onChapterTwoStartNextID"
+        app:srcCompat="@drawable/button_right"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintVertical_bias="1.0" />
+
+
 </android.support.constraint.ConstraintLayout>

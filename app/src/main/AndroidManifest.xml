@@ -83,8 +83,12 @@
             android:enabled="true"
             android:exported="true" />
 
-        <activity android:name=".prologue.PrologueCavePool" />
-        <activity android:name=".prologue.PrologueTitle" />
+        <activity
+            android:name=".prologue.PrologueCavePool"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".prologue.PrologueTitle"
+            android:screenOrientation="portrait" />
 
         <service
             android:name="com.last_spring.gameprealpha.OstCave"
@@ -115,11 +119,33 @@
         <activity
             android:name=".oldStory.PrologueOldStoryAttack"
             android:screenOrientation="portrait" />
-        <activity android:name=".prologue.PrologueBackpackHunter" />
-        <activity android:name=".prologue.PrologueHuntingLodgeAfter" />
-        <activity android:name=".mainMenu.MainSettings" />
+        <activity
+            android:name=".prologue.PrologueBackpackHunter"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".prologue.PrologueHuntingLodgeAfter"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mainMenu.MainSettings"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".prologue.PrologueBox"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".chapterTwo.ChapterTwoTrafficJam"
+            android:screenOrientation="portrait" />
         <activity android:name=".chapterTwo.ChapterTwoStart" />
-        <activity android:name=".prologue.PrologueBox"></activity>
+        <activity android:name=".chapterTwo.ChapterTwoApartment" />
+        <activity android:name=".chapterTwo.ChapterTwoPorch" />
+        <activity android:name=".chapterTwo.ChapterTwoInstituteEntrance" />
+        <activity android:name=".chapterTwo.ChapterTwoConferenceHall" />
+        <activity android:name=".chapterTwo.ChapterTwoCabinet" />
+        <activity android:name=".chapterTwo.ChapterTwoCabinetBox" />
+        <activity android:name=".chapterTwo.ChapterTwoFinal" />
+        <activity
+            android:name=".chapterTwo.ChapterTwoTrafficJamTest"
+            android:screenOrientation="portrait" />
+        <activity android:name=".chapterTwo.ChapterTwoCar"></activity>
     </application>
 
 </manifest>

@@ -1,5 +1,6 @@
 package com.example.last_spring.gameprealpha.chapterTwo;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
@@ -46,5 +47,20 @@ public class ChapterTwoStart extends GameActivityTwo {
                 imageChapterTwoBackgroundSecond.setVisibility(View.GONE);
             }
         }.start();
+
+        new CountDownTimer(13000, 13000) {
+            public void onTick(long millisUntilFinished) {
+            }
+
+            public void onFinish() {
+                imageChapterTwoBackgroundSecond.setVisibility(View.GONE);
+            }
+        }.start();
+
+    }
+
+    public void onChapterTwoStartNextID(View view) {
+        getNextScene(ChapterTwoApartment.class);
+        finish();
     }
 }
