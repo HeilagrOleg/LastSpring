@@ -27,6 +27,7 @@ import com.example.last_spring.gameprealpha.R;
 import com.example.last_spring.gameprealpha.chapterTwo.ChapterTwoApartment;
 import com.example.last_spring.gameprealpha.chapterTwo.ChapterTwoCabinet;
 import com.example.last_spring.gameprealpha.chapterTwo.ChapterTwoCar;
+import com.example.last_spring.gameprealpha.chapterTwo.ChapterTwoInstituteEntrance;
 import com.example.last_spring.gameprealpha.chapterTwo.ChapterTwoStart;
 import com.example.last_spring.gameprealpha.chapterTwo.ChapterTwoTrafficJam;
 import com.example.last_spring.gameprealpha.chapterTwo.ChapterTwoTrafficJamTest;
@@ -61,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
     private ImageView imageBirdFirst;
     private ImageView imageBirdSecond;
 
+
     private boolean isOstStop;
 
     @Override
@@ -71,6 +73,9 @@ public class MainActivity extends AppCompatActivity {
                 | View.SYSTEM_UI_FLAG_FULLSCREEN;
         decorView.setSystemUiVisibility(uiOptions);
         super.onCreate(savedInstanceState);
+
+
+
         setContentView(R.layout.activity_main);
 
         settings = getSharedPreferences(APP_SAVE, Context.MODE_PRIVATE);
@@ -85,6 +90,7 @@ public class MainActivity extends AppCompatActivity {
                 mp.start();
             }
         });
+
 
         imageBonfireMain = (ImageView) findViewById(R.id.imageBonfireMainID);
 
@@ -156,7 +162,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         }.start();
-
 
 
     }
@@ -309,7 +314,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void onOldCamp(View view) {
         ostMain.stop();
-        startActivity(new Intent(this, ChapterTwoApartment.class));
+        startActivity(new Intent(this, ChapterTwoInstituteEntrance.class));
         finish();
     }
 
@@ -350,4 +355,8 @@ public class MainActivity extends AppCompatActivity {
         imageBirdSecond.setVisibility(View.VISIBLE);
     }
 
- }
+    public void onTest3(View view) {
+        startActivity(new Intent(this, ChapterTwoTrafficJamTest.class));
+        finish();
+    }
+}

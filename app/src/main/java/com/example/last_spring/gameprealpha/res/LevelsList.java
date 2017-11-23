@@ -1,5 +1,8 @@
 package com.example.last_spring.gameprealpha.res;
 
+import com.example.last_spring.gameprealpha.chapterTwo.ChapterTwoCar;
+import com.example.last_spring.gameprealpha.chapterTwo.ChapterTwoConferenceHall;
+import com.example.last_spring.gameprealpha.chapterTwo.ChapterTwoDialog;
 import com.example.last_spring.gameprealpha.chapterTwo.ChapterTwoInstituteEntrance;
 import com.example.last_spring.gameprealpha.chapterTwo.ChapterTwoPorch;
 import com.example.last_spring.gameprealpha.chapterTwo.ChapterTwoTrafficJam;
@@ -118,10 +121,13 @@ public class LevelsList {
             return ChapterTwoPorch.class;
         }
 
+        if (level == 8.5f) {
+            return ChapterTwoCar.class;
+        }
+
         if (level == 9f) {
             return ChapterTwoTrafficJamTest.class;
         }
-
 
         if (level == 10f) {
             return ChapterTwoTrafficJam.class;
@@ -131,6 +137,13 @@ public class LevelsList {
             return ChapterTwoInstituteEntrance.class;
         }
 
+        if (level == 12f) {
+            return ChapterTwoConferenceHall.class;
+        }
+
+        if (level == 13f) {
+            return ChapterTwoDialog.class;
+        }
 
         return null;
     }

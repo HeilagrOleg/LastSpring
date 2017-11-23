@@ -1,9 +1,7 @@
 package com.example.last_spring.gameprealpha.res;
 
-import android.animation.Animator;
 import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
@@ -13,7 +11,6 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.text.Html;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -225,6 +222,8 @@ public class GameActivity extends AppCompatActivity {
         }
     }
 
+
+
     public void getSave(float level) {
         SharedPreferences.Editor editor = save.edit();
         editor.putFloat(APP_SAVE_LEVEL, level);
@@ -291,7 +290,7 @@ public class GameActivity extends AppCompatActivity {
 
         progressBarMenuHealth = (ProgressBar) findViewById(R.id.progressBarMenuHealthID);
         progressBarMenuHunger = (ProgressBar) findViewById(R.id.progressBarMenuHungerID);
-        progressBarMenuLuck = (ProgressBar) findViewById(R.id.progressBarMenuLuckID);
+        progressBarMenuLuck = (ProgressBar) findViewById(R.id.progressBarChapterTwoLuckID);
 
         String stFood = res.getString(R.string.inventory_food) + " " + foodCounterMain;
         String stDrug = res.getString(R.string.inventory_drugs) + " " + treatmentCounterMain;
@@ -469,4 +468,5 @@ public class GameActivity extends AppCompatActivity {
             }
         }.start();
     }
+
 }

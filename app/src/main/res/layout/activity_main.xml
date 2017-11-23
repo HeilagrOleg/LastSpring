@@ -147,10 +147,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="onOldCamp"
-        android:text="Button"
-        android:visibility="gone"
-        tools:layout_editor_absoluteX="277dp"
-        tools:layout_editor_absoluteY="17dp" />
+        android:text="Вход в институт"
+        android:visibility="visible"
+        tools:layout_editor_absoluteX="188dp"
+        tools:layout_editor_absoluteY="78dp" />
 
     <ImageView
         android:id="@+id/imageBonfireMainID"

@@ -1,9 +1,12 @@
 package com.example.last_spring.gameprealpha.chapterTwo;
 
+import android.content.Intent;
+import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.last_spring.gameprealpha.res.Fortune;
 import com.example.last_spring.gameprealpha.res.GameActivityTwo;
 
 import com.example.last_spring.gameprealpha.R;
@@ -14,9 +17,12 @@ import java.util.Arrays;
 
 public class ChapterTwoInstituteEntrance extends GameActivityTwo {
 
+    public static final String APP_SAVE_CHAPTER_TWO_FAIL_LATE = "VERY LATE";
+
     private boolean isStart;
     private boolean isLuck;
     private boolean isFail;
+    private boolean isVeryFail;
     private boolean isWait;
     private boolean isSecondFail;
     private boolean isThirdFail;
@@ -40,7 +46,19 @@ public class ChapterTwoInstituteEntrance extends GameActivityTwo {
         isThirdFail = false;
         isFourFail = false;
 
+        getInterfaceChapterTwo();
+
         startAnimationChapterTwo(new ArrayList<View>(Arrays.asList(scrollChapterTwo, radioGroupChapterTwo)));
+
+        new CountDownTimer(500, 500) {
+            public void onTick(long millisUntilFinished) {
+            }
+
+            public void onFinish() {
+                date += 2;
+                getTime();
+            }
+        }.start();
     }
 
     public void onChapterTwoFirst(View view) {
@@ -61,7 +79,10 @@ public class ChapterTwoInstituteEntrance extends GameActivityTwo {
     public void onChapterTwoSecond(View view) {
         if (isSecond) {
             if (isStart) {
-                if (isLuck) {
+                if (Fortune.isLuck(fortune, 75)) {
+                    getFortuneChange(-10);
+                    getLuckImage(true);
+                    showMessageChapterTwo(R.string.chapter_two_message_luck_down);
                     textChapterTwo.setText(R.string.chapter_two_institute_entrance_text_luck_true);
                     buttonChapterTwoSecond.setVisibility(View.GONE);
                     buttonChapterTwoThird.setVisibility(View.GONE);
@@ -69,6 +90,9 @@ public class ChapterTwoInstituteEntrance extends GameActivityTwo {
                     isStart = false;
                     isFail = true;
                 } else {
+                    getFortuneChange(10);
+                    getLuckImage(false);
+                    showMessageChapterTwo(R.string.chapter_two_message_luck_up);
                     textChapterTwo.setText(R.string.chapter_two_institute_entrance_text_luck_false);
                     buttonChapterTwoSecond.setText(R.string.chapter_two_institute_entrance_button_luck_false_wait);
                     buttonChapterTwoThird.setText(R.string.chapter_two_institute_entrance_button_luck_false_stand_up);
@@ -113,6 +137,7 @@ public class ChapterTwoInstituteEntrance extends GameActivityTwo {
                 textChapterTwo.setText(R.string.chapter_two_institute_entrance_text_wait);
                 buttonChapterTwoSecond.setText(R.string.chapter_two_institute_entrance_button_wait_bad);
                 buttonChapterTwoThird.setText(R.string.chapter_two_institute_entrance_button_wait_good);
+                date += 17;
                 isStart = false;
                 isWait = true;
             } else if (isWait) {
@@ -131,6 +156,8 @@ public class ChapterTwoInstituteEntrance extends GameActivityTwo {
                 textChapterTwo.setText(R.string.chapter_two_institute_entrance_text_luck_false_bad);
                 buttonChapterTwoSecond.setText(R.string.chapter_two_institute_entrance_button_luck_false_good);
                 buttonChapterTwoThird.setText(R.string.chapter_two_institute_entrance_button_luck_false_bad_wait);
+                date += 5;
+                getTime();
                 isSecondFail = false;
                 isThirdFail = true;
             } else if (isThirdFail) {
@@ -141,6 +168,9 @@ public class ChapterTwoInstituteEntrance extends GameActivityTwo {
                 isFourFail = true;
             } else if (isFourFail) {
                 textChapterTwo.setText(R.string.chapter_two_institute_entrance_text_luck_false_bad_wait_second);
+                editor.putBoolean(APP_SAVE_CHAPTER_TWO_FAIL_LATE, true);
+                editor.apply();
+                isVeryFail = true;
                 buttonChapterTwoSecond.setVisibility(View.GONE);
                 buttonChapterTwoThird.setVisibility(View.GONE);
                 buttonChapterTwoFour.setVisibility(View.VISIBLE);
@@ -155,11 +185,24 @@ public class ChapterTwoInstituteEntrance extends GameActivityTwo {
 
     public void onChapterTwoFour(View view) {
         if (isFour) {
-            getNextScene(ChapterTwoConferenceHall.class);
-            getChoiceButton();
+            if (isVeryFail) {
+                getNextScene(ChapterTwoDialog.class);
+                finish();
+            } else {
+                getNextScene(ChapterTwoConferenceHall.class);
+                finish();
+            }
         } else {
             getChoiceButton(buttonChapterTwoFour);
             isFour = true;
         }
+    }
+
+    public void onTest(View view) {
+        getMenuChapterTwo();
+    }
+
+    public void onTest2(View view) {
+        fortune += 20;
     }
 }

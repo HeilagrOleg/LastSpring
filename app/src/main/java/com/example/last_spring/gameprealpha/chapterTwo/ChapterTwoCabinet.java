@@ -17,11 +17,5 @@ public class ChapterTwoCabinet extends GameActivityTwo {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chapter_two_cabinet);
-
-        imageButtonTest = (ImageButton) findViewById(R.id.imageButtonTestID);
-
-        Animation animationTest = AnimationUtils.loadAnimation(this, R.anim.button_traffic_jam_size_animation);
-
-        imageButtonTest.startAnimation(animationTest);
     }
 }

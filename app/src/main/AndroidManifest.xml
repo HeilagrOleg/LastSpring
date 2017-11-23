@@ -145,7 +145,14 @@
         <activity
             android:name=".chapterTwo.ChapterTwoTrafficJamTest"
             android:screenOrientation="portrait" />
-        <activity android:name=".chapterTwo.ChapterTwoCar"></activity>
+        <activity android:name=".chapterTwo.ChapterTwoCar" />
+        <activity android:name=".chapterTwo.ChapterTwoDialog" />
+        <activity
+            android:name=".chapterTwo.ChapterTwoMenu"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.MyTransparent"
+            >
+        </activity>
     </application>
 
 </manifest>

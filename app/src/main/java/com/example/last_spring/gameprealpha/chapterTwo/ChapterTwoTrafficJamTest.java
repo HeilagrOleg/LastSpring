@@ -3,6 +3,7 @@ package com.example.last_spring.gameprealpha.chapterTwo;
 import android.animation.ObjectAnimator;
 import android.content.res.Resources;
 import android.graphics.Color;
+import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -118,6 +119,8 @@ public class ChapterTwoTrafficJamTest extends GameActivityTwo {
         isLuck = false;
 
         animation = AnimationUtils.loadAnimation(this, R.anim.button_traffic_jam_size_animation);
+
+        getInterfaceChapterTwo();
 
         imageButtonIntersectionTest1 = (ImageButton) findViewById(R.id.imageButtonIntersectionTest1ID);
         imageButtonIntersectionTest2 = (ImageButton) findViewById(R.id.imageButtonIntersectionTest2ID);
@@ -263,6 +266,7 @@ public class ChapterTwoTrafficJamTest extends GameActivityTwo {
             String strTime = "Всего времени: " + timeMain;
             textIntersectionTimeMainTest.setText(strTime);
             getDirection(startIntersection);
+            getFortuneChange(-3);
             getAnimationButton(a.getImageButton());
             isIntersection = false;
             a.getImageView().setVisibility(View.VISIBLE);
@@ -323,8 +327,20 @@ public class ChapterTwoTrafficJamTest extends GameActivityTwo {
             }
         }
         if (isIntersection && nextIntersection.getName().equals(a.getName())) {
-            getNextScene(ChapterTwoTrafficJam.class);
-            finish();
+            date += time + 1;
+            getTime();
+            getFortuneChange(-3);
+
+            new CountDownTimer(4000, 4000) {
+
+                public void onTick(long millisUntilFinished) {
+                }
+
+                public void onFinish() {
+                    getNextScene(ChapterTwoTrafficJam.class);
+                    finish();
+                }
+            }.start();
         } else {
             nextIntersection = a;
             getTimeIntersection(a);

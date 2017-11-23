@@ -3,6 +3,7 @@ package com.example.last_spring.gameprealpha.chapterTwo;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.provider.ContactsContract;
 import android.view.View;
 import android.view.animation.Animation;
@@ -148,6 +149,8 @@ public class ChapterTwoTrafficJam extends GameActivityTwo {
         res = getResources();
 
         isLuck = false;
+
+        getInterfaceChapterTwo();
 
         animation = AnimationUtils.loadAnimation(this, R.anim.button_traffic_jam_size_animation);
 
@@ -417,6 +420,9 @@ public class ChapterTwoTrafficJam extends GameActivityTwo {
         if (isIntersection && nextIntersection.getName().equals(a.getName())) {
             getIntersectionMain(a);
             timeMain += time;
+            if (isLuck) {
+                getFortuneChange(-3);
+            }
             String strTime = "Всего времени: " + timeMain;
             textIntersectionTimeMain.setText(strTime);
             getDirection(startIntersection);
@@ -441,8 +447,22 @@ public class ChapterTwoTrafficJam extends GameActivityTwo {
         }
         timeIntersection = a;
         if (isIntersection && nextIntersection.getName().equals(a.getName())) {
-            getNextScene(ChapterTwoInstituteEntrance.class);
-            finish();
+
+            date += time + 1;
+            getTime();
+            getFortuneChange(-3);
+
+            new CountDownTimer(4000, 4000) {
+
+                public void onTick(long millisUntilFinished) {
+                }
+
+                public void onFinish() {
+                    getNextScene(ChapterTwoInstituteEntrance.class);
+                    finish();
+                }
+            }.start();
+
         } else {
             nextIntersection = a;
             getTimeIntersection(a);
@@ -497,9 +517,11 @@ public class ChapterTwoTrafficJam extends GameActivityTwo {
         if (isLuck) {
             isLuck = false;
             getTimeIntersection(timeIntersection);
+            getLuckImage(true);
             view.setBackgroundColor(Color.parseColor("#5a595b"));
         } else {
             isLuck = true;
+            getLuckImage(false);
             getTimeIntersection(timeIntersection);
             view.setBackgroundColor(Color.parseColor("#303030"));
         }

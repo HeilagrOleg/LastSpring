@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/chapter_two_car_background"
-    tools:context="com.example.last_spring.gameprealpha.chapterTwo.ChapterTwoCar">
+    android:background="@drawable/chapter_two_dialog_alin_background"
+    tools:context=".chapterTwo.ChapterTwoDialog">
 
     <RelativeLayout
         android:layout_width="0dp"
@@ -44,7 +44,7 @@
                 android:background="#70ffffff"
                 android:button="@drawable/radio_button_selector"
                 android:onClick="onChapterTwoFirst"
-                android:text="@string/chapter_two_car_button_air"
+                android:text="@string/chapter_two_dialog_button_hand"
                 android:textColor="#303030"
                 android:textSize="16sp"
                 tools:layout_editor_absoluteX="16dp"
@@ -58,7 +58,7 @@
                 android:background="#70ffffff"
                 android:button="@drawable/radio_button_selector"
                 android:onClick="onChapterTwoSecond"
-                android:text="@string/chapter_two_car_button_clear"
+                android:text="@string/chapter_two_dialog_button_no_hand"
                 android:textColor="#303030"
                 android:textSize="16sp"
                 android:visibility="visible"
@@ -73,10 +73,40 @@
                 android:background="#70ffffff"
                 android:button="@drawable/radio_button_selector"
                 android:onClick="onChapterTwoThird"
-                android:text="@string/chapter_two_car_button_wheels"
+                android:text="@string/chapter_two_dialog_button_father"
                 android:textColor="#303030"
                 android:textSize="16sp"
-                android:visibility="visible"
+                android:visibility="gone"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="387dp" />
+
+            <RadioButton
+                android:id="@+id/buttonChapterTwoFiveID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="#70ffffff"
+                android:button="@drawable/radio_button_selector"
+                android:onClick="onChapterTwoFive"
+                android:text="@string/chapter_two_dialog_button_father"
+                android:textColor="#303030"
+                android:textSize="16sp"
+                android:visibility="gone"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="387dp" />
+
+            <RadioButton
+                android:id="@+id/buttonChapterTwoSixID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="#70ffffff"
+                android:button="@drawable/radio_button_selector"
+                android:onClick="onChapterTwoSix"
+                android:text="@string/chapter_two_dialog_button_father"
+                android:textColor="#303030"
+                android:textSize="16sp"
+                android:visibility="gone"
                 tools:layout_editor_absoluteX="16dp"
                 tools:layout_editor_absoluteY="387dp" />
 
@@ -87,10 +117,10 @@
                 android:background="#70ffffff"
                 android:button="@drawable/radio_button_selector"
                 android:onClick="onChapterTwoFour"
-                android:text="@string/chapter_two_car_button_inside"
+                android:text="@string/chapter_two_dialog_button_ok"
                 android:textColor="#303030"
                 android:textSize="16sp"
-                android:visibility="visible"
+                android:visibility="gone"
                 tools:layout_editor_absoluteX="16dp"
                 tools:layout_editor_absoluteY="419dp" />
 
@@ -117,7 +147,7 @@
                 android:lineSpacingExtra="3sp"
                 android:lineSpacingMultiplier="0.8"
                 android:orientation="vertical"
-                android:text="@string/chapter_two_car_text_start"
+                android:text="@string/chapter_two_dialog_no_late_start"
                 android:textColor="#303030"
                 android:textSize="18sp"
                 android:visibility="visible" />

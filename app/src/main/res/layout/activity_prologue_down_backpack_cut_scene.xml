@@ -387,7 +387,7 @@
                                 android:progressDrawable="@drawable/progress_bar_menu_vertical_normal" />
 
                             <ProgressBar
-                                android:id="@+id/progressBarMenuLuckID"
+                                android:id="@+id/progressBarChapterTwoLuckID"
                                 style="?android:attr/progressBarStyleHorizontal"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"

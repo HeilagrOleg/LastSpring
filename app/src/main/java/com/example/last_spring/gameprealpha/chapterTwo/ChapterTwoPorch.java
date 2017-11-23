@@ -23,6 +23,7 @@ public class ChapterTwoPorch extends GameActivityTwo {
     private boolean isText;
     private boolean isExit;
     private boolean isFirstText;
+    private boolean isLuck;
 
     private ProgressBar progressBarChapterTwoApartment;
 
@@ -39,6 +40,9 @@ public class ChapterTwoPorch extends GameActivityTwo {
 
         progressBarChapterTwoApartment = (ProgressBar) findViewById(R.id.progressBarChapterTwoApartmentID);
         progressBarChapterTwoApartment.setProgress(100);
+
+        getInterfaceChapterTwo();
+
 
         getButtons();
 
@@ -75,6 +79,7 @@ public class ChapterTwoPorch extends GameActivityTwo {
                 nextText(R.string.chapter_two_porch_text_start_second);
                 buttonChapterTwoSecond.setVisibility(View.GONE);
                 buttonChapterTwoFirst.setVisibility(View.GONE);
+                imageButtonMenuChapterTwo.setVisibility(View.GONE);
                 progressBarChapterTwoApartment.setVisibility(View.VISIBLE);
                 editText();
             }
@@ -100,21 +105,28 @@ public class ChapterTwoPorch extends GameActivityTwo {
                         switch (textCounter) {
                             case 0:
                                 nextText(R.string.chapter_two_porch_text_main_second);
+                                date += 2;
                                 break;
                             case 1:
                                 nextText(R.string.chapter_two_porch_text_main_third);
+                                date += 2;
                                 break;
                             case 2:
                                 nextText(R.string.chapter_two_porch_text_main_four);
+                                date += 2;
+                                getTime();
                                 break;
                             case 3:
                                 nextText(R.string.chapter_two_porch_text_main_five);
+                                date += 2;
                                 break;
                             case 4:
                                 nextText(R.string.chapter_two_porch_text_main_six);
+                                date += 2;
                                 break;
                             case 5:
                                 nextText(R.string.chapter_two_porch_text_main_seven);
+                                date += 2;
                                 break;
                         }
                         textCounter++;
@@ -126,6 +138,10 @@ public class ChapterTwoPorch extends GameActivityTwo {
 
             public void onFinish() {
                 if (isText) {
+                    date += 2;
+                    getTime();
+                    getFortuneChange(15);
+                    isLuck = true;
                     nextText(R.string.chapter_two_porch_text_main_eight);
                     progressBarChapterTwoApartment.startAnimation(animationOut);
                     buttonChapterTwoThird.setVisibility(View.GONE);
@@ -139,7 +155,6 @@ public class ChapterTwoPorch extends GameActivityTwo {
 
     public void onChapterTwoThird(View view) {
         if (isThird) {
-            isText = false;
             switch (stopCounter) {
                 case 0:
                     buttonChapterTwoThird.setText(R.string.chapter_two_porch_button_stop_second);
@@ -148,9 +163,12 @@ public class ChapterTwoPorch extends GameActivityTwo {
                     buttonChapterTwoThird.setText(R.string.chapter_two_porch_button_stop_third);
                     break;
                 default:
+                    isText = false;
                     buttonChapterTwoThird.setVisibility(View.GONE);
+                    date += 2;
+                    getTime();
                     nextText(R.string.chapter_two_porch_text_main_stop);
-                    progressBarChapterTwoApartment.startAnimation(animationOut);
+                    progressBarChapterTwoApartment.setVisibility(View.GONE);
                     buttonChapterTwoSecond.setVisibility(View.VISIBLE);
                     buttonChapterTwoSecond.setText(R.string.chapter_two_porch_button_stop_exit);
             }
@@ -167,6 +185,11 @@ public class ChapterTwoPorch extends GameActivityTwo {
 
     public void onChapterTwoFour(View view) {
         if (isFour) {
+
+            if (isLuck) {
+                showMessageChapterTwo(R.string.chapter_two_porch_message_luck);
+                getLuckImage(true);
+            }
 
             isText = false;
 
@@ -188,7 +211,7 @@ public class ChapterTwoPorch extends GameActivityTwo {
 
         new CountDownTimer(20000, 200) {
             public void onTick(long millisUntilFinished) {
-                progress -=1;
+                progress -= 1;
                 progressBarChapterTwoApartment.setProgress(progress);
 
             }

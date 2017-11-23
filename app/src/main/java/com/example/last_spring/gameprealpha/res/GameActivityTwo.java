@@ -16,13 +16,14 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import com.example.last_spring.gameprealpha.chapterTwo.ChapterTwoMenu;
 import com.example.last_spring.gameprealpha.mainMenu.MainActivity;
 import com.example.last_spring.gameprealpha.R;
 import com.last_spring.gameprealpha.OstCave;
@@ -39,7 +40,9 @@ public class GameActivityTwo extends AppCompatActivity {
 
     public static final String APP_SAVE = "Save";
     public static final String APP_SAVE_LEVEL = "Level";
+    public static final String APP_SAVE_CHAPTER_TWO_DATE = "Date";
     public static final String APP_SAVE_CHAPTER_TWO_FORTUNE = "Fortune";
+    public static final String APP_SAVE_CHAPTER_TWO_RESPECT_ALIN = "Alin respect";
 
     public RadioGroup radioGroupChapterTwo;
 
@@ -47,6 +50,11 @@ public class GameActivityTwo extends AppCompatActivity {
     public RadioButton buttonChapterTwoSecond;
     public RadioButton buttonChapterTwoThird;
     public RadioButton buttonChapterTwoFour;
+
+    public ImageView imageBackgroundLuckFalse;
+    public ImageView imageBackgroundLuckTrue;
+
+    public ImageButton imageButtonMenuChapterTwo;
 
     public ScrollView scrollChapterTwo;
     public TextView textChapterTwo;
@@ -63,6 +71,8 @@ public class GameActivityTwo extends AppCompatActivity {
     public boolean isOstCave;
     public boolean isOstDisturbance;
 
+    public int respectAlin;
+    public int date;
 
     public Animation animationOut;
     public Animation animationIn;
@@ -87,7 +97,7 @@ public class GameActivityTwo extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        openQuitDialog();
+        getMenuChapterTwo();
     }
 
     AlertDialog.Builder dialog;
@@ -104,6 +114,8 @@ public class GameActivityTwo extends AppCompatActivity {
         settings = getSharedPreferences(APP_SETTINGS, Context.MODE_PRIVATE);
         sizeFonts = settings.getFloat(APP_SETTINGS_SETTINGS_FONTS_SIZE, 18f);
         lineSpacing = settings.getFloat(APP_SETTINGS_SETTINGS_FONTS_LINE_SPACING, 3f);
+        respectAlin = save.getInt(APP_SAVE_CHAPTER_TWO_RESPECT_ALIN, 0);
+        date = save.getInt(APP_SAVE_CHAPTER_TWO_DATE, 0);
         fortune = save.getInt(APP_SAVE_CHAPTER_TWO_FORTUNE, 0);
         if (fortune < 0) {
             fortune = 10;
@@ -134,8 +146,10 @@ public class GameActivityTwo extends AppCompatActivity {
             fortune = 100;
         }
 
+        String text = getString(R.string.button_dialog_title) + " " + fortune;
+
         dialog = new AlertDialog.Builder(this);
-        dialog.setTitle(R.string.button_dialog_title);
+        dialog.setTitle(text);
         dialog.setPositiveButton(R.string.button_dialog_exit, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -200,6 +214,7 @@ public class GameActivityTwo extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+
         if (isOst) {
             ost.start();
         }
@@ -214,6 +229,12 @@ public class GameActivityTwo extends AppCompatActivity {
         }
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+    }
+
     public void getSave(float level) {
         SharedPreferences.Editor editor = save.edit();
         editor.putFloat(APP_SAVE_LEVEL, level);
@@ -223,10 +244,13 @@ public class GameActivityTwo extends AppCompatActivity {
     public void getNextScene(Class<?> cls) {
         isExitScene = true;
         editor.putInt(APP_SAVE_CHAPTER_TWO_FORTUNE, fortune);
+        editor.putInt(APP_SAVE_CHAPTER_TWO_DATE, date);
+        editor.putInt(APP_SAVE_CHAPTER_TWO_RESPECT_ALIN, respectAlin);
         editor.apply();
         startActivity(new Intent(this, cls));
         overridePendingTransition(R.anim.first_activity_animation, R.anim.second_activity_animation);
     }
+
 
     public void startAnimation(final ArrayList<View> list) {
         new CountDownTimer(500, 500) {
@@ -362,12 +386,118 @@ public class GameActivityTwo extends AppCompatActivity {
     public void getInterfaceChapterTwo() {
         textMessage = (TextView) findViewById(R.id.textMessageID);
         textMessage.setTextSize(sizeFonts + 4);
+
+        imageButtonMenuChapterTwo = (ImageButton) findViewById(R.id.imageButtonMenuChapterTwoID);
+
+        startAnimationChapterTwo(imageButtonMenuChapterTwo);
+
+        imageBackgroundLuckFalse = (ImageView) findViewById(R.id.imageBackgroundLuckFalseID);
+        imageBackgroundLuckTrue = (ImageView) findViewById(R.id.imageBackgroundLuckTrueID);
+
     }
+
+    public void getLuckImage(boolean isLuck) {
+        if (isLuck) {
+            Animation luckAnimation = AnimationUtils.loadAnimation(this, R.anim.background_luck_animation);
+            imageBackgroundLuckFalse.setVisibility(View.GONE);
+            imageBackgroundLuckTrue.setVisibility(View.VISIBLE);
+            imageBackgroundLuckTrue.startAnimation(luckAnimation);
+        } else {
+            Animation failAnimation = AnimationUtils.loadAnimation(this, R.anim.background_luck_animation);
+            imageBackgroundLuckTrue.setVisibility(View.GONE);
+            imageBackgroundLuckFalse.setVisibility(View.VISIBLE);
+            imageBackgroundLuckFalse.startAnimation(failAnimation);
+        }
+    }
+
 
     public void showMessageChapterTwo(@StringRes final int resid) {
         Animation animation = AnimationUtils.loadAnimation(this, R.anim.message_animation);
         textMessage.setText(resid);
         textMessage.startAnimation(animation);
         textMessage.setVisibility(View.VISIBLE);
+    }
+
+    public void showMessageChapterTwo(String text) {
+        Animation animation = AnimationUtils.loadAnimation(this, R.anim.message_animation);
+        textMessage.setText(text);
+        textMessage.startAnimation(animation);
+        textMessage.setVisibility(View.VISIBLE);
+    }
+
+
+    public void getMenuChapterTwo() {
+        Intent intent = new Intent(this, ChapterTwoMenu.class);
+        intent.putExtra("fortune", fortune);
+        intent.putExtra("date", date);
+        intent.putExtra("respectAlin", respectAlin);
+        startActivity(intent);
+        onPause();
+    }
+
+    public void onMenuCancelD(View view) {
+        finish();
+    }
+
+
+    public void onMenuMenu(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        finish();
+    }
+
+    public void getTime() {
+
+        int minutes = 540 - (date);
+
+        if (minutes <= 0) {
+            showMessageChapterTwo(R.string.chapter_two_message_data_fail);
+        } else {
+
+            if (minutes % 10 == 1) {
+                showMessageChapterTwo(getString(R.string.chapter_two_message_data_main) + " " + minutes + " " + getString(R.string.chapter_two_message_data_minute_second));
+            } else {
+                showMessageChapterTwo(getString(R.string.chapter_two_message_data_main) + " " + minutes + " " + getString(R.string.chapter_two_message_data_minute));
+            }
+
+        }
+
+    }
+
+    public void getFortuneChange(int change) {
+
+        fortune += change;
+
+        if (fortune <= 10) {
+            fortune = 10;
+        } else if (fortune >= 100) {
+            fortune = 100;
+        }
+    }
+
+    public void onButtonMenu(final View view) {
+        view.setClickable(false);
+        view.startAnimation(AnimationUtils.loadAnimation(this, R.anim.button_main_animation));
+        new CountDownTimer(300, 300) {
+            public void onTick(long millisUntilFinished) {
+            }
+
+            public void onFinish() {
+                getMenuChapterTwo();
+                view.setClickable(true);
+            }
+        }.start();
+
+    }
+
+    public void getRespectDown() {
+        showMessageChapterTwo(R.string.chapter_two_dialog_message_respect_down);
+        respectAlin -= 5;
+    }
+
+    public void getRespectUp() {
+        showMessageChapterTwo(R.string.chapter_two_dialog_message_respect_up);
+        respectAlin += 5;
     }
 }

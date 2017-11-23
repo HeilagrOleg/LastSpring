@@ -1,21 +1,9 @@
 package com.example.last_spring.gameprealpha.chapterTwo;
 
-import android.animation.Animator;
-import android.animation.ObjectAnimator;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.os.CountDownTimer;
-import android.util.DisplayMetrics;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.HorizontalScrollView;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 
+import com.example.last_spring.gameprealpha.res.Fortune;
 import com.example.last_spring.gameprealpha.res.GameActivityTwo;
 import com.example.last_spring.gameprealpha.R;
 
@@ -33,6 +21,8 @@ public class ChapterTwoCar extends GameActivityTwo {
     boolean isLady;
     boolean isInside;
     boolean isDog;
+    boolean isPass;
+    boolean isLuck;
 
     int failCounter;
 
@@ -42,6 +32,9 @@ public class ChapterTwoCar extends GameActivityTwo {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chapter_two_car);
 
+        getSave(8.5f);
+
+        isPass = true;
         isStart = true;
         isAir = false;
         isExit = false;
@@ -53,6 +46,8 @@ public class ChapterTwoCar extends GameActivityTwo {
 
         getButtons();
 
+        getInterfaceChapterTwo();
+
         startAnimationChapterTwo(new ArrayList<View>(Arrays.asList(scrollChapterTwo, radioGroupChapterTwo)));
 
 
@@ -63,6 +58,8 @@ public class ChapterTwoCar extends GameActivityTwo {
             if (isStart) {
                 //Дышать воздухом
                 failCounter++;
+                date+=2;
+                getTime();
                 if (isAir) {
                     textChapterTwo.setText(R.string.chapter_two_car_text_air_second);
                 } else {
@@ -72,6 +69,8 @@ public class ChapterTwoCar extends GameActivityTwo {
                 buttonChapterTwoFirst.setVisibility(View.GONE);
             } else if (isInside) {
                 textChapterTwo.setText(R.string.chapter_two_car_text_lady_car_pusher);
+                date+=5;
+                getTime();
                 buttonChapterTwoFirst.setVisibility(View.GONE);
                 buttonChapterTwoSecond.setVisibility(View.GONE);
                 buttonChapterTwoFour.setVisibility(View.GONE);
@@ -93,10 +92,12 @@ public class ChapterTwoCar extends GameActivityTwo {
             if (isStart) {
                 textChapterTwo.setText(R.string.chapter_two_car_text_clear);
                 isAir = true;
+                date+=1;
+                getTime();
                 editor.putBoolean(APP_SAVE_CHAPTER_TWO_CAR_SHOW, true);
                 editor.apply();
                 buttonChapterTwoSecond.setVisibility(View.GONE);
-            } else if(isLady) {
+            } else if (isLady) {
                 textChapterTwo.setText(R.string.chapter_two_car_text_lady_car);
                 buttonChapterTwoFirst.setVisibility(View.GONE);
                 buttonChapterTwoSecond.setText(R.string.chapter_two_car_button_lady_car_dog);
@@ -114,6 +115,8 @@ public class ChapterTwoCar extends GameActivityTwo {
             } else if (isInside) {
                 textChapterTwo.setText(R.string.chapter_two_car_text_lady_car_charge);
                 buttonChapterTwoFirst.setVisibility(View.GONE);
+                date+=10;
+                getTime();
                 buttonChapterTwoSecond.setVisibility(View.GONE);
                 buttonChapterTwoFour.setVisibility(View.GONE);
                 buttonChapterTwoThird.setText(R.string.chapter_two_car_button_start);
@@ -133,14 +136,42 @@ public class ChapterTwoCar extends GameActivityTwo {
             if (isStart) {
                 textChapterTwo.setText(R.string.chapter_two_car_text_wheels);
                 buttonChapterTwoThird.setVisibility(View.GONE);
+                date+=1;
+                getTime();
                 isAir = true;
                 failCounter++;
             } else if (isExit) {
-                //Игра на удачу
-                isExit = false;
+                if (isPass) {
+                    if (Fortune.isLuck(fortune, 80)) {
+                        getLuckImage(true);
+                        textChapterTwo.setText(R.string.chapter_two_car_text_lady_car_traffic_luck_true);
+                        buttonChapterTwoThird.setText(R.string.chapter_two_car_button_exit_luck_second);
+                        isPass = false;
+                        isLuck = true;
+                    } else {
+                        getLuckImage(false);
+                        textChapterTwo.setText(R.string.chapter_two_car_text_lady_car_traffic_luck_false);
+                        buttonChapterTwoThird.setText(R.string.chapter_two_car_button_exit_luck_second);
+                        isPass = false;
+                        isLuck = false;
+                    }
+                } else {
+                    if (isLuck) {
+                        getFortuneChange(-40);
+                        date+=30;
+                    } else {
+                        getFortuneChange(40);
+                        date+=45;
+                    }
+                    getNextScene(ChapterTwoInstituteEntrance.class);
+                    finish();
+                }
+
             } else if (isLady) {
                 textChapterTwo.setText(R.string.chapter_two_car_text_lady_wait);
                 buttonChapterTwoFirst.setVisibility(View.GONE);
+                date+=4;
+                getTime();
                 buttonChapterTwoSecond.setText(R.string.chapter_two_car_button_lady_car_dog);
                 buttonChapterTwoSecond.setVisibility(View.VISIBLE);
                 buttonChapterTwoThird.setText(R.string.chapter_two_car_button_lady_car_luck);
@@ -149,15 +180,28 @@ public class ChapterTwoCar extends GameActivityTwo {
                 buttonChapterTwoFour.setVisibility(View.VISIBLE);
                 isLady = false;
                 isInside = true;
-            } else if(isInside) {
-                //Игра на удачу
-                textChapterTwo.setText(R.string.chapter_two_car_text_lady_car_luck_true);
-                buttonChapterTwoFirst.setVisibility(View.GONE);
-                buttonChapterTwoSecond.setVisibility(View.GONE);
-                buttonChapterTwoFour.setVisibility(View.GONE);
-                buttonChapterTwoThird.setText(R.string.chapter_two_car_button_start);
-                isExitSecond = true;
-                isInside = false;
+            } else if (isInside) {
+
+
+                if (Fortune.isLuck(fortune, 100)) {
+                    showMessageChapterTwo(R.string.chapter_two_message_luck_down);
+                    getLuckImage(true);
+                    getFortuneChange(-25);
+                    textChapterTwo.setText(R.string.chapter_two_car_text_lady_car_luck_true);
+                    buttonChapterTwoFirst.setVisibility(View.GONE);
+                    buttonChapterTwoSecond.setVisibility(View.GONE);
+                    buttonChapterTwoFour.setVisibility(View.GONE);
+                    buttonChapterTwoThird.setText(R.string.chapter_two_car_button_start);
+                    isExitSecond = true;
+                    isInside = false;
+                } else {
+                    showMessageChapterTwo(R.string.chapter_two_message_luck_up);
+                    getLuckImage(false);
+                    getFortuneChange(20);
+                    textChapterTwo.setText(R.string.chapter_two_car_text_lady_car_luck_fail);
+                    buttonChapterTwoThird.setVisibility(View.GONE);
+                }
+
             } else if (isExitSecond) {
                 textChapterTwo.setText(R.string.chapter_two_car_text_exit_second);
                 buttonChapterTwoFirst.setVisibility(View.GONE);
@@ -200,7 +244,7 @@ public class ChapterTwoCar extends GameActivityTwo {
                     isStart = false;
                     isLady = true;
                 }
-            } else if(isExit) {
+            } else if (isExit) {
                 getNextScene(ChapterTwoTrafficJamTest.class);
                 finish();
             } else if (isInside) {

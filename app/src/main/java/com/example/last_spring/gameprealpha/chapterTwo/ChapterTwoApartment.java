@@ -97,6 +97,8 @@ public class ChapterTwoApartment extends GameActivityTwo {
 
     private boolean isHelp;
 
+    private boolean isFinish;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -114,6 +116,10 @@ public class ChapterTwoApartment extends GameActivityTwo {
         list = 0;
         cart = 0;
         key = 0;
+
+        date = 420;
+
+        respectAlin = 30;
 
         startAnimationChapterTwo(new ArrayList<View>(Arrays.asList(scrollChapterTwo, radioGroupChapterTwo)));
 
@@ -242,6 +248,9 @@ public class ChapterTwoApartment extends GameActivityTwo {
             ObjectAnimator.ofFloat(radioGroupChapterTwo, View.ALPHA, 1, 0).start();
             startAnimationChapterTwo(layoutApartmentThings);
             startAnimationChapterTwo(buttonHelpApartment);
+            date = 450;
+            getTimeApartment();
+            getTime();
             buttonHelpApartment.startAnimation(AnimationUtils.loadAnimation(this, R.anim.button_help_animation));
             new CountDownTimer(200, 200) {
                 public void onTick(long millisUntilFinished) {
@@ -386,11 +395,15 @@ public class ChapterTwoApartment extends GameActivityTwo {
 
         if (cart == 2 && folder == 2 && key == 2 && cupboard == 2 && list == 2 && flash == 2) {
 
+            isFinish = true;
+            date += 5;
+
             new CountDownTimer(500, 500) {
                 public void onTick(long millisUntilFinished) {
                 }
 
                 public void onFinish() {
+                    getTime();
                     buttonHelpApartment.setVisibility(View.GONE);
                     buttonChapterTwoFirst.setVisibility(View.GONE);
                     radioGroupChapterTwo.setVisibility(View.VISIBLE);
@@ -414,11 +427,29 @@ public class ChapterTwoApartment extends GameActivityTwo {
                     ) {
                 startAnimationChapterTwo(e);
             }
+            fortune -= 20;
+            showMessageChapterTwo(R.string.chapter_two_message_luck_down);
+            getLuckImage(false);
             animationSecond(view);
             view.setVisibility(View.GONE);
         } else {
             isHelp = true;
             showMessageChapterTwo(R.string.chapter_two_apartment_message_help);
         }
+    }
+
+    private void getTimeApartment() {
+        new CountDownTimer(180000, 180000) {
+            public void onTick(long millisUntilFinished) {
+            }
+
+            public void onFinish() {
+                if (!isFinish) {
+                    date += 10;
+                    getTime();
+
+                }
+            }
+        }.start();
     }
 }
