@@ -89,7 +89,7 @@
     <string name="prologue_training_breakage_scene_text">
         Цель игры: удержать зеленый ползунок в белой зоне (таким образом, удержать равновесие).\n
         Ползунок двигается в случайную сторону и со случайной интенсивностью.\n
-        Вы можете управлять его движением, с помощью кнопок с изображением символов направления.
+        Ты можешь управлять его движением с помощью кнопок, на которых изображены символы направления.
         Заход ползунка в "серую" зону не останавливает игру, но наполняет счетчик ошибок.
         Максимальное число ошибок определяется состоянием главного героя.
         Игра закончится успешно, если ты смог удрежать ползунок в пределах экрана и не превысить максимальное количество ошибок.
@@ -110,7 +110,7 @@
     Сообщаения в обучении
 
     <string name="prologue_training_toast_cut_scene">
-     Нажпите на текст, что бы продолжить
+     Нажмите на текст, что бы продолжить
     </string>
 
 
@@ -159,8 +159,8 @@
     <string name="prologue_backpack_top_part_knife_no_luck">Адам <i>помнил</i>, что там нет ничего ценного</string>
     <string name="prologue_backpack_top_part_back">Осмотреть другие части</string>
     <string name="prologue_backpack_middle_part_sleeping_bug">Адам <i>помнил</i>, что точно положил спальник</string>
-    <string name="prologue_backpack_middle_part_sleeping_bug_text_toast">Ценная находка: спальник и кое-какую одежду....\nУдача понижена!</string>
-    <string name="prologue_backpack_middle_part_no_sleeping_bug_text_toast">Ценная находка: одежда....\nУдача повышена!</string>
+    <string name="prologue_backpack_middle_part_sleeping_bug_text_toast">Ценная находка: спальник и кое-какая одежда....\nУдача понижена!</string>
+    <string name="prologue_backpack_middle_part_no_sleeping_bug_text_toast">Находка: одежда....\nУдача повышена!</string>
     <string name="prologue_backpack_middle_part_sleeping_bug_luck">Адам <i>не уверен</i>, что положил спальник</string>
     <string name="prologue_backpack_middle_part_sleeping_bug_no_luck">Адам <i>помнил</i>, что там нет ценного</string>
     <string name="prologue_backpack_middle_part_back">Осмотреть другие части</string>
@@ -172,7 +172,7 @@
     <string name="prologue_backpack_basement_part_back">Осмотреть другие части</string>
     <string name="prologue_backpack_additional_part_ointment">Адам <i>помнил</i>, что точно положил туда мазь</string>
     <string name="prologue_backpack_additional_part_ointment_text_toast">Ценная находка: мазь Вишневского и полевой дневник....\nУдача понижена!</string>
-    <string name="prologue_backpack_additional_part_no_ointment_text_toast">Ценная находка: полевой дневник....\nУдача повышена!</string>
+    <string name="prologue_backpack_additional_part_no_ointment_text_toast">Находка: полевой дневник....\nУдача повышена!</string>
     <string name="prologue_backpack_additional_part_ointment_luck">Адам <i>не уверен</i>, что положил мазь</string>
     <string name="prologue_backpack_additional_part_ointment_no_luck">Адам <i>помнил</i>, что там нет ценного</string>
     <string name="prologue_backpack_additional_part_back">Осмотреть другие части</string>
