@@ -1,5 +1,6 @@
 package com.example.last_spring.gameprealpha.res;
 
+import com.example.last_spring.gameprealpha.chapterTwo.ChapterTwoCabinetBox;
 import com.example.last_spring.gameprealpha.chapterTwo.ChapterTwoCar;
 import com.example.last_spring.gameprealpha.chapterTwo.ChapterTwoConferenceHall;
 import com.example.last_spring.gameprealpha.chapterTwo.ChapterTwoDialog;
@@ -143,6 +144,10 @@ public class LevelsList {
 
         if (level == 13f) {
             return ChapterTwoDialog.class;
+        }
+
+        if (level == 14f) {
+            return ChapterTwoCabinetBox.class;
         }
 
         return null;
