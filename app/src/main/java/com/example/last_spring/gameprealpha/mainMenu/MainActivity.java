@@ -26,11 +26,16 @@ import net.hockeyapp.android.UpdateManager;
 import com.example.last_spring.gameprealpha.R;
 import com.example.last_spring.gameprealpha.chapterTwo.ChapterTwoApartment;
 import com.example.last_spring.gameprealpha.chapterTwo.ChapterTwoCabinet;
+import com.example.last_spring.gameprealpha.chapterTwo.ChapterTwoCabinetBox;
 import com.example.last_spring.gameprealpha.chapterTwo.ChapterTwoCar;
+import com.example.last_spring.gameprealpha.chapterTwo.ChapterTwoCutScene;
 import com.example.last_spring.gameprealpha.chapterTwo.ChapterTwoInstituteEntrance;
 import com.example.last_spring.gameprealpha.chapterTwo.ChapterTwoStart;
+import com.example.last_spring.gameprealpha.chapterTwo.ChapterTwoTitle;
 import com.example.last_spring.gameprealpha.chapterTwo.ChapterTwoTrafficJam;
 import com.example.last_spring.gameprealpha.chapterTwo.ChapterTwoTrafficJamTest;
+import com.example.last_spring.gameprealpha.prologue.PrologueBackpackHunter;
+import com.example.last_spring.gameprealpha.prologue.PrologueGoodEnding;
 import com.example.last_spring.gameprealpha.prologue.PrologueTitle;
 import com.example.last_spring.gameprealpha.res.GameActivityTwo;
 import com.example.last_spring.gameprealpha.res.LevelsList;
@@ -356,7 +361,32 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onTest3(View view) {
-        startActivity(new Intent(this, ChapterTwoTrafficJamTest.class));
+        startActivity(new Intent(this, PrologueBackpackHunter.class));
+        finish();
+    }
+
+    public void onTest4(View view) {
+        startActivity(new Intent(this, ChapterTwoCar.class));
+        finish();
+    }
+
+    public void onTest5(View view) {
+        startActivity(new Intent(this, ChapterTwoCabinetBox.class));
+        finish();
+    }
+
+    public void onTest8(View view) {
+        startActivity(new Intent(this, ChapterTwoTitle.class));
+        finish();
+    }
+
+    public void onText11(View view) {
+        startActivity(new Intent(this, ChapterTwoCar.class));
+        finish();
+    }
+
+    public void onTest9(View view) {
+        startActivity(new Intent(this, PrologueGoodEnding.class));
         finish();
     }
 }

@@ -94,6 +94,7 @@
                 android:onClick="onMenuExit"
                 android:text="@string/button_dialog_exit"
                 android:textColor="#303030"
+                android:visibility="gone"
                 tools:text="@string/button_dialog_exit" />
 
         </LinearLayout>
@@ -117,11 +118,13 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/textView"
+                    android:id="@+id/textMenuDescriptionID"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="3"
-                    android:text="Описание" />
+                    android:paddingTop="10dp"
+                    android:text="@string/chapter_two_menu_text_main"
+                    android:textAlignment="center" />
 
                 <FrameLayout
                     android:layout_width="match_parent"
@@ -134,12 +137,14 @@
                         android:layout_height="match_parent"
                         android:background="@drawable/oval_white_background"
                         android:max="100"
+                        android:onClick="onChapterTwoRespectAlin"
                         app:cpb_background_progressbar_color="@color/hockeyapp_button_background_selected"
                         app:cpb_background_progressbar_width="20dp"
                         app:cpb_progressbar_color="#afafaf"
                         app:cpb_progressbar_width="21dp" />
 
                     <TextView
+                        android:id="@+id/textChapterTwoProgressRespectAlinID"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -147,7 +152,8 @@
                         android:text="@string/chapter_two_progress_bar_respect_alin_text"
                         android:textAlignment="center"
                         android:textAllCaps="false"
-                        android:textSize="30sp" />
+                        android:textSize="30sp"
+                        android:visibility="gone" />
 
                 </FrameLayout>
 
@@ -157,6 +163,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="3"
                     android:gravity="center"
+                    android:onClick="onChapterTwoDate"
                     android:text="Время"
                     android:textSize="24sp" />
 
@@ -186,7 +193,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="30"
                         android:max="100"
-                        android:onClick="onBarMenuLuck"
+                        android:onClick="onChapterTwoLuck"
                         android:paddingBottom="5dp"
                         android:paddingLeft="5dp"
                         android:paddingRight="5dp"

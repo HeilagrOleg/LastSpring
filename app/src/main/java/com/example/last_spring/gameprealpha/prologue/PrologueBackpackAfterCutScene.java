@@ -101,6 +101,7 @@ public class PrologueBackpackAfterCutScene extends GameActivity {
 
         textPrologueBackpackAfterCut = (TextView) findViewById(R.id.textPrologueBackPackAfterCutSceneBeforeStartID);
         sText(textPrologueBackpackAfterCut);
+        textPrologueBackpackAfterCut.setBackgroundColor(Color.parseColor("#"+backgroundCounter + "ffffff"));
 
         linearLayoutPrologueBackpackAfterCut = (FrameLayout) findViewById(R.id.linearLayoutPrologueBackpackAfterCutID);
 

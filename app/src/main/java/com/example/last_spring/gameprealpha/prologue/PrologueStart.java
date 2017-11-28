@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -70,12 +71,15 @@ public class PrologueStart extends GameActivity {
         buttonPrologueMoveDown = (RadioButton) findViewById(R.id.buttonPrologueMoveDownID);
         radioGroupPrologue = (RadioGroup) findViewById(R.id.radioGroupPrologueID);
         textPrologueMain = (TextView) findViewById(R.id.textPrologueMainID);
+
         radioButtonTraining = (RadioButton) findViewById(R.id.radioButtonTrainingID);
         scrollPrologueMain = (ScrollView) findViewById(R.id.scrollPrologueMainID);
         layoutPrologueTraining = (RelativeLayout) findViewById(R.id.layoutPrologueTrainingID);
         layoutPrologueTraining.setVisibility(View.GONE);
         textPrologueTraining = (TextView) findViewById(R.id.textPrologueTrainingID);
         sText(textPrologueTraining);
+
+
         checkBoxPrologueTraining = (CheckBox) findViewById(R.id.checkBoxPrologueTrainingID);
         checkBoxPrologueTraining.setTextSize(sizeFonts);
         radioButtonTraining.setTextSize(sizeFonts);
@@ -91,6 +95,8 @@ public class PrologueStart extends GameActivity {
         }
 
         sText(textPrologueMain);
+        textPrologueMain.setBackgroundColor(Color.parseColor("#"+backgroundCounter + "ffffff"));
+
         buttonPrologueMoveDown.setTextSize(sizeFonts);
         buttonPrologueMoveUp.setTextSize(sizeFonts);
         buttonPrologueTent.setTextSize(sizeFonts);
@@ -148,6 +154,12 @@ public class PrologueStart extends GameActivity {
     public void onPrologueMoveUp(View view) {
         if (isButtonPrologueMoveUp) {
             refreshScroll(scrollPrologueMain);
+            SharedPreferences.Editor editor = save.edit();
+            editor.putInt(APP_SAVE_FORTUNE, fortune);
+            editor.putInt(APP_SAVE_TENT_PROLOGUE, 1);
+            editor.putBoolean(APP_SAVE_SLEEPING_BAG_PROLOGUE, false);
+            editor.putInt(APP_SAVE_WOUND, wound);
+            editor.apply();
             Intent intent = new Intent(PrologueStart.this, PrologueUpFirstScene.class);
             getNextScene(intent);
             finish();
@@ -165,6 +177,12 @@ public class PrologueStart extends GameActivity {
     public void onPrologueMoveDown(View view) {
         if (isButtonPrologueMoveDown) {
             refreshScroll(scrollPrologueMain);
+            SharedPreferences.Editor editor = save.edit();
+            editor.putInt(APP_SAVE_FORTUNE, fortune);
+            editor.putInt(APP_SAVE_TENT_PROLOGUE, 1);
+            editor.putBoolean(APP_SAVE_SLEEPING_BAG_PROLOGUE, false);
+            editor.putInt(APP_SAVE_WOUND, wound);
+            editor.apply();
             Intent intent = new Intent(PrologueStart.this, PrologueDownFirstScene.class);
             getNextScene(intent);
             finish();
@@ -221,6 +239,8 @@ public class PrologueStart extends GameActivity {
             return fortune;
         }
     }
+
+
 
     public void onPrologueStartTraining(View view) {
         if (isTreaning) {

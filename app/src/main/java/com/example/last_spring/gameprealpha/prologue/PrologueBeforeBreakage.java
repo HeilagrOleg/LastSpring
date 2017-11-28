@@ -91,6 +91,7 @@ public class PrologueBeforeBreakage extends GameActivity {
 
         textBeforeBreakage = (TextView) findViewById(R.id.textBeforeBreakageID);
         sText(textBeforeBreakage);
+        textBeforeBreakage.setBackgroundColor(Color.parseColor("#"+backgroundCounter + "ffffff"));
 
         if (wound > 0) {
             strWound = getString(R.string.prologue_before_breakage_text_wound);

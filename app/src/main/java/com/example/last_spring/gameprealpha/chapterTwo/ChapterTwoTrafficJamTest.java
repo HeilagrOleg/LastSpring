@@ -1,6 +1,7 @@
 package com.example.last_spring.gameprealpha.chapterTwo;
 
 import android.animation.ObjectAnimator;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.CountDownTimer;
@@ -19,6 +20,7 @@ import com.example.last_spring.gameprealpha.R;
 import com.example.last_spring.gameprealpha.res.GameActivityTwo;
 import com.example.last_spring.gameprealpha.res.Intersection;
 import com.example.last_spring.gameprealpha.res.Street;
+import com.last_spring.gameprealpha.OstSnowy;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -114,6 +116,10 @@ public class ChapterTwoTrafficJamTest extends GameActivityTwo {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chapter_two_traffic_jam_test);
 
+        isOstShowy = true;
+
+        startService(new Intent(this, OstSnowy.class));
+
         getSave(9f);
 
         isLuck = false;
@@ -197,20 +203,20 @@ public class ChapterTwoTrafficJamTest extends GameActivityTwo {
         timeMain = 0;
 
         streets = new ArrayList<>(Arrays.asList(
-                street1 = new Street(1, 1, "x0y0", "x1y0"),
-                street2 = new Street(3, 1, "x1y0", "x1y1"),
-                street3 = new Street(2, 3, "x1y0", "x3y2"),
-                street4 = new Street(2, 1, "x1y1", "x1y2"),
-                street5 = new Street(1, 2, "x1y1", "x2y2"),
-                street6 = new Street(1, 1, "x1y2", "x2y2"),
-                street7 = new Street(1, 3, "x2y2", "x3y2"),
-                street8 = new Street(2, 2, "x1y2", "x1y4"),
-                street9 = new Street(1, 1, "x2y2", "x2y3"),
-                street10 = new Street(2, 3, "x3y2", "x3y4"),
-                street11 = new Street(1, 1, "x1y4", "x2y4"),
-                street12 = new Street(1, 1, "x2y4", "x3y4"),
-                street13 = new Street(1, 1, "x2y4", "x2y5"),
-                street14 = new Street(3, 1, "x2y3", "x2y4")
+                street1 = new Street(2, 1, "x0y0", "x1y0"),
+                street2 = new Street(6, 1, "x1y0", "x1y1"),
+                street3 = new Street(4, 3, "x1y0", "x3y2"),
+                street4 = new Street(4, 1, "x1y1", "x1y2"),
+                street5 = new Street(2, 2, "x1y1", "x2y2"),
+                street6 = new Street(2, 1, "x1y2", "x2y2"),
+                street7 = new Street(2, 3, "x2y2", "x3y2"),
+                street8 = new Street(4, 2, "x1y2", "x1y4"),
+                street9 = new Street(2, 1, "x2y2", "x2y3"),
+                street10 = new Street(4, 3, "x3y2", "x3y4"),
+                street11 = new Street(2, 1, "x1y4", "x2y4"),
+                street12 = new Street(2, 1, "x2y4", "x3y4"),
+                street13 = new Street(2, 1, "x2y4", "x2y5"),
+                street14 = new Street(6, 1, "x2y3", "x2y4")
         ));
 
         res = getResources();
@@ -266,7 +272,9 @@ public class ChapterTwoTrafficJamTest extends GameActivityTwo {
             String strTime = "Всего времени: " + timeMain;
             textIntersectionTimeMainTest.setText(strTime);
             getDirection(startIntersection);
-            getFortuneChange(-3);
+            if (isLuck) {
+                getFortuneChange(-3);
+            }
             getAnimationButton(a.getImageButton());
             isIntersection = false;
             a.getImageView().setVisibility(View.VISIBLE);
@@ -319,7 +327,7 @@ public class ChapterTwoTrafficJamTest extends GameActivityTwo {
         imageButton.startAnimation(animation);
     }
 
-    public void onIntersectionTestFinish(View view) {
+    public void onIntersectionTestFinish(final View view) {
         Intersection a = x1y4;
         for (Intersection e : intersections) {
             if (view == e.getImageButton()) {
@@ -327,9 +335,19 @@ public class ChapterTwoTrafficJamTest extends GameActivityTwo {
             }
         }
         if (isIntersection && nextIntersection.getName().equals(a.getName())) {
-            date += time + 1;
+            getIntersectionMain(a);
+            date += timeMain + 1;
             getTime();
-            getFortuneChange(-3);
+            if (isLuck) {
+                getFortuneChange(-3);
+            }
+            view.setClickable(false);
+
+            imageButtonIntersectionTest9.setClickable(false);
+            getDirection(startIntersection);
+            getAnimationButton(a.getImageButton());
+            isIntersection = false;
+            a.getImageView().setVisibility(View.VISIBLE);
 
             new CountDownTimer(4000, 4000) {
 

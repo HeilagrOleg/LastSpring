@@ -328,14 +328,14 @@ public class PrologueCaveLabyrinth extends GameActivity {
                 yPixel++;
             }
             imageCaveLabyrinth.setImageBitmap(map);
-            buttonCaveLabyrinthNorth.setBackgroundColor(Color.parseColor("#60ffffff"));
+            buttonCaveLabyrinthNorth.setBackgroundColor(Color.parseColor("#303030"));
             isNorth = false;
         } else {
             buttonCaveLabyrinthNorth.setBackgroundColor(Color.parseColor("#607e9e7f"));
-            buttonCaveLabyrinthSouth.setBackgroundColor(Color.parseColor("#60ffffff"));
-            buttonCaveLabyrinthWest.setBackgroundColor(Color.parseColor("#60ffffff"));
-            buttonCaveLabyrinthEast.setBackgroundColor(Color.parseColor("#60ffffff"));
-            buttonCaveLabyrinthExit.setBackgroundColor(Color.parseColor("#60ffffff"));
+            buttonCaveLabyrinthSouth.setBackgroundColor(Color.parseColor("#303030"));
+            buttonCaveLabyrinthWest.setBackgroundColor(Color.parseColor("#303030"));
+            buttonCaveLabyrinthEast.setBackgroundColor(Color.parseColor("#303030"));
+            buttonCaveLabyrinthExit.setBackgroundColor(Color.parseColor("#303030"));
 
             isNorth = true;
             isSouth = false;
@@ -444,14 +444,14 @@ public class PrologueCaveLabyrinth extends GameActivity {
             }
             xMain = xPixel;
             imageCaveLabyrinth.setImageBitmap(map);
-            buttonCaveLabyrinthWest.setBackgroundColor(Color.parseColor("#60ffffff"));
+            buttonCaveLabyrinthWest.setBackgroundColor(Color.parseColor("#303030"));
             isWest = false;
         } else {
-            buttonCaveLabyrinthNorth.setBackgroundColor(Color.parseColor("#60ffffff"));
-            buttonCaveLabyrinthSouth.setBackgroundColor(Color.parseColor("#60ffffff"));
+            buttonCaveLabyrinthNorth.setBackgroundColor(Color.parseColor("#303030"));
+            buttonCaveLabyrinthSouth.setBackgroundColor(Color.parseColor("#303030"));
             buttonCaveLabyrinthWest.setBackgroundColor(Color.parseColor("#607e9e7f"));
-            buttonCaveLabyrinthEast.setBackgroundColor(Color.parseColor("#60ffffff"));
-            buttonCaveLabyrinthExit.setBackgroundColor(Color.parseColor("#60ffffff"));
+            buttonCaveLabyrinthEast.setBackgroundColor(Color.parseColor("#303030"));
+            buttonCaveLabyrinthExit.setBackgroundColor(Color.parseColor("#303030"));
 
             isNorth = false;
             isSouth = false;
@@ -559,14 +559,14 @@ public class PrologueCaveLabyrinth extends GameActivity {
             }
             yMain = yPixel;
             imageCaveLabyrinth.setImageBitmap(map);
-            buttonCaveLabyrinthSouth.setBackgroundColor(Color.parseColor("#60ffffff"));
+            buttonCaveLabyrinthSouth.setBackgroundColor(Color.parseColor("#303030"));
             isSouth = false;
         } else {
-            buttonCaveLabyrinthNorth.setBackgroundColor(Color.parseColor("#60ffffff"));
+            buttonCaveLabyrinthNorth.setBackgroundColor(Color.parseColor("#303030"));
             buttonCaveLabyrinthSouth.setBackgroundColor(Color.parseColor("#607e9e7f"));
-            buttonCaveLabyrinthWest.setBackgroundColor(Color.parseColor("#60ffffff"));
-            buttonCaveLabyrinthEast.setBackgroundColor(Color.parseColor("#60ffffff"));
-            buttonCaveLabyrinthExit.setBackgroundColor(Color.parseColor("#60ffffff"));
+            buttonCaveLabyrinthWest.setBackgroundColor(Color.parseColor("#303030"));
+            buttonCaveLabyrinthEast.setBackgroundColor(Color.parseColor("#303030"));
+            buttonCaveLabyrinthExit.setBackgroundColor(Color.parseColor("#303030"));
 
             isNorth = false;
             isSouth = true;
@@ -674,14 +674,14 @@ public class PrologueCaveLabyrinth extends GameActivity {
                 xPixel++;
             }
             imageCaveLabyrinth.setImageBitmap(map);
-            buttonCaveLabyrinthEast.setBackgroundColor(Color.parseColor("#60ffffff"));
+            buttonCaveLabyrinthEast.setBackgroundColor(Color.parseColor("#303030"));
             isEast = false;
         } else {
-            buttonCaveLabyrinthNorth.setBackgroundColor(Color.parseColor("#60ffffff"));
-            buttonCaveLabyrinthSouth.setBackgroundColor(Color.parseColor("#60ffffff"));
-            buttonCaveLabyrinthWest.setBackgroundColor(Color.parseColor("#60ffffff"));
+            buttonCaveLabyrinthNorth.setBackgroundColor(Color.parseColor("#303030"));
+            buttonCaveLabyrinthSouth.setBackgroundColor(Color.parseColor("#303030"));
+            buttonCaveLabyrinthWest.setBackgroundColor(Color.parseColor("#303030"));
             buttonCaveLabyrinthEast.setBackgroundColor(Color.parseColor("#607e9e7f"));
-            buttonCaveLabyrinthExit.setBackgroundColor(Color.parseColor("#60ffffff"));
+            buttonCaveLabyrinthExit.setBackgroundColor(Color.parseColor("#303030"));
 
             isNorth = false;
             isSouth = false;
@@ -715,10 +715,10 @@ public class PrologueCaveLabyrinth extends GameActivity {
                 finish();
             }
         } else {
-            buttonCaveLabyrinthNorth.setBackgroundColor(Color.parseColor("#60ffffff"));
-            buttonCaveLabyrinthSouth.setBackgroundColor(Color.parseColor("#60ffffff"));
-            buttonCaveLabyrinthWest.setBackgroundColor(Color.parseColor("#60ffffff"));
-            buttonCaveLabyrinthEast.setBackgroundColor(Color.parseColor("#60ffffff"));
+            buttonCaveLabyrinthNorth.setBackgroundColor(Color.parseColor("#303030"));
+            buttonCaveLabyrinthSouth.setBackgroundColor(Color.parseColor("#303030"));
+            buttonCaveLabyrinthWest.setBackgroundColor(Color.parseColor("#303030"));
+            buttonCaveLabyrinthEast.setBackgroundColor(Color.parseColor("#303030"));
             buttonCaveLabyrinthExit.setBackgroundColor(Color.parseColor("#607e9e7f"));
 
             isNorth = false;
@@ -807,9 +807,9 @@ public class PrologueCaveLabyrinth extends GameActivity {
 
 
             isFortune = false;
-            buttonCaveLabyrinthLuck.setBackgroundColor(Color.parseColor("#60ffffff"));
+            buttonCaveLabyrinthLuck.setBackgroundColor(Color.parseColor("#303030"));
         } else {
-            buttonCaveLabyrinthExit.setBackgroundColor(Color.parseColor("#60ffffff"));
+            buttonCaveLabyrinthExit.setBackgroundColor(Color.parseColor("#303030"));
             buttonCaveLabyrinthLuck.setBackgroundColor(Color.parseColor("#607e9e7f"));
             isFortune = true;
             isExit = false;

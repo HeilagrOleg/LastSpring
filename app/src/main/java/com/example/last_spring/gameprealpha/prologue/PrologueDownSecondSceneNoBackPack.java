@@ -57,6 +57,7 @@ public class PrologueDownSecondSceneNoBackPack extends GameActivity {
         noBackPackMoveHuntingLodgeRadioButton.setTextSize(sizeFonts);
         textNoBackpack = (TextView) findViewById(R.id.textNoBackpackID);
         sText(textNoBackpack);
+        textNoBackpack.setBackgroundColor(Color.parseColor("#"+backgroundCounter + "ffffff"));
         scrollNoBackpack = (ScrollView) findViewById(R.id.scrollNoBackpackID);
         sScroll(scrollNoBackpack);
 

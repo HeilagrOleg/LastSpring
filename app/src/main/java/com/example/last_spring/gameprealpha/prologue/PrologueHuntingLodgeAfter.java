@@ -50,6 +50,8 @@ public class PrologueHuntingLodgeAfter extends GameActivity {
         textHunterLodgeAfter = (TextView) findViewById(R.id.textHunterLodgeAfterID);
         sText( textHunterLodgeAfter);
 
+        textHunterLodgeAfter.setBackgroundColor(Color.parseColor("#"+backgroundCounter + "ffffff"));
+
         radioGroupPrologueRain = (RadioGroup) findViewById(R.id.radioGroupHunterLodgeAfteID);
 
         scrollPrologueHunterAfter = (ScrollView) findViewById(R.id.scrollPrologueHunterAfterID);

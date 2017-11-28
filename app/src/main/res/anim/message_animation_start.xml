@@ -4,19 +4,21 @@
     android:fillAfter="true"
     >
 
-    <alpha
+    <translate
         android:duration="1000"
-        android:fromAlpha="0.0"
+        android:fromYDelta="-200%"
         android:startOffset="3000"
-        android:toAlpha="1.0" >
-    </alpha>
+        android:toYDelta="0%" >
+    </translate>
 
 
-    <alpha
+    <translate
         android:duration="1000"
-        android:fromAlpha="1.0"
+        android:fromYDelta="0%"
+        android:toYDelta="-200%"
         android:startOffset="6000"
-        android:toAlpha="0.0" >
-    </alpha>
+        >
+    </translate>
+
 
 </set>

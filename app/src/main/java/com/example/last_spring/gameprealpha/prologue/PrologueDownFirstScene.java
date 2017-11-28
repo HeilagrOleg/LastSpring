@@ -131,6 +131,7 @@ public class PrologueDownFirstScene extends GameActivity {
         sText(textPrologueDownStart);
         textPrologueDownStart.setText(R.string.prologue_down_start);
         textPrologueDownStart.setMovementMethod(new ScrollingMovementMethod());
+        textPrologueDownStart.setBackgroundColor(Color.parseColor("#"+backgroundCounter + "ffffff"));
 
         textPrologueTraining = (TextView) findViewById(R.id.textPrologueTrainingBackPackID);
         sText(textPrologueTraining);

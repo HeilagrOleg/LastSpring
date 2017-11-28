@@ -28,6 +28,8 @@ import com.example.last_spring.gameprealpha.mainMenu.MainActivity;
 import com.example.last_spring.gameprealpha.R;
 import com.last_spring.gameprealpha.OstCave;
 import com.last_spring.gameprealpha.OstDisturbance;
+import com.last_spring.gameprealpha.OstRoad;
+import com.last_spring.gameprealpha.OstSnowy;
 import com.last_spring.gameprealpha.OstWood;
 
 import java.util.ArrayList;
@@ -36,6 +38,7 @@ public class GameActivityTwo extends AppCompatActivity {
 
     private static final String APP_SETTINGS = "Settings";
     private static final String APP_SETTINGS_SETTINGS_FONTS_SIZE = "Fonts size";
+    private static final String APP_SETTINGS_SETTINGS_FONTS_BACKGROUND = "Background";
     private static final String APP_SETTINGS_SETTINGS_FONTS_LINE_SPACING = "Line spacing";
 
     public static final String APP_SAVE = "Save";
@@ -64,11 +67,17 @@ public class GameActivityTwo extends AppCompatActivity {
     public SharedPreferences settings;
     public int fortune;
     public int wound;
+    public int backgroundCounter;
+
+    public boolean isMenuExit;
+
     public boolean isExitScene;
     public boolean isOst;
     public boolean isOstStop;
     public boolean isOstWood;
     public boolean isOstCave;
+    public boolean isOstShowy;
+    public boolean isOstRoad;
     public boolean isOstDisturbance;
 
     public int respectAlin;
@@ -114,6 +123,7 @@ public class GameActivityTwo extends AppCompatActivity {
         settings = getSharedPreferences(APP_SETTINGS, Context.MODE_PRIVATE);
         sizeFonts = settings.getFloat(APP_SETTINGS_SETTINGS_FONTS_SIZE, 18f);
         lineSpacing = settings.getFloat(APP_SETTINGS_SETTINGS_FONTS_LINE_SPACING, 3f);
+        backgroundCounter = settings.getInt(APP_SETTINGS_SETTINGS_FONTS_BACKGROUND, 75);
         respectAlin = save.getInt(APP_SAVE_CHAPTER_TWO_RESPECT_ALIN, 0);
         date = save.getInt(APP_SAVE_CHAPTER_TWO_DATE, 0);
         fortune = save.getInt(APP_SAVE_CHAPTER_TWO_FORTUNE, 0);
@@ -194,6 +204,8 @@ public class GameActivityTwo extends AppCompatActivity {
         stopService(new Intent(this, OstWood.class));
         stopService(new Intent(this, OstDisturbance.class));
         stopService(new Intent(this, OstCave.class));
+        stopService(new Intent(this, OstSnowy.class));
+        stopService(new Intent(this, OstRoad.class));
         if (isOst) {
             ost.stop();
         }
@@ -202,13 +214,32 @@ public class GameActivityTwo extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
-        if (isOst) {
-            ost.stop();
+        if (!isMenuExit) {
+            if (isOst) {
+                ost.stop();
+            }
+            if (!isOstStop && !isExitScene) {
+                finishOst();
+                isOstStop = true;
+            }
         }
-        if (!isOstStop && !isExitScene) {
-            finishOst();
-            isOstStop = true;
+        finish();
+    }
+
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (!isMenuExit) {
+            if (isOst) {
+                ost.stop();
+            }
+            if (!isOstStop && !isExitScene) {
+                finishOst();
+                isOstStop = true;
+            }
         }
+        finish();
     }
 
     @Override
@@ -225,6 +256,10 @@ public class GameActivityTwo extends AppCompatActivity {
                 startService(new Intent(this, OstCave.class));
             } else if (isOstDisturbance) {
                 startService(new Intent(this, OstDisturbance.class));
+            } else if (isOstShowy) {
+                startService(new Intent(this, OstSnowy.class));
+            }  else if (isOstRoad) {
+                startService(new Intent(this, OstRoad.class));
             }
         }
     }
@@ -323,6 +358,8 @@ public class GameActivityTwo extends AppCompatActivity {
 
         textChapterTwo = (TextView) findViewById(R.id.textChapterTwoID);
         sText(textChapterTwo);
+        textChapterTwo.setBackgroundColor(Color.parseColor("#"+backgroundCounter + "ffffff"));
+
         scrollChapterTwo = (ScrollView) findViewById(R.id.scrollChapterTwoID);
         sScroll(scrollChapterTwo);
     }
@@ -342,6 +379,7 @@ public class GameActivityTwo extends AppCompatActivity {
     }
 
     public void getChoiceButton() {
+        refreshScroll();
         buttonChapterTwoFirst.setBackgroundColor(Color.parseColor(colorButton));
         buttonChapterTwoSecond.setBackgroundColor(Color.parseColor(colorButton));
         buttonChapterTwoThird.setBackgroundColor(Color.parseColor(colorButton));
@@ -493,11 +531,25 @@ public class GameActivityTwo extends AppCompatActivity {
 
     public void getRespectDown() {
         showMessageChapterTwo(R.string.chapter_two_dialog_message_respect_down);
-        respectAlin -= 5;
+        if (respectAlin < 5) {
+            respectAlin = 0;
+        } else {
+            respectAlin -= 5;
+        }
+
     }
 
     public void getRespectUp() {
         showMessageChapterTwo(R.string.chapter_two_dialog_message_respect_up);
-        respectAlin += 5;
+        if (respectAlin > 95) {
+            respectAlin = 100;
+        } else {
+            respectAlin += 5;
+        }
     }
+
+    public void refreshScroll() {
+        scrollChapterTwo.scrollTo(0, 0);
+    }
+
 }

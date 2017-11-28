@@ -18,4 +18,9 @@
         <item name="android:backgroundDimEnabled">false</item>
     </style>
 
+    <style name="MyCheckBox" parent="Theme.AppCompat.Light">
+        <item name="colorControlNormal">@color/background_material_dark</item>
+        <item name="colorControlActivated">@color/colorAccent</item>
+    </style>
+
 </resources>

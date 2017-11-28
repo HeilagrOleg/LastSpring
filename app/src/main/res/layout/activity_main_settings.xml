@@ -40,35 +40,79 @@
                 android:id="@+id/text2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_above="@+id/linearLayoutSettingsLineSpacingMainID"
+                android:layout_above="@+id/layoutFirstID"
                 android:orientation="vertical"
                 android:text="@string/settings_line_spacing"
                 android:textAlignment="center"
                 android:textColor="@color/hockeyapp_text_black" />
 
             <LinearLayout
-                android:id="@+id/linearLayoutSettingsLineSpacingMainID"
+                android:id="@+id/layoutFirstID"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
-                android:orientation="horizontal"
-                android:visibility="visible">
+                android:orientation="vertical">
 
-                <Button
-                    android:id="@+id/button9"
+                <LinearLayout
+                    android:id="@+id/linearLayoutSettingsLineSpacingMainID"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:onClick="onDownLineSpacing"
-                    android:text="-" />
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:visibility="visible">
 
-                <Button
-                    android:id="@+id/button10"
+                    <Button
+                        android:id="@+id/button9"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:onClick="onDownLineSpacing"
+                        android:text="-" />
+
+                    <Button
+                        android:id="@+id/button10"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:onClick="onUpLineSpacing"
+                        android:text="+" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/text3"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:onClick="onUpLineSpacing"
-                    android:text="+" />
+                    android:layout_height="match_parent"
+                    android:layout_above="@+id/layoutFirstID"
+                    android:orientation="vertical"
+                    android:text="Уровень прозрачности фона"
+                    android:textAlignment="center"
+                    android:textColor="@color/hockeyapp_text_black" />
+
+                <LinearLayout
+                    android:id="@+id/linearLayoutSettingsBackgroundMainID"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:visibility="visible">
+
+                    <Button
+                        android:id="@+id/button20"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:onClick="onDownBackground"
+                        android:text="-" />
+
+                    <Button
+                        android:id="@+id/button21"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:onClick="onUpBackground"
+                        android:text="+" />
+
+                </LinearLayout>
+
             </LinearLayout>
 
             <ScrollView
@@ -78,7 +122,6 @@
                 android:layout_above="@+id/text2"
                 android:layout_alignParentTop="true"
                 android:layout_centerInParent="true"
-                android:background="#50ffffff"
                 android:orientation="vertical"
                 android:visibility="visible">
 

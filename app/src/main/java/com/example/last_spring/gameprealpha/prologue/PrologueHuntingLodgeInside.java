@@ -183,6 +183,7 @@ public class PrologueHuntingLodgeInside extends GameActivity {
 
         huntingLodgeInsideText = (TextView) findViewById(R.id.huntingLodgeInsideTextID);
         sText(huntingLodgeInsideText);
+        huntingLodgeInsideText.setBackgroundColor(Color.parseColor("#"+backgroundCounter + "ffffff"));
 
         if (save.getInt(APP_SAVE_TREATMENT, 0) == 0) {
             checkBoxHuntingLodgeInsideOintment.setVisibility(View.GONE);

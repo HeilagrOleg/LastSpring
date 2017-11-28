@@ -118,6 +118,7 @@ public class PrologueBreakage extends GameActivity {
 
         textPrologueBreakage = (TextView) findViewById(R.id.textPrologueBreakageID);
         sText(textPrologueBreakage);
+        textPrologueBreakage.setBackgroundColor(Color.parseColor("#"+backgroundCounter + "ffffff"));
 
         radioGroupPrologueBreakage = (RadioGroup) findViewById(R.id.radioGroupPrologueBreakageID);
         scrollPrologueBreakage = (ScrollView) findViewById(R.id.scrollPrologueBreakageID);
@@ -164,8 +165,8 @@ public class PrologueBreakage extends GameActivity {
         textTime = (TextView) findViewById(R.id.textTimeID);
         textTime.setTextSize(sizeFonts);
 
-        if (!save.getBoolean(APP_SAVE_TRAINING, false)) {
-            layoutPrologueTrainingBreakage.setVisibility(View.VISIBLE);
+        if (save.getBoolean(APP_SAVE_TRAINING, false)) {
+            startAnimation(new ArrayList<View>(Arrays.asList(layoutPrologueTrainingBreakage)));
         } else  {
             buttonBreakage.setVisibility(View.VISIBLE);
             buttonBreakageTest.setVisibility(View.VISIBLE);

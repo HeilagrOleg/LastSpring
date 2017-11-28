@@ -1,6 +1,7 @@
 package com.example.last_spring.gameprealpha.chapterTwo;
 
 import android.animation.ObjectAnimator;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -8,11 +9,15 @@ import android.support.annotation.StringRes;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.example.last_spring.gameprealpha.R;
 
 import com.example.last_spring.gameprealpha.res.GameActivityTwo;
+import com.last_spring.gameprealpha.OstSnowy;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -36,12 +41,20 @@ public class ChapterTwoPorch extends GameActivityTwo {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chapter_two_porch);
 
+        isOstShowy = true;
+
+        startService(new Intent(this, OstSnowy.class));
+
         getSave(8f);
 
         progressBarChapterTwoApartment = (ProgressBar) findViewById(R.id.progressBarChapterTwoApartmentID);
         progressBarChapterTwoApartment.setProgress(100);
 
-        getInterfaceChapterTwo();
+        textMessage = (TextView) findViewById(R.id.textMessageID);
+        textMessage.setTextSize(sizeFonts + 4);
+
+        imageBackgroundLuckFalse = (ImageView) findViewById(R.id.imageBackgroundLuckFalseID);
+        imageBackgroundLuckTrue = (ImageView) findViewById(R.id.imageBackgroundLuckTrueID);
 
 
         getButtons();
@@ -79,7 +92,6 @@ public class ChapterTwoPorch extends GameActivityTwo {
                 nextText(R.string.chapter_two_porch_text_start_second);
                 buttonChapterTwoSecond.setVisibility(View.GONE);
                 buttonChapterTwoFirst.setVisibility(View.GONE);
-                imageButtonMenuChapterTwo.setVisibility(View.GONE);
                 progressBarChapterTwoApartment.setVisibility(View.VISIBLE);
                 editText();
             }
@@ -153,14 +165,34 @@ public class ChapterTwoPorch extends GameActivityTwo {
         }.start();
     }
 
-    public void onChapterTwoThird(View view) {
+    public void onChapterTwoThird(final View view) {
         if (isThird) {
             switch (stopCounter) {
                 case 0:
                     buttonChapterTwoThird.setText(R.string.chapter_two_porch_button_stop_second);
+                    view.setVisibility(View.GONE);
+                    showMessageChapterTwo(R.string.chapter_two_porch_message_reaction_first);
+                    new CountDownTimer(2000, 2000) {
+                        public void onTick(long millisUntilFinished) {
+                        }
+
+                        public void onFinish() {
+                            startAnimationChapterTwo(view);
+                        }
+                    }.start();
                     break;
                 case 1:
                     buttonChapterTwoThird.setText(R.string.chapter_two_porch_button_stop_third);
+                    view.setVisibility(View.GONE);
+                    showMessageChapterTwo(R.string.chapter_two_porch_message_reaction_second);
+                    new CountDownTimer(2000, 2000) {
+                        public void onTick(long millisUntilFinished) {
+                        }
+
+                        public void onFinish() {
+                            startAnimationChapterTwo(view);
+                        }
+                    }.start();
                     break;
                 default:
                     isText = false;

@@ -66,6 +66,7 @@ public class PrologueBonfire extends GameActivity {
 
         textPrologueBonfireMain = (TextView) findViewById(R.id.textPrologueBonfireMainID);
         sText(textPrologueBonfireMain);
+        textPrologueBonfireMain.setBackgroundColor(Color.parseColor("#"+backgroundCounter + "ffffff"));
 
         isDown = false;
 

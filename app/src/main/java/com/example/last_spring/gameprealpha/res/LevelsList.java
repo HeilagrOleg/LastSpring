@@ -1,9 +1,12 @@
 package com.example.last_spring.gameprealpha.res;
 
+import com.example.last_spring.gameprealpha.chapterTwo.ChapterTwoCabinet;
 import com.example.last_spring.gameprealpha.chapterTwo.ChapterTwoCabinetBox;
 import com.example.last_spring.gameprealpha.chapterTwo.ChapterTwoCar;
 import com.example.last_spring.gameprealpha.chapterTwo.ChapterTwoConferenceHall;
+import com.example.last_spring.gameprealpha.chapterTwo.ChapterTwoCutScene;
 import com.example.last_spring.gameprealpha.chapterTwo.ChapterTwoDialog;
+import com.example.last_spring.gameprealpha.chapterTwo.ChapterTwoFinal;
 import com.example.last_spring.gameprealpha.chapterTwo.ChapterTwoInstituteEntrance;
 import com.example.last_spring.gameprealpha.chapterTwo.ChapterTwoPorch;
 import com.example.last_spring.gameprealpha.chapterTwo.ChapterTwoTrafficJam;
@@ -148,6 +151,18 @@ public class LevelsList {
 
         if (level == 14f) {
             return ChapterTwoCabinetBox.class;
+        }
+
+        if (level == 15f) {
+            return ChapterTwoCabinet.class;
+        }
+
+        if (level == 16f) {
+            return ChapterTwoCutScene.class;
+        }
+
+        if (level == 17f) {
+            return ChapterTwoFinal.class;
         }
 
         return null;

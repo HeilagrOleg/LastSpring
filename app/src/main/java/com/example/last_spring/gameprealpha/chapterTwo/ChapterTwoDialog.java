@@ -1,5 +1,6 @@
 package com.example.last_spring.gameprealpha.chapterTwo;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,15 +9,19 @@ import android.widget.RadioButton;
 
 import com.example.last_spring.gameprealpha.R;
 import com.example.last_spring.gameprealpha.res.GameActivityTwo;
+import com.last_spring.gameprealpha.OstSnowy;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class ChapterTwoDialog extends GameActivityTwo {
 
+    public static final String APP_SAVE_CHAPTER_TWO_RESPECT = "Respect Alin";
+
     public static final String APP_SAVE_CHAPTER_TWO_FAIL_LATE = "VERY LATE";
 
     public static final String APP_SAVE_CHAPTER_TWO_LATE = "Late";
+
 
     private RadioButton buttonChapterTwoFive;
     private RadioButton buttonChapterTwoSix;
@@ -36,6 +41,13 @@ public class ChapterTwoDialog extends GameActivityTwo {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chapter_two_dialog);
 
+        editor.putBoolean(APP_SAVE_CHAPTER_TWO_RESPECT, true);
+        editor.apply();
+
+        isOstShowy = true;
+
+        startService(new Intent(this, OstSnowy.class));
+
         respectAlin = 40;
 
         getSave(13f);
@@ -45,6 +57,8 @@ public class ChapterTwoDialog extends GameActivityTwo {
         getInterfaceChapterTwo();
 
         isHand = true;
+
+        date = 802;
 
         buttonChapterTwoFive = (RadioButton) findViewById(R.id.buttonChapterTwoFiveID);
         buttonChapterTwoFive.setTextSize(sizeFonts);
@@ -113,8 +127,13 @@ public class ChapterTwoDialog extends GameActivityTwo {
                 textChapterTwo.setText(R.string.chapter_two_dialog_text_party);
                 buttonChapterTwoFirst.setVisibility(View.GONE);
             }
+            date += Math.random() * 5;
             getChoiceButton();
         } else {
+            isFive = false;
+            isSix = false;
+            buttonChapterTwoSix.setBackgroundColor(Color.parseColor(colorButton));
+            buttonChapterTwoFive.setBackgroundColor(Color.parseColor(colorButton));
             getChoiceButton(buttonChapterTwoFirst);
             isFirst = true;
         }
@@ -122,7 +141,6 @@ public class ChapterTwoDialog extends GameActivityTwo {
 
     public void onChapterTwoSecond(View view) {
         if (isSecond) {
-
             if (isHand) {
                 if (isVeryLate) {
                     textChapterTwo.setText(R.string.chapter_two_dialog_very_late_text_no_hand);
@@ -165,9 +183,13 @@ public class ChapterTwoDialog extends GameActivityTwo {
                 textChapterTwo.setText(R.string.chapter_two_dialog_text_cave);
                 buttonChapterTwoSecond.setVisibility(View.GONE);
             }
-
+            date += Math.random() * 5;
             getChoiceButton();
         } else {
+            isFive = false;
+            isSix = false;
+            buttonChapterTwoSix.setBackgroundColor(Color.parseColor(colorButton));
+            buttonChapterTwoFive.setBackgroundColor(Color.parseColor(colorButton));
             getChoiceButton(buttonChapterTwoSecond);
             isSecond = true;
         }
@@ -197,9 +219,13 @@ public class ChapterTwoDialog extends GameActivityTwo {
                 textChapterTwo.setText(R.string.chapter_two_dialog_text_camp);
                 buttonChapterTwoThird.setVisibility(View.GONE);
             }
-
+            date += Math.random() * 5;
             getChoiceButton();
         } else {
+            isFive = false;
+            isSix = false;
+            buttonChapterTwoSix.setBackgroundColor(Color.parseColor(colorButton));
+            buttonChapterTwoFive.setBackgroundColor(Color.parseColor(colorButton));
             getChoiceButton(buttonChapterTwoThird);
             isThird = true;
         }
@@ -209,7 +235,7 @@ public class ChapterTwoDialog extends GameActivityTwo {
     public void onChapterTwoFour(View view) {
         if (isFour) {
             if (isFather) {
-                textChapterTwo.setText(R.string.chapter_two_dialog_button_ok);
+                textChapterTwo.setText(R.string.chapter_two_dialog_text_ok);
                 buttonChapterTwoFirst.setVisibility(View.VISIBLE);
                 buttonChapterTwoFirst.setText(R.string.chapter_two_dialog_button_party);
                 buttonChapterTwoSecond.setVisibility(View.VISIBLE);
@@ -230,8 +256,13 @@ public class ChapterTwoDialog extends GameActivityTwo {
                 editor.apply();
                 finish();
             }
+            date += Math.random() * 5;
             getChoiceButton();
         } else {
+            isFive = false;
+            isSix = false;
+            buttonChapterTwoSix.setBackgroundColor(Color.parseColor(colorButton));
+            buttonChapterTwoFive.setBackgroundColor(Color.parseColor(colorButton));
             getChoiceButton(buttonChapterTwoFour);
             isFour = true;
         }
@@ -245,6 +276,7 @@ public class ChapterTwoDialog extends GameActivityTwo {
                 getRespectDown();
                 buttonChapterTwoFive.setVisibility(View.GONE);
             }
+            date += Math.random() * 5;
             isFive = false;
             buttonChapterTwoFive.setBackgroundColor(Color.parseColor(colorButton));
         } else {
@@ -264,6 +296,7 @@ public class ChapterTwoDialog extends GameActivityTwo {
                 getRespectUp();
                 buttonChapterTwoSix.setVisibility(View.GONE);
             }
+            date += Math.random() * 5;
             isSix = false;
             buttonChapterTwoSix.setBackgroundColor(Color.parseColor(colorButton));
         } else {
@@ -274,8 +307,6 @@ public class ChapterTwoDialog extends GameActivityTwo {
             buttonChapterTwoFive.setBackgroundColor(Color.parseColor(colorButton));
         }
     }
-
-
 
 
 }

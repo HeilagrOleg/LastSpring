@@ -10,6 +10,7 @@ import com.example.last_spring.gameprealpha.res.Fortune;
 import com.example.last_spring.gameprealpha.res.GameActivityTwo;
 
 import com.example.last_spring.gameprealpha.R;
+import com.last_spring.gameprealpha.OstSnowy;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -32,6 +33,10 @@ public class ChapterTwoInstituteEntrance extends GameActivityTwo {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chapter_two_institute_entrance);
+
+        isOstShowy = true;
+
+        startService(new Intent(this, OstSnowy.class));
 
         getSave(11f);
 
@@ -79,7 +84,7 @@ public class ChapterTwoInstituteEntrance extends GameActivityTwo {
     public void onChapterTwoSecond(View view) {
         if (isSecond) {
             if (isStart) {
-                if (Fortune.isLuck(fortune, 75)) {
+                if (Fortune.isLuck(fortune, 95)) {
                     getFortuneChange(-10);
                     getLuckImage(true);
                     showMessageChapterTwo(R.string.chapter_two_message_luck_down);
@@ -100,12 +105,16 @@ public class ChapterTwoInstituteEntrance extends GameActivityTwo {
                     isFail = true;
                 }
             } else if (isFail) {
+                date+=15;
+                getTime();
                 textChapterTwo.setText(R.string.chapter_two_institute_entrance_text_luck_false_wait);
                 buttonChapterTwoSecond.setText(R.string.chapter_two_institute_entrance_button_luck_false_good);
                 buttonChapterTwoThird.setText(R.string.chapter_two_institute_entrance_button_luck_false_bad);
                 isFail = false;
                 isSecondFail = true;
             } else if (isSecondFail) {
+                date+=2;
+                getTime();
                 textChapterTwo.setText(R.string.chapter_two_institute_entrance_text_luck_false_good);
                 buttonChapterTwoSecond.setVisibility(View.GONE);
                 buttonChapterTwoThird.setVisibility(View.GONE);
@@ -138,6 +147,7 @@ public class ChapterTwoInstituteEntrance extends GameActivityTwo {
                 buttonChapterTwoSecond.setText(R.string.chapter_two_institute_entrance_button_wait_bad);
                 buttonChapterTwoThird.setText(R.string.chapter_two_institute_entrance_button_wait_good);
                 date += 17;
+                getTime();
                 isStart = false;
                 isWait = true;
             } else if (isWait) {
@@ -147,12 +157,14 @@ public class ChapterTwoInstituteEntrance extends GameActivityTwo {
                 buttonChapterTwoFour.setVisibility(View.VISIBLE);
                 isWait = false;
             } else if (isFail) {
+                date+=15;
                 textChapterTwo.setText(R.string.chapter_two_institute_entrance_text_luck_false_stand_up);
                 buttonChapterTwoSecond.setText(R.string.chapter_two_institute_entrance_button_luck_false_good);
                 buttonChapterTwoThird.setText(R.string.chapter_two_institute_entrance_button_luck_false_bad);
                 isFail = false;
                 isSecondFail = true;
             } else if (isSecondFail) {
+                date+=2;
                 textChapterTwo.setText(R.string.chapter_two_institute_entrance_text_luck_false_bad);
                 buttonChapterTwoSecond.setText(R.string.chapter_two_institute_entrance_button_luck_false_good);
                 buttonChapterTwoThird.setText(R.string.chapter_two_institute_entrance_button_luck_false_bad_wait);

@@ -4,7 +4,192 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/chapter_two_final"
     tools:context=".chapterTwo.ChapterTwoFinal">
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="60dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RadioGroup
+            android:id="@+id/radioGroupChapterTwoID"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_centerInParent="true"
+            android:layout_marginBottom="10dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone"
+            tools:visibility="visible">
+
+            <RadioButton
+                android:id="@+id/buttonChapterTwoFirstID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="#70ffffff"
+                android:button="@drawable/radio_button_selector"
+                android:onClick="onChapterTwoFirst"
+                android:text="@string/chapter_two_final_button_false"
+                android:textColor="#303030"
+                android:textSize="16sp"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="355dp" />
+
+            <RadioButton
+                android:id="@+id/buttonChapterTwoSecondID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="#70ffffff"
+                android:button="@drawable/radio_button_selector"
+                android:onClick="onChapterTwoSecond"
+                android:text="@string/chapter_two_final_button_true"
+                android:textColor="#303030"
+                android:textSize="16sp"
+                android:visibility="visible"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="387dp" />
+
+            <RadioButton
+                android:id="@+id/buttonChapterTwoThirdID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="#70ffffff"
+                android:button="@drawable/radio_button_selector"
+                android:onClick="onChapterTwoThird"
+                android:text="@string/chapter_two_final_button_final"
+                android:textColor="#303030"
+                android:textSize="16sp"
+                android:visibility="gone"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="387dp" />
+
+            <RadioButton
+                android:id="@+id/buttonChapterTwoFourID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#70ffffff"
+                android:button="@drawable/radio_button_selector"
+                android:onClick="onChapterTwoFour"
+                android:text="@string/chapter_two_final_button_exit"
+                android:textColor="#303030"
+                android:textSize="16sp"
+                android:visibility="gone"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="419dp" />
+
+        </RadioGroup>
+
+        <ScrollView
+            android:id="@+id/scrollChapterTwoID"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/radioGroupChapterTwoID"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="40dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone"
+            tools:visibility="visible">
+
+            <TextView
+                android:id="@+id/textChapterTwoID"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#70ffffff"
+                android:lineSpacingExtra="3sp"
+                android:lineSpacingMultiplier="0.8"
+                android:orientation="vertical"
+                android:paddingBottom="10dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="10dp"
+                android:text="@string/chapter_two_final_text_start"
+                android:textColor="#303030"
+                android:textSize="18sp"
+                android:visibility="visible" />
+
+        </ScrollView>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layoutChapterTwoFinalID"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/hockeyapp_background_white"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="70dp"
+            android:text="@string/chapter_two_final_text_final_final"
+            android:textAlignment="center"
+            android:textColor="@android:color/black"
+            android:textSize="28sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical"
+            android:paddingBottom="50dp">
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="30dp"
+                android:text="@string/chapter_two_final_text_next"
+                android:textAlignment="center"
+                android:textColor="@android:color/black" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/buttonChapterTwoExitTrueID"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="onChapterTwoExitTrue"
+                    android:text="Да" />
+
+                <Button
+                    android:id="@+id/buttonChapterTwoExitFalseID"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="onChapterTwoExitFalse"
+                    android:text="Нет" />
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/interfaceID"
@@ -46,15 +231,17 @@
 
         <TextView
             android:id="@+id/textMessageID"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
+            android:layout_alignParentTop="true"
             android:layout_centerInParent="true"
-            android:layout_marginBottom="20dp"
-            android:layout_marginLeft="75dp"
-            android:background="@drawable/message_prologue_background"
+            android:layout_marginTop="40dp"
+
+            android:background="@drawable/text_chapter_two_background"
+            android:paddingBottom="25dp"
             android:paddingLeft="50dp"
             android:paddingRight="50dp"
+            android:paddingTop="25dp"
             android:text="@string/prologue_message"
             android:textAlignment="center"
             android:textColor="#303030"

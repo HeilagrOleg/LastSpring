@@ -139,6 +139,7 @@ public class PrologueDownSecondSceneBackPack extends GameActivity {
 
         prologueCutBackpack = (TextView) findViewById(R.id.prologueCutBackpackID);
         sText(prologueCutBackpack);
+        prologueCutBackpack.setBackgroundColor(Color.parseColor("#"+backgroundCounter + "ffffff"));
 
         prologueDownBackPackMainRadioGroup = (RadioGroup) findViewById(R.id.prologueDownBackPackMainRadioGroupID);
         prologueDownBackpackTopPartRadioGroup = (RadioGroup) findViewById(R.id.prologueDownBackpackTopPartRadioGroupID);
@@ -838,7 +839,7 @@ public class PrologueDownSecondSceneBackPack extends GameActivity {
     }
 
     private void getFortune() {
-        fortuneCounter.setVisibility(View.VISIBLE);
+        fortuneCounter.setVisibility(View.GONE);
         if (fortune <= 10) {
             stFortune = "Удача:\nОтвратительно";
             fortuneCounter.setTextColor(Color.parseColor("#ff6666"));

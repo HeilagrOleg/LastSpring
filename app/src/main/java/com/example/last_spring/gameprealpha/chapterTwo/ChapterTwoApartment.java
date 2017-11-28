@@ -23,11 +23,14 @@ import android.widget.RelativeLayout;
 
 import com.example.last_spring.gameprealpha.res.GameActivityTwo;
 import com.example.last_spring.gameprealpha.R;
+import com.last_spring.gameprealpha.OstSnowy;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class ChapterTwoApartment extends GameActivityTwo {
+
+    public static final String APP_SAVE_CHAPTER_TWO_RESPECT = "Respect Alin";
 
     private ImageView imageChapterTwoApartmentFirstCupboard;
     private ImageView imageChapterTwoApartmentFirstLeftMain;
@@ -104,7 +107,14 @@ public class ChapterTwoApartment extends GameActivityTwo {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chapter_two_apartment);
 
+        isOstShowy = true;
+
+        startService(new Intent(this, OstSnowy.class));
+
         getButtons();
+
+        editor.putBoolean(APP_SAVE_CHAPTER_TWO_RESPECT, false);
+        editor.apply();
 
         isSleep = true;
 
@@ -119,7 +129,7 @@ public class ChapterTwoApartment extends GameActivityTwo {
 
         date = 420;
 
-        respectAlin = 30;
+        respectAlin = 0;
 
         startAnimationChapterTwo(new ArrayList<View>(Arrays.asList(scrollChapterTwo, radioGroupChapterTwo)));
 
@@ -210,6 +220,7 @@ public class ChapterTwoApartment extends GameActivityTwo {
                 isPhoto = false;
             }
             isFirst = false;
+            getChoiceButton();
             buttonChapterTwoFirst.setBackgroundColor(Color.parseColor(colorButton));
         } else {
             getChoiceButton(buttonChapterTwoFirst);
@@ -234,6 +245,7 @@ public class ChapterTwoApartment extends GameActivityTwo {
                 isPhoto = false;
             }
             isSecond = false;
+            getChoiceButton();
             buttonChapterTwoSecond.setBackgroundColor(Color.parseColor(colorButton));
         } else {
             getChoiceButton(buttonChapterTwoSecond);
@@ -264,6 +276,7 @@ public class ChapterTwoApartment extends GameActivityTwo {
             }.start();
             isSearch = true;
             isThird = false;
+            getChoiceButton();
             buttonChapterTwoThird.setBackgroundColor(Color.parseColor(colorButton));
         } else {
             getChoiceButton(buttonChapterTwoThird);
@@ -276,6 +289,7 @@ public class ChapterTwoApartment extends GameActivityTwo {
             getNextScene(ChapterTwoPorch.class);
             finish();
             isFour = false;
+            getChoiceButton();
             buttonChapterTwoFour.setBackgroundColor(Color.parseColor(colorButton));
         } else {
             getChoiceButton(buttonChapterTwoFour);

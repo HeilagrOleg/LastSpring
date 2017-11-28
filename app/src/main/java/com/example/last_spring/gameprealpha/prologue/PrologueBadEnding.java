@@ -16,10 +16,12 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.example.last_spring.gameprealpha.chapterTwo.ChapterTwoStart;
+import com.example.last_spring.gameprealpha.chapterTwo.ChapterTwoTitle;
 import com.example.last_spring.gameprealpha.mainMenu.MainActivity;
 import com.example.last_spring.gameprealpha.oldStory.PrologueOldStory;
 import com.example.last_spring.gameprealpha.R;
 import com.example.last_spring.gameprealpha.res.GameActivity;
+import com.last_spring.gameprealpha.OstRoad;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -59,6 +61,12 @@ public class PrologueBadEnding extends GameActivity {
 
         getSave(5.1f);
 
+        finishOst();
+
+        isOstRoad = true;
+
+        startService(new Intent(this, OstRoad.class));
+
         buttonPrologueFinalBadExtraEpisodeTrue = (Button) findViewById(R.id.buttonPrologueFinalBadExtraEpisodeTrueID);
         buttonPrologueFinalBadExtraEpisodeTrue.setTextSize(sizeFonts);
         buttonPrologueFinalBadExtraEpisodeFalse = (Button) findViewById(R.id.buttonPrologueFinalBadExtraEpisodeFalseID);
@@ -68,6 +76,7 @@ public class PrologueBadEnding extends GameActivity {
 
         textPrologueBadFinal = (TextView) findViewById(R.id.textPrologueBadFinalID);
         sText(textPrologueBadFinal);
+        textPrologueBadFinal.setBackgroundColor(Color.parseColor("#"+backgroundCounter + "ffffff"));
         textFinalBadTitle = (TextView) findViewById(R.id.textFinalBadTitleID);
 
         scrollPrologueBadFinal = (ScrollView) findViewById(R.id.scrollPrologueBadFinalID);
@@ -153,11 +162,13 @@ public class PrologueBadEnding extends GameActivity {
     }
 
     public void onPrologueFinalGoodExtraEpisodeTrue(View view) {
-        getNextScene(new Intent(this, ChapterTwoStart.class));
+        finishOst();
+        getNextScene(new Intent(this, ChapterTwoTitle.class));
         finish();
     }
 
     public void onPrologueFinalGoodExtraEpisodeFalse(View view) {
+        finishOst();
         getNextScene(new Intent(this, MainActivity.class));
         finish();
     }

@@ -94,10 +94,10 @@ public class PrologueCaveAfterLabyrinth extends GameActivity {
             overridePendingTransition(R.anim.first_activity_animation, R.anim.second_activity_animation);
             finish();
             isFirst = false;
-            buttonPrologueCaveAfterFirst.setBackgroundColor(Color.parseColor("#60ffffff"));
+            buttonPrologueCaveAfterFirst.setBackgroundColor(Color.parseColor("#303030"));
         } else {
             buttonPrologueCaveAfterFirst.setBackgroundColor(Color.parseColor("#607e9e7f"));
-            buttonPrologueCaveAfterSecond.setBackgroundColor(Color.parseColor("#60ffffff"));
+            buttonPrologueCaveAfterSecond.setBackgroundColor(Color.parseColor("#303030"));
             isFirst = true;
             isSecond = false;
         }
@@ -116,10 +116,10 @@ public class PrologueCaveAfterLabyrinth extends GameActivity {
                 fortune = 100;
             }
             isSecond = false;
-            buttonPrologueCaveAfterSecond.setBackgroundColor(Color.parseColor("#60ffffff"));
+            buttonPrologueCaveAfterSecond.setBackgroundColor(Color.parseColor("#303030"));
         } else {
             buttonPrologueCaveAfterSecond.setBackgroundColor(Color.parseColor("#607e9e7f"));
-            buttonPrologueCaveAfterFirst.setBackgroundColor(Color.parseColor("#60ffffff"));
+            buttonPrologueCaveAfterFirst.setBackgroundColor(Color.parseColor("#303030"));
             isFirst = false;
             isSecond = true;
         }

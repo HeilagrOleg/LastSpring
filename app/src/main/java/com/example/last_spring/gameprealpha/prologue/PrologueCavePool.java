@@ -98,7 +98,7 @@ public class PrologueCavePool extends GameActivity {
                 radioButtonCavePoolSecond.setVisibility(View.VISIBLE);
                 radioButtonCavePoolThird.setText(R.string.prologue_cave_pool_button_move_exit);
                 radioButtonCavePoolThird.setVisibility(View.VISIBLE);
-                radioButtonCavePoolThird.setBackgroundColor(Color.parseColor("#60ffffff"));
+                radioButtonCavePoolThird.setBackgroundColor(Color.parseColor("#303030"));
                 isMovePool = false;
                 isStart = false;
                 isFirst = false;
@@ -107,7 +107,7 @@ public class PrologueCavePool extends GameActivity {
             } else if (isMovePool) {
                 textCavePool.setText(R.string.prologue_cave_pool_text_pool_hand);
                 radioButtonCavePoolFirst.setVisibility(View.GONE);
-                radioButtonCavePoolFirst.setBackgroundColor(Color.parseColor("#60ffffff"));
+                radioButtonCavePoolFirst.setBackgroundColor(Color.parseColor("#303030"));
                 isFirst = false;
                 isSecond = false;
                 isThird = false;
@@ -118,13 +118,13 @@ public class PrologueCavePool extends GameActivity {
                     radioButtonCavePoolSecond.setVisibility(View.VISIBLE);
                 }
                 radioButtonCavePoolThird.setVisibility(View.VISIBLE);
-                radioButtonCavePoolFirst.setBackgroundColor(Color.parseColor("#60ffffff"));
+                radioButtonCavePoolFirst.setBackgroundColor(Color.parseColor("#303030"));
                 isNext = false;
                 isFirst = false;
                 isSecond = false;
                 isThird = false;
             } else if (isExit) {
-                radioButtonCavePoolFirst.setBackgroundColor(Color.parseColor("#60ffffff"));
+                radioButtonCavePoolFirst.setBackgroundColor(Color.parseColor("#303030"));
                 isFirst = false;
                 isSecond = false;
                 isThird = false;
@@ -144,7 +144,7 @@ public class PrologueCavePool extends GameActivity {
                 isFirst = false;
                 isSecond = false;
                 isThird = false;
-                radioButtonCavePoolFirst.setBackgroundColor(Color.parseColor("#60ffffff"));
+                radioButtonCavePoolFirst.setBackgroundColor(Color.parseColor("#303030"));
             } else {
                 textCavePool.setText(R.string.prologue_cave_pool_text_wall_pool);
                 radioButtonCavePoolFirst.setText(R.string.prologue_cave_pool_button_wall_pool_exit);
@@ -154,10 +154,10 @@ public class PrologueCavePool extends GameActivity {
                 isStart = false;
                 isSecond = false;
                 isThird = false;
-                radioButtonCavePoolFirst.setBackgroundColor(Color.parseColor("#60ffffff"));
+                radioButtonCavePoolFirst.setBackgroundColor(Color.parseColor("#303030"));
             }
             isFirst = false;
-            radioButtonCavePoolFirst.setBackgroundColor(Color.parseColor("#60ffffff"));
+            radioButtonCavePoolFirst.setBackgroundColor(Color.parseColor("#303030"));
 
         } else {
             isFirst = true;
@@ -165,8 +165,8 @@ public class PrologueCavePool extends GameActivity {
             isThird = false;
 
             radioButtonCavePoolFirst.setBackgroundColor(Color.parseColor("#607e9e7f"));
-            radioButtonCavePoolSecond.setBackgroundColor(Color.parseColor("#60ffffff"));
-            radioButtonCavePoolThird.setBackgroundColor(Color.parseColor("#60ffffff"));
+            radioButtonCavePoolSecond.setBackgroundColor(Color.parseColor("#303030"));
+            radioButtonCavePoolThird.setBackgroundColor(Color.parseColor("#303030"));
         }
     }
 
@@ -182,25 +182,25 @@ public class PrologueCavePool extends GameActivity {
                 isPool = true;
                 isMovePool = false;
                 isMain = true;
-                radioButtonCavePoolSecond.setBackgroundColor(Color.parseColor("#60ffffff"));
+                radioButtonCavePoolSecond.setBackgroundColor(Color.parseColor("#303030"));
             } else {
                 textCavePool.setText(R.string.prologue_cave_pool_text_pool);
                 radioButtonCavePoolFirst.setText(R.string.prologue_cave_pool_button_pool_hand);
                 radioButtonCavePoolSecond.setText(R.string.prologue_cave_pool_button_pool_drunk);
                 radioButtonCavePoolThird.setText(R.string.prologue_cave_pool_button_pool_exit);
-                radioButtonCavePoolSecond.setBackgroundColor(Color.parseColor("#60ffffff"));
+                radioButtonCavePoolSecond.setBackgroundColor(Color.parseColor("#303030"));
                 isMovePool = true;
             }
             isSecond = false;
-            radioButtonCavePoolSecond.setBackgroundColor(Color.parseColor("#60ffffff"));
+            radioButtonCavePoolSecond.setBackgroundColor(Color.parseColor("#303030"));
         } else {
             isFirst = false;
             isSecond = true;
             isThird = false;
 
-            radioButtonCavePoolFirst.setBackgroundColor(Color.parseColor("#60ffffff"));
+            radioButtonCavePoolFirst.setBackgroundColor(Color.parseColor("#303030"));
             radioButtonCavePoolSecond.setBackgroundColor(Color.parseColor("#607e9e7f"));
-            radioButtonCavePoolThird.setBackgroundColor(Color.parseColor("#60ffffff"));
+            radioButtonCavePoolThird.setBackgroundColor(Color.parseColor("#303030"));
         }
     }
 
@@ -213,7 +213,7 @@ public class PrologueCavePool extends GameActivity {
                 radioButtonCavePoolFirst.setVisibility(View.VISIBLE);
                 radioButtonCavePoolSecond.setText(R.string.prologue_cave_pool_button_move_pool);
                 radioButtonCavePoolThird.setText(R.string.prologue_cave_pool_button_move_exit);
-                radioButtonCavePoolThird.setBackgroundColor(Color.parseColor("#60ffffff"));
+                radioButtonCavePoolThird.setBackgroundColor(Color.parseColor("#303030"));
                 isMovePool = false;
                 isMain = false;
                 isStart = false;
@@ -228,15 +228,15 @@ public class PrologueCavePool extends GameActivity {
                 overridePendingTransition(R.anim.first_activity_animation, R.anim.second_activity_animation);
                 finish();
             }
-            radioButtonCavePoolThird.setBackgroundColor(Color.parseColor("#60ffffff"));
+            radioButtonCavePoolThird.setBackgroundColor(Color.parseColor("#303030"));
             isThird = false;
         } else {
             isFirst = false;
             isSecond = false;
             isThird = true;
 
-            radioButtonCavePoolFirst.setBackgroundColor(Color.parseColor("#60ffffff"));
-            radioButtonCavePoolSecond.setBackgroundColor(Color.parseColor("#60ffffff"));
+            radioButtonCavePoolFirst.setBackgroundColor(Color.parseColor("#303030"));
+            radioButtonCavePoolSecond.setBackgroundColor(Color.parseColor("#303030"));
             radioButtonCavePoolThird.setBackgroundColor(Color.parseColor("#607e9e7f"));
         }
     }

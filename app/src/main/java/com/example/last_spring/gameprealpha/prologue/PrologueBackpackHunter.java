@@ -108,7 +108,7 @@ private ConstraintLayout  constraintLayoutDialogBackpack;
             public void onTick(long millisUntilFinished) {
             }
             public void onFinish() {
-                startAnimation(new ArrayList<View>(Arrays.asList(radioGroupPrologueBackpackHunterDialog, scrollPrologueBackpackHunterStart, buttonMenu)));
+                startAnimation(new ArrayList<View>(Arrays.asList(radioGroupPrologueBackpackHunterDialog, scrollPrologueBackpackHunterStart)));
             }
         }.start();
 
@@ -237,7 +237,7 @@ private ConstraintLayout  constraintLayoutDialogBackpack;
                     || nameParagraph.equals("dialog_backpack_1_2_1_2_2_1_1_2") || nameParagraph.equals("dialog_backpack_1_2_1_2_1_2")
                     || nameParagraph.equals("dialog_backpack_1_2_1_1_2_1") || nameParagraph.equals("dialog_backpack_1_1_2_2_2_2")
                     || nameParagraph.equals("dialog_backpack_1_1_2_1_1_2_2_2") || nameParagraph.equals("dialog_backpack_2_2_2_2_2_2_1")
-                    || nameParagraph.equals("dialog_backpack_2_1_1_1_1_1")) {
+                    || nameParagraph.equals("dialog_backpack_2_1_1_1_1_1")|| nameParagraph.equals("dialog_backpack_2_2_2_2_1_2")) {
                 SharedPreferences.Editor editor = save.edit();
                 editor.putBoolean(APP_SAVE_PROLOGUE_BACKPACK_HUNTER_FIGHT, true);
                 editor.apply();
@@ -330,6 +330,12 @@ private ConstraintLayout  constraintLayoutDialogBackpack;
 
         if (nameParagraph.equals("dialog_backpack_2_1_2")) {
             nameParagraph = "dialog_backpack_2_2";
+            strings = res.getStringArray(res.getIdentifier(nameParagraph, "array", "com.last_spring.gameprealpha"));
+        }
+
+        //Раскопки
+        if (nameParagraph.equals("dialog_backpack_1_1_2_1_2")) {
+            nameParagraph = "dialog_backpack_2_2_2_2_1";
             strings = res.getStringArray(res.getIdentifier(nameParagraph, "array", "com.last_spring.gameprealpha"));
         }
 

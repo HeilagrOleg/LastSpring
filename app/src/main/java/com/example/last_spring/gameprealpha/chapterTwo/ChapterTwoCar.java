@@ -1,11 +1,13 @@
 package com.example.last_spring.gameprealpha.chapterTwo;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
 import com.example.last_spring.gameprealpha.res.Fortune;
 import com.example.last_spring.gameprealpha.res.GameActivityTwo;
 import com.example.last_spring.gameprealpha.R;
+import com.last_spring.gameprealpha.OstSnowy;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -31,6 +33,10 @@ public class ChapterTwoCar extends GameActivityTwo {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chapter_two_car);
+
+        isOstShowy = true;
+
+        startService(new Intent(this, OstSnowy.class));
 
         getSave(8.5f);
 
@@ -69,7 +75,7 @@ public class ChapterTwoCar extends GameActivityTwo {
                 buttonChapterTwoFirst.setVisibility(View.GONE);
             } else if (isInside) {
                 textChapterTwo.setText(R.string.chapter_two_car_text_lady_car_pusher);
-                date+=5;
+                date+=9;
                 getTime();
                 buttonChapterTwoFirst.setVisibility(View.GONE);
                 buttonChapterTwoSecond.setVisibility(View.GONE);
@@ -92,7 +98,7 @@ public class ChapterTwoCar extends GameActivityTwo {
             if (isStart) {
                 textChapterTwo.setText(R.string.chapter_two_car_text_clear);
                 isAir = true;
-                date+=1;
+                date+=3;
                 getTime();
                 editor.putBoolean(APP_SAVE_CHAPTER_TWO_CAR_SHOW, true);
                 editor.apply();
@@ -115,7 +121,7 @@ public class ChapterTwoCar extends GameActivityTwo {
             } else if (isInside) {
                 textChapterTwo.setText(R.string.chapter_two_car_text_lady_car_charge);
                 buttonChapterTwoFirst.setVisibility(View.GONE);
-                date+=10;
+                date+=15;
                 getTime();
                 buttonChapterTwoSecond.setVisibility(View.GONE);
                 buttonChapterTwoFour.setVisibility(View.GONE);
@@ -136,7 +142,7 @@ public class ChapterTwoCar extends GameActivityTwo {
             if (isStart) {
                 textChapterTwo.setText(R.string.chapter_two_car_text_wheels);
                 buttonChapterTwoThird.setVisibility(View.GONE);
-                date+=1;
+                date+=3;
                 getTime();
                 isAir = true;
                 failCounter++;
@@ -158,10 +164,10 @@ public class ChapterTwoCar extends GameActivityTwo {
                 } else {
                     if (isLuck) {
                         getFortuneChange(-40);
-                        date+=30;
+                        date+=35;
                     } else {
                         getFortuneChange(40);
-                        date+=45;
+                        date+=50;
                     }
                     getNextScene(ChapterTwoInstituteEntrance.class);
                     finish();
@@ -170,7 +176,7 @@ public class ChapterTwoCar extends GameActivityTwo {
             } else if (isLady) {
                 textChapterTwo.setText(R.string.chapter_two_car_text_lady_wait);
                 buttonChapterTwoFirst.setVisibility(View.GONE);
-                date+=4;
+                date+=6;
                 getTime();
                 buttonChapterTwoSecond.setText(R.string.chapter_two_car_button_lady_car_dog);
                 buttonChapterTwoSecond.setVisibility(View.VISIBLE);

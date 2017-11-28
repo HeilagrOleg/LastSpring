@@ -144,8 +144,8 @@ public class PrologueCave extends GameActivity {
             }
         }
         buttonPrologueCaveInspect.setBackgroundColor(Color.parseColor("#607e9e7f"));
-        buttonPrologueCaveLeftWay.setBackgroundColor(Color.parseColor("#60ffffff"));
-        buttonPrologueCaveRightWay.setBackgroundColor(Color.parseColor("#60ffffff"));
+        buttonPrologueCaveLeftWay.setBackgroundColor(Color.parseColor("#303030"));
+        buttonPrologueCaveRightWay.setBackgroundColor(Color.parseColor("#303030"));
         isInspect = true;
         isLeft = false;
         isRight = false;
@@ -164,8 +164,8 @@ public class PrologueCave extends GameActivity {
             overridePendingTransition(R.anim.first_activity_animation, R.anim.second_activity_animation);
             finish();
         }
-        buttonPrologueCaveInspect.setBackgroundColor(Color.parseColor("#60ffffff"));
-        buttonPrologueCaveLeftWay.setBackgroundColor(Color.parseColor("#60ffffff"));
+        buttonPrologueCaveInspect.setBackgroundColor(Color.parseColor("#303030"));
+        buttonPrologueCaveLeftWay.setBackgroundColor(Color.parseColor("#303030"));
         buttonPrologueCaveRightWay.setBackgroundColor(Color.parseColor("#607e9e7f"));
         isInspect = false;
         isLeft = false;
@@ -185,9 +185,9 @@ public class PrologueCave extends GameActivity {
             overridePendingTransition(R.anim.first_activity_animation, R.anim.second_activity_animation);
             finish();
         }
-        buttonPrologueCaveInspect.setBackgroundColor(Color.parseColor("#60ffffff"));
+        buttonPrologueCaveInspect.setBackgroundColor(Color.parseColor("#303030"));
         buttonPrologueCaveLeftWay.setBackgroundColor(Color.parseColor("#607e9e7f"));
-        buttonPrologueCaveRightWay.setBackgroundColor(Color.parseColor("#60ffffff"));
+        buttonPrologueCaveRightWay.setBackgroundColor(Color.parseColor("#303030"));
         isInspect = false;
         isLeft = true;
         isRight = false;

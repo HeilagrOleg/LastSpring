@@ -79,6 +79,7 @@ public class PrologueHuntingLodge extends GameActivity {
         huntingLodgeStartText = (TextView) findViewById(R.id.huntingLodgeStartTextID);
         huntingLodgeStartText.setTextSize(sizeFonts);
         sText(huntingLodgeStartText);
+        huntingLodgeStartText.setBackgroundColor(Color.parseColor("#"+backgroundCounter + "ffffff"));
 
         radioGroupHuntingLodgeStart = (RadioGroup) findViewById(R.id.radioGroupHuntingLodgeStartID);
         radioGroupHuntingLodgeStart.setVisibility(View.GONE);

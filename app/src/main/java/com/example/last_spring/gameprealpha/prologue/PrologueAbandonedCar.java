@@ -69,6 +69,7 @@ public class PrologueAbandonedCar extends GameActivity {
 
         textAbandonedCarStart = (TextView) findViewById(R.id.textAbandonedCarStartID);
         sText(textAbandonedCarStart);
+        textAbandonedCarStart.setBackgroundColor(Color.parseColor("#"+backgroundCounter + "ffffff"));
 
         scrollAbandonedCar = (ScrollView) findViewById(R.id.scrollAbandonedCarID);
         sScroll(scrollAbandonedCar);

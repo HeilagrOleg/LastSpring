@@ -1,11 +1,13 @@
 package com.example.last_spring.gameprealpha.chapterTwo;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
 import com.example.last_spring.gameprealpha.R;
 import com.example.last_spring.gameprealpha.res.GameActivityTwo;
+import com.last_spring.gameprealpha.OstSnowy;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -23,6 +25,10 @@ public class ChapterTwoConferenceHall extends GameActivityTwo {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chapter_two_conference_hall);
 
+        isOstShowy = true;
+
+        startService(new Intent(this, OstSnowy.class));
+
         getSave(12f);
 
         getInterfaceChapterTwo();
@@ -32,7 +38,7 @@ public class ChapterTwoConferenceHall extends GameActivityTwo {
         isStart = true;
         isExit = false;
 
-        if (date <= 0) {
+        if (date >= 540) {
             isLate = true;
             editor.putBoolean(APP_SAVE_CHAPTER_TWO_LATE, true);
             editor.apply();
@@ -65,7 +71,7 @@ public class ChapterTwoConferenceHall extends GameActivityTwo {
                 getNextScene(ChapterTwoDialog.class);
                 finish();
             }
-
+            date += 1+ Math.random() * 5;
             getChoiceButton();
         } else {
             getChoiceButton(buttonChapterTwoFirst);
@@ -80,7 +86,7 @@ public class ChapterTwoConferenceHall extends GameActivityTwo {
                 textChapterTwo.setText(R.string.chapter_two_conference_hall_no_late_watch);
                 buttonChapterTwoSecond.setVisibility(View.GONE);
             }
-
+            date += 1+ Math.random() * 5;
             getChoiceButton();
         } else {
             getChoiceButton(buttonChapterTwoSecond);
@@ -100,7 +106,7 @@ public class ChapterTwoConferenceHall extends GameActivityTwo {
                 isStart = false;
                 isExit = true;
             }
-
+            date += 1+ Math.random() * 5;
             getChoiceButton();
         } else {
             getChoiceButton(buttonChapterTwoThird);
@@ -120,7 +126,7 @@ public class ChapterTwoConferenceHall extends GameActivityTwo {
                 isStart = false;
                 isExit = true;
             }
-
+            date += 1+ Math.random() * 5;
             getChoiceButton();
         } else {
             getChoiceButton(buttonChapterTwoFour);

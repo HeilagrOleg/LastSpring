@@ -57,6 +57,8 @@ public class PrologueHuntingLodgeExit extends GameActivity {
 
         textPrologueHunterExit = (TextView) findViewById(R.id.textPrologueHunterExitID);
         sText(textPrologueHunterExit);
+        textPrologueHunterExit.setBackgroundColor(Color.parseColor("#"+backgroundCounter + "ffffff"));
+
         buttonPrologueHunterExitFirst = (RadioButton) findViewById(R.id.buttonPrologueHunterExitFirstID);
         buttonPrologueHunterExitFirst.setTextSize(sizeFonts);
         buttonPrologueHunterExitSecond = (RadioButton) findViewById(R.id.buttonPrologueHunterExitSecondID);

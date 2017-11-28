@@ -1,5 +1,6 @@
 package com.example.last_spring.gameprealpha.chapterTwo;
 
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ import com.example.last_spring.gameprealpha.R;
 import com.example.last_spring.gameprealpha.res.GameActivityTwo;
 import com.example.last_spring.gameprealpha.res.Intersection;
 import com.example.last_spring.gameprealpha.res.Street;
+import com.last_spring.gameprealpha.OstSnowy;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -144,6 +146,10 @@ public class ChapterTwoTrafficJam extends GameActivityTwo {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chapter_two_traffic_jam);
 
+        isOstShowy = true;
+
+        startService(new Intent(this, OstSnowy.class));
+
         getSave(10f);
 
         res = getResources();
@@ -243,54 +249,54 @@ public class ChapterTwoTrafficJam extends GameActivityTwo {
         }
 
 
-        Street redFirst = new Street(2, 1, "x3y0", "x3y1");
-        Street redSecond = new Street(4, 2, "x3y1", "x3y2");
-        Street redThird = new Street(4, 1, "x3y2", "x3y3");
-        Street redFour = new Street(3, 1, "x3y3", "x3y4");
-        Street redFive = new Street(4, 1, "x3y4", "x3y5");
-        Street redSix = new Street(3, 1, "x3y5", "x3y6");
-        Street redSeven = new Street(3, 1, "x3y6", "x3y7");
-        Street redEight = new Street(3, 1, "x3y7", "x3y8");
-        Street redNine = new Street(3, 1, "x3y8", "x3y9");
+        Street redFirst = new Street(3, 1, "x3y0", "x3y1");
+        Street redSecond = new Street(5, 2, "x3y1", "x3y2");
+        Street redThird = new Street(5, 1, "x3y2", "x3y3");
+        Street redFour = new Street(4, 1, "x3y3", "x3y4");
+        Street redFive = new Street(5, 1, "x3y4", "x3y5");
+        Street redSix = new Street(4, 1, "x3y5", "x3y6");
+        Street redSeven = new Street(4, 1, "x3y6", "x3y7");
+        Street redEight = new Street(4, 1, "x3y7", "x3y8");
+        Street redNine = new Street(4, 1, "x3y8", "x3y9");
 
-        Street serFirst = new Street(2, 1, "x2y2", "x2y3");
-        Street serSecond = new Street(2, 1, "x2y3", "x2y4");
-        Street serThird = new Street(1, 2, "x2y4", "x2y6");
-        Street serFour = new Street(3, 1, "x2y6", "x2y7");
-        Street serFive = new Street(1, 1, "x2y7", "x2y8");
-        Street serSix = new Street(2, 1, "x2y8", "x3y8");
+        Street serFirst = new Street(3, 1, "x2y2", "x2y3");
+        Street serSecond = new Street(3, 1, "x2y3", "x2y4");
+        Street serThird = new Street(2, 2, "x2y4", "x2y6");
+        Street serFour = new Street(4, 1, "x2y6", "x2y7");
+        Street serFive = new Street(2, 1, "x2y7", "x2y8");
+        Street serSix = new Street(3, 1, "x2y8", "x3y8");
 
-        Street gor = new Street(2, 2, "x3y1", "x4y1");
+        Street gor = new Street(3, 2, "x3y1", "x4y1");
 
-        Street octFirst = new Street(1, 1, "x2y2", "x3y2");
-        Street octSecond = new Street(2, 2, "x3y2", "x4y2");
+        Street octFirst = new Street(2, 1, "x2y2", "x3y2");
+        Street octSecond = new Street(3, 2, "x3y2", "x4y2");
 
-        Street komFirst = new Street(1, 1, "x2y3", "x3y3");
-        Street komSecond = new Street(2, 2, "x3y3", "x4y3");
+        Street komFirst = new Street(2, 1, "x2y3", "x3y3");
+        Street komSecond = new Street(3, 2, "x3y3", "x4y3");
 
-        Street sveFirst = new Street(1, 1, "x2y4", "x3y4");
-        Street sveSecond = new Street(1, 2, "x3y4", "x4y4");
+        Street sveFirst = new Street(2, 1, "x2y4", "x3y4");
+        Street sveSecond = new Street(2, 2, "x3y4", "x4y4");
 
-        Street vik = new Street(1, 2, "x3y5", "x4y5");
+        Street vik = new Street(2, 2, "x3y5", "x4y5");
 
-        Street sibFirst = new Street(2, 1, "x2y6", "x3y6");
-        Street sibSecond = new Street(3, 1, "x3y6", "x4y6");
+        Street sibFirst = new Street(3, 1, "x2y6", "x3y6");
+        Street sibSecond = new Street(4, 1, "x3y6", "x4y6");
 
-        Street kai = new Street(2, 1, "x2y7", "x3y7");
+        Street kai = new Street(3, 1, "x2y7", "x3y7");
 
-        Street octMagFirst = new Street(3, 3, "x3y1", "x2y2");
-        Street octMagSecond = new Street(3, 3, "x2y2", "x1y4");
+        Street octMagFirst = new Street(4, 3, "x3y1", "x2y2");
+        Street octMagSecond = new Street(4, 3, "x2y2", "x1y4");
 
-        Street ippFirst = new Street(3, 4, "x1y4", "x1y7");
-        Street ippSecond = new Street(3, 2, "x1y7", "x2y8");
-        Street ippThird = new Street(2, 1, "x2y8", "x3y9");
+        Street ippFirst = new Street(4, 4, "x1y4", "x1y7");
+        Street ippSecond = new Street(4, 2, "x1y7", "x2y8");
+        Street ippThird = new Street(3, 1, "x2y8", "x3y9");
 
-        Street sovFirst = new Street(2, 2, "x4y1", "x4y2");
-        Street sovSecond = new Street(2, 1, "x4y2", "x4y3");
-        Street sovThird = new Street(1, 1, "x4y3", "x4y4");
-        Street sovFour = new Street(3, 1, "x4y4", "x4y5");
-        Street sovFive = new Street(1, 1, "x4y5", "x4y6");
-        Street sovSix = new Street(3, 1, "x4y6", "x3y7");
+        Street sovFirst = new Street(3, 2, "x4y1", "x4y2");
+        Street sovSecond = new Street(3, 1, "x4y2", "x4y3");
+        Street sovThird = new Street(2, 1, "x4y3", "x4y4");
+        Street sovFour = new Street(4, 1, "x4y4", "x4y5");
+        Street sovFive = new Street(2, 1, "x4y5", "x4y6");
+        Street sovSix = new Street(4, 1, "x4y6", "x3y7");
 
         timeMain = 0;
         time = 0;
@@ -447,10 +453,21 @@ public class ChapterTwoTrafficJam extends GameActivityTwo {
         }
         timeIntersection = a;
         if (isIntersection && nextIntersection.getName().equals(a.getName())) {
+            getIntersectionMain(a);
 
-            date += time + 1;
+            imageButtonIntersection22.setClickable(false);
+            imageButtonIntersection23.setClickable(false);
+            date += timeMain + 1;
             getTime();
-            getFortuneChange(-3);
+            if (isLuck) {
+                getFortuneChange(-3);
+            }
+
+            getDirection(startIntersection);
+            getAnimationButton(a.getImageButton());
+            isIntersection = false;
+            a.getImageView().setVisibility(View.VISIBLE);
+            view.setClickable(false);
 
             new CountDownTimer(4000, 4000) {
 

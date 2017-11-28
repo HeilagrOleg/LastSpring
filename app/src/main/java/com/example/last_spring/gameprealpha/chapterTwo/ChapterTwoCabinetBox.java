@@ -1,6 +1,7 @@
 package com.example.last_spring.gameprealpha.chapterTwo;
 
 import android.animation.ObjectAnimator;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
@@ -11,6 +12,7 @@ import android.widget.RelativeLayout;
 
 import com.example.last_spring.gameprealpha.R;
 import com.example.last_spring.gameprealpha.res.GameActivityTwo;
+import com.last_spring.gameprealpha.OstSnowy;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -19,6 +21,7 @@ public class ChapterTwoCabinetBox extends GameActivityTwo {
 
     private boolean isStart;
     private boolean isNext;
+    private boolean isGame;
 
     private float buttonGr1;
     private float buttonGr2;
@@ -56,6 +59,10 @@ public class ChapterTwoCabinetBox extends GameActivityTwo {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chapter_two_cabinet_box);
 
+        isOstShowy = true;
+
+        startService(new Intent(this, OstSnowy.class));
+
         getSave(14f);
 
         getButtons();
@@ -63,6 +70,8 @@ public class ChapterTwoCabinetBox extends GameActivityTwo {
         getInterfaceChapterTwo();
 
         isStart = true;
+
+        date = 864;
 
         layoutChapterTwoGame = (RelativeLayout) findViewById(R.id.layoutChapterTwoGameID);
 
@@ -113,6 +122,7 @@ public class ChapterTwoCabinetBox extends GameActivityTwo {
                 respectAlin += 8;
                 getRespectUp();
             }
+            date += 1+ Math.random() * 5;
             getChoiceButton();
         } else {
             getChoiceButton(buttonChapterTwoFirst);
@@ -133,6 +143,7 @@ public class ChapterTwoCabinetBox extends GameActivityTwo {
                 respectAlin -= 8;
                 getRespectDown();
             }
+            date += 1+ Math.random() * 5;
             getChoiceButton();
         } else {
             getChoiceButton(buttonChapterTwoSecond);
@@ -149,6 +160,7 @@ public class ChapterTwoCabinetBox extends GameActivityTwo {
             buttonChapterTwoSecond.setText(R.string.chapter_two_cabinet_box_button_alin_false);
             buttonChapterTwoSecond.setVisibility(View.VISIBLE);
             isStart = false;
+            date += 1+ Math.random() * 5;
             getChoiceButton();
         } else {
             getChoiceButton(buttonChapterTwoThird);
@@ -158,9 +170,17 @@ public class ChapterTwoCabinetBox extends GameActivityTwo {
 
     public void onChapterTwoFour(View view) {
         if (isFour) {
-            scrollChapterTwo.setVisibility(View.GONE);
-            radioGroupChapterTwo.setVisibility(View.GONE);
-            layoutChapterTwoGame.setVisibility(View.VISIBLE);
+            if (isGame) {
+                scrollChapterTwo.setVisibility(View.GONE);
+                radioGroupChapterTwo.setVisibility(View.GONE);
+                layoutChapterTwoGame.setVisibility(View.VISIBLE);
+                imageButtonMenuChapterTwo.setVisibility(View.GONE);
+            } else {
+                textChapterTwo.setText(R.string.chapter_two_cabinet_box_text_box);
+                buttonChapterTwoFour.setText(R.string.chapter_two_cabinet_box_button_game);
+                isGame = true;
+            }
+            date += 1+ Math.random() * 5;
             getChoiceButton();
         } else {
             getChoiceButton(buttonChapterTwoFour);
@@ -332,8 +352,7 @@ public class ChapterTwoCabinetBox extends GameActivityTwo {
             }.start();
 
 
-
-            new CountDownTimer(3000, 3000) {
+            new CountDownTimer(4000, 4000) {
 
 
                 public void onTick(long millisUntilFinished) {
@@ -341,7 +360,8 @@ public class ChapterTwoCabinetBox extends GameActivityTwo {
                 }
 
                 public void onFinish() {
-                    startAnimation(new ArrayList<View>(Arrays.asList(radioGroupChapterTwo, scrollChapterTwo)));
+                    getNextScene(ChapterTwoCabinet.class);
+                    finish();
                 }
             }.start();
         }

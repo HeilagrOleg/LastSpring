@@ -2,6 +2,7 @@ package com.example.last_spring.gameprealpha.mainMenu;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -14,6 +15,7 @@ public class MainSettings extends AppCompatActivity {
 
     private static final String APP_SETTINGS_SETTINGS_FONTS_SIZE = "Fonts size";
     private static final String APP_SETTINGS_SETTINGS_FONTS_LINE_SPACING = "Line spacing";
+    private static final String APP_SETTINGS_SETTINGS_FONTS_BACKGROUND = "Background";
     private static final String APP_SETTINGS = "Settings";
 
 
@@ -25,6 +27,8 @@ public class MainSettings extends AppCompatActivity {
     private float lineSpacing;
 
     private int fontsCounter;
+
+    private int backgroundCounter;
 
     private TextView textSettingsMain;
 
@@ -45,6 +49,9 @@ public class MainSettings extends AppCompatActivity {
         textSettingsMain = (TextView) findViewById(R.id.textSettingsMainID);
         textSettingsMain.setTextSize(size);
         textSettingsMain.setLineSpacing(lineSpacing,0.8f);
+
+        backgroundCounter = settings.getInt(APP_SETTINGS_SETTINGS_FONTS_BACKGROUND, 75);
+        textSettingsMain.setBackgroundColor(Color.parseColor("#"+backgroundCounter + "ffffff"));
 
         fontsCounter = 0;
 
@@ -87,6 +94,7 @@ public class MainSettings extends AppCompatActivity {
         SharedPreferences.Editor editor = settings.edit();
         editor.putFloat(APP_SETTINGS_SETTINGS_FONTS_SIZE, size);
         editor.putFloat(APP_SETTINGS_SETTINGS_FONTS_LINE_SPACING, lineSpacing);
+        editor.putInt(APP_SETTINGS_SETTINGS_FONTS_BACKGROUND, backgroundCounter);
         editor.apply();
         finish();
     }
@@ -132,5 +140,21 @@ public class MainSettings extends AppCompatActivity {
         textSettingsMain = (TextView) findViewById(R.id.textSettingsMainID);
         textSettingsMain.setTextSize(size);
         textSettingsMain.setLineSpacing(lineSpacing,0.8f);
+    }
+
+    public void onDownBackground(View view) {
+        if (backgroundCounter>=15) {
+            backgroundCounter -= 5;
+            textSettingsMain = (TextView) findViewById(R.id.textSettingsMainID);
+            textSettingsMain.setBackgroundColor(Color.parseColor("#"+backgroundCounter + "ffffff"));
+        }
+    }
+
+    public void onUpBackground(View view) {
+        if (backgroundCounter<=94) {
+            backgroundCounter += 5;
+            textSettingsMain = (TextView) findViewById(R.id.textSettingsMainID);
+            textSettingsMain.setBackgroundColor(Color.parseColor("#"+backgroundCounter + "ffffff"));
+        }
     }
 }

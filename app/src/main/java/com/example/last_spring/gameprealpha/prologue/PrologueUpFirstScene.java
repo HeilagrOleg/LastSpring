@@ -42,6 +42,7 @@ public class PrologueUpFirstScene extends GameActivity {
 
         textPrologueUp = (TextView) findViewById(R.id.textPrologueUpID);
         sText(textPrologueUp);
+        textPrologueUp.setBackgroundColor(Color.parseColor("#"+backgroundCounter + "ffffff"));
 
         radioGroupPrologueUp = (RadioGroup) findViewById(R.id.radioGroupPrologueUpID);
 

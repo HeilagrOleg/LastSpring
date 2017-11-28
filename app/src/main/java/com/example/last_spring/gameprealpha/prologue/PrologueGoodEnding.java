@@ -16,10 +16,13 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.example.last_spring.gameprealpha.chapterTwo.ChapterTwoStart;
+import com.example.last_spring.gameprealpha.chapterTwo.ChapterTwoTitle;
 import com.example.last_spring.gameprealpha.mainMenu.MainActivity;
 import com.example.last_spring.gameprealpha.oldStory.PrologueOldStory;
 import com.example.last_spring.gameprealpha.R;
 import com.example.last_spring.gameprealpha.res.GameActivity;
+import com.last_spring.gameprealpha.OstRoad;
+import com.last_spring.gameprealpha.OstWood;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -58,6 +61,12 @@ public class PrologueGoodEnding extends GameActivity {
 
         getSave(5.0f);
 
+        finishOst();
+
+        isOstRoad = true;
+
+        startService(new Intent(this, OstRoad.class));
+
         radioGroupPrologueGoodFinalFirst = (RadioGroup) findViewById(R.id.radioGroupPrologueGoodFinalFirstID);
 
         scrollPrologueGoodFinal = (ScrollView) findViewById(R.id.scrollPrologueGoodFinalID);
@@ -65,6 +74,7 @@ public class PrologueGoodEnding extends GameActivity {
 
         textPrologueGoodFinal = (TextView) findViewById(R.id.textPrologueGoodFinalID);
         sText(textPrologueGoodFinal);
+        textPrologueGoodFinal.setBackgroundColor(Color.parseColor("#"+backgroundCounter + "ffffff"));
         textFinalGoodTitle = (TextView) findViewById(R.id.textFinalGoodTitleID);
         textPrologueFinalGoodExtraEpisode = (TextView) findViewById(R.id.textPrologueFinalGoodExtraEpisodeID);
         textPrologueFinalGoodExtraEpisode.setTextSize(sizeFonts);
@@ -147,11 +157,13 @@ public class PrologueGoodEnding extends GameActivity {
     }
 
     public void onPrologueFinalGoodExtraEpisodeTrue(View view) {
-        getNextScene(new Intent(this, ChapterTwoStart.class));
+        finishOst();
+        getNextScene(new Intent(this, ChapterTwoTitle.class));
         finish();
     }
 
     public void onPrologueFinalGoodExtraEpisodeFalse(View view) {
+        finishOst();
         getNextScene(new Intent(this, MainActivity.class));
         finish();
     }

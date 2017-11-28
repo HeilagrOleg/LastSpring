@@ -11,12 +11,7 @@
         android:id="@+id/layoutChapterTwoGameID"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="60dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
+
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -27,14 +22,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
+            android:layout_marginBottom="60dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
             android:background="@color/hockeyapp_button_background_selected"
-            android:orientation="vertical"
-            android:weightSum="4">
+            android:orientation="vertical">
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
+
                 android:orientation="horizontal">
 
                 <ImageView
@@ -42,12 +43,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:adjustViewBounds="true"
                     android:onClick="onChapterTwoGameFirst"
                     android:paddingBottom="2dp"
                     android:paddingLeft="2dp"
                     android:paddingRight="2dp"
                     android:paddingTop="2dp"
-                    android:scaleType="fitEnd"
+                    android:scaleType="fitCenter"
                     app:srcCompat="@drawable/chapter_two_buttons_first" />
 
                 <ImageView
@@ -55,12 +57,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:adjustViewBounds="true"
+                    android:cropToPadding="false"
                     android:onClick="onChapterTwoGameSecond"
                     android:paddingBottom="2dp"
                     android:paddingLeft="2dp"
                     android:paddingRight="2dp"
                     android:paddingTop="2dp"
-                    android:scaleType="fitStart"
+                    android:scaleType="fitCenter"
                     app:srcCompat="@drawable/chapter_two_buttons_second" />
 
             </LinearLayout>
@@ -77,12 +81,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:adjustViewBounds="true"
                     android:onClick="onChapterTwoGameThird"
                     android:paddingBottom="2dp"
                     android:paddingLeft="2dp"
                     android:paddingRight="2dp"
                     android:paddingTop="2dp"
-                    android:scaleType="fitEnd"
+                    android:scaleType="fitCenter"
                     app:srcCompat="@drawable/chapter_two_buttons_third" />
 
                 <ImageView
@@ -90,12 +95,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:adjustViewBounds="true"
                     android:onClick="onChapterTwoGameFour"
                     android:paddingBottom="2dp"
                     android:paddingLeft="2dp"
                     android:paddingRight="2dp"
                     android:paddingTop="2dp"
-                    android:scaleType="fitStart"
+                    android:scaleType="fitCenter"
                     app:srcCompat="@drawable/chapter_two_buttons_four" />
 
             </LinearLayout>
@@ -104,19 +110,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:visibility="visible">
 
                 <ImageView
                     android:id="@+id/imageChapterTwoGameFiveID"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:adjustViewBounds="true"
                     android:onClick="onChapterTwoGameFive"
                     android:paddingBottom="2dp"
                     android:paddingLeft="2dp"
                     android:paddingRight="2dp"
                     android:paddingTop="2dp"
-                    android:scaleType="fitEnd"
+                    android:scaleType="fitCenter"
                     app:srcCompat="@drawable/chapter_two_buttons_five" />
 
                 <ImageView
@@ -124,12 +132,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:adjustViewBounds="true"
                     android:onClick="onChapterTwoGameSix"
                     android:paddingBottom="2dp"
                     android:paddingLeft="2dp"
                     android:paddingRight="2dp"
                     android:paddingTop="2dp"
-                    android:scaleType="fitStart"
+                    android:scaleType="fitCenter"
                     app:srcCompat="@drawable/chapter_two_buttons_six" />
             </LinearLayout>
 
@@ -137,19 +146,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:visibility="visible">
 
                 <ImageView
                     android:id="@+id/imageChapterTwoGameSevenID"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:adjustViewBounds="true"
                     android:onClick="onChapterTwoGameSeven"
                     android:paddingBottom="2dp"
                     android:paddingLeft="2dp"
                     android:paddingRight="2dp"
                     android:paddingTop="2dp"
-                    android:scaleType="fitEnd"
+                    android:scaleType="fitCenter"
                     app:srcCompat="@drawable/chapter_two_buttons_seven" />
 
                 <ImageView
@@ -157,12 +168,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:adjustViewBounds="true"
                     android:onClick="onChapterTwoGameEight"
                     android:paddingBottom="2dp"
                     android:paddingLeft="2dp"
                     android:paddingRight="2dp"
                     android:paddingTop="2dp"
-                    android:scaleType="fitStart"
+                    android:scaleType="fitCenter"
                     app:srcCompat="@drawable/chapter_two_buttons_eight" />
             </LinearLayout>
         </LinearLayout>
@@ -279,6 +291,10 @@
                 android:lineSpacingExtra="3sp"
                 android:lineSpacingMultiplier="0.8"
                 android:orientation="vertical"
+                android:paddingBottom="10dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="10dp"
                 android:text="@string/chapter_two_cabinet_box_text_start"
                 android:textColor="#303030"
                 android:textSize="18sp"
@@ -330,15 +346,17 @@
 
         <TextView
             android:id="@+id/textMessageID"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
+            android:layout_alignParentTop="true"
             android:layout_centerInParent="true"
-            android:layout_marginBottom="20dp"
-            android:layout_marginLeft="75dp"
-            android:background="@drawable/message_prologue_background"
+            android:layout_marginTop="40dp"
+
+            android:background="@drawable/text_chapter_two_background"
+            android:paddingBottom="25dp"
             android:paddingLeft="50dp"
             android:paddingRight="50dp"
+            android:paddingTop="25dp"
             android:text="@string/prologue_message"
             android:textAlignment="center"
             android:textColor="#303030"

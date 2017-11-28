@@ -226,10 +226,10 @@ public class PrologueBox extends GameActivity {
 
 
             isFirst = false;
-            buttonPrologueBoxFirst.setBackgroundColor(Color.parseColor("#60ffffff"));
+            buttonPrologueBoxFirst.setBackgroundColor(Color.parseColor("#303030"));
         } else {
             buttonPrologueBoxFirst.setBackgroundColor(Color.parseColor("#607e9e7f"));
-            buttonPrologueBoxSecond.setBackgroundColor(Color.parseColor("#60ffffff"));
+            buttonPrologueBoxSecond.setBackgroundColor(Color.parseColor("#303030"));
             isFirst = true;
             isSecond = false;
 
@@ -241,7 +241,7 @@ public class PrologueBox extends GameActivity {
             getNextScene(new Intent(this, PrologueHuntingLodgeCutScene.class));
             finish();
         } else {
-            buttonPrologueBoxFirst.setBackgroundColor(Color.parseColor("#60ffffff"));
+            buttonPrologueBoxFirst.setBackgroundColor(Color.parseColor("#303030"));
             buttonPrologueBoxSecond.setBackgroundColor(Color.parseColor("#607e9e7f"));
             isFirst = true;
             isSecond = false;

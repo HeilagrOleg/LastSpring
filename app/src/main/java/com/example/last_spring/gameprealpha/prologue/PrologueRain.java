@@ -90,10 +90,10 @@ public class PrologueRain extends GameActivity {
             textPrologueRainStart.setText(R.string.prologue_rain_text_raincoat);
             buttonPrologueRainFirst.setVisibility(View.GONE);
             isFirst = false;
-            buttonPrologueRainFirst.setBackgroundColor(Color.parseColor("#60ffffff"));
+            buttonPrologueRainFirst.setBackgroundColor(Color.parseColor("#303030"));
         } else {
             buttonPrologueRainFirst.setBackgroundColor(Color.parseColor("#607e9e7f"));
-            buttonPrologueRainThird.setBackgroundColor(Color.parseColor("#60ffffff"));
+            buttonPrologueRainThird.setBackgroundColor(Color.parseColor("#303030"));
             isFirst = true;
             isSecond = false;
         }
@@ -112,10 +112,10 @@ public class PrologueRain extends GameActivity {
             overridePendingTransition(R.anim.first_activity_animation, R.anim.second_activity_animation);
             finish();
             isSecond = false;
-            buttonPrologueRainThird.setBackgroundColor(Color.parseColor("#60ffffff"));
+            buttonPrologueRainThird.setBackgroundColor(Color.parseColor("#303030"));
         } else {
             buttonPrologueRainThird.setBackgroundColor(Color.parseColor("#607e9e7f"));
-            buttonPrologueRainFirst.setBackgroundColor(Color.parseColor("#60ffffff"));
+            buttonPrologueRainFirst.setBackgroundColor(Color.parseColor("#303030"));
             isSecond = true;
             isFirst = false;
         }

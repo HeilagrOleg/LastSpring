@@ -51,6 +51,8 @@
                     android:background="#60ffffff"
                     android:button="@drawable/radio_button_selector"
                     android:onClick="onBedsideKeyHuntingInside"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
                     android:text="@string/hunting_Lodge_inside_button_bedside_key"
                     android:textColor="#303030"
                     android:textSize="16sp"
@@ -65,6 +67,8 @@
                     android:background="#60ffffff"
                     android:button="@drawable/radio_button_selector"
                     android:onClick="onBedsideLuckHuntingInside"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
                     android:text="@string/hunting_Lodge_inside_button_bedside_luck"
                     android:textColor="#303030"
                     android:textSize="16sp"
@@ -79,6 +83,8 @@
                     android:background="#60ffffff"
                     android:button="@drawable/radio_button_selector"
                     android:onClick="onBedsideNoLuckHuntingInside"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
                     android:text="@string/hunting_Lodge_inside_button_bedside_no_luck"
                     android:textColor="#303030"
                     android:textSize="16sp"
@@ -92,6 +98,8 @@
                     android:background="#60ffffff"
                     android:button="@drawable/radio_button_selector"
                     android:onClick="onBedsideBackHuntingInside"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
                     android:text="@string/hunting_Lodge_inside_button_bedside_back"
                     android:textColor="#303030"
                     android:textSize="16sp"
@@ -120,6 +128,8 @@
                     android:background="#60ffffff"
                     android:button="@drawable/radio_button_selector"
                     android:onClick="onCupboardSleepingBugHuntingInside"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
                     android:text="@string/hunting_Lodge_inside_button_cupboard_sleeping_bug"
                     android:textColor="#303030"
                     android:textSize="16sp"
@@ -134,6 +144,8 @@
                     android:background="#60ffffff"
                     android:button="@drawable/radio_button_selector"
                     android:onClick="onCupboardNoSleepingBugHuntingInside"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
                     android:text="@string/hunting_Lodge_inside_button_cupboard_no_sleeping_bug"
                     android:textColor="#303030"
                     android:textSize="16sp"
@@ -162,6 +174,8 @@
                     android:background="#60ffffff"
                     android:button="@drawable/radio_button_selector"
                     android:onClick="onTableKeyHuntingInside"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
                     android:text="@string/hunting_Lodge_inside_button_table_key"
                     android:textColor="#303030"
                     android:textSize="16sp"
@@ -176,6 +190,8 @@
                     android:background="#60ffffff"
                     android:button="@drawable/radio_button_selector"
                     android:onClick="onTableNoKeyHuntingInside"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
                     android:text="@string/hunting_Lodge_inside_button_table_no_key"
                     android:textColor="#303030"
                     android:textSize="16sp"
@@ -204,6 +220,8 @@
                     android:background="#60ffffff"
                     android:button="@drawable/radio_button_selector"
                     android:onClick="onConserveNoLuckHuntingInside"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
                     android:text="@string/hunting_Lodge_inside_button_conserve_no_luck"
                     android:textColor="#303030"
                     android:textSize="16sp"
@@ -218,6 +236,8 @@
                     android:background="#60ffffff"
                     android:button="@drawable/radio_button_selector"
                     android:onClick="onConserveLuckHuntingInside"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
                     android:text="@string/hunting_Lodge_inside_button_conserve_luck"
                     android:textColor="#303030"
                     android:textSize="16sp"
@@ -246,6 +266,8 @@
                     android:background="#60ffffff"
                     android:button="@drawable/radio_button_selector"
                     android:onClick="onTableHuntingInside"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
                     android:text="@string/hunting_Lodge_inside_button_table"
                     android:textColor="#303030"
                     android:textSize="16sp"
@@ -260,6 +282,8 @@
                     android:background="#60ffffff"
                     android:button="@drawable/radio_button_selector"
                     android:onClick="onCupboardHuntingInside"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
                     android:text="@string/hunting_Lodge_inside_button_cupboard"
                     android:textColor="#303030"
                     android:textSize="16sp"
@@ -274,6 +298,8 @@
                     android:background="#60ffffff"
                     android:button="@drawable/radio_button_selector"
                     android:onClick="onBedsideTableHuntingInside"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
                     android:text="@string/hunting_Lodge_inside_button_bedside"
                     android:textColor="#303030"
                     android:textSize="16sp"
@@ -287,6 +313,8 @@
                     android:background="#60ffffff"
                     android:button="@drawable/radio_button_selector"
                     android:onClick="onConserveHuntingInside"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
                     android:text="@string/hunting_Lodge_inside_button_conserve"
                     android:textColor="#303030"
                     android:textSize="16sp"
@@ -364,7 +392,7 @@
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="40dp"
-            android:background="#80ffffff"
+            android:background="@null"
             android:gravity="center"
             android:orientation="vertical"
             android:visibility="gone"
@@ -374,10 +402,11 @@
                 android:id="@+id/huntingLodgeInsideTextID"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@null"
+                android:background="#80ffffff"
                 android:lineSpacingExtra="3sp"
                 android:lineSpacingMultiplier="0.8"
                 android:orientation="vertical"
+                android:padding="10dp"
                 android:text="@string/hunting_Lodge_inside_text"
                 android:textColor="#303030"
                 android:textSize="18sp"
@@ -430,328 +459,20 @@
             android:id="@+id/textMessageID"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
-            android:layout_marginBottom="20dp"
-            android:layout_marginLeft="20dp"
-            android:background="#96c7cf"
+            android:layout_alignParentTop="true"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="40dp"
+
+            android:background="@drawable/text_chapter_two_background"
+            android:paddingBottom="25dp"
+            android:paddingLeft="50dp"
+            android:paddingRight="50dp"
+            android:paddingTop="25dp"
             android:text="@string/prologue_message"
+            android:textAlignment="center"
             android:textColor="#303030"
-            android:visibility="invisible" />
+            android:visibility="gone"/>
 
-        <RelativeLayout
-            android:id="@+id/menuMainID"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#40000000"
-            android:visibility="gone">
-
-            <RelativeLayout
-                android:id="@+id/menuID"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="80dp"
-
-                android:layout_marginEnd="40dp"
-                android:layout_marginLeft="40dp"
-                android:layout_marginRight="40dp"
-                android:layout_marginStart="40dp"
-                android:layout_marginTop="60dp"
-                android:background="@color/hockeyapp_button_background_pressed">
-
-                <LinearLayout
-                    android:id="@+id/layoutButtonsMenuID"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_centerInParent="true"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@color/hockeyapp_button_background_pressed"
-                    android:orientation="horizontal">
-
-                    <Button
-                        android:id="@+id/buttonMenuCancelD"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="5dp"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_weight="1"
-                        android:background="#90e9f7f7"
-                        android:onClick="onMenuCancelD"
-                        android:text="@string/button_dialog_cancel"
-                        android:textColor="#303030"
-                        tools:text="@string/button_dialog_cancel" />
-
-                    <Button
-                        android:id="@+id/buttonMenuMenulD"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="5dp"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="5dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_weight="1"
-                        android:background="#90e9f7f7"
-                        android:onClick="onMenuMenu"
-                        android:text="@string/button_dialog_menu"
-                        android:textColor="#303030" />
-
-                    <Button
-                        android:id="@+id/buttonMenuLuckUplD"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="5dp"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="5dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_weight="1"
-                        android:background="#90e9f7f7"
-                        android:onClick="onMenuLuckUp"
-                        android:text="@string/button_dialog_menu"
-                        android:textColor="#303030"
-                        android:visibility="gone" />
-
-                    <Button
-                        android:id="@+id/buttonMenuExitID"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="5dp"
-                        android:layout_marginRight="5dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_weight="1"
-                        android:background="#90e9f7f7"
-                        android:onClick="onMenuExit"
-                        android:text="@string/button_dialog_exit"
-                        android:textColor="#303030"
-                        tools:text="@string/button_dialog_exit" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/layoutFieldsMenuID"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_above="@+id/layoutButtonsMenuID"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@color/hockeyapp_button_background_pressed"
-                    android:baselineAligned="false"
-                    android:orientation="horizontal"
-                    android:weightSum="100">
-
-                    <LinearLayout
-                        android:id="@+id/layoutInventoryLineID"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginRight="5dp"
-                        android:layout_weight="50"
-                        android:background="@color/hockeyapp_button_background_pressed"
-                        android:orientation="vertical"
-                        android:weightSum="6">
-
-                        <TextView
-                            android:id="@+id/textInventoryTextID"
-                            android:layout_width="match_parent"
-                            android:layout_height="25dp"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginRight="5dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_weight="1"
-                            android:background="#6e9ba1"
-                            android:gravity="center"
-                            android:text="@string/inventory_text_main"
-                            android:textAlignment="center"
-                            android:textColor="@color/hockeyapp_background_white" />
-
-                        <TextView
-                            android:id="@+id/textInventoryFoodID"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginRight="5dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_weight="1"
-                            android:background="#90e9f7f7"
-                            android:gravity="center"
-                            android:onClick="onInventoryFood"
-                            android:text="@string/inventory_food"
-                            android:textColor="@color/hockeyapp_background_white" />
-
-                        <TextView
-                            android:id="@+id/textInventoryDrugsID"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginRight="5dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_weight="1"
-                            android:background="#90e9f7f7"
-                            android:gravity="center"
-                            android:onClick="onInventoryDrugs"
-                            android:text="@string/inventory_drugs"
-                            android:textColor="@color/hockeyapp_background_white" />
-
-
-                        <TextView
-                            android:id="@+id/textInventorySleepingBugID"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginRight="5dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_weight="1"
-                            android:background="@color/colorAccent"
-                            android:gravity="center"
-                            android:onClick="onInventorySleepingBug"
-                            android:text="@string/inventory_sleeping_bug"
-                            android:textColor="@color/hockeyapp_button_background_selected" />
-
-                        <TextView
-                            android:id="@+id/textInventoryRaincoatID"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginRight="5dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_weight="1"
-                            android:background="@color/colorAccent"
-                            android:gravity="center"
-                            android:onClick="onInventoryRaincoat"
-                            android:text="@string/inventory_raincoat"
-                            android:textColor="@color/hockeyapp_button_background_selected" />
-
-                        <TextView
-                            android:id="@+id/textInventoryKnifeID"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="5dp"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginRight="5dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_weight="1"
-                            android:background="@color/colorAccent"
-                            android:gravity="center"
-                            android:onClick="onInventoryKnife"
-                            android:text="@string/inventory_knife"
-                            android:textColor="@color/hockeyapp_button_background_selected"
-                            tools:text="@string/inventory_knife" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/layoutStateLineID"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="5dp"
-                        android:layout_weight="50"
-                        android:background="@color/hockeyapp_button_background_pressed"
-                        android:orientation="vertical">
-
-                        <LinearLayout
-                            android:id="@+id/layoutStateProgressBarsID"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:background="@color/hockeyapp_button_background_pressed"
-                            android:orientation="horizontal">
-
-                            <ProgressBar
-                                android:id="@+id/progressBarMenuHealthID"
-                                style="?android:attr/progressBarStyleHorizontal"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_weight="30"
-                                android:max="100"
-                                android:onClick="onBarMenuHealth"
-                                android:paddingBottom="5dp"
-                                android:paddingLeft="5dp"
-                                android:paddingRight="5dp"
-                                android:paddingTop="5dp"
-                                android:progress="50"
-                                android:progressDrawable="@drawable/progress_bar_menu_vertical_normal" />
-
-                            <ProgressBar
-                                android:id="@+id/progressBarMenuHungerID"
-                                style="?android:attr/progressBarStyleHorizontal"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_weight="30"
-                                android:max="100"
-                                android:onClick="onBarBarMenuHunger"
-                                android:paddingBottom="5dp"
-                                android:paddingLeft="5dp"
-                                android:paddingRight="5dp"
-                                android:paddingTop="5dp"
-                                android:progress="50"
-                                android:progressDrawable="@drawable/progress_bar_menu_vertical_normal" />
-
-                            <ProgressBar
-                                android:id="@+id/progressBarChapterTwoLuckID"
-                                style="?android:attr/progressBarStyleHorizontal"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_weight="30"
-                                android:max="100"
-                                android:onClick="onBarMenuLuck"
-                                android:paddingBottom="5dp"
-                                android:paddingLeft="5dp"
-                                android:paddingRight="5dp"
-                                android:paddingTop="5dp"
-                                android:progress="50"
-                                android:progressDrawable="@drawable/progress_bar_menu_vertical_normal" />
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:id="@+id/layoutMenuImagesID"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="5"
-                            android:background="@color/hockeyapp_button_background_pressed"
-                            android:orientation="horizontal">
-
-                            <ImageView
-                                android:id="@+id/imageHealthID"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_marginBottom="5dp"
-                                android:layout_marginLeft="5dp"
-                                android:layout_marginRight="5dp"
-                                android:layout_weight="1"
-                                app:srcCompat="@drawable/menu_health" />
-
-                            <ImageView
-                                android:id="@+id/imageHungerID"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_marginBottom="5dp"
-                                android:layout_marginLeft="5dp"
-                                android:layout_marginRight="5dp"
-                                android:layout_weight="1"
-                                app:srcCompat="@drawable/menu_hunger" />
-
-                            <ImageView
-                                android:id="@+id/imageLuckID"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_marginBottom="5dp"
-                                android:layout_marginLeft="5dp"
-                                android:layout_marginRight="5dp"
-                                android:layout_weight="1"
-                                app:srcCompat="@drawable/menu_luck" />
-
-                        </LinearLayout>
-
-                    </LinearLayout>
-
-                </LinearLayout>
-            </RelativeLayout>
-
-        </RelativeLayout>
     </RelativeLayout>
 
 

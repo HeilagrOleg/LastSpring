@@ -53,7 +53,8 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".prologue.PrologueInventory"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.MyTransparent" />
         <activity
             android:name=".prologue.PrologueHuntingLodgeCutScene"
             android:screenOrientation="portrait" />
@@ -134,25 +135,58 @@
         <activity
             android:name=".chapterTwo.ChapterTwoTrafficJam"
             android:screenOrientation="portrait" />
-        <activity android:name=".chapterTwo.ChapterTwoStart" />
-        <activity android:name=".chapterTwo.ChapterTwoApartment" />
-        <activity android:name=".chapterTwo.ChapterTwoPorch" />
-        <activity android:name=".chapterTwo.ChapterTwoInstituteEntrance" />
-        <activity android:name=".chapterTwo.ChapterTwoConferenceHall" />
-        <activity android:name=".chapterTwo.ChapterTwoCabinet" />
-        <activity android:name=".chapterTwo.ChapterTwoCabinetBox" />
-        <activity android:name=".chapterTwo.ChapterTwoFinal" />
+        <activity
+            android:name=".chapterTwo.ChapterTwoStart"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".chapterTwo.ChapterTwoApartment"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".chapterTwo.ChapterTwoPorch"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".chapterTwo.ChapterTwoInstituteEntrance"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".chapterTwo.ChapterTwoConferenceHall"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".chapterTwo.ChapterTwoCabinet"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".chapterTwo.ChapterTwoCabinetBox"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".chapterTwo.ChapterTwoFinal"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".chapterTwo.ChapterTwoTrafficJamTest"
             android:screenOrientation="portrait" />
-        <activity android:name=".chapterTwo.ChapterTwoCar" />
-        <activity android:name=".chapterTwo.ChapterTwoDialog" />
+        <activity
+            android:name=".chapterTwo.ChapterTwoCar"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".chapterTwo.ChapterTwoDialog"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".chapterTwo.ChapterTwoMenu"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.MyTransparent"
-            >
-        </activity>
+            android:theme="@style/Theme.MyTransparent" />
+        <activity
+            android:name=".chapterTwo.ChapterTwoCutScene"
+            android:screenOrientation="portrait" />
+
+        <service
+            android:name="com.last_spring.gameprealpha.OstRoad"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity android:name=".chapterTwo.ChapterTwoTitle" />
+
+        <service
+            android:name="com.last_spring.gameprealpha.OstSnowy"
+            android:enabled="true"
+            android:exported="true"></service>
     </application>
 
 </manifest>
