@@ -189,45 +189,45 @@
     //Пролог, вниз по течению, рюкзак взяли
 
 
-    <string name="prologue_message_backpack">Ценная находка: рюкзак....</string>
+    <string name="prologue_message_backpack">Ценная находка: рюкзак.</string>
     <string name="prologue_backpack_open_top_part">Открыть верхний "клапан"</string>
     <string name="prologue_backpack_open_middle_part">Открыть основное отделение</string>
     <string name="prologue_backpack_open_basement_part">Открыть нижнюю часть</string>
     <string name="prologue_backpack_open_additional_part">Проверить карманы</string>
     <string name="prologue_backpack_top_part_knife">Адам <i>помнил</i>, что точно положил туда нож</string>
-    <string name="prologue_backpack_top_part_knife_text_toast">Ценная находка: нож и две банки тушенки....\nУдача понижена!</string>
-    <string name="prologue_backpack_top_part_no_knife_text_toast">Ценная находка: две банки тушенки....\nУдача повышена!</string>
+    <string name="prologue_backpack_top_part_knife_text_toast">Ценная находка: нож и две банки тушенки.\nУдача понижена!</string>
+    <string name="prologue_backpack_top_part_no_knife_text_toast">Ценная находка: две банки тушенки.\nУдача повышена!</string>
     <string name="prologue_backpack_top_part_knife_luck">Адам <i>не уверен</i>, что положил нож</string>
     <string name="prologue_backpack_top_part_knife_no_luck">Адам <i>помнил</i>, что там нет ничего ценного</string>
     <string name="prologue_backpack_top_part_back">Осмотреть другие части</string>
     <string name="prologue_backpack_middle_part_sleeping_bug">Адам <i>помнил</i>, что точно положил спальник</string>
-    <string name="prologue_backpack_middle_part_sleeping_bug_text_toast">Ценная находка: спальник и кое-какая одежда....\nУдача понижена!</string>
-    <string name="prologue_backpack_middle_part_no_sleeping_bug_text_toast">Находка: одежда....\nУдача повышена!</string>
+    <string name="prologue_backpack_middle_part_sleeping_bug_text_toast">Ценная находка: спальник и кое-какая одежда.\nУдача понижена!</string>
+    <string name="prologue_backpack_middle_part_no_sleeping_bug_text_toast">Находка: одежда.\nУдача повышена!</string>
     <string name="prologue_backpack_middle_part_sleeping_bug_luck">Адам <i>не уверен</i>, что положил спальник</string>
     <string name="prologue_backpack_middle_part_sleeping_bug_no_luck">Адам <i>помнил</i>, что там нет ценного</string>
     <string name="prologue_backpack_middle_part_back">Осмотреть другие части</string>
     <string name="prologue_backpack_basement_part_raincoat">Адам <i>помнил</i>, что точно положил дождевик</string>
-    <string name="prologue_backpack_basement_part_raincoat_text_toast">Ценная находка: дождевик....\nУдача понижена!</string>
-    <string name="prologue_backpack_basement_part_no_raincoat_text_toast">Поиск не дал результатов....\nУдача повышена!</string>
+    <string name="prologue_backpack_basement_part_raincoat_text_toast">Ценная находка: дождевик.\nУдача понижена!</string>
+    <string name="prologue_backpack_basement_part_no_raincoat_text_toast">Поиск не дал результатов.\nУдача повышена!</string>
     <string name="prologue_backpack_basement_part_raincoat_luck">Адам <i>не уверен</i>, что положил туда дождевик</string>
     <string name="prologue_backpack_basement_part_raincoat_no_luck">Адам <i>помнил</i>, что там нет ничего ценного</string>
     <string name="prologue_backpack_basement_part_back">Осмотреть другие части</string>
     <string name="prologue_backpack_additional_part_ointment">Адам <i>помнил</i>, что точно положил туда мазь</string>
-    <string name="prologue_backpack_additional_part_ointment_text_toast">Ценная находка: мазь Вишневского и полевой дневник....\nУдача понижена!</string>
-    <string name="prologue_backpack_additional_part_no_ointment_text_toast">Находка: полевой дневник....\nУдача повышена!</string>
+    <string name="prologue_backpack_additional_part_ointment_text_toast">Ценная находка: мазь Вишневского и полевой дневник.\nУдача понижена!</string>
+    <string name="prologue_backpack_additional_part_no_ointment_text_toast">Находка: полевой дневник.\nУдача повышена!</string>
     <string name="prologue_backpack_additional_part_ointment_luck">Адам <i>не уверен</i>, что положил мазь</string>
     <string name="prologue_backpack_additional_part_ointment_no_luck">Адам <i>помнил</i>, что там нет ценного</string>
     <string name="prologue_backpack_additional_part_back">Осмотреть другие части</string>
     <string name="prologue_backpack_camp">Разбить лагерь</string>
 
-    <string name="prologue_backpack_no_luck">Удача переменчива! Поиск не дал результатов....</string>
-    <string name="prologue_backpack_no_luck_second">Удача переменчива! Ничего кроме полевого дневника....</string>
-    <string name="prologue_backpack_no_luck_third">Удача переменчива! Только две банки тушенки....</string>
+    <string name="prologue_backpack_no_luck">Удача переменчива! Поиск не дал результатов.</string>
+    <string name="prologue_backpack_no_luck_second">Удача переменчива! Ничего кроме полевого дневника.</string>
+    <string name="prologue_backpack_no_luck_third">Удача переменчива! Только две банки тушенки.</string>
 
 
     //Пролог, вниз по течению, рюкзак не взяли
 
-    <string name="prologue_message_no_backpack">Досадный провал: не удалось достать рюкзак....</string>
+    <string name="prologue_message_no_backpack">Досадный провал: не удалось достать рюкзак.</string>
     <string name="prologue_game_over_down_text_sleeping_bug">
         Адам наблюдал, как его рюкзак уносит вода. До темноты осталось ещё пара часов
     и их не стоило тратить впустую. Адам уже бывал в этих местах. Если бы он только знал тогда, что ему стоило хорошенько изучить местность.\n
@@ -363,7 +363,7 @@
 Под подоконником было ещё много банок. Он сомневался, что там еще что-то попадётся.</string>
     <string name="hunting_Lodge_inside_button_conserve_luck">Проверить банки под подоконником, вдруг повезёт</string>
     <string name="hunting_Lodge_inside_button_conserve_no_luck">Нет времени на это, нужно готовиться ко сну</string>
-    <string name="hunting_Lodge_inside_button_conserve_victory">Ценная находка: банка консервов....\nУдача понижена!</string>
+    <string name="hunting_Lodge_inside_button_conserve_victory">Ценная находка: банка консервов.\nУдача понижена!</string>
     <string name="hunting_Lodge_inside_button_conserve_fail">Поиск не дал результатов\n Удача повышена!</string>
     <string name="hunting_Lodge_inside_text_check_table"> Адам неохотно направился к столу. Это был советский лакированный стол, по поверхности которого легко было понять, сколько он успел пережить.\n
 Сигаретные бычки не только полностью заполнили пепельницу, несколько штук лежало возле неё. Подойдя поближе, Адам разглядел содержимое стеклянных банок.\n
@@ -386,11 +386,11 @@
     <string name="hunting_Lodge_inside_button_cupboard_get_sleeping_bug">Адам взял спальник</string>
 
     <string name="hunting_Lodge_inside_message_sleeping_bug">
-       Ценная находка: спальник....
+       Ценная находка: спальник.
 </string>
 
     <string name="hunting_Lodge_inside_message_key">
-       Ценная находка: странный ключ....
+       Ценная находка: странный ключ.
 </string>
 
     <string name="hunting_Lodge_inside_text_check_bedside">Приближаясь к тумбочке возле шкафа, Адам заметил на стене пустую подставку, скорее всего, для охотничьего ружья. А на самой тумбочке располагалось ещё одно жутковатое чучело совы. Похоже, для хозяина хижины эти птицы имели особое значение.\n
@@ -414,9 +414,9 @@
     <string name="hunting_Lodge_inside_button_bedside_luck">Попытаться открыть верхний ящик силой </string>
     <string name="hunting_Lodge_inside_button_bedside_no_luck">Не пытаться открыть ящик</string>
     <string name="hunting_Lodge_inside_button_bedside_back">Отойти от тумбочки</string>
-    <string name="hunting_Lodge_inside_button_bedside_get_knife">Ценная находка: охотничий нож....</string>
-    <string name="hunting_Lodge_inside_button_bedside_get_knife_luck">Ценная находка: охотничий нож....\nУдача понижена!</string>
-    <string name="hunting_Lodge_inside_button_bedside_fail">Ящик не поддается. Замок безвозвратно сломан....\nУдача повышена!</string>
+    <string name="hunting_Lodge_inside_button_bedside_get_knife">Ценная находка: охотничий нож.</string>
+    <string name="hunting_Lodge_inside_button_bedside_get_knife_luck">Ценная находка: охотничий нож.\nУдача понижена!</string>
+    <string name="hunting_Lodge_inside_button_bedside_fail">Ящик не поддается. Замок безвозвратно сломан.\nУдача повышена!</string>
     <string name="hunting_Lodge_inside_check_box_knife">Положить рядом нож, так спокойнее</string>
     <string name="hunting_Lodge_inside_check_box_food">Поужинать</string>
     <string name="hunting_Lodge_inside_check_box_ointment">Наложить мазь Вишневского на колено</string>
@@ -438,7 +438,7 @@
     <string name="text_prologue_down_backpack_cut_scene_dix">Виктор ищет в археологии не знания, а выгоду для себя. Он убедил всех в том, что он прекрасный специалист, поэтому и выбил грант на исследования спустя 5 лет. Но я-то знаю, что он собой представляет.</string>
     <string name="text_prologue_down_backpack_cut_scene_eleven">Я должен опередить его, чтобы в том месте была проведена настоящая исследовательская работа. Чтобы ничего не упустить и найти Долину. Раскопки там могут полностью изменить наши представления об истории.</string>
     <string name="text_prologue_down_backpack_cut_scene_twelve">Да уж, археологией я увлекаюсь столько, сколько себя помню. С начальной школы я читал книги и статьи отца, а уже в 15 впервые поехал с ним в экспедицию.</string>
-    <string name="text_prologue_down_backpack_cut_scene_thirteen">Поначалу там было страшновато и тяжело. Практически никаких удобств и благ современной цивилизации. В первую неделю я, блин, ненавидел это, безумно хотел домой. Но потом....</string>
+    <string name="text_prologue_down_backpack_cut_scene_thirteen">Поначалу там было страшновато и тяжело. Практически никаких удобств и благ современной цивилизации. В первую неделю я, блин, ненавидел это, безумно хотел домой. Но вскоре это изменилось.</string>
     <string name="text_prologue_down_backpack_cut_scene_fourteen">Сидя со всем отрядом отца вечером возле костра, подпевая вместе с ними песни, слушая их бесконечные истории, я понял, что это по-настоящему. Люди там становятся более настоящие что ли. </string>
     <string name="text_prologue_down_backpack_cut_scene_sixteen">Тогда-то все и началось. С тех пор я каждое лето полностью проводил в экспедициях. А остальное время изучал теорию. И я не для того всё это делал, чтобы дать жадному до денег и славы ублюдку лишать меня настоящих открытий.</string>
     <string name="text_prologue_down_backpack_cut_scene_seventeen">Жаль, что тут нет отца. Он бы никогда не допустил такого. И я был бы сейчас не один.</string>
@@ -450,9 +450,9 @@
     // Сцена после "Магазина"
 
 
-    <string name="button_prologue_backpack_after_cut_scene_message_start">Не удалось мирно разойтись с охотником....</string>
-    <string name="button_prologue_backpack_after_cut_scene_message_hunter">Удалось мирно разойтись с охотником....</string>
-    <string name="button_prologue_backpack_after_cut_scene_message_hunter_wound">Важное решение: охотник тяжело ранен....</string>
+    <string name="button_prologue_backpack_after_cut_scene_message_start">Не удалось мирно разойтись с охотником.</string>
+    <string name="button_prologue_backpack_after_cut_scene_message_hunter">Удалось мирно разойтись с охотником.</string>
+    <string name="button_prologue_backpack_after_cut_scene_message_hunter_wound">Важное решение: охотник тяжело ранен.</string>
     <string name="text_prologue_backpack_after_cut_start">Пока Адам собирал в полутьме свои вещи, охотник продолжал сверлить его взглядом. Ужасное ощущение. Адам так и ушёл в сопровождении этого безумного взгляда.\n
 Он шёл по лесу достаточно долго, до самого рассвета. И всё это время ему казалось, что безумный незнакомец продолжает смотреть за ним. \n
 \"Кто он вообще блин такой? На обычного охотника не тянет. Слишком уж странный\" - подумал Адам и решил немного отдохнуть.\n
@@ -612,7 +612,7 @@
     <string name="hunting_Lodge_cut_scene_text_start_10">Виктор ищет в археологии не знания, а выгоду для себя. Он убедил всех в том, что он прекрасный специалист, поэтому и выбил грант на исследования спустя 5 лет. Но я-то знаю, что он собой представляет.</string>
     <string name="hunting_Lodge_cut_scene_text_start_11">Я должен опередить его, чтобы в том месте была проведена настоящая исследовательская работа. Чтобы ничего не упустить и найти Долину. Раскопки там могут полностью изменить наши представления об истории.</string>
     <string name="hunting_Lodge_cut_scene_text_start_12">Да уж, археологией я увлекаюсь столько, сколько себя помню. С начальной школы я читал книги и статьи отца, а уже в 15 впервые поехал с ним в экспедицию.</string>
-    <string name="hunting_Lodge_cut_scene_text_start_13">Поначалу там было страшновато и тяжело. Практически никаких удобств и благ современной цивилизации. В первую неделю я, блин, ненавидел это, безумно хотел домой. Но потом....</string>
+    <string name="hunting_Lodge_cut_scene_text_start_13">Поначалу там было страшновато и тяжело. Практически никаких удобств и благ современной цивилизации. В первую неделю я, блин, ненавидел это, безумно хотел домой. Но вскоре это изменилось.</string>
     <string name="hunting_Lodge_cut_scene_text_start_14">Сидя со всем отрядом отца вечером возле костра, подпевая вместе с ними песни, слушая их бесконечные истории, я понял, что это по-настоящему. Люди там становятся более настоящие что ли. </string>
     <string name="hunting_Lodge_cut_scene_text_start_15">Тогда-то все и началось. С тех пор я каждое лето полностью проводил в экспедициях. А остальное время изучал теорию. И я не для того всё это делал, чтобы дать жадному до денег и славы ублюдку лишать меня настоящих открытий.</string>
     <string name="hunting_Lodge_cut_scene_text_start_16">Жаль, что тут нет отца. Он бы никогда не допустил такого. И я был бы сейчас не один.</string>
@@ -634,8 +634,8 @@
     <string name="prologue_cave_move_right_way">Идти вправо, вглубь пещеры</string>
     <string name="prologue_cave_move_left_way">Проверить левую площадку</string>
     <string name="prologue_cave_inspect">Осмотреться</string>
-    <string name="prologue_cave_inspect_text_luck">Ценная находка: старая монента....\nУдача понижена!</string>
-    <string name="prologue_cave_inspect_text_fail">Поиск не принес результатов....\nУдача повышена!</string>
+    <string name="prologue_cave_inspect_text_luck">Ценная находка: старинная монента.\nУдача понижена!</string>
+    <string name="prologue_cave_inspect_text_fail">Поиск не принёс результатов.\nУдача повышена!</string>
     // Охотник
     <string name="hunting_lodge_hunter_text_start">
 Адаму ничего не снилось этой ночью, спал он на удивление спокойно. Правда, в один момент это спокойствие было нарушено.\n
@@ -769,7 +769,7 @@
     //Разбитая машина
 
     <string name="abandoned_car_message_raincoat">
-       Ценная находка: дождевик....\nУдача понижена!
+       Ценная находка: дождевик.\nУдача понижена!
 </string>
 
 
@@ -1124,11 +1124,11 @@
         Жаль, что у Адама не было ножа, а ведь для поиска грибов это практически самый необходимый инструмент. Без него он не сможет аккуратно и быстро проверять, червивый гриб или нет.
     </string>
     <string name="prologue_bonfire_toast_undergrowth_mushrooms_luck">
-        Ценная находка: хорошие грибы....\n
+        Ценная находка: хорошие грибы.\n
         Удача понижена!
     </string>
     <string name="prologue_bonfire_toast_undergrowth_mushrooms_fail">
-        Поиск не дал результатов....
+        Поиск не дал результатов.
         Удача повышена!
     </string>
     <string name="prologue_bonfire_text_undergrowth_firewood">
@@ -1154,11 +1154,11 @@
 
     <string name="prologue_cave_message">
         Здоровье улучшилось.\n
-        Удача повышена....
+        Удача повышена.
     </string>
 
     <string name="prologue_cave_message_second">
-        Удача повышена....
+        Удача повышена.
     </string>
 
     <string name="prologue_cave_after_button_exit">
@@ -1391,7 +1391,7 @@
     </string>
 
     <string name="prologue_hunting_lodge_box_message">
-        Ценная находка: фрагмент изображения....
+        Ценная находка: фрагмент изображения.
     </string>
 
 
@@ -2319,7 +2319,7 @@
     <string name="chapter_two_car_text_lady">
 Машина вздрогнула и тронулась с места. Адам ещё раз окинул взглядом всё, что он собрал в спешке и, удостоверившись, что ничего не забыто, отправился в дорогу.\n
 Но не прошло и секунды, как ему пришлось резко ударить по тормозам. Розовый \"Жук\" преградил дорогу и, судя по всему, заглох. Хозяйка машины орала что-то в мобильный телефон, хотя, при отсутствии слышимости, это выглядело по меньшей мере забавно.\n
-Из двора был только один путь, а значит, надо что-то делать с авто-леди. Вот если бы Адам выехал чуть раньше....
+Из двора был только один путь, а значит, надо что-то делать с авто-леди. Если бы только Адам выехал чуть раньше.
     </string>
 
     <string name="chapter_two_car_text_lady_car">
@@ -2356,7 +2356,7 @@
     </string>
 
     <string name="chapter_two_car_text_lady_car_battery">
-Уровень бензина и масла был в порядке, а значит, проблема была в другом. Адам не сразу заметил значок севшего аккумулятора. Что же, завести машину будет не сложно, но вот как это сделать....\n
+Уровень бензина и масла был в порядке, а значит, проблема была в другом. Адам не сразу заметил значок севшего аккумулятора. Что же, завести машину будет не сложно, вопрос сот как именно это сделать.\n
 С одной стороны, можно было подзарядить \"Жука\" с помощью его Тойоты, но на это уйдет куча времени.\n
 С другой стороны, завести машину с \"толкача\" намного легче и быстрее. Но, если \"Жук\" снова заглохнет где-нибудь посреди дороги?
     </string>
