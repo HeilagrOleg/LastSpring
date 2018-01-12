@@ -4616,6 +4616,7 @@
     <string name="grotto_labyrinth_left_button_text_5_2">Можно идти на север</string>
     <string name="grotto_labyrinth_left_button_text_3_2">Можно идти на север. Фото</string>
     <string name="grotto_labyrinth_left_button_text_8_3">Можно идти на запад. Выход</string>
+    <string name="grotto_labyrinth_left_button_text_8_3_second">Можно идти на запад. Выход</string>
     <string name="grotto_labyrinth_left_button_text_7_3">Можно идти на запад, восток и на север</string>
     <string name="grotto_labyrinth_left_button_text_6_3">Можно идти на запад и на восток</string>
     <string name="grotto_labyrinth_left_button_text_5_3">Можно идти на запад, север, юг и на восток</string>
@@ -4660,6 +4661,7 @@
     <string name="grotto_labyrinth_right_button_text_7_5">Можно идти на восток и на запад</string>
     <string name="grotto_labyrinth_right_button_text_8_5">Можно идти на запад, север и на юг</string>
     <string name="grotto_labyrinth_right_button_text_2_6">Можно идти на восток. Выход</string>
+    <string name="grotto_labyrinth_right_button_text_2_6_second">Можно идти на восток. Выход</string>
     <string name="grotto_labyrinth_right_button_text_3_6">Можно идти на запад, север и на юг</string>
     <string name="grotto_labyrinth_right_button_text_6_6">Можно идти на север и на юг. Отдых</string>
     <string name="grotto_labyrinth_right_button_text_8_6">Можно идти на юг. Фото</string>
