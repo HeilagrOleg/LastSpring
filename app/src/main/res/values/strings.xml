@@ -4614,10 +4614,10 @@
     cave_labyrinth_button_text_4_2
 
     <string name="grotto_labyrinth_left_button_text_5_2">Можно идти на север</string>
-    <string name="grotto_labyrinth_left_button_text_3_2">Можно идти на север. Фото</string>
-    <string name="grotto_labyrinth_left_button_text_8_3">Адам с трудом протиснулся в узкий проход, получив с добрый десяток царапин. Диан вслед за ним пролезла без проблем. Оказавшись на той стороне, они с облегчением заметили, что тоннели тут достаточно широкие для прогулки. Однако, что-то было не так с этим местом. Какое-то давящее чувство не покидало их ни на секунду. \n Можно идти на запад или выйти из лабиринта.</string>
-    <string name="grotto_labyrinth_left_button_text_8_3_second">Они вернулись к узкому проходу, ведущему обратно в \"вестибюль\" грота. Можно было выйти отсюда.</string>
-    <string name="grotto_labyrinth_left_button_text_7_3">Да, тут определённо что-то было не так. По запутанной системе лабиринтов то и дело бродил гул, напоминающий шёпот. Это очень сильно давило на исследователей, и с каждым шагом двигаться дальше становилось всё сложнее. Можно идти на запад, восток и на север.</string>
+    <string name="grotto_labyrinth_left_button_text_3_2">В углу тупика, в который они зашли, из пола торчал невысокий каменный постамент. В выемку на его поверхности была глубоко вбита прямоугольная табличка с письменностью, похожими на тюркские рунические надписи. Но при таком освещении было сложно точно сказать. Стоит сделать фото таблички.\n Можно идти на север. </string>
+    <string name="grotto_labyrinth_left_button_text_8_3">Адам с трудом протиснулся в узкий проход, получив с добрый десяток царапин. Диан вслед за ним пролезла без проблем. Оказавшись на той стороне, они с облегчением заметили, что тоннели тут достаточно широкие для прогулки. Однако, что-то было не так с этим местом. Какое-то давящее чувство не покидало их ни на секунду. \n Можно идти на запад или выйти из лабиринта. </string>
+    <string name="grotto_labyrinth_left_button_text_8_3_second">Они вернулись к узкому проходу, ведущему обратно в \"вестибюль\" грота. Можно было выйти отсюда или пойти на запад.</string>
+    <string name="grotto_labyrinth_left_button_text_7_3">Да, тут определённо что-то было не так. По запутанной системе лабиринтов то и дело бродил гул, напоминавший шёпот. Это сильно давило на исследователей, и с каждым шагом идти дальше становилось всё сложнее.\n Можно идти на запад, восток и на север.</string>
     <string name="grotto_labyrinth_left_button_text_6_3">Можно идти на запад и на восток</string>
     <string name="grotto_labyrinth_left_button_text_5_3">Можно идти на запад, север, юг и на восток</string>
     <string name="grotto_labyrinth_left_button_text_4_3">Можно идти на запад и на восток</string>
@@ -4628,7 +4628,7 @@
     <string name="grotto_labyrinth_left_button_text_3_4">Можно идти на север и на юг</string>
     <string name="grotto_labyrinth_left_button_text_7_5">Можно идти на север, запад и на юг</string>
     <string name="grotto_labyrinth_left_button_text_6_5">Можно идти на запад и на восток</string>
-    <string name="grotto_labyrinth_left_button_text_5_5">Можно идти на запад, север, юг и на восток. Фото</string>
+    <string name="grotto_labyrinth_left_button_text_5_5">Археологи вышли на перекрёсток туннелей, посреди которого возвышался довольно высокий каменный обелиск. Сохранился он на удивление хорошо. Каждая из его граней была покрыта письменностью в перемешку с изображениями жестоких ритуальных убийств. Сейчас изучать их было бесполезно. Стоит сделать фото обелиска.\n Можно идти на запад, север, юг и на восток. </string>
     <string name="grotto_labyrinth_left_button_text_4_5">Можно идти на запад и на восток</string>
     <string name="grotto_labyrinth_left_button_text_3_5">Можно идти на запад, юг и на восток</string>
     <string name="grotto_labyrinth_left_button_text_2_5">Можно идти на восток и на север</string>
@@ -4652,7 +4652,7 @@
     <string name="grotto_labyrinth_right_button_text_6_3">Можно идти на запад, север и на восток</string>
     <string name="grotto_labyrinth_right_button_text_7_3">Можно идти на запад и на восток</string>
     <string name="grotto_labyrinth_right_button_text_8_3">Можно идти на север и на запад</string>
-    <string name="grotto_labyrinth_right_button_text_3_4">Можно идти на север и на юг</string>
+    <string name="grotto_labyrinth_right_button_text_3_4">Сделав шаг, Адам почувствовал будто что-то вдруг покрыло его лицо. Он слегка вскрикнул и начал судорожно оттряхиваться от паутины. Диан тихонько посмеялась над ним, но ему было не до смеха. Он ненавидел пауков. \n Можно идти на север и на юг</string>
     <string name="grotto_labyrinth_right_button_text_6_4">Можно идти на север и на юг</string>
     <string name="grotto_labyrinth_right_button_text_8_4">Можно идти на север и на юг</string>
     <string name="grotto_labyrinth_right_button_text_3_5">Можно идти на север, восток и на юг</string>
@@ -4660,10 +4660,10 @@
     <string name="grotto_labyrinth_right_button_text_6_5">Можно идти на восток, север и на юг</string>
     <string name="grotto_labyrinth_right_button_text_7_5">Можно идти на восток и на запад</string>
     <string name="grotto_labyrinth_right_button_text_8_5">Можно идти на запад, север и на юг</string>
-    <string name="grotto_labyrinth_right_button_text_2_6">Можно идти на восток. Выход</string>
-    <string name="grotto_labyrinth_right_button_text_2_6_second">Можно идти на восток. Выход</string>
-    <string name="grotto_labyrinth_right_button_text_3_6">Можно идти на запад, север и на юг</string>
-    <string name="grotto_labyrinth_right_button_text_6_6">Можно идти на север и на юг. Отдых</string>
+    <string name="grotto_labyrinth_right_button_text_2_6">Они аккуратно зашли через широкий проход и оказались в тоннеле. Резкий запах здесь почти пропал, но спутников не покидало ощущение, что кто-то в тоннелях очень громко перешёптывается, словно на неизвестном им языке. \n Можно идти на восток или выйти из лабиринта.</string>
+    <string name="grotto_labyrinth_right_button_text_2_6_second">Они вернулись к широкому проходу. Тут можно выйти обратно в \"вестибюль\" грота или пойти на восток. </string>
+    <string name="grotto_labyrinth_right_button_text_3_6">Чем дальше они заходили, тем больше ощущали тревогу. Она была как зуд, от которого никак не избавиться. Долго они тут не выдержат. И, кажется, они попали в лабиринт. \n Можно идти на запад, север и на юг</string>
+    <string name="grotto_labyrinth_right_button_text_6_6">Путь вёл вниз, на слегка освещённую площадку, представлявшую собой овальное углубление в тоннеле. Свет пробивался сквозь многочисленные небольшие дыры в высоком потолке. Шум тут практически затихал, а гнетущая обстановка будто разрядилась. Тут можно передохнуть.\n Можно идти на север и на юг.</string>
     <string name="grotto_labyrinth_right_button_text_8_6">Зайдя в тупик, они не сразу заметили на стене изображение. Мужчина в боевой позиции с мечом и щитом встречал страннейшую тварь, вылезавшую из завала в каком-то проходе. Здоровенная морда твари, торчащая за камнями, смутно напоминала какую-то рыбу. Стоит сделать фото рисунка.\n Можно идти на юг.</string>
     <string name="grotto_labyrinth_right_button_text_3_7">Можно идти на север и на юг</string>
     <string name="grotto_labyrinth_right_button_text_6_7">Можно идти на север и на юг</string>
