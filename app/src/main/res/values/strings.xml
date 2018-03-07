@@ -10,6 +10,11 @@
     <string name="exit_close">Закрыть</string>
     <string name="button_true">Успех</string>
     <string name="button_false">Провал</string>
+    <string name="id_pr">ca-app-pub-5948995703918965~1902136973</string>
+    <string name="id_pr_luck">ca-app-pub-5948995703918965/3339287824</string>
+    <string name="id_pr_luck_test">ca-app-pub-3940256099942544/5224354917</string>
+    <string name="id_pr_list">ca-app-pub-5948995703918965/6196605208</string>
+    <string name="id_pr_list_test">ca-app-pub-3940256099942544/1033173712</string>
 
     //Инвентарь
 
@@ -9155,6 +9160,14 @@
 
     <string name="chapter_four_final_final_hunter_16">
 Вновь узрев это великолепие, Нохрус почувствовал необычайную любовь к предкам. Никто не должен обнаружить Долину. Ведь он был рождён для того, чтобы защитить её от мира вокруг. И мир вокруг от неё.
+    </string>
+
+    <string name="chapter_four_final_final_exit">
+Нажмите ещё раз, что бы выйти.
+    </string>
+
+    <string name="chapter_four_final_final_final">
+Конец
     </string>
 
 
