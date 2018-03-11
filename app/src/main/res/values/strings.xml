@@ -15,6 +15,9 @@
     <string name="id_pr_luck_test">ca-app-pub-3940256099942544/5224354917</string>
     <string name="id_pr_list">ca-app-pub-5948995703918965/6196605208</string>
     <string name="id_pr_list_test">ca-app-pub-3940256099942544/1033173712</string>
+    <string name="load_video">Видео загружается…</string>
+    <string name="loaded_video">Поднять удачу</string>
+    <string name="server_client_id">814323365175-n2g3s5m037fn3kn21ra3l8l6q0ah2fq3.apps.googleusercontent.com </string>
 
     //Инвентарь
 
@@ -33,6 +36,52 @@
     <string name="inventory_text_food">Число припасов на одного человека</string>
     <string name="inventory_text_drugs">Одно лекарство - одна рана</string>
     <string name="inventory_text_false">Предмет ещё не найден</string>
+
+    <string name="a_1_name">Хижина в лесу</string>
+    <string name="a_1">Встретить таинственного охотника в хижине</string>
+    <string name="a_2_name">Не просто лес</string>
+    <string name="a_2">Встретить таинственного охотника в лесу</string>
+    <string name="a_3_name">Свет в конце тоннеля</string>
+    <string name="a_3">Найти выход из лабиринта</string>
+    <string name="a_4_name">Ищейка</string>
+    <string name="a_4">Найти все предметы в комнате Адама меньше, чем за 3 минуты</string>
+    <string name="a_5_name">Хороший слушатель</string>
+    <string name="a_5">Выслушать монолог дяди Коли до конца</string>
+    <string name="a_6_name">Как раз вовремя</string>
+    <string name="a_6">Успеть на конференцию, не смотря ни на что</string>
+    <string name="a_7_name">У холмов есть глаза</string>
+    <string name="a_7">Пройти основное поручение Виктора</string>
+    <string name="a_8_name">Постсоветский постапокалипсис</string>
+    <string name="a_8">Пройти дополнительное поручение Кирилла</string>
+    <string name="a_g_name">La grotte mystérieuse</string>
+    <string name="a_g">Пройти дополнительное поручение Диан</string>
+    <string name="a_10_name">А ты неплох, копатель</string>
+    <string name="a_10">Достичь положительного уровня отношений с Кириллом</string>
+    <string name="a_s_name">S\'il vous plaît parler français!</string>
+    <string name="a_s">Достичь положительного уровня отношений с Диан</string>
+    <string name="a_12_name">Не начальник, а друг</string>
+    <string name="a_12">Достичь положительного уровня отношений с Виктором</string>
+    <string name="a_14_name">Социально активный</string>
+    <string name="a_14">Достичь положительного уровня отношений с Кириллом, Диан и Виктором</string>
+    <string name="a_15_name">Следовавший мечте</string>
+    <string name="a_15">Узреть Долину от лица Адама</string>
+    <string name="a_16_name">Следовавший зову долга</string>
+    <string name="a_16">Узреть Долину от лица охотника</string>
+    <string name="a_17_name">Что-то тут не так…</string>
+    <string name="a_17">Пройти Главу I</string>
+    <string name="a_18_name">Флешбеки</string>
+    <string name="a_18">Пройти Главу II</string>
+    <string name="a_19_name">Как у себя дома</string>
+    <string name="a_19">Пройти Главу III</string>
+    <string name="a_h_name">Hic sunt dracones</string>
+    <string name="a_h">Пройти Главу IV</string>
+    <string name="a_21_name">Настоящий нумизмат</string>
+    <string name="a_21">Собрать все загадочные монеты</string>
+    <string name="a_22_name">Любитель пазлов</string>
+    <string name="a_22">Собрать все фрагменты рисунка из шкатулок</string>
+    <string name="achievement_message">Достижение разблокировано</string>
+
+
 
 
     <string name="prologue_start">
